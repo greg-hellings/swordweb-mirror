@@ -15,6 +15,7 @@
 	static Vector styleDescriptions = null;
 	static Vector tabNames = null;
 	static Vector tabLinks = null;
+	static Vector tabTitles = null;
 %>
 
 <%
@@ -34,23 +35,32 @@
 			styleNames.add("Parchment");
 			styleFiles.add("parchment.css");
 
-			tabNames = new Vector();
-			tabLinks = new Vector();
+			tabNames  = new Vector();
+			tabLinks  = new Vector();
+			tabTitles = new Vector();
 			tabNames.add("Home");
+			tabTitles.add("Home");
 			tabLinks.add("index.jsp");
 			tabNames.add("Passage Study");
+			tabTitles.add("Passage Study");
 			tabLinks.add("passagestudy.jsp");
 			tabNames.add("Parallel");
+			tabTitles.add("Parallel");
 			tabLinks.add("parallelstudy.jsp");
 			tabNames.add("Power Search");
+			tabTitles.add("Power Search");
 			tabLinks.add("powersearch.jsp");
 			tabNames.add("Devotionals");
+			tabTitles.add("Devotionals");
 			tabLinks.add("dailydevotion.jsp");
 			tabNames.add("Library");
+			tabTitles.add("Library");
 			tabLinks.add("fulllibrary.jsp");
 			tabNames.add("Preferences");
+			tabTitles.add("Preferences");
 			tabLinks.add("preferences.jsp");
 			tabNames.add("FAQ");
+			tabTitles.add("FAQ");
 			tabLinks.add("about.jsp");
 		}
 	}

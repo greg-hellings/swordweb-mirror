@@ -13,11 +13,12 @@
 	for (int i = 0; i < tabNames.size(); i++) {
 		String u = (String)request.getRequestURI();
 		String n = (String)tabNames.get(i);
+		String t = (String)tabTitles.get(i);
 		String l = (String)tabLinks.get(i);
 		boolean show = !("false".equals((String)showTabs.get(i)));
 		if ((show) || ("preferences.jsp".equals(l))) {
 %>
-      <li><a <%= (u.endsWith(l))?"id=\"current\"":"" %> href="<%= l %>" title="<%= n %>"><%= n %></a></li>
+      <li><a <%= (u.endsWith(l))?"id=\"current\"":"" %> href="<%= l %>" title="<%= t %>"><%= n %></a></li>
 <%		}
 	}	%>
     </ul>
