@@ -153,24 +153,25 @@
 		%>
 
 		<%-- table which contains all verse items --%>
-		<table width="100%" cellspacing="0" border="0" cellpadding="0" align="center">
+		<table id="paralleldisplay">
 
+		<caption></caption>
+		<summary></summary>
 		<thead>
 		<tr>
 
 		<% //insert module names at the top
-				int colWidth = 100 / parDispModules.size();
-
 				for (int i = 0; i < parDispModules.size(); i++) {
 					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
 		%>
-					<td>
-						<p class="textname">&raquo; <B><%= mod.getDescription().replaceAll("&", "&amp;") + " (" + mod.getName() + ")" %></b></p>
+					<th>
+						&raquo;<%= mod.getDescription().replaceAll("&", "&amp;") + " (" + mod.getName() + ")" %>
 
-					</td>
+					</th>
 		<%
 				}
 		%>
+
 		</tr>
 		</thead>
 
@@ -183,24 +184,23 @@
 						break;
 
 		%>
-					<tr align="left" valign="top">
+					<tr>
 		<%
 					for (int i = 0; i < parDispModules.size(); i++) {
 						SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
+						boolean rtol = ("RtoL".equalsIgnoreCase(mod.getConfigEntry("Direction")));
+
 						if (mod != activeModule)
 							mod.setKeyText( keyText );
-						boolean rtol = ("RtoL".equalsIgnoreCase(mod.getConfigEntry("Direction")));
 		%>
-							<td style="padding:4px;" align="<%= rtol ? "right" : "left" %>" width="<%= colWidth %>%" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-								<div dir="<%= rtol ? "rtl" : "ltr" %>">
-									<span class="versenum">
-										<a href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>">
-											<%= keyText.substring(keyText.indexOf(":")+1) %>
+							<td dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %> >
+								<span class="versenum">
+									<a href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>">
+										<%= keyText.substring(keyText.indexOf(":")+1) %>
 									</a>
-									</span>
+								</span>
 
-									<%= new String(mod.getRenderText().getBytes("iso-8859-1"), "UTF-8") %>
-								</div>
+								<%= new String(mod.getRenderText().getBytes("iso-8859-1"), "UTF-8") %>
 							</td>
 		<%
 					}

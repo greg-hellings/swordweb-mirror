@@ -167,7 +167,7 @@ a:active {
 }
 
 
-/* --- center column  (main content)---------- */
+	/* --- center column  (main content)---------- */
 
 #content-main {
 	margin: 0 185px;
@@ -225,6 +225,25 @@ a:active {
 }
 
 
+/* --- parallel display stuff---------- */
+
+#paralleldisplay {
+	width:100%;
+}
+
+#paralleldisplay th {
+	font-weight:bold;
+	font-size:smaller;
+}
+
+#paralleldisplay td {
+
+}
+
+#paralleldisplay tr {
+
+}
+
 /* footer section ---------- */
 
 #footer {
@@ -242,6 +261,7 @@ a:active {
 	padding: 0;
 	margin: 0;
 	}
+
 
 /* ----------------*/
 

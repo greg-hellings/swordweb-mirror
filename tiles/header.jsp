@@ -8,6 +8,6 @@
       <li><a href="">Full Library</a></li>
       <li><a href="preferences.jsp">Preferences</a></li>
       <li><a href="about.jsp">About</a></li>
-      <li><a href="">Help</a></li>
+      <li><a href="help.jsp">Help</a></li>
     </ul>
   </div>
