@@ -7,9 +7,12 @@
 <head>
 	<title>OSIS Web:<tiles:getAsString name="title"/></title>
 
-	<link href="wash.css" title="Washed Out" rel="stylesheet" type="text/css" />
-	<link href="sandy.css" title="Sandy Beach" rel="alternate stylesheet" type="text/css" />
-	<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" media="all" title="Washed Out" href="wash.css"  />
+<link rel="alternate stylesheet" type="text/css" media="all" title="Washed Out" href="wash.css.css" />
+<link rel="alternate stylesheet" type="text/css" media="all" title="Sandy Creek" href="sandy.css" />
+<link rel="alternate stylesheet" type="text/css" media="all" title="Parchment" href="parchment.css" />
+<link rel="alternate stylesheet" type="text/css" media="all" title="Testing 1 2 3" href="test.css" />
+<link rel="alternate stylesheet" type="text/css" media="all" title="No Style" href="blank.css" />
 
 	<!--For printing stuff -->
 	<link rel="stylesheet" type="text/css" media="print" href="print.css" />
