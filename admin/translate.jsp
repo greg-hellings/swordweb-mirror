@@ -3,6 +3,7 @@
 <%@ page import="java.io.File" %>
 <%@ page import="java.io.FileOutputStream" %>
 <%@ page import="org.crosswire.web.i18n.*" %>
+<%@ page import="org.crosswire.web.util.*" %>
 
 <html>
 <body>
@@ -52,7 +53,7 @@
 		<fieldset>
 <%
 		for (int i = 0; i < pageTags.size(); i++) {
-			String key   = (String)pageTags.get(i);
+			String key   = HTMLEncoder.encode((String)pageTags.get(i));
 			String value = TranslateTag.getTranslation(pageContext, key, false);
 %>
 			<legend><%= key %></legend>
