@@ -16,15 +16,15 @@
     <h1><acronym title="Open Scripture Information Standard">OSIS</acronym> Bible Tool</h1>
     <div id="navlist">
       <ul>
-        <li><a href="index.jsp" title="Home" <%= homeID %>>Home</a></li>
-        <li><a href="passagestudy.jsp" title="Passage Study" <%= passageID %>>Passage Study</a></li>
-        <li><a href="parallelstudy.jsp" title="Parallel Translations" <%= parallelID %>>Parallel</a></li>
-        <li><a href="powersearch.jsp" title="Power Search" <%= searchID %>>Search</a></li>
-        <li><a href="dailydevotion.jsp" title="Daily Devotionals" <%= devotionalID %>>Devotionals</a></li>
-        <li><a href="fulllibrary.jsp" title="Full Library" <%= libraryID %>>Library</a></li>
-        <li><a href="preferences.jsp" title="Preferences" <%= preferencesID %>>Preferences</a></li>
-        <li><a href="about.jsp" title="About" <%= aboutID %>>About</a></li>
-        <li><a href="help.jsp" title="Help" <%= helpID %>>Help</a></li>
+        <li><a <%= homeID %> href="index.jsp" title="Home">Home</a></li>
+        <li><a <%= passageID %> href="passagestudy.jsp" title="Passage Study">Passage Study</a></li>
+        <li><a <%= parallelID %> href="parallelstudy.jsp" title="Parallel Translations">Parallel</a></li>
+        <li><a <%= searchID %> href="powersearch.jsp" title="Power Search">Search</a></li>
+        <li><a <%= devotionalID %> href="dailydevotion.jsp" title="Daily Devotionals">Devotionals</a></li>
+        <li><a <%= libraryID %> href="fulllibrary.jsp" title="Full Library">Library</a></li>
+        <li><a <%= preferencesID %> href="preferences.jsp" title="Preferences">Preferences</a></li>
+        <li><a <%= aboutID %> href="about.jsp" title="About">About</a></li>
+        <li><a <%= helpID %> href="help.jsp" title="Help">Help</a></li>
       </ul>
     </div>
   </div>

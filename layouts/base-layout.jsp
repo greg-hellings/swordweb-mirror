@@ -21,7 +21,6 @@
 
 <div id="content-wrap">
    <div id="content-sub-1">
-
       <div id="quicksearch">
         <h2>Search:</h2>
         <form action="wordsearchresults.jsp">
@@ -35,9 +34,8 @@
           </fieldset>
         </form>
       </div>
-
-	  <%-- include left sidebar --%>
-	  <tiles:insert attribute="sidebar_left" />
+     <%-- include left sidebar --%>
+     <tiles:insert attribute="sidebar_left" />
    </div>
 
 	<div id="content-sub-2">
