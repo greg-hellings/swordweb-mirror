@@ -31,6 +31,19 @@
 	String activeKey = (String) session.getAttribute("ActiveKey");
 	if (activeKey == null)
 		activeKey = "jas 1:19"; // our fallback key
+
+
+	//taken from passagestudy.jsp. It's here useful, too.
+	boolean strongs = "on".equals((String) session.getAttribute("strongs"));
+	String buf = request.getParameter("strongs");
+	strongs = (buf != null) ? "on".equalsIgnoreCase(buf) : strongs;
+	session.setAttribute("strongs", (strongs)?"on":"off");
+
+	boolean morph = "on".equals((String) session.getAttribute("morph"));
+	buf = request.getParameter("morph");
+	morph = (buf != null) ? "on".equalsIgnoreCase(buf) : morph;
+	session.setAttribute("morph", (morph)?"on":"off");
+
 %>
 
 
@@ -99,9 +112,15 @@
 	</tiles:put>
 
 	<tiles:put name="sidebar_right" type="string">
+		<div id="studytools">
+			<h2>Word Study:</h2>
+			<ul>
+				<li><a href="parallelstudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>" title="Turn <%= (strongs) ? "off" : "on"%> Strongs numbers"><%= (strongs) ? "Hide" : "Show" %> Strongs</a></li>
+				<li><a href="parallelstudy.jsp?morph=<%= (morph) ? "off" : "on" %>" title="Turn <%= (morph) ? "off" : "on" %> morphology"><%= (morph) ? "Hide" : "Show" %> Morphology</a></li>
+			</ul>
+		</div>
 
 		<div id="commentaries">
-
 		<h2>Comentaries:</h2>
 
 		<h3>Displayed modules</h3> <p>click to remove</p>
@@ -221,14 +240,23 @@
 
 		<tbody>
 		<%
-				String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
-				for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
-					String keyText = activeModule.getKeyText();
-					if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":"))))
-						break;
+			String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
+			int activeVerse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
+			for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
 
-		%>
-					<tr>
+				String keyText = activeModule.getKeyText();
+				if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":"))))
+					break;
+
+				int curVerse = Integer.parseInt(keyText.substring(keyText.indexOf(":")+1));
+				mgr.setGlobalOption("Strong's Numbers",
+					((strongs) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
+				mgr.setGlobalOption("Morphological Tags",
+					((morph) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
+			%>
+
+
+				<tr>
 		<%
 					for (int i = 0; i < parDispModules.size(); i++) {
 						SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
@@ -237,7 +265,7 @@
 						if (mod != activeModule)
 							mod.setKeyText( keyText );
 		%>
-							<td width="<%= 100/parDispModules.size() %>%" dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+							<td width="<%= 100/parDispModules.size() %>%" <%= rtol ? "dir=\"rtl\"" : "" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 								<span class="versenum">
 									<a <%= (keyText.equals(activeKey)) ? "name=\"cv\"" : "" %> href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>#cv"> <%= keyText.substring(keyText.indexOf(":")+1) %></a>
 								</span>
