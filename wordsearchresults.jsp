@@ -17,7 +17,7 @@
 	if (tmp != null)
 		range = tmp;
 
-	SearchType stype = SearchType.MULTIWORD;
+	SearchType stype = (activeModule.hasSearchFramework()) ? SearchType.LUCENE : SearchType.MULTIWORD;
 	tmp = request.getParameter("stype");
 	if (tmp != null) {
 		if (tmp.equalsIgnoreCase("P"))
