@@ -44,7 +44,7 @@
 		<div id="translations">
 
 		<h2>Translations:</h2>
-		<h3>Displayed modules <h3>
+		<h3>Displayed modules </h3>
 		<p>click to remove</p>
 		<% if (parDispModules.size() > 0) { %>
 		<ul>
