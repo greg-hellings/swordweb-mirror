@@ -72,7 +72,7 @@
 				<b>Search Type:</b><br/>
 				<input type="radio" name="stype" value="M" checked="true" />All Words or Word Fragments<br/>
 				<input type="radio" name="stype" value="P" />Exact Phrase<br/>
-				<input type="radio" name="stype" value="R" />Advanced- Regular Exression<br/><br/>
+				<input type="radio" name="stype" value="R" />Advanced- Regular Expression<br/><br/>
 				<input type="checkbox" name="icase" value="1" checked="true"/>Ignore Case (UPPER/lower isn't strictly matched)<br/><br/>
 				<b>Limit Search to Range:</b><br/>
 				<input type="text" name="range" class="textinput" value="" /><br/>(most syntax works, e.g.  mat-jn;rom;rev 1-5)<br/><br/>
