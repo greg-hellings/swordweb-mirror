@@ -5,7 +5,7 @@
       <li><a href="parallelstudy.jsp">Parallel Translations</a></li>
       <li><a href="powersearch.jsp">Power Search</a></li>
       <li><a href="dailydevotion.jsp">Daily Devotionals</a></li>
-      <li><a href="">Full Library</a></li>
+      <li><a href="fulllibrary.jsp">Full Library</a></li>
       <li><a href="preferences.jsp">Preferences</a></li>
       <li><a href="about.jsp">About</a></li>
       <li><a href="help.jsp">Help</a></li>
