@@ -1,16 +1,15 @@
 body{
 color: #000000;
-background-color: #fff;
+background-color: #ffffff;
 font-size: 76%;
-margin: 7px 10px 0px 10px;
+margin: 0px 10px 0px 10px;
 }
 
 /* Mast Head */
 
 #header{
-background-color:#FFF;
-background-position: left top;
 background-image: url(images/osislogo.png);
+background-position: left top;
 background-repeat: no-repeat;
 font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
 }
@@ -21,24 +20,23 @@ font-weight: normal;
 font-size: 2.0em;
 line-height: 2.0em;
 text-transform: uppercase;
-padding: 0;
-margin: 0px 0px 0px 70px;
+padding: 0px 0px 0px 70px;
+margin: 0px 0px 0px 0px;
 }
 
 /* Main Navigation */
 
 #navlist{
 border-bottom: 1px solid #ccc;
-margin: 0px;
+margin: 0;
 padding-bottom: 19px;
 padding-left: 70px;
-
 }
 
 #navlist ul, #navlist li{
 display: inline;
 list-style-type: none;
-margin: 0px 0px 0px 0px;
+margin: 0;
 padding: 0;
 }
 
@@ -92,7 +90,6 @@ margin: 5px 0px 0px 0px;
 padding: 0px 0px 0px 0px;
 border-top: 1px solid #ccc;
 clear:left;
-background-color:#FFF;
 }
 
 #content-sub-1{
