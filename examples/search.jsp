@@ -28,7 +28,7 @@
 
 <p> There are <%= results.length %> results searching for "<%= searchTerm %>" in <%= book.getName() %></p>
 <table border="1">
-<tr><td>Reference</td><td>Text</td></tr>
+<tr><th>Reference</th><th>Text</th></tr>
 
 <%
 	for (int i = 0; i < results.length && i < 100; i++) {
