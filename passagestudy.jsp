@@ -19,7 +19,9 @@
 	<tiles:put name="sidebar_left" type="string">
 		<div id="translations">
 		<h2>Translations:</h2>
-      	<ul>
+
+	<% if (prefBibles.size() > 0) { %>
+		<ul>
 		<%
 			for (int i = 0; i < prefBibles.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)prefBibles.get(i));
@@ -29,6 +31,8 @@
 			}
 		%>
 		</ul>
+	<% } %>
+
 		<hr/>
 
 		<ul>
@@ -48,8 +52,9 @@
 	<tiles:put name="sidebar_right" type="string">
 		<div id="commentaries">
 		<h2>Comentaries:</h2>
-      	<ul>
 
+	<% if (prefCommentaries.size() > 0) { %>
+		<ul>
 		<%
 			for (int i = 0; i < prefCommentaries.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)prefCommentaries.get(i));
@@ -59,6 +64,7 @@
 			}
 		%>
 		</ul>
+	<% } %>
 
 		<hr />
 
@@ -101,12 +107,25 @@
 						break;
 					boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 			%>
-				<div dir="<%= rtol ? "rtl" : "" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+				<div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 					<span class="versenum"><a <%= (keyText.equals(activeKey))?"name=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
 						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
 					</span>
 
+					<%
+					boolean utf8 = ("UTF-8".equalsIgnoreCase(activeModule.getConfigEntry("Encoding")));
+					if (utf8) {
+						out.println("<span class=\"unicode\">");
+					}
+					%>
+
 					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+
+					<%
+					if (utf8) {
+						out.println("</span>");
+					}
+					%>
 				</div>
 			<%
 				}

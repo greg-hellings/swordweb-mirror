@@ -7,30 +7,12 @@
 <head>
 	<title>OSIS Web:<tiles:getAsString name="title"/></title>
 
+	<link href="wash.css" title="Washed Out" rel="stylesheet" type="text/css" />
+	<link href="blue.css" title="Old Blue" rel="alternate stylesheet" type="text/css" />
+	<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
 
-	<%
-		String print = request.getParameter("print");
-		if ("1".equals(print)) {
-	%>
-			<link href="print.css" title="Printer friendly" rel="stylesheet" type="text/css" />
-	<%
-		}
-		else {
-	%>
-			<link href="wash.css" title="Washed Out" rel="stylesheet" type="text/css" />
-			<link href="blue.css" title="Old Blue" rel="alternate stylesheet" type="text/css" />
-			<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
-	<%
-		}
-	%>
-
-		<link href="wash.css" title="Washed Out" rel="stylesheet" type="text/css" />
-		<link href="blue.css" title="Old Blue" rel="alternate stylesheet" type="text/css" />
-		<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
-
-		<!--For printing stuff -->
-		<link rel="stylesheet" type="text/css" media="print" href="print.css" />
-
+	<!--For printing stuff -->
+	<link rel="stylesheet" type="text/css" media="print" href="print.css" />
 </head>
 
 	<body>
@@ -47,7 +29,7 @@
             <legend>by keyword or phrase:</legend> <input type="text" name="searchTerm" size="10" /> <input type="submit" value="go" title="Search by keyword or phrase" />
           </fieldset>
         </form>
-        <form action="passagestudy.jsp">
+	<form action="<tiles:getAsString name="lookup_url"/>">
           <fieldset>
             <legend>by verse or passage:</legend> <input type="text" name="key" size="10" /> <input type="submit" value="go" title="Search by verse or passage" />
           </fieldset>

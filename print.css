@@ -73,8 +73,7 @@ a {
 
 a:link {
 	color: #69c;
-	background:
-	ransparent;
+	background:transparent;
 	}
 
 a:visited {
@@ -88,8 +87,7 @@ a:hover {
 	}
 a:active {
 	color: #69c;
-	background:
-	transparent;
+	background:transparent;
 	text-decoration: none;}
 
 /* header content section ---------- */

@@ -231,8 +231,23 @@
 										<%= keyText.substring(keyText.indexOf(":")+1) %>
 									</a>
 								</span>
-								<%= new String(mod.getRenderText().getBytes("iso-8859-1"), "UTF-8") %>
-							</td>
+
+					<%
+						boolean utf8 = ("UTF-8".equalsIgnoreCase(mod.getConfigEntry("Encoding")));
+						if (utf8) {
+							out.println("<span class=\"unicode\">");
+						}
+						%>
+
+						<%= new String(mod.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+
+						<%
+						if (utf8) {
+							out.println("</span>");
+						}
+					%>
+
+					</td>
 		<%
 					}
 		%>
