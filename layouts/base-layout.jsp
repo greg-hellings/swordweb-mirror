@@ -7,12 +7,30 @@
 <head>
 	<title>OSIS Web:<tiles:getAsString name="title"/></title>
 
+
+	<%
+		String print = request.getParameter("print");
+		if ("1".equals(print)) {
+	%>
+			<link href="print.css" title="Printer friendly" rel="stylesheet" type="text/css" />
+	<%
+		}
+		else {
+	%>
+			<link href="wash.css" title="Washed Out" rel="stylesheet" type="text/css" />
+			<link href="blue.css" title="Old Blue" rel="alternate stylesheet" type="text/css" />
+			<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
+	<%
+		}
+	%>
+
 		<link href="wash.css" title="Washed Out" rel="stylesheet" type="text/css" />
 		<link href="blue.css" title="Old Blue" rel="alternate stylesheet" type="text/css" />
 		<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
 
 		<!--For printing stuff -->
 		<link rel="stylesheet" type="text/css" media="print" href="print.css" />
+
 </head>
 
 	<body>
