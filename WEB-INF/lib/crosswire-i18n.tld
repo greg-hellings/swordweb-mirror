@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+  <tlibversion>1.0</tlibversion>
+  <jspversion>1.1</jspversion>
+  <shortname>i18n</shortname>
+  <uri>http://www.crosswire.org/swordweb/i18n-1.0</uri>
+  <info>
+The i18n custom tag library contains tags that help manage the complexity of creating internationalized web applications. These tags provide similar (though not identical) functionality to the internationalization available in the struts framework, but do not require adopting the entire struts framework.
+
+"i18n" is a common abbreviation for internationalization, because there are 18
+letters between the first "i" and the last "n".
+
+For more information on internationalization with Java, the java.sun.com site
+contains a good 
+tutorial written by Dale Green.
+</info>
+  <tag>
+    <name>pagestart</name>
+    <tagclass>org.crosswire.web.i18n.PageStart</tagclass>
+    <bodycontent>JSP</bodycontent>
+  </tag>
+  <tag>
+    <name>t</name>
+    <tagclass>org.crosswire.web.i18n.TranslateTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+  </tag>
+</taglib>
+
+
+
+
+
+
+
