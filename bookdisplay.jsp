@@ -53,7 +53,9 @@
 	<tiles:put name="lookup_url" value="bookdisplay.jsp" />
 	<tiles:put name="title" value="General Book Display" />
 	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
+	<tiles:put name="sidebar_right" type="string" ><div></div></tiles:put>
 	<tiles:put name="sidebar_left" type="string">
+
 
 	<div id="genbooknav">
 	<%
