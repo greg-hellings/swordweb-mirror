@@ -126,7 +126,7 @@
 					promoLine = "";
 %>
 	<h2><a href="<%= targetURL %>"><%= module.getDescription() %></a></h2>
-	<div><%= about %></div>
+	<p><%= about %></p>
 	<div id="aboutPromo"><%= promoLine %></div>
 			</div>
 <%

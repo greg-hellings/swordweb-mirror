@@ -500,6 +500,11 @@ margin: 0px 14em 0px 11.5em;
 padding: 0px .5em 0px .5em;
 }
 
+#genbook h2 {
+margin: 0px 0px 0px 0px;
+padding: 2px 0.0em 2px 0.0em;
+}
+
 #bluepanel p a:link { color: #000; }
 #bluepanel p a:visited { color: #000; }
 
