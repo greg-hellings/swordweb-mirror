@@ -32,6 +32,7 @@
 	String showStrong = request.getParameter("showStrong");
 	String showMorph = request.getParameter("showMorph");
 
+	mgr.setGlobalOption("Headings", "On");
 
 	for (int i = 0; i < 2; i++) {
 		String []nodes = request.getParameterValues((i>0)?"close":"open");
@@ -216,6 +217,7 @@
 			if (activeModule.getCategory().equals(SwordOrb.BIBLES)) {
 				String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
 				int activeVerse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
+				int anchorVerse = (activeVerse > 2)?activeVerse - 2: -1;
 				for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
 					String keyText = activeModule.getKeyText();
 					int curVerse = Integer.parseInt(keyText.substring(keyText.indexOf(":")+1));
@@ -228,7 +230,12 @@
 					boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 			%>
 				<div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-					<span class="versenum"><a <%= (keyText.equals(activeKey))?"id=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
+			<%
+					String[] headings = activeModule.getEntryAttribute("Heading", "Preverse", "0");
+					if (headings.length > 0)
+						out.print("<h3>" + headings[0] + "</h3>");
+			%>
+					<span class="versenum"><a <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
 						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
 					</span>
 
