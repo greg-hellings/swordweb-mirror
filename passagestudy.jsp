@@ -116,30 +116,6 @@
 			<li><a href="passagestudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>" title="Turn <%= (strongs) ? "off" : "on"%> Strongs numbers"><%= (strongs) ? "Hide" : "Show" %> Strongs</a></li>
 			<li><a href="passagestudy.jsp?morph=<%= (morph) ? "off" : "on" %>" title="Turn <%= (morph) ? "off" : "on" %> morphology"><%= (morph) ? "Hide" : "Show" %> Morphology</a></li>
 			</ul>
-		<%
-			if (showStrong != null) {
-				String [] keyInfo = activeModule.getKeyChildren();
-				SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongsHebrew":"StrongsGreek");
-				lex.setKeyText(showStrong);
-		%>
-				<li>
-				<span>
-				<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-				</span>
-				</li>
-		<%	} %>
-		<%
-			if (showMorph != null) {
-				String [] keyInfo = activeModule.getKeyChildren();
-				SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongHebrew":"Robinson");
-				lex.setKeyText(showMorph);
-		%>
-				<li>
-				<span>
-				<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-				</span>
-				</li>
-		<%	} %>
 	</div>
 
 	<div id="commentaries">
@@ -254,7 +230,28 @@
 					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
 					</span>
 				</div>
-			<%
+		<%
+				if (keyText.equals(activeKey)) {
+					if (showStrong != null) {
+						String [] keyInfo = activeModule.getKeyChildren();
+						SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongsHebrew":"StrongsGreek");
+						lex.setKeyText(showStrong);
+				%>
+						<div class="lexiconentry">
+						<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+						</div>
+				<%	} %>
+				<%
+					if (showMorph != null) {
+						String [] keyInfo = activeModule.getKeyChildren();
+						SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongHebrew":"Robinson");
+						lex.setKeyText(showMorph);
+				%>
+						<div class="lexiconentry">
+						<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+						</div>
+				<%	}
+				}
 				}
 			}
 			else {
