@@ -16,7 +16,7 @@
 </head>
 
 	<body>
-	<%-- include footer --%>
+	<%-- include header --%>
 	<tiles:insert attribute="header" />
 
 <div id="content-wrap">

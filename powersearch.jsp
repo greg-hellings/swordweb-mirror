@@ -11,6 +11,9 @@
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" value="Powersearch" />
 	<tiles:put name="sidebar_left" type="string">
+
+	<div id="translations">
+
 		<h2>Translations:</h2>
 		<ul>
 		<%
@@ -33,8 +36,12 @@
 			}
 		%>
 		</ul>
+	</div>
 	</tiles:put>
+
 	<tiles:put name="sidebar_right" type="string">
+		<div id="commentaries">
+
 		<h2>Comentaries:</h2>
 		<ul>
 		<%
@@ -57,7 +64,7 @@
 			}
 		%>
 		</ul>
-
+		</div>
 	</tiles:put>
 
 	<tiles:put name="content" type="string">
