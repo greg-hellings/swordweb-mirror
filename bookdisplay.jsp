@@ -68,7 +68,11 @@
 		module.setKeyText(gbsEntry);
 %>
 		<div class="verse">
-			<span class="versenum"><%= gbsEntry %></span>
+			<span class="versenum">
+<%=
+			 gbsEntry
+%>
+			</span>
 			<%= new String(module.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
 		</div>
 <%

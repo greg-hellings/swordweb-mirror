@@ -1,5 +1,5 @@
   <div id="header">
-    <h1>OSIS Web Interface</h1>
+    <h1>XpressBible</h1>
     <ul>
       <li><a href="passagestudy.jsp">Passage Study</a></li>
       <li><a href="parallelstudy.jsp">Parallel Translations</a></li>
