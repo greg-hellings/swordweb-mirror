@@ -46,7 +46,7 @@
 
 	<div id="library">
 
-		<h3>OSIS Library</h3>
+		<h2>OSIS Library</h2>
 		<ul>
 <%
 			Vector leaves = new Vector();
