@@ -25,7 +25,21 @@
 Only works reviewed and approved by SBL will be added for viewing by the public at large.</i>
 </div>
 <div class="bluepanel">
-
+<h2><a href="fulllibrary.jsp?action=closeAll">OSIS Library</a></h2>
+		<ul>
+<%
+			Vector leaves = new Vector();
+			for (int i = 0; i < modInfo.length; i++) {
+				if (!leaves.contains(modInfo[i].category)) {
+					leaves.add(modInfo[i].category);
+%>
+		
+<li><a href="fulllibrary.jsp?action=closeAll&open=<%= URLEncoder.encode(modInfo[i].category) %>"><%= modInfo[i].category %></a></td>
+<%
+				}
+			}
+%>
+		</ul>
 </div>
 	</tiles:put>
 

@@ -76,6 +76,7 @@
 				}
 			}
 %>
+		</ul>
 	</tiles:put>
 	<tiles:put name="content" type="string">
 <%
@@ -93,9 +94,7 @@
 					RE rtfRegex = new RE("\\\\\\w+");
 					about = rtfRegex.substituteAll(about, "");
 				}
-				String type = module.getConfigEntry("Category");
-				if ((type == null) || (type.length() < 2))
-					type = module.getCategory();
+				String type = module.getCategory();
 				String targetURL = "";
 				if ((SwordOrb.BIBLES.equals(type)) || (SwordOrb.COMMENTARIES.equals(type))) {
 					targetURL = "passagestudy.jsp?mod="+URLEncoder.encode(module.getName());
@@ -109,7 +108,6 @@
 %>
 	<h2><a href="<%= targetURL %>"><%= module.getDescription() %></a></h2>
 	<%= about %>
-	<%= type %>
 <%
 
 			}
