@@ -66,7 +66,8 @@
   </ul>
   <h3>GENERAL QUESTIONS</h3>
   <p class="q" id="faq_1">Who is behind the Bible Tool? Why are you wearing that wig?</p>
-  <p class="a">The technology was developed by <a href="http://crosswire.org/"> title="Crosswire Bible Society">Crosswire Bible Society</a>. The software is a combined project of the <a href="http://www.americanbible.org/" title="American Bible Society">American Bible Society</a> and <a href="http://sbl-site.org/" title="Society of Biblical Literature">Society of Biblical Literature</a>.</p>
+  <p class="a">The technology was developed by <a 
+href="http://crosswire.org/"  title="Crosswire Bible Society">Crosswire Bible Society</a>. The software is a combined project of the <a href="http://www.americanbible.org/" title="American Bible Society">American Bible Society</a> and <a href="http://sbl-site.org/" title="Society of Biblical Literature">Society of Biblical Literature</a>.</p>
   <p class="q" id="faq_2">What makes the Bible Tool different from other Bible search tools?</p>
   <p>The Bible Tool is part of a larger initiative co-sponsored by ABS and the SBL to allow people to approach the Bible on their terms, in the culture, community, context, media and format of their choice. This tool will evolve in the coming months / years to help us reach that goal.</p>
   <p>This means we will strive to enable you, the user, to have the look / feel you want, the functionality you want, the texts you want (by adding popular ones and allowing you to upload your own) in the format you want (initially electronic or print). Because the tool is open source, if you have some technical skills you are free to download the tool and make changes as you see fit.</p>
