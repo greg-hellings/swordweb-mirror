@@ -1003,5 +1003,9 @@ color: #bb0000;
   background-repeat: no-repeat;
 }
 
+#about .q {
+  font-weight: bold;
+  font-style: italic;
+}
 
 
