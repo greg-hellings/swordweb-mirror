@@ -28,6 +28,9 @@
 
 			styleNames.add("Sandy Creek");
 			styleFiles.add("sandy.css");
+
+			styleNames.add("Parchment");
+			styleFiles.add("parchment.css");
 		}
 	}
 
