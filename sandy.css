@@ -3,12 +3,13 @@ color: #000000;
 background-color: #F5F3EA;
 font-size: 76%;
 margin: 0px 0px 0px 0px;
+border-top: 7px solid #808072;
 }
 
 /* Mast Head */
 
 #header{
-border-top: 7px solid #808072;
+
 font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
 background: #DEDACA;
 background-image: url(images/sandyfade2.png);
