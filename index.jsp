@@ -44,9 +44,12 @@ I commented this section out until it can be made functional.
 <div id="style">
 <h2>Style:</h2>
 		<ul>
-			<li><a title="Washed Out" href="preferences.jsp?setStyle=Washed+Out">Washed Out</a></li>
-			<li><a title="Sandy Creek" href="preferences.jsp?setStyle=Sandy+Creek">Sandy Creek</a></li>
-			<li><a title="Parchment" href="preferences.jsp?setStyle=Parchment">Parchment</a></li>
+			<li><a title="Washed Out" 
+href="index.jsp?setStyle=Washed+Out">Washed Out</a></li>
+			<li><a title="Sandy Creek" 
+href="index.jsp?setStyle=Sandy+Creek">Sandy Creek</a></li>
+			<li><a title="Parchment" 
+href="index.jsp?setStyle=Parchment">Parchment</a></li>
 		</ul>
 </div>
 
