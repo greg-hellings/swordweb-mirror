@@ -303,11 +303,13 @@
 
 					<%
 					String lang = mod.getConfigEntry("Lang");
+//					<span xml:lang="<%= (lang.equals("")) ? "en" : lang 
 					%>
 
-					<span xml:lang="<%= (lang.equals("")) ? "en" : lang %>">
 					<%= new String(mod.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-					</span>
+<%
+//					</span>
+%>
 
 					</td>
 		<%

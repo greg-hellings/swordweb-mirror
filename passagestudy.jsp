@@ -7,6 +7,8 @@
 	String activeModuleName = (String) session.getAttribute("ActiveModule");
 	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? defaultBible : activeModuleName);
 	String promoLine = activeModule.getConfigEntry("ShortPromo");
+	if (promoLine.equalsIgnoreCase("<swnull>"))
+		promoLine = "";
 
 	String resetKey = request.getParameter("key");
 	if (resetKey != null)
@@ -244,10 +246,12 @@
 
 					<%
 					String lang = activeModule.getConfigEntry("Lang");
+//					<div xml:lang="<%= (lang.equals("")) ? "en" : lang 
 					%>
-					<span xml:lang="<%= (lang.equals("")) ? "en" : lang %>">
 					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-					</span>
+<%
+//					</div>
+%>
 				</div>
 		<%
 				if (keyText.equals(activeKey)) {
@@ -284,8 +288,6 @@
 			String copyLine = activeModule.getConfigEntry("ShortCopyright");
 			if (copyLine.equalsIgnoreCase("<swnull>"))
 				copyLine = "";
-			if (promoLine.equalsIgnoreCase("<swnull>"))
-				promoLine = "";
 			if (activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material")) {
 				copyLine = "WARNING: This text is considered unorthodox by most of Christendom. " + copyLine;
 			}
