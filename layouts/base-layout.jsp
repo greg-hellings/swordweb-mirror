@@ -3,10 +3,11 @@
 
 <%@ include file="../init.jsp" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head profile="http://www.w3.org/2000/08/w3c-synd/#">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>OSIS Web:<tiles:getAsString name="title"/></title>
 
 <%
