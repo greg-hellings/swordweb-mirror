@@ -283,6 +283,29 @@
 				</tr>
 		<%
 				}
+		%>
+		<tr>
+
+		<% //insert module names at the top
+				for (int i = 0; i < parDispModules.size(); i++) {
+					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
+					String copyLine = mod.getConfigEntry("ShortCopyright");
+					String promoLine = mod.getConfigEntry("ShortPromo");
+					if (copyLine.equalsIgnoreCase("<swnull>"))
+						copyLine = "";
+					if (promoLine.equalsIgnoreCase("<swnull>"))
+						promoLine = "";
+		%>
+					<td>
+		<div id="copyLine"><%= copyLine %></div>
+		<div id="promoLine"><%= promoLine %></div>
+					</td>
+		<%
+				}
+		%>
+
+		</tr>
+		<%
 			}
 		%>
 

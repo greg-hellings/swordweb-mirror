@@ -120,9 +120,14 @@
 						("Essays".equals(type))) {
 					targetURL = "bookdisplay.jsp?mod="+URLEncoder.encode(module.getName());
 				}
+
+				String promoLine = module.getConfigEntry("ShortPromo");
+				if (promoLine.equalsIgnoreCase("<swnull>"))
+					promoLine = "";
 %>
 	<h2><a href="<%= targetURL %>"><%= module.getDescription() %></a></h2>
-	<%= about %>
+	<div><%= about %></div>
+	<div id="aboutPromo"><%= promoLine %></div>
 			</div>
 <%
 

@@ -191,7 +191,7 @@
 
 		<div id="passagestudy">
 		<h2><%= activeKey %></h2>
-		<h3><%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></h3>
+		<h3><a href="fulllibrary.jsp?show=<%= URLEncoder.encode(activeModule.getName()) %>"><%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></a></h3>
 
 		<% //insert next and previous chapter links
 			// activeKey contains the current key ATM
@@ -271,7 +271,15 @@
 				</div>
 		<%
 			}
+			String copyLine = activeModule.getConfigEntry("ShortCopyright");
+			String promoLine = activeModule.getConfigEntry("ShortPromo");
+			if (copyLine.equalsIgnoreCase("<swnull>"))
+				copyLine = "";
+			if (promoLine.equalsIgnoreCase("<swnull>"))
+				promoLine = "";
 		%>
+		<div id="copyLine"><%= copyLine %></div>
+		<div id="promoLine"><%= promoLine %></div>
 		</div>
 	</tiles:put>
 </tiles:insert>

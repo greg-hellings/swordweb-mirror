@@ -782,3 +782,24 @@ margin: 1em 0px .5em 0px;
 padding: 0px 0px 0px 0px;
 border-bottom: 1px solid #ccc; 
 }
+
+#copyLine {
+  margin: 1em 0px .5em 0px;
+  padding: 0px 0px 0px 0px;
+  border-top: 1px solid #7F673C;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#promoLine {
+  margin: 1em 0px .5em 0px;
+  padding: 10px 0px 0px 0px;
+  font-weight: bold;
+}
+
+#aboutPromo {
+  margin: 1em 0px .5em 0px;
+  padding: 10px 0px 0px 0px;
+  border-top: 1px solid #7F673C;
+  font-weight: bold;
+}
