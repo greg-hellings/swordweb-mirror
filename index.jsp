@@ -48,8 +48,8 @@ I commented this section out until it can be made functional.
 	<h2>External Links:</h2>
         <ul>
           <li><a href="http://www.sbl-site.org/Resources/" title="Society of Biblical Literature Online Resources">SBL Online Resources</a></li>
-          <li><a href="http://www.bibleresourcecenter.org" title="American Bible Society Online Resources">ABS Online Resources</a></li>
-          <li><a href="http://www.bibleresourcecenter.org/Research/multimedia/maps/" title="Interative Maps">Interative Maps</a></li>
+          <li><a href="http://www.bibleresourcecenter.org" title="ABS Bible Research Center">Bible Research Center</a></li>
+          <li><a href="http://www.bibleresourcecenter.org/Research/multimedia/maps/" title="Interactive Maps">Interactive Maps</a></li>
           <li><a href="http://www.bibleresourcecenter.org/research/virtuallibrary.dsp" title="Virtual Bible Library">Virtual Bible Library</a></li>
         </ul>
 
