@@ -8,7 +8,7 @@
 	<title>OSIS Web:<tiles:getAsString name="title"/></title>
 
 	<link href="wash.css" title="Washed Out" rel="stylesheet" type="text/css" />
-	<link href="blue.css" title="Old Blue" rel="alternate stylesheet" type="text/css" />
+	<link href="sandy.css" title="Sandy Beach" rel="alternate stylesheet" type="text/css" />
 	<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
 
 	<!--For printing stuff -->

@@ -147,6 +147,7 @@ border: 1px solid #ccc;
 padding: 3px;
 }
 
+
 /* External Links */
 
 #externallinks{
@@ -265,7 +266,7 @@ text-decoration: none;
 }
 
 #translations li a:link { color: #000; }
-#externallinks li a:visited { color: #000; }
+#translations li a:visited { color: #000; }
 
 #translations li a:hover{
 border-color: #8EABCD;
@@ -287,8 +288,10 @@ background: #C5D6EA;
 margin: 0px 0px 0px 0px;
 padding: 2px 0.5em 2px 0.5em;
 text-align: center;
-font-style: italic;
+
 }
+
+#translations p a {color:#000099;}
 
 #translations hr {display:none;}
 
@@ -327,7 +330,7 @@ text-decoration: none;
 }
 
 #devotionals li a:link { color: #000; }
-#externallinks li a:visited { color: #000; }
+#devotionals li a:visited { color: #000; }
 
 #devotionals li a:hover{
 border-color: #8EABCD;
@@ -385,7 +388,7 @@ text-decoration: none;
 }
 
 #studytools li a:link { color: #000; }
-#externallinks li a:visited { color: #000; }
+#studytools li a:visited { color: #000; }
 
 #studytools li a:hover{
 border-color: #8EABCD;
@@ -408,8 +411,6 @@ padding: 2px 0.5em 2px 0.5em;
 text-align: center;
 font-style: italic;
 }
-
-
 
 /*   Commentaries  */
 
@@ -446,7 +447,7 @@ text-decoration: none;
 }
 
 #commentaries li a:link { color: #000; }
-#externallinks li a:visited { color: #000; }
+#commentaries li a:visited { color: #000; }
 
 #commentaries li a:hover{
 border-color: #8EABCD;
@@ -470,7 +471,11 @@ text-align: center;
 font-style: italic;
 }
 
+#commentaries p a {color:#000099;}
+
 #commentaries hr {display:none;}
+
+
 
 
 #welcome, #about, #help, #preferences, #powersearch, #daily, #genbook   {
@@ -563,8 +568,8 @@ padding: 0 0 0px 0;
 }
 
  span.versenum{
-	font-size: 0.7em;
-	padding: 0px 3px 0px 10px;
+	font-size: 1.2em;
+	width:3em;
 	font-weight: bold;
 
 }
