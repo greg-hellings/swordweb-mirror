@@ -117,7 +117,7 @@
 		</div>
 	</tiles:put>
 	<tiles:put name="sidebar_right" type="string">
-	<div id="promoLine"><%= promoLine %></div>
+	<div class="promoLine"><%= promoLine %></div>
 	<div id="studytools">
 		<h2>Word Study:</h2>
 			<ul>
@@ -286,8 +286,8 @@
 			if (promoLine.equalsIgnoreCase("<swnull>"))
 				promoLine = "";
 		%>
-		<div id="copyLine"><%= copyLine %></div>
-		<div id="promoLine"><%= promoLine %></div>
+		<div class="copyLine"><%= copyLine %></div>
+		<div class="promoLine"><%= promoLine %></div>
 		</div>
 	</tiles:put>
 </tiles:insert>

@@ -306,8 +306,8 @@
 						promoLine = "";
 		%>
 					<td>
-		<div id="copyLine"><%= copyLine %></div>
-		<div id="promoLine"><%= promoLine %></div>
+		<div class="copyLine"><%= copyLine %></div>
+		<div class="promoLine"><%= promoLine %></div>
 					</td>
 		<%
 				}
