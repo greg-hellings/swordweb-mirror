@@ -3,7 +3,7 @@
 <%
 	String resetModule = request.getParameter("mod");
 	if (resetModule != null)
-		session.setAttribute("ActiveModule", mgr.getModuleByName(resetModule));
+		session.setAttribute("ActiveModule", resetModule);
 	String activeModuleName = (String) session.getAttribute("ActiveModule");
 	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? "WEB" : activeModuleName);
 %>
