@@ -32,6 +32,8 @@
 	if (activeKey == null)
 		activeKey = "jas 1:19"; // our fallback key
 %>
+
+
 <tiles:insert beanName="basic" flush="true" >
 	<%-- override lookup URL, so this script is used to display the keys --%>
 	<tiles:put name="lookup_url" value="parallelstudy.jsp" />
@@ -39,13 +41,14 @@
 	<tiles:put name="sidebar_left" type="string">
 		<h2>Translations:</h2>
 		<p class="textname">Displayed modules (click to remove)</p>
-		<ul>
+		<ul class="plain">
 		<%
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getCategory().equals(SwordOrb.BIBLES)) {
 		%>
 					<li>
+						<img src="images/remove.png"/>
 						<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>" title="Remove from displayed modules">
 							<%= module.getDescription().replaceAll("&", "&amp;") %>
 						</a>
@@ -60,7 +63,7 @@
 		<hr/>
 
 		<p class="textname">Available modules (click to add)</p>
-		<ul>
+		<ul class="plain">
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
@@ -71,6 +74,7 @@
 
 		%>
 				<li>
+					<img src="images/add.png"/>
 					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add to displayed modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>
@@ -84,15 +88,16 @@
 	</tiles:put>
 	<tiles:put name="sidebar_right" type="string">
       		<h2>Comentaries:</h2>
-		<p class="textname">Displayed modules (click to remove)</p>
-      		<ul>
 
+		<p class="textname">Displayed modules (click to remove)</p>
+		<ul class="plain">
 		<%
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getCategory().equals(SwordOrb.COMMENTARIES)) {
 		%>
 				<li>
+					<img src="images/remove.png"/>
 					<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>" title="Remove from displayed modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>
@@ -106,7 +111,7 @@
 		<hr/>
 
 		<p class="textname">Available modules (click to add)</p>
-		<ul>
+		<ul class="plain">
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
@@ -116,6 +121,7 @@
 					}
 		%>
 				<li>
+					<img src="images/add.png"/>
 					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add to displaued modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>
@@ -134,12 +140,22 @@
 				activeKey = activeModule.getKeyText(); 	// be sure it's formatted nicely
 			}
 		%>
-		<h2><%= activeKey %></h2>
+
+		<h2>Parallel Viewing</h2>
+		<p>
+		Parallel viewing allows you to see two or more texts side by side.
+		For example, you could view two Bible versions of the same verse next to
+		each other, or a verse from a specific translation and what a commentary
+		has to say about that specific verse.
+		</p>
+
 		<ul class="booknav">
-			<li><a href="" title="display Romans 7">previous chapter</a></li>
-			<li><a href="" title="display all of Romans 8">this chapter</a></li>
-			<li><a href="" title="display Romans 10">next chapter</a></li>
+			<%= activeKey %>
+			<li><a href="">previous chapter</a></li>
+			<li><a href="">this chapter</a></li>
+			<li><a href="">next chapter</a></li>
 		</ul>
+
 		<%
 			activeModule = mgr.getModuleByName((String)parDispModules.get(0));
 			if (activeModule.getCategory().equals(SwordOrb.BIBLES) ||
@@ -148,9 +164,8 @@
 		%>
 
 		<%-- table which contains all verse items --%>
-		<table>
+		<table id="paralleldisplay">
 		<caption></caption>
-
 		<thead>
 		<tr>
 
@@ -159,8 +174,7 @@
 					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
 		%>
 					<th>
-						&raquo;<%= mod.getDescription().replaceAll("&", "&amp;") + " (" + mod.getName() + ")" %>
-
+						&quot;<%= mod.getDescription().replaceAll("&", "&amp;") + " (" + mod.getName() + ")" %>&quot;
 					</th>
 		<%
 				}
@@ -187,13 +201,12 @@
 						if (mod != activeModule)
 							mod.setKeyText( keyText );
 		%>
-							<td dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>" >
+							<td width="<%= 100/parDispModules.size() %>%" dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 								<span class="versenum">
 									<a href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>">
 										<%= keyText.substring(keyText.indexOf(":")+1) %>
 									</a>
 								</span>
-
 								<%= new String(mod.getRenderText().getBytes("iso-8859-1"), "UTF-8") %>
 							</td>
 		<%
