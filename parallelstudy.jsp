@@ -44,14 +44,14 @@
 		<div id="translations">
 
 		<h2>Translations:</h2>
-		<p class="textname">Displayed modules (click to remove)</p>
-		<ul class="plain">
+		<p>Displayed modules (click to remove)</p>
+		<ul>
 		<%
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getCategory().equals(SwordOrb.BIBLES)) {
 		%>
-					<li class="remove">
+					<li>
 						<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>#cv" title="Remove from displayed modules">
 							<%= module.getDescription().replaceAll("&", "&amp;") %>
 						</a>
@@ -65,8 +65,8 @@
 
 		<hr/>
 
-		<p class="textname">Available modules (click to add)</p>
-		<ul class="plain">
+		<p>Available modules (click to add)</p>
+		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
@@ -76,7 +76,7 @@
 					}
 
 		%>
-				<li class="add">
+				<li>
 					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>
@@ -97,14 +97,14 @@
 
 		<h2>Comentaries:</h2>
 
-		<p class="textname">Displayed modules (click to remove)</p>
-		<ul class="plain">
+		<p>Displayed modules (click to remove)</p>
+		<ul>
 		<%
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getCategory().equals(SwordOrb.COMMENTARIES)) {
 		%>
-				<li class="remove">
+				<li>
 					<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>#cv" title="Remove from displayed modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>
@@ -117,8 +117,8 @@
 
 		<hr/>
 
-		<p class="textname">Available modules (click to add)</p>
-		<ul class="plain">
+		<p>Available modules (click to add)</p>
+		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
@@ -127,7 +127,7 @@
 						continue;
 					}
 		%>
-				<li class="add">
+				<li>
 					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>

@@ -38,6 +38,8 @@
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" value="Preferences" />
 	<tiles:put name="sidebar_left" type="string">
+		<div id="translations">
+
 		<h2>Translations:</h2>
 		<ul>
 		<%
@@ -48,7 +50,11 @@
 		<%
 			}
 		%>
+		</ul>
+
 		<hr/>
+
+		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
@@ -60,9 +66,13 @@
 			}
 		%>
 		</ul>
+
+		</div>
 	</tiles:put>
 
 	<tiles:put name="sidebar_right" type="string">
+		<div id="commentaries">
+
 		<h2>Comentaries:</h2>
 		<ul>
 		<%
@@ -73,6 +83,9 @@
 		<%
 			}
 		%>
+		</ul>
+
+		<ul>
 		<hr/>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
@@ -86,6 +99,7 @@
 		%>
 		</ul>
 
+		</div>
 	</tiles:put>
 
 	<tiles:put name="content" type="string">

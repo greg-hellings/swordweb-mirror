@@ -1,7 +1,7 @@
 <%
 	String u = request.getRequestURI();
 	String homeID = u.endsWith("index.jsp") ? "id=\"current\"" : "";
-	String passageID = u.endsWith("passageStudy.jsp") ? "id=\"current\"" : "";
+	String passageID = u.endsWith("passagestudy.jsp") ? "id=\"current\"" : "";
 	String parallelID = u.endsWith("parallelstudy.jsp") ? "id=\"current\"" : "";
 	String searchID = u.endsWith("powersearch.jsp") || u.endsWith("wordsearchresults.jsp")  ? "id=\"current\"" : "";
 	String devotionalID = u.endsWith("dailydevotional.jsp") ? "id=\"current\"" : "";

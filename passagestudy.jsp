@@ -48,7 +48,7 @@
 	<tiles:put name="sidebar_right" type="string">
 		<div id="commentaries">
 		<h2>Comentaries:</h2>
-	      	<ul>
+      	<ul>
 
 		<%
 			for (int i = 0; i < prefCommentaries.size(); i++) {
@@ -59,7 +59,9 @@
 			}
 		%>
 		</ul>
+
 		<hr />
+
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
@@ -96,7 +98,7 @@
 						break;
 					boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 			%>
-				<div dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+				<div dir="<%= rtol ? "rtl" : "" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 					<span class="versenum"><a <%= (keyText.equals(activeKey))?"name=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
 						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
 					</span>
