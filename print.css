@@ -86,3 +86,31 @@ img{display:none;
 	border: 0 none;
 	margin: 0;}
 
+.word-layer {
+     visibility: hidden;
+     position:absolute;
+     left:50px;
+     top:50px;
+     width:200px;
+     background-color: #fff3cf;
+     margin-left : 0;
+     overflow: visible;
+     z-index:6;
+     filter: Alpha(Opacity=92)
+     layer-background-color: #fff3cf;
+     border: 1px #000000;
+     border-style: solid;
+     padding: 7px 7px 7px 7px;
+     color : #000000;
+     font-size : x-small;
+     font-style : normal;
+     font-weight : normal;
+     font-variant : normal;
+     word-spacing : normal;
+     letter-spacing : normal;
+     vertical-align : baseline;
+     text-transform : none;
+     text-align : left;
+     text-indent : 0;
+     line-height : normal;
+}
