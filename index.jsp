@@ -6,6 +6,9 @@
 	<tiles:put name="title" value="OSIS Bible Tool" />
 
 	<tiles:put name="sidebar_left" type="string">
+	<tiles:put name="pintro" type="string">
+	<div id="introflash"></div>
+	</tiles:put>
 
    <div id="library">
 	<h2>OSIS Library</h2>
@@ -62,7 +65,7 @@ href="index.jsp?setStyle=Parchment">Parchment</a></li>
 	<li><a href="http://crosswire.org/" title="CrossWire Bible Society">CrossWire Bible Society</a></li>
 	<li><a href="http://www.americanbible.org/" title="American Bible Society">American Bible Society</a></li>
 	<li><a href="http://sbl-site.org/" title="Society of Biblical Literature">Society of Biblical Literature</a></li>
-	<li><a href="http://crosswire.org/sword/" title="The Sword Project">The Sword Project</a></li>
+	<li><a href="http://crosswire.org/sword/" title="The SWORD Project">The SWORD Project</a></li>
 	<li><a href="http://www.bibletechnologies.net/" title="Open Scripture Information Standard">OSIS</a></li>
 </ul>
 
@@ -141,7 +144,7 @@ href="index.jsp?setStyle=Parchment">Parchment</a></li>
 	<p>Download a number of free Bible software downloads for Windows, Mac, Linux and Palm produced by Crosswire Bible Society.
 	</p>
 
-	<h3>Sword for Windows
+	<h3>SWORD for Windows
 	</h3>
 	<p>Bible software developed for the Windows operating environment. Features include:
 	</p>
@@ -158,7 +161,7 @@ href="index.jsp?setStyle=Parchment">Parchment</a></li>
 		<li>Unicode 4.0 (including Plane 1) support</li>
 	</ul>
 
-	<h3><a href="http://www.macsword.com/" title="More about MacSword">MacSword</a></h3>
+	<h3><a href="http://www.macsword.com/" title="More about MacSWORD">MacSWORD</a></h3>
 	<p>Bible software developed specifically for Macintosh computers running Mac OS X.
 	</p>
 

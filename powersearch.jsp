@@ -10,6 +10,7 @@
 
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" value="Powersearch" />
+	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
 	<tiles:put name="sidebar_left" type="string">
 
 	<div id="translations">

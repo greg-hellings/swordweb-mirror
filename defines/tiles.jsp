@@ -8,6 +8,7 @@
 	<tiles:put name="header" value="tiles/header.jsp" />
 	<tiles:put name="footer" value="tiles/footer.jsp" />
 	<tiles:put name="sidebar_right" value="" />
+	<tiles:put name="pintro" value="" />
 	<tiles:put name="sidebar_left" value="" />
 	<tiles:put name="content" value="" />
 </tiles:definition>

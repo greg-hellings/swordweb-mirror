@@ -42,6 +42,7 @@
 	<%-- override lookup URL, so this script is used to display the keys --%>
 	<tiles:put name="lookup_url" value="fulllibrary.jsp" />
 	<tiles:put name="title" value="Full Library Catalog" />
+	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
 	<tiles:put name="sidebar_left" type="string">
 
 	<div id="library">

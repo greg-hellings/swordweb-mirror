@@ -28,6 +28,7 @@
 	<body>
 	<%-- include header --%>
 	<tiles:insert attribute="header" />
+	<tiles:insert attribute="pintro" />
 
 <div id="content-wrap">
    <div id="content-sub-1">

@@ -30,9 +30,12 @@ margin: 0px 0px 0px 0px;
 padding: 0px 0px 0px 0px;
 }
 
+#introhelp p{
+	display:none;
+}
 #navlist {
 	display:none;
-	}
+}
 
 
 /* --- Hide Side Columns ---------- */

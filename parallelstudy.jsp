@@ -51,6 +51,7 @@
 	<%-- override lookup URL, so this script is used to display the keys --%>
 	<tiles:put name="lookup_url" value="parallelstudy.jsp" />
 	<tiles:put name="title" value="Parallel Bible study" />
+	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
 
 	<tiles:put name="sidebar_left" type="string">
 
@@ -177,12 +178,14 @@
 		<div id="paralleldisplay">
 
 		<h2>Parallel Viewing: <%= activeKey %></h2>
+		<div id="introhelp">
 		<p>
 		Parallel viewing allows you to see two or more texts side by side.
 		For example, you could view two Bible versions of the same verse next to
 		each other, or a verse from a specific translation and what a commentary
 		has to say about that specific verse.
 		</p>
+		</div>
 
 		<% //insert next and previous chapter links
 			// activeKey contains the current key ATM

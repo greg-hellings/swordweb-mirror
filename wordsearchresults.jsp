@@ -36,6 +36,7 @@
 	<tiles:put name="title" type="string">
 		Search results for <%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %>
 	</tiles:put>
+	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
 
 	<tiles:put name="sidebar_left" type="string">
 		<div id="translations">
