@@ -42,7 +42,7 @@
 			tabLinks.add("passagestudy.jsp");
 			tabNames.add("Parallel");
 			tabLinks.add("parallelstudy.jsp");
-			tabNames.add("Search");
+			tabNames.add("Power Search");
 			tabLinks.add("powersearch.jsp");
 			tabNames.add("Devotionals");
 			tabLinks.add("dailydevotion.jsp");
@@ -50,7 +50,7 @@
 			tabLinks.add("fulllibrary.jsp");
 			tabNames.add("Preferences");
 			tabLinks.add("preferences.jsp");
-			tabNames.add("About");
+			tabNames.add("FAQ");
 			tabLinks.add("about.jsp");
 		}
 	}
