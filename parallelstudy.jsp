@@ -171,7 +171,6 @@
 		</p>
 
 		<ul class="booknav">
-			<%= activeKey %>
 			<li><a href="">previous chapter</a></li>
 			<li><a href="">this chapter</a></li>
 			<li><a href="">next chapter</a></li>

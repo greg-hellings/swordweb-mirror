@@ -96,7 +96,7 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 				out.print("<b>");
 
 			if (children.length > 0) {
-				out.print("<a class=\"" + ((open)?"closed":"open") + "\" href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(rootTreeKey) + "\"></a>");
+				out.print("<a class=\"" + ((open)?"closed":"open") + "\" href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(rootTreeKey) + "\"><img src=\"images/" + ((open)?"minus":"plus") + ".png\" alt=\"action\"/></a>");
 			}
 
 			if (target.equals(rootTreeKey))
