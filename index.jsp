@@ -198,6 +198,54 @@ I commented this section out until it can be made functional.
 	<p>Joel Anderson, who created the project, encoded his Klingon Bible in OSIS, so that it could be used in the Bible Tool. While some might consider this a bit eccentric (or if you are a Star Trek fan a breakthrough), our hope is that you will be able to use OSIS and OSIS-powered tools in your Bible Engagement efforts.
 	</p>
 
+
+<h3>Why a Klingon Bible?</h3>
+<p>
+Once anyone hears of a project to make a Klingon Bible, the question that 
+comes up is "why?"  Certainly there is no need for such a version, as 
+there is a need for a Bible in English, Spanish, German, or any other 
+"real" language.  There is no person who would only be able to access the 
+scriptures in Klingon.
+</p>
+<p>
+But in the study of artificial languages, translating standard works of 
+literature like the Bible is often done, and for two reasons.  First, it 
+is a way to exercise and develop the language, and second, it helps to 
+develop a body of literature in that language.  This literature can then 
+be used and referred to by people learning and using the language.
+</p>
+<p>
+For some, there can be other benefits.  Though this kind of translation 
+might seem frivolous, the work of producing such a translation can have 
+devotional value even if the translation is never used.  The effort of 
+reading the scriptures and considering their meaning for a translation 
+cannot fail to benefit the translator by helping him or her develop a 
+deeper understanding of the text.
+</p>
+<p>
+The Klingon language community has produced at least three efforts in this 
+direction.  <a href="http://www.kli.org">The Klingon Language 
+Institute</a>  organized a long-term project to translate the Bible.  
+Currently on hiatus, this project has yielded only a few books, for 
+example, the Gospel of Mark.  In addition, the Rev. Glen Prochel published 
+a book, Good News for the Warrior Race, which presents the gospels and 
+other selected scriptures in parallel with a "Star Trek" English 
+paraphrase.
+</p>
+<p>Lastly, the project presented here, the Klingon Language Version, is 
+actually a relexification of the World English Bible and serves as a 
+demonstration of what a complete Klingon Bible would look like.  A table 
+of the most frequently occuring words (used more than 100 times) was 
+translated, word by word, into Klingon.  This table was used to transform 
+the WEB into Klingon. Though it is not a grammatical Klingon text 
+(actually it is more of a pidgin-Klingon, mixing English vocabulary and 
+grammar with Klingon) it does provide vocabulary which can be used in 
+doing a proper Klingon translaion.
+</p>
+
+
+
+
 	<h3>The Semantic Bible</h3>
 	<p><a href="http://www.semanticbible.com/hyperconc.shtml">The Hyper-Concordance</a> is an experiment in word-based navigation through the New Testament. Each content word is hyperlinked to a page displaying all the verses for that word, preserving context and tightly connecting the content. Sean Boisen decided to do the project in his spare time, using OSIS. We'll be adding the functionality of his hyper-concordance to The Bible Tool.</p>
 
