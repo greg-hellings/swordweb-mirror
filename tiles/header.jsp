@@ -4,7 +4,7 @@
 	String passageID = u.endsWith("passagestudy.jsp") ? "id=\"current\"" : "";
 	String parallelID = u.endsWith("parallelstudy.jsp") ? "id=\"current\"" : "";
 	String searchID = u.endsWith("powersearch.jsp") || u.endsWith("wordsearchresults.jsp")  ? "id=\"current\"" : "";
-	String devotionalID = u.endsWith("dailydevotional.jsp") ? "id=\"current\"" : "";
+	String devotionalID = u.endsWith("dailydevotion.jsp") ? "id=\"current\"" : "";
 	String libraryID = u.endsWith("fulllibrary.jsp") ? "id=\"current\"" : "";
 	String preferencesID = u.endsWith("preferences.jsp") ? "id=\"current\"" : "";
 	String aboutID = u.endsWith("about.jsp") ? "id=\"current\"" : "";
