@@ -1,12 +1,17 @@
 <%@ include file="defines/tiles.jsp" %>
 
 <%
-	String addModule = (String)request.getParameter("add");
-	if (addModule != null) {
-		SWModule m = mgr.getModuleByName( addModule );
-		if (m != null) {
-			parDispModules.remove(addModule);
-			parDispModules.add(parDispModules.size(),addModule);
+	String []addMods = request.getParameterValues("add");
+	if (addMods != null) {
+		for (int i = 0; i < addMods.length; i++) {
+			String addModule = addMods[i];
+			if (addModule != null) {
+				SWModule m = mgr.getModuleByName(addModule);
+				if (m != null) {
+					parDispModules.remove(addModule);
+					parDispModules.add(parDispModules.size(), addModule);
+				}
+			}
 		}
 	}
 
