@@ -79,8 +79,6 @@ font-size: 1.4em;
 }
 
 h3{
-margin: 12px 0px 3px 0px;
-padding: 5px 0em 3px .5em;
 font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
 font-weight: bold;
 font-size: 1.0em;
@@ -197,6 +195,11 @@ background: #C5D6EA;
 
 /* OSIS Library */
 
+#library{
+margin: 0px -0.5em 0px 0px;
+padding: 0px 0 0px 0px;
+}
+
 #library ul, #library li {list-style-type: none;}
 
 #library ul {text-indent: 0em;
@@ -204,38 +207,58 @@ padding: 0px 0px 0px 0px;
 margin: 0px 0px 0px 0px;}
 
 #library ul ul {
-text-indent: 0em;
 padding: 0px 0px 0px 0px;
-margin: 0px 0px 0px 10px;
+margin: 0px 0px 0px 0px;
+background-color: #E8EBF0;
+border-top: 1px solid #ccc;
+border-left: 1px solid #ccc;
+border-bottom: 1px solid #ccc;
 }
 
 #library li{
-margin: 3px 0px 0px 10px;
-background-image: url(images/arrow.png);
-background-repeat: no-repeat;
-border-bottom: 1px solid white;
+margin: .5em 0px 0px 5px;
+border-bottom: 1px solid #C5D6EA;
 }
-
-#library li.closed {
-background-image: url(images/plus.png);
-background-repeat: no-repeat;
-}
-
-#library li.open {
-background-image: url(images/minus.png);
-background-repeat: no-repeat;
-}
-
-#library li a {
-display:block;
-padding: 0px 0px 0px 15px;
-text-decoration: none;
-color:#000}
 
 #library li a:hover {
 text-decoration: underline;
 color:#f00;
 }
+
+#library li.closed {
+margin: .5em 0px 0px 0px;
+background-image: url(images/plus.png);
+background-repeat: no-repeat;
+border-left: 5px solid #fff;
+border-bottom: 1px solid #fff;
+}
+
+#library li.open {
+margin: .5em 0px 0px 0px;
+background-image: url(images/minus.png);
+background-repeat: no-repeat;
+background-color: #C5D6EA;
+border-bottom: 1px solid #C5D6EA;
+border-top: 5px solid #C5D6EA;
+border-left: 5px solid #C5D6EA;
+border-bottom: 1px solid #C5D6EA;
+}
+
+#library li a {
+display:block;
+padding: 0px 0px 0px px;
+text-decoration: none;
+color:#000}
+
+#library li.closed a {
+padding: 0px 0px 0px 15px;
+color:#000}
+
+#library li.open a {
+padding: 0px 0px 0px 15px;
+color:#000}
+
+
 
 
 /*   Translations   */
