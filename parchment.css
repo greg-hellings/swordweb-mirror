@@ -1003,9 +1003,18 @@ color: #bb0000;
   background-repeat: no-repeat;
 }
 
-#about .q {
-  font-weight: bold;
-  font-style: italic;
+
+#about ul {
+margin: 1em 0px 2em 0px;
 }
 
+#about .q {
+font-weight: bold;
+font-style: italic;
+}
 
+#about h3 {
+margin: 1em 0px .5em 0px;
+padding: 0px 0px 0px 0px;
+border-bottom: 1px solid #DEDACA;
+}
