@@ -41,6 +41,7 @@
 		<div id="translations">
 
 		<h2>Translations:</h2>
+		<h3>Preferred Translations</h3>
 		<ul>
 		<%
 			for (int i = 0; i < prefBibles.size(); i++) {
@@ -52,7 +53,7 @@
 		%>
 		</ul>
 
-
+		<h3>All Translations</h3>
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
@@ -73,6 +74,7 @@
 		<div id="commentaries">
 
 		<h2>Comentaries:</h2>
+		<h3>Preferred Comentaries</h3>
 		<ul>
 		<%
 			for (int i = 0; i < prefCommentaries.size(); i++) {
@@ -85,7 +87,7 @@
 		</ul>
 
 
-
+<h3>All Comentaries</h3>
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
@@ -104,8 +106,8 @@
 
 	<tiles:put name="content" type="string">
 <div id="preferences">
-		<h2>Preferred Bibles</h2>
-		Click to remove.  Reselect on the side to move to the top.
+		<h2>Preferred Translations</h2>
+		<p>Click to remove.  Reselect on the side to move to the top.</p>
 		<ul>
 		<%
 			for (int i = 0; i < prefBibles.size(); i++) {
@@ -118,7 +120,7 @@
 		%>
 		</ul>
 		<h2>Preferred Commentaries</h2>
-		Click to remove.  Reselect on the side to move to the top.
+		<p>Click to remove.  Reselect on the side to move to the top.</p>
 		<ul>
 		<%
 			for (int i = 0; i < prefCommentaries.size(); i++) {
