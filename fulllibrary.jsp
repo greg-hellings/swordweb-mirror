@@ -122,9 +122,7 @@
 %>
 	<h2><a href="<%= targetURL %>"><%= module.getDescription() %></a></h2>
 	<%= about %>
-%>
 			</div>
-<%
 <%
 
 			}
