@@ -43,13 +43,14 @@ width:10.5em;
 
 #navlist ul{
 list-style-type: none;
-
+margin: 10px 0px 0px 0px;
 padding: 0;
 text-align: right;
 }
 
 #navlist li {
-margin: 0px 0px 5px 0px;
+margin: 0px 0px 4px 0px;
+border-bottom: 1px solid #F5F3EA;
 }
 
 #navlist a:link, #navlist a:visited{
@@ -63,6 +64,7 @@ line-height: 1.4em;
 display:block;
 padding: 3px 5px 3px 5px;
 text-decoration: none;
+width:auto;
 }
 
 #navlist a:link#current, #navlist a:visited#current{
@@ -91,7 +93,11 @@ h3{
 font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
 font-weight: bold;
 font-size: 1.0em;
+text-align: center;
 }
+
+a {color:#808072;}
+a:visited {color:#808072;}
 
 
 /* Layout */
@@ -121,13 +127,11 @@ border-left: 1px solid #808072;
 }
 
 #content-main {
-margin: 0px 0px 0px 0px;
+margin: 0px 0px 0px .5em;
 padding: 15px 15px 20px 15px;
 width:auto;
 font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
 }
-
-
 
 #footer{
 clear:both;
@@ -241,50 +245,48 @@ color:#f00;
 }
 
 
-/*   Translations   */
+/*   Translations, Ccommentaries, andDevotionals   */
 
-#translations {
+#translations, #devotionals, #commentaries {
 margin: 0px 0px 0px -1em;
 padding: 0px 0px 0px 0px;
 }
 
-#translations ul, #translations li {
+#translations ul, #commentaries ul, #devotionals ul {
 list-style-type: none;
-}
-
-
-#translations ul {
 background: #F5F3EA;
 text-indent: 0em;
 padding: 0px;
 margin: 0px 0px 10px 0px;
 }
 
-#translations li{
+#translations li, #commentaries li, #devotionals li{
 list-style: none;
 margin: 0;
-border-top: 1px solid #808072;
 text-align: left;
-border-bottom: 1px solid #F5F3EA;
+border-bottom: 1px solid #DEDACA;
+border-top: 1px solid #F5F3EA;
 }
 
-#translations li a{
+#translations li a, #commentaries li a, #devotionals li a {
 display: block;
 padding: 0.25em 0.5em 0.25em 0.75em;
-background: #F5F3EA;
 text-decoration: none;
+background: #F5F3EA;
 }
 
-#translations li a:link { color: #000; }
-#externallinks li a:visited { color: #000; }
+#translations li a:link, #commentaries li a:link, #devotionals li a:link{
+color: #000;}
 
-#translations li a:hover{
-border-color: #8EABCD;
-color: #f00;
+#translations li a:visited, #commentaries li a:visited, #devotionals li a:visited { 
+color: #000; }
+
+#translations li a:hover, #commentaries li a:hover, #devotionals li a:hover {
+color: #808072;
 background: #DEDACA;
 }
 
-#translations h3 {
+#translations h3, #commentaries h3, #devotionals h3 {
 background: #DEDACA;
 margin: 0px 0px 0px 0px;
 padding: 2px 0.5em 2px 0.5em;
@@ -292,7 +294,7 @@ text-align: center;
 border-top: 1px solid #808072;
 }
 
-#translations p {
+#translations p, #commentaries p, #devotionals p {
 background: #DEDACA;
 margin: 0px 0px 0px 0px;
 padding: 2px 0.5em 2px 0.5em;
@@ -300,91 +302,36 @@ text-align: center;
 font-style: italic;
 }
 
-#translations hr {display:none;}
 
-/*   Devotionals   */
-
-#devotionals {
-margin: 0px -0.5em 0px 0px;
-padding: 0px 0 0px 0px;
-}
-
-#devotionals ul, #devotionals li {
-list-style-type: none;
-}
-
-
-#devotionals ul {
-background: #F5F3EA;
-text-indent: 0em;
-padding: 0px;
-margin: 0px 0px 0px 0px;
-}
-
-#devotionals li{
-list-style: none;
-margin: 0;
-border-top: 1px solid #808072;
-text-align: left;
-border-bottom: 1px solid #F5F3EA;
-}
-
-#devotionals li a{
-display: block;
-padding: 0.25em 0.5em 0.25em 0.75em;
-background: #F5F3EA;
-text-decoration: none;
-}
-
-#devotionals li a:link { color: #000; }
-#externallinks li a:visited { color: #000; }
-
-#devotionals li a:hover{
-border-color: #8EABCD;
-color: #f00;
-background: #DEDACA;
-}
-
-#devotionals h3 {
-background: #DEDACA;
-margin: 0px 0px 0px 0px;
-padding: 2px 0.5em 2px 0.5em;
-text-align: center;
-border-top: 2px solid #808072;
-}
-
-#devotionals p {
-background: #DEDACA;
-margin: 0px 0px 0px 0px;
-padding: 2px 0.5em 2px 0.5em;
-text-align: center;
-font-style: italic;
-}
 
 /*   Study Tools  */
 
 #studytools {
-margin: 0px 0px 0px -1em;
+margin: 0px 1em 0px 1em;
 padding: 0px 0px 0px 0px;
+border: 1px solid #808072;
 }
 
-#studytools ul, #studytools li {
-list-style-type: none;
+#studytools h2 {
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+color:#F5F3EA;
+background:#808072;
 }
 
 #studytools ul {
 background: #F5F3EA;
 text-indent: 0em;
 padding: 0px;
-margin: 0px 0px 10px 0px;
+margin: 0px 0px 1px 0px;
+list-style-type: none;
 }
 
 #studytools li{
-list-style: none;
 margin: 0;
-border-top: 1px solid #808072;
+padding: 0px 0px 0px 0px;
 text-align: left;
-border-bottom: 1px solid #F5F3EA;
+border-bottom: 1px solid #808072;
 }
 
 #studytools li a{
@@ -398,8 +345,7 @@ text-decoration: none;
 #externallinks li a:visited { color: #000; }
 
 #studytools li a:hover{
-border-color: #8EABCD;
-color: #f00;
+color: #808072;
 background: #DEDACA;
 }
 
@@ -420,67 +366,6 @@ font-style: italic;
 }
 
 
-
-/*   Commentaries  */
-
-#commentaries {
-margin: 0px 0px 0px -1em;
-padding: 0px 0px 0px 0px;
-}
-
-#commentaries ul, #commentaries li {
-list-style-type: none;
-}
-
-#commentaries ul {
-background: #F5F3EA;
-text-indent: 0em;
-padding: 0px;
-margin: 0px 0px 10px 0px;
-
-}
-
-#commentaries li{
-list-style: none;
-margin: 0;
-border-top: 1px solid #808072;
-text-align: left;
-border-bottom: 1px solid #F5F3EA;
-}
-
-#commentaries li a{
-display: block;
-padding: 0.25em 0.5em 0.25em 0.75em;
-background: #F5F3EA;
-text-decoration: none;
-}
-
-#commentaries li a:link { color: #000; }
-#externallinks li a:visited { color: #000; }
-
-#commentaries li a:hover{
-border-color: #8EABCD;
-color: #f00;
-background: #DEDACA;
-}
-
-#commentaries h3 {
-background: #DEDACA;
-margin: 0px 0px 0px 0px;
-padding: 2px 0.5em 2px 0.5em;
-text-align: center;
-border-top: 2px solid #808072;
-}
-
-#commentaries p {
-background: #DEDACA;
-margin: 0px 0px 0px 0px;
-padding: 2px 0.5em 2px 0.5em;
-text-align: center;
-font-style: italic;
-}
-
-#commentaries hr {display:none;}
 
 
 #welcome, #about, #help, #preferences, #powersearch, #daily, #genbook, #passagestudy {
@@ -572,15 +457,16 @@ padding: 0px .5em 0px .5em;
 }
 
  span.versenum{
-	font-size: 0.7em;
-	padding: 0px 3px 0px 10px;
+	font-size: 1.2em;
+	padding: 0;
 	font-weight: bold;
 
 }
 
  span.versenum a {
 	text-decoration: none;
-	color:navy;
+	color#808072;
+padding: 0px .5em 0px .5em;
 }
 
  span.versenum a:hover {
@@ -593,12 +479,12 @@ div.currentverse {
 }
 
 #passagestudy  ul {
-background: #eee;
 border-top: 1px solid #808072;
-border-bottom: 1px solid #808072;
+border-bottom: 1px dashed #808072;
 margin: 0px 0px 5px 0px;
 padding: 0px 0px 0px 1em;
 text-indent: 0px;
+text-align: center;
 }
 
 #passagestudy  ul li {
@@ -668,54 +554,6 @@ color:#f00;
 	background-color: #eee;
 }
 
-/*   GenBook navigation tree  */
-#genbooknav {
-margin:0px 5px;
-padding:0px 5px;
-}
-
-#genbooknav ul, #genbooknav li {
-list-style-type: none;
-}
-
-#genbooknav ul {
-text-indent:0em;
-padding:0px 0px 0px 0px;
-margin:0px 0px 0px 0px;
-}
-
-#genbooknav li {
-margin:0px 0px 0px 0px;
-padding:0px 0px 0px 0px;
-border-bottom:1px solid white;
-}
-
-#genbooknav #current {
-margin:0px 0px 0px 0px;
-padding:0px 0px 0px 0px;
-border-bottom:1px solid white;
-font-weight:bold;
-}
-
-#genbooknav ul ul {
-text-indent:0em;
-padding:0px;
-margin:0px 0px 0px 15px;
-}
-
-#genbooknav li img {
-border:0px;
-}
-
-#genbooknav li a {
-text-decoration:none;
-color:#000
-}
-
-#genbooknav li a:hover {
-text-decoration:underline;
-color:#f00;
-}
 
 .wordsOfJesus {
 color: #bb0000;
