@@ -151,6 +151,10 @@
 			<li><a href="preferences.jsp?<%=(visible)?"hide":"show"%>Tab=<%= Integer.toString(i)%>" title="<%= ((visible)?"Hide ":"Show ") + n %> Tab"><%= ((visible)?"Hide ":"Show ") + n %> Tab</a></li>
 <% }} %>
 		</ul>
+		<h2 id="misc">Misc Options</h2>
+		<ul>
+			<li><a id="headings" href="preferences.jsp?Headings=<%= "Off".equalsIgnoreCase(headings)?"On":"Off" %>#misc" title=<%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles"><%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles</a></li>
+		</ul>
 
 </div>
 	</tiles:put>

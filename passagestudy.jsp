@@ -32,7 +32,7 @@
 	String showStrong = request.getParameter("showStrong");
 	String showMorph = request.getParameter("showMorph");
 
-	mgr.setGlobalOption("Headings", "On");
+	mgr.setGlobalOption("Headings", ("Off".equalsIgnoreCase(headings)) ? "Off":"On");
 
 	for (int i = 0; i < 2; i++) {
 		String []nodes = request.getParameterValues((i>0)?"close":"open");
@@ -231,9 +231,9 @@
 			%>
 				<div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 			<%
-					String[] headings = activeModule.getEntryAttribute("Heading", "Preverse", "0");
-					if (headings.length > 0)
-						out.print("<h3>" + headings[0] + "</h3>");
+					String[] heads = activeModule.getEntryAttribute("Heading", "Preverse", "0");
+					if (heads.length > 0)
+						out.print("<h3>" + heads[0] + "</h3>");
 			%>
 					<span class="versenum"><a <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
 						<%= keyText.substring(keyText.indexOf(":")+1) %></a>

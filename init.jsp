@@ -130,6 +130,16 @@
 		response.addCookie(c);
 	}
 
+	String headings = (String)request.getParameter("Headings");
+	if (headings == null)
+		headings = (String)session.getAttribute("Headings");
+	else {	// set style cookie
+		Cookie c = new Cookie("Headings", headings);
+		c.setMaxAge(java.lang.Integer.MAX_VALUE);
+		c.setPath("/");
+		response.addCookie(c);
+	}
+
 	Vector showTabs = (Vector)session.getAttribute("showTabs");
 	if (showTabs == null) {
 		showTabs = new Vector();
@@ -183,6 +193,9 @@
 			}
 			else if (cookies[i].getName().equals("PrefStyle")) {
 				prefStyle = cookies[i].getValue();
+			}
+			else if (cookies[i].getName().equals("Headings")) {
+				headings = cookies[i].getValue();
 			}
 			else if (cookies[i].getName().equals("PrefBibles")) {
 				prefBibles = new Vector();
@@ -240,6 +253,7 @@
 	session.setAttribute("PrefCommentaries", prefCommentaries);
 	session.setAttribute("ParDispModules", parDispModules);
 	session.setAttribute("PrefStyle", prefStyle);
+	session.setAttribute("Headings", headings);
 	session.setAttribute("showTabs", showTabs);
 /*
 	// kept around in case we ever need it again
