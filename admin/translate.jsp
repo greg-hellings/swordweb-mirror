@@ -53,17 +53,18 @@
 			<input type="submit" value="switch" title="switch language" />
 		</fieldset>
 	</form>
-<p>Strings which are marked for translation:</p>
 	<form action="translate.jsp">
 		<fieldset>
+			<legend>Strings which are marked for translation:</legend>
 <%
 		for (int i = 0; i < pageTags.size(); i++) {
 			String key   = (String)pageTags.get(i);
 			String value = TranslateTag.getTranslation(pageContext, key, false);
 %>
-			<legend><%= HTMLEncoder.encode(key) %></legend>
-			<input type="text" name="t<%=i%>" size="100" value="<%= HTMLEncoder.encode(value)%>"/>
-			<br/>
+	<p>
+			<%= HTMLEncoder.encode(key) %><br/>
+			<input type="text" name="t<%=i%>" size="120" value="<%= HTMLEncoder.encode(value)%>"/>
+	</p>
 <%
 		}
 %>
