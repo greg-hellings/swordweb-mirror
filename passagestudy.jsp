@@ -53,7 +53,8 @@
 	<tiles:put name="title" value="Passage Bible study" />
 	<tiles:put name="sidebar_left" type="string">
 		<div id="translations">
-		<h2>Preferred Translations:</h2>
+		<h2>Translations:</h2>
+		<h3>Preferred Translations</h3>
 
 	<% if (prefBibles.size() > 0) { %>
 		<ul>
@@ -77,7 +78,8 @@
 		<%
 			boolean open = toolsTreeOpen.contains("allBibles");
 		%>
-			<h2><a class="<%= ((open)?"closed":"open")%>" href="passagestudy.jsp?<%= ((open)?"close":"open")%>=allBibles"><img src="images/<%=((open)?"minus":"plus") + ".png"%>" alt="action"/></a>All Translations</h2>
+<h3>All Translations</h3>
+			<p><a class="<%= ((open)?"closed":"open")%>" href="passagestudy.jsp?<%= ((open)?"close":"open")%>=allBibles" title="View all translations">View All</a></p>
 		<ul>
 		<%
 			if (open) {
@@ -99,10 +101,11 @@
 		<h2>Word Study</h2>
 			<h3><a href="passagestudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>">Strongs</a></h3>
 			<h3><a href="passagestudy.jsp?morph=<%= (morph) ? "off" : "on" %>">Morphology</a></h3>
-		<h2>Preferred Comentaries:</h2>
 	</div>
 
 	<div id="commentaries">
+		<h2>Comentaries:</h2>
+		<h3>Preferred Comentaries:</h3>
 	<% if (prefCommentaries.size() > 0) { %>
 		<ul>
 		<%
@@ -125,7 +128,8 @@
 		<%
 			boolean open = toolsTreeOpen.contains("allComm");
 		%>
-			<h2><a class="<%= ((open)?"closed":"open")%>" href="passagestudy.jsp?<%= ((open)?"close":"open")%>=allComm"><img src="images/<%=((open)?"minus":"plus") + ".png"%>" alt="action"/></a>All Commentaries</h2>
+<h3>All Commentaries</h3>
+			<p><a class="<%= ((open)?"closed":"open")%>" href="passagestudy.jsp?<%= ((open)?"close":"open")%>=allComm" title="View all commentaries">View All</a></p>
 		<ul>
 		<%
 			if (open) {
