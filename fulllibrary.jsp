@@ -93,6 +93,9 @@
 		if (show != null) {
 			SWModule module = mgr.getModuleByName(show);
 			if (module != null) {
+%>
+			<div id="genbook">
+<%
 				String about = module.getConfigEntry("About");
 				if (about != null) {
 					RE pardRegex = new RE("\\\\pard");
@@ -119,6 +122,9 @@
 %>
 	<h2><a href="<%= targetURL %>"><%= module.getDescription() %></a></h2>
 	<%= about %>
+%>
+			</div>
+<%
 <%
 
 			}
