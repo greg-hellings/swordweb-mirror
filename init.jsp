@@ -1,9 +1,5 @@
 <%@ page import="org.crosswire.util.Base64" %>
 <%@ page import="java.util.Vector" %>
-<%@ page import="java.io.ByteArrayOutputStream" %>
-<%@ page import="java.io.StringBufferInputStream" %>
-<%@ page import="java.io.ObjectOutputStream" %>
-<%@ page import="java.io.ObjectInputStream" %>
 <%@ page import="org.crosswire.sword.orb.*" %>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page
