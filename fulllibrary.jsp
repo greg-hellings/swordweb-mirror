@@ -102,7 +102,8 @@
 				else if (SwordOrb.DAILYDEVOS.equals(type)) {
 					targetURL = "dailydevotion.jsp?mod="+URLEncoder.encode(module.getName());
 				}
-				else if (SwordOrb.GENBOOKS.equals(type)) {
+				else if ((SwordOrb.GENBOOKS.equals(type)) ||
+						("Essays".equals(type))) {
 					targetURL = "bookdisplay.jsp?mod="+URLEncoder.encode(module.getName());
 				}
 %>
