@@ -27,7 +27,7 @@
 %>
 		<li class="closed">
 			<a href="fulllibrary.jsp?action=closeAll&amp;open=<%= URLEncoder.encode(modInfo[i].category) %>">
-				<img src="images/plus.png"/> <%= modInfo[i].category %>
+ <%= modInfo[i].category %>
 			</a>
 		</li>
 <%

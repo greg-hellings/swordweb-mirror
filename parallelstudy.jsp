@@ -38,7 +38,11 @@
 	<%-- override lookup URL, so this script is used to display the keys --%>
 	<tiles:put name="lookup_url" value="parallelstudy.jsp" />
 	<tiles:put name="title" value="Parallel Bible study" />
+
 	<tiles:put name="sidebar_left" type="string">
+
+		<div id="paralleldisplay">
+
 		<h2>Translations:</h2>
 		<p class="textname">Displayed modules (click to remove)</p>
 		<ul class="plain">
@@ -47,8 +51,7 @@
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getCategory().equals(SwordOrb.BIBLES)) {
 		%>
-					<li>
-						<img src="images/remove.png"/>
+					<li class="remove">
 						<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>#cv" title="Remove from displayed modules">
 							<%= module.getDescription().replaceAll("&", "&amp;") %>
 						</a>
@@ -73,8 +76,7 @@
 					}
 
 		%>
-				<li>
-					<img src="images/add.png"/>
+				<li class="add">
 					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>
@@ -85,7 +87,10 @@
 		%>
 		</ul>
 
+		</div>
+
 	</tiles:put>
+
 	<tiles:put name="sidebar_right" type="string">
       		<h2>Comentaries:</h2>
 

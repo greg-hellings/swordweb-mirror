@@ -1,0 +1,248 @@
+body{
+color: #000000;
+background-color: #ffffff;
+font-size: 76%;
+margin: 0px 10px 0px 10px;
+}
+
+/* Mast Head */
+
+#header{
+background-image: url(OSIS1.jpg);
+background-position: right top;
+background-repeat: no-repeat;
+}
+
+#header h1 {
+font-family: palatino, georgia, serif;
+font-weight: normal;
+font-size: 2.0em;
+line-height: 2.5em;
+text-transform: uppercase;
+padding: 0;
+margin: 0px 0px 0px 0px;
+}
+
+/* Main Navigation */
+
+#navlist{
+border-bottom: 1px solid #ccc;
+margin: 0;
+padding-bottom: 19px;
+padding-left: 10px;
+font-family: palatino, georgia, serif;
+}
+
+#navlist ul, #navlist li{
+display: inline;
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+#navlist a:link, #navlist a:visited{
+background: #E8EBF0;
+border: 1px solid #ccc;
+color: #666;
+float: left;
+font-size: small;
+font-weight: normal;
+line-height: 14px;
+margin-right: 8px;
+padding: 2px 10px 2px 10px;
+text-decoration: none;
+-moz-border-radius: .5em .3em 0 0;
+}
+
+#navlist a:link#current, #navlist a:visited#current{
+background: #fff;
+border-bottom: 1px solid #fff;
+color: #000;
+}
+
+#navlist a:hover {
+color: #ff0000;
+background: #C5D6EA;
+}
+
+/* General - Site wide style */
+
+h2{
+margin: 12px 0px 3px 0px;
+padding: 5px 0px 3px 0px;
+font-family: palatino, georgia, serif;
+font-size: 1.4em;
+}
+
+
+/* Layout */
+
+#content-wrap{
+margin: 5px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+border-top: 1px solid #ccc;
+}
+
+#content-sub-1{
+width:12em;
+float:left;
+margin: 0px 1em 0px 0px;
+padding: 0px 2px 20px 0px;
+border-right: 1px solid #ccc;
+}
+
+#content-sub-2{
+width:14em;
+float:right;
+margin: 0px 0px 0px 10px;
+padding: 0px 0 20px 1em;
+border-left: 1px solid #ccc;
+}
+
+#content-main {
+margin: 0px 0px 0px 0px;
+padding: 15px 15px 20px 15px;
+width:auto;
+}
+
+#footer{clear:both;
+margin: 0px 0px 0px 0px;
+border-top: 1px solid #ccc;
+}
+
+
+
+/* ****** Individual Sections ****** */
+
+
+/* Quick Search */
+
+#quicksearch {
+padding: 0px 0px 0px 0px;
+}
+
+#quicksearch form{
+margin: 0px 0px 1em 0px;
+padding: 0px 0px 0px 0px;
+}
+
+#quicksearch form fieldset{
+border: 1px solid #ccc;
+padding: 3px;
+}
+
+/* External Links */
+
+ #externallinks{
+padding: 0 1px 1px;
+margin-left: 0;
+}
+
+#externallinks ul{
+background: #E8EBF0;}
+
+#externallinks li{
+list-style: none;
+margin: 0;
+border-top: 1px solid #ccc;
+text-align: left;
+border-bottom: 1px solid #E8EBF0;
+}
+
+#externallinks li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+border-left: .5em solid #ccc;
+background: #E8EBF0;
+text-decoration: none;
+}
+
+#externallinks ul {text-indent: 0em;
+padding: 0px;
+margin: 0px}
+
+#externallinks li a:link { color: #000; }
+#externallinks li a:visited { color: #000; }
+
+#externallinks li a:hover{
+border-color: #8EABCD;
+color: #f00;
+background: #C5D6EA;
+}
+
+
+/* OSIS Library */
+
+#library ul, #library li {list-style-type: none;}
+
+#library ul {text-indent: 0em;
+padding: 0px 0px 0px 0px;
+margin: 0px 0px 0px 0px;}
+
+#library li{
+margin: 3px 0px 0px 10px;
+background-image: url(images/arrow.png);
+background-repeat: no-repeat;
+border-bottom: 1px solid white;
+}
+
+#library li.closed {
+background-image: url(images/plus.png);
+background-repeat: no-repeat;
+}
+
+#library li.open {
+background-image: url(images/minus.png);
+background-repeat: no-repeat;
+}
+
+#library li a {display:block;
+padding: 0px 0px 0px 15px;
+text-decoration: none;
+color:#000}
+
+#library li a:hover {
+text-decoration: underline;
+color:#f00;
+}
+
+
+/* OSIS Library */
+
+#paralleldisplay ul, #library li {list-style-type: none;}
+
+#paralleldisplay ul {text-indent: 0em;
+padding: 0px 0px 0px 0px;
+margin: 0px 0px 0px 0px;}
+
+#paralleldisplay li{
+margin: 3px 0px 0px 10px;
+border-bottom: 1px solid white;
+}
+
+#paralleldisplay li.add {
+background-image: url(images/add.png);
+background-repeat: no-repeat;
+}
+
+#paralleldisplay li.remove {
+background-image: url(images/remove.png);
+background-repeat: no-repeat;
+}
+
+#paralleldisplay li a {display:block;
+padding: 0px 0px 0px 15px;
+text-decoration: none;
+color:#000}
+
+#paralleldisplay li a:hover {
+text-decoration: underline;
+color:#f00;
+}
+
+
+/*      */
+
+#footer img {
+border:0;
+}

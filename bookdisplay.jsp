@@ -69,9 +69,7 @@
 %>
 		<div class="verse">
 			<span class="versenum">
-<%=
-			 gbsEntry
-%>
+				<%= gbsEntry %>
 			</span>
 			<%= new String(module.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
 		</div>
@@ -90,17 +88,23 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 		module.setKeyText(rootTreeKey);
 		String[] children = module.getKeyChildren();
 		boolean open = bookTreeOpen.contains(rootTreeKey);
+
 		if (offset > 0) {
 			String localName = rootTreeKey.substring(offset+1);
 			out.print("<li>");
 			if (target.equals(rootTreeKey))
 				out.print("<b>");
+
 			if (children.length > 0) {
-				out.print("<a href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(rootTreeKey) + "\"><img src=\"images/" + ((open)?"minus":"plus") + ".png\"/></a>");
+				out.print("<a class=\"" + ((open)?"closed":"open") + "\" href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(rootTreeKey) + "\"></a>");
 			}
+
 			if (target.equals(rootTreeKey))
 				out.print("</b>");
-			out.print(" <a href=\"bookdisplay.jsp?gbsEntry=" + URLEncoder.encode(rootTreeKey) + "\">" + localName + "</a></li>");
+
+			out.print(" <a href=\"bookdisplay.jsp?gbsEntry=" + URLEncoder.encode(rootTreeKey) + "\">" + localName + "</a>");
+
+			out.print("</li>");
 		}
 
 		if ((open) || (offset < 1)) {

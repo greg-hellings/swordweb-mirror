@@ -43,8 +43,11 @@
 	<tiles:put name="lookup_url" value="fulllibrary.jsp" />
 	<tiles:put name="title" value="Full Library Catalog" />
 	<tiles:put name="sidebar_left" type="string">
+
+	<div id="library">
+
 		<h3>OSIS Library</h3>
-		<ul class="plain">
+		<ul>
 <%
 			Vector leaves = new Vector();
 			for (int i = 0; i < modInfo.length; i++) {
@@ -53,7 +56,11 @@
 					boolean open = catTreeOpen.contains(modInfo[i].category);
 %>
 
-					<li><a href="fulllibrary.jsp?<%= (open)?"close":"open" %>=<%= URLEncoder.encode(modInfo[i].category) %>"> <img src="images/<%= ((open)?"minus":"plus") %>.png"/></a>  <%= modInfo[i].category %></li>
+					<li class="<%= open ? "open" : "closed" %>">
+						<a href="fulllibrary.jsp?<%= (open)?"close":"open" %>=<%= URLEncoder.encode(modInfo[i].category) %>">
+						<%= modInfo[i].category %>
+						</a>
+					</li>
 <%
 					if (open) {
 %>
@@ -78,7 +85,9 @@
 			}
 %>
 		</ul>
+	</div> <!-- End of library-id div -->
 	</tiles:put>
+
 	<tiles:put name="content" type="string">
 <%
 		if (show != null) {
@@ -88,10 +97,10 @@
 				if (about != null) {
 					RE pardRegex = new RE("\\\\pard");
 					about = pardRegex.substituteAll(about, "");
-																							 
+
 					RE parRegex = new RE("\\\\par");
 					about = parRegex.substituteAll(about, "<br />");
-																							 
+
 					RE rtfRegex = new RE("\\\\\\w+");
 					about = rtfRegex.substituteAll(about, "");
 				}

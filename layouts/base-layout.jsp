@@ -7,36 +7,15 @@
 <head>
 	<title>OSIS Web:<tiles:getAsString name="title"/></title>
 
-	<%
-		String print = request.getParameter("print");
-		if ("1".equals(print)) {
-	%>
-			<link href="print.css" title="Printer friendly" rel="stylesheet" type="text/css" />
-	<%
-		}
-		else {
-	%>
-			<link href="blues.css" title="Blue" rel="stylesheet" type="text/css" />
-			<link href="wash.css" title="Washed Out" rel="alternate stylesheet" type="text/css" />
-			<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
-	<%
-		}
-	%>
+		<link href="wash.css" title="Washed Out" rel="stylesheet" type="text/css" />
+		<link href="blue.css" title="Old Blue" rel="alternate stylesheet" type="text/css" />
+		<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
+
+		<!--For printing stuff -->
+		<link rel="stylesheet" type="text/css" media="print" href="print.css" />
 </head>
 
-<%
-	if ("1".equals(request.getParameter("print"))) {
-%>
-	<body onLoad="window.print();">
-<%
-	}
-	else {
-%>
 	<body>
-<%
-	}
-%>
-
 	<%-- include footer --%>
 	<tiles:insert attribute="header" />
 
@@ -57,23 +36,30 @@
         </form>
       </div>
 
+	  <%-- include left sidebar --%>
+	  <tiles:insert attribute="sidebar_left" />
+   </div>
 
-			<%-- include left sidebar --%>
-			<tiles:insert attribute="sidebar_left" />
+	<div id="content-sub-2">
+		<div id="printer">
+		<p>
+		<img src="images/printer.gif" width="17" height="16" alt="This is a printer friendly version" />
+		This page is printer friendly.
+		</p>
 		</div>
 
-		<div id="content-sub-2">
-			<%-- include right sidebar --%>
-			<tiles:insert attribute="sidebar_right" />
-		</div>
-
-		<div id="content-main">
-			<%-- include main content --%>
-			<tiles:insert attribute="content" />
-		</div>
+		<%-- include right sidebar --%>
+		<tiles:insert attribute="sidebar_right" />
 	</div>
 
-	<%-- include footer --%>
-	<tiles:insert attribute="footer" />
+	<div id="content-main">
+		<%-- include main content --%>
+		<tiles:insert attribute="content" />
+	</div>
+</div>
+
+<%-- include footer --%>
+<tiles:insert attribute="footer" />
+
 </body>
 </html>

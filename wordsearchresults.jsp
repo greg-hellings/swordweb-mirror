@@ -74,7 +74,7 @@
 	</tiles:put>
 
 	<tiles:put name="content" type="string">
-	<div class="verse">
+	<div id="searchresults">
 		<h2>Results for "<em><%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %></em>"</h2>
 		<%
 			SearchHit[] results = null;
@@ -99,30 +99,25 @@
 			Integer resultStart = new Integer(request.getParameter("start") != null ? request.getParameter("start") : "0");
 			Integer resultLimit = new Integer(30);
 
-			for (int i = resultStart.intValue(); i < results.length && i < resultStart.intValue() + resultLimit.intValue(); i++) {
+			for (int i = resultStart.intValue(); i < results.length && i < resultStart.intValue() + resultLimit.intValue(); i++)
+			{
 				activeModule.setKeyText(results[i].key);
 		%>
-			<dt>
-<div class="bluepanel">
-<% // I know, A TABLE!!!  Please fix me!!! %>
-<table width="100%">
-<tr><td>
-<a href="passagestudy.jsp?key=<%= URLEncoder.encode(results[i].key)+"#cv" %>" title="<%= results[i].key %>"><%= results[i].key %></a>
-</td><td align="right"><%= (results[i].score > 0)?("<i>score: "+results[i].score)+"</i>" : "" %>
-</td></tr></table>
+				<dt>
+					<a href="passagestudy.jsp?key=<%= URLEncoder.encode(results[i].key)+"#cv" %>" title="<%= results[i].key %>"><%= results[i].key %></a>
+					<span><%= (results[i].score > 0)?("score: " + results[i].score) : "" %></span>
+				</dt>
+				<% boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction"))); %>
+				<dd dir="<%= rtol ? "rtl" : "" %>">
+					<%= new String(activeModule.getRenderText().getBytes("iso-8859-1"), "UTF-8") %>
+				</dd>
 
-</div>
-</dt>
-
-			<% boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction"))); %>
-			<dd dir="<%= rtol ? "rtl" : "ltr" %>">
-				<%= new String(activeModule.getRenderText().getBytes("iso-8859-1"), "UTF-8") %>
-			</dd>
 		<%
 			}
 		%>
 
 		</dl>
+
 		<ul class="searchresultsnav">
 			<%
 				int navStart = (resultStart.intValue() / resultLimit.intValue()) - 5;
