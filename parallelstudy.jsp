@@ -160,6 +160,14 @@
 			}
 		%>
 
+		<%-- table which contains all verse items --%>
+		<table id="paralleldisplay">
+		<caption>
+		</caption>
+		<thead>
+
+		<tr><td>
+
 		<h2>Parallel Viewing</h2>
 		<p>
 		Parallel viewing allows you to see two or more texts side by side.
@@ -182,10 +190,7 @@
 			{
 		%>
 
-		<%-- table which contains all verse items --%>
-		<table id="paralleldisplay">
-		<caption></caption>
-		<thead>
+		</td></tr>
 		<tr>
 
 		<% //insert module names at the top
