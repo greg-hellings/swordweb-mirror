@@ -51,14 +51,37 @@
 	Vector prefBibles = (Vector)session.getAttribute("PrefBibles");
 	Vector prefCommentaries = (Vector)session.getAttribute("PrefCommentaries");
 	Vector parDispModules = (Vector)session.getAttribute("ParDispModules");
+	String prefStyle = (String)session.getAttribute("PrefStyle");
+	static Vector styleNames = null;
+	static Vector styleFiles = null;
+	static Vector styleDescriptions = null;
+
+	synchronized(this) {
+		if (styleNames == null) {
+
+			styleNames = new Vector();
+			styleFiles = new Vector();
+			styleDescriptions = new Vector();
+
+			styleNames.add("Washed Out");
+			styleFiles.add("wash.css");
+
+			styleNames.add("Sandy Creek");
+			styleFiles.add("sandy.css");
+		}
+	}
 
 	Cookie[] cookies = request.getCookies();
 	if ((prefBibles == null) && (cookies != null)) {
+
 		for (int i = 0; i < cookies.length; i++) {
 			int start, end;
 			String field;
 			String line;
-			if (cookies[i].getName().equals("PrefBibles")) {
+			if (cookies[i].getName().equals("PrefStyle")) {
+				prefStyle = cookies[i].getValue();
+			}
+			else if (cookies[i].getName().equals("PrefBibles")) {
 				prefBibles = new Vector();
 				start = 0;
 				end = 1;
@@ -106,6 +129,9 @@
 		prefCommentaries = new Vector();
 	if (parDispModules == null)
 		parDispModules = new Vector();
+
+	if ((prefStyle == null) || (styleNames.indexOf(prefStyle) < 0))
+		prefStyle = (String)styleNames.get(0);
 
 	session.setAttribute("PrefBibles", prefBibles);
 	session.setAttribute("PrefCommentaries", prefCommentaries);

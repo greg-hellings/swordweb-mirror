@@ -7,12 +7,17 @@
 <head>
 	<title>OSIS Web:<tiles:getAsString name="title"/></title>
 
-<link rel="stylesheet" type="text/css" media="all" title="Washed Out" href="wash.css"  />
-<link rel="alternate stylesheet" type="text/css" media="all" title="Washed Out" href="wash.css.css" />
-<link rel="alternate stylesheet" type="text/css" media="all" title="Sandy Creek" href="sandy.css" />
-<link rel="alternate stylesheet" type="text/css" media="all" title="Parchment" href="parchment.css" />
-<link rel="alternate stylesheet" type="text/css" media="all" title="Testing 1 2 3" href="test.css" />
-<link rel="alternate stylesheet" type="text/css" media="all" title="No Style" href="blank.css" />
+<%
+	int style = styleNames.indexOf(prefStyle);
+	String styleName = (String)styleNames.get(style);
+	String styleFile = (String)styleFiles.get(style);
+%>
+
+<link rel="stylesheet" type="text/css" media="all" title="<%= styleName %>" href="<%= styleFile %>"  />
+
+<% for (int i = 0; i < styleNames.size(); i++) { %>
+<link rel="alternate stylesheet" type="text/css" media="all" title="<%= (String)styleNames.get(i) %>" href=" (String)styleFiles.get(i) %>" />
+<% } %>
 
 	<!--For printing stuff -->
 	<link rel="stylesheet" type="text/css" media="print" href="print.css" />

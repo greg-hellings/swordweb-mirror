@@ -132,6 +132,13 @@
 			}
 		%>
 		</ul>
+		<h2>Preferred Style</h2>
+		<ul>
+<% for (int i = 0; i < styleNames.size(); i++) { %>
+			<li><a href="preferences.jsp?setStyle=<%= URLEncoder.encode((String)styleNames.get(i)) %>" title="<%= (String) styleNames.get(i) %>"><%= (String) styleNames.get(i) %></a></li>
+<% } %>
+		</ul>
+
 </div>
 	</tiles:put>
 </tiles:insert>
