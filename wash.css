@@ -8,7 +8,7 @@ margin: 0px 10px 0px 10px;
 /* Mast Head */
 
 #header{
-background-image: url(OSIS1.jpg);
+background-image: url(images/OSIS1.jpg);
 background-position: right top;
 background-repeat: no-repeat;
 }
@@ -60,7 +60,7 @@ border-bottom: 1px solid #fff;
 color: #000;
 }
 
-#navlist a:hover {
+#navlist a:hover { 
 color: #ff0000;
 background: #C5D6EA;
 }
@@ -126,7 +126,7 @@ margin: 0px 0px 1em 0px;
 padding: 0px 0px 0px 0px;
 }
 
-#quicksearch form fieldset{
+##quicksearch form fieldset{
 border: 1px solid #ccc;
 padding: 3px;
 }
@@ -174,25 +174,23 @@ background: #C5D6EA;
 /* OSIS Library */
 
 #library ul, #library li {list-style-type: none;}
-
 #library ul {text-indent: 0em;
 padding: 0px 0px 0px 0px;
 margin: 0px 0px 0px 0px;}
-
 #library li{
 margin: 3px 0px 0px 10px;
-background-image: url(images/arrow.png);
+background-image: url(arrow.png);
 background-repeat: no-repeat;
 border-bottom: 1px solid white;
 }
 
 #library li.closed {
-background-image: url(images/plus.png);
+background-image: url(plus.png);
 background-repeat: no-repeat;
 }
 
 #library li.open {
-background-image: url(images/minus.png);
+background-image: url(minus.png);
 background-repeat: no-repeat;
 }
 
@@ -207,42 +205,73 @@ color:#f00;
 }
 
 
-/* OSIS Library */
+/*   Search Results   */
 
-#paralleldisplay ul, #library li {list-style-type: none;}
-
-#paralleldisplay ul {text-indent: 0em;
-padding: 0px 0px 0px 0px;
-margin: 0px 0px 0px 0px;}
-
-#paralleldisplay li{
-margin: 3px 0px 0px 10px;
-border-bottom: 1px solid white;
+#searchresults {
+margin: 0px 14em 0px 11em;
 }
 
-#paralleldisplay li.add {
-background-image: url(images/add.png);
-background-repeat: no-repeat;
+#searchresults dt {
+margin: 0px 0px 0px 0px;
+padding: 0px 2px 0px 2px;
+background: #eee;
+border-top: 1px solid #ccc;
+font-size: 1em;
+line-height: 1.8em;
 }
 
-#paralleldisplay li.remove {
-background-image: url(images/remove.png);
-background-repeat: no-repeat;
+#searchresults dt span {
+float: right;
+margin: -1.8em 0 0 0;
+font-style: italic;
 }
 
-#paralleldisplay li a {display:block;
-padding: 0px 0px 0px 15px;
+#searchresults dd {
+background: #fff;
+margin: 0px 0px 0px 0px;
+padding: 2px 5px 5px 3em;
+}
+
+#searchresults dt a {
 text-decoration: none;
-color:#000}
+display:block;
+color:#000;
+font-size:1.1em;
+}
 
-#paralleldisplay li a:hover {
+#searchresults dt a:hover {
+text-decoration: none;
+background-color: #C5D6EA;
+color:#f00;
 text-decoration: underline;
+}
+
+
+#searchresults ul {
+background: #eee;
+border-top: 1px solid #ccc;
+border-bottom: 1px solid #ccc;
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+text-indent: 0px;
+}
+
+#searchresults ul li {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1em;
+margin: 0px 1.1em 0px 0px;
+}
+
+#searchresults ul li a {
+color:#000;
+}
+
+#searchresults ul li a:hover {
 color:#f00;
 }
 
 
-/*      */
-
-#footer img {
-border:0;
+#footer img {border:0;
 }
