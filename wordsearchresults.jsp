@@ -5,7 +5,7 @@
 	if (resetModule != null)
 		session.setAttribute("ActiveModule", mgr.getModuleByName(resetModule));
 	SWModule activeModule = (SWModule) session.getAttribute("ActiveModule");
-	if (activeModule == null) activeModule = mgr.getModuleByName("KJV");
+	if (activeModule == null) activeModule = mgr.getModuleByName("WEB");
 
 	String resetSearchTerm = request.getParameter("searchTerm");
 	if (resetSearchTerm != null)
@@ -55,7 +55,7 @@
 
 	<tiles:put name="sidebar_right" type="string">
 		<h2>Original Language:</h2>
-		<p>The KJV translates 6 different Hebrew words and 3 Greek words into the English "<strong>sword</strong>."</p>
+		<p>The WEB translates 6 different Hebrew words and 3 Greek words into the English "<strong>sword</strong>."</p>
 		<h3>Hebrew:</h3>
 		<ul>
 			<li><a href="" title="If we want to we can place the full Strongs definition in here and a link to more info on this word. ">H1300 <em>baraq</em></a></li>

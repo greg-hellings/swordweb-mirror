@@ -94,7 +94,7 @@
 					about = rtfRegex.substituteAll(about, "");
 				}
 				String type = module.getConfigEntry("Category");
-				if ((type == null) || (type.length() > 0))
+				if ((type == null) || (type.length() < 2))
 					type = module.getType();
 				String targetURL = "";
 				if ((SwordOrb.BIBLES.equals(type)) || (SwordOrb.COMMENTARIES.equals(type))) {
@@ -109,6 +109,7 @@
 %>
 	<h2><a href="<%= targetURL %>"><%= module.getDescription() %></a></h2>
 	<%= about %>
+	<%= type %>
 <%
 
 			}

@@ -20,13 +20,12 @@
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].type.equals(SwordOrb.LEXDICT)) {
-					SWModule module = mgr.getModuleByName(modInfo[i].name);
-					if ("Daily Devotional".equals(module.getConfigEntry("Category"))) {
-		%>
-				<li><a href="dailydevotion.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
-		<%
-					}
+				SWModule module = mgr.getModuleByName(modInfo[i].name);
+				if (("Daily Devotional".equals(modInfo[i].type)) ||
+					 ("Daily Devotional".equals(module.getConfigEntry("Category")))) {
+	%>
+			<li><a href="dailydevotion.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+	<%
 				}
 			}
 			formatter = new SimpleDateFormat("MM.dd");

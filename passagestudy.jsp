@@ -4,7 +4,7 @@
 	if (resetModule != null)
 		session.setAttribute("ActiveModule", mgr.getModuleByName(resetModule));
 	SWModule activeModule = (SWModule) session.getAttribute("ActiveModule");
-	if (activeModule == null) activeModule = mgr.getModuleByName("KJV");
+	if (activeModule == null) activeModule = mgr.getModuleByName("WEB");
 
 	String resetKey = request.getParameter("key");
 	if (resetKey != null)
