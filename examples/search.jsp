@@ -9,7 +9,7 @@
 
 <%
 	SWMgr mgr = SwordOrb.getSWMgrInstance(session);
-	SWModule book = mgr.getModuleByName("KJV");
+	SWModule book = mgr.getModuleByName("NASB");
 %>
 
 <html>
@@ -35,7 +35,7 @@
 		book.setKeyText(results[i].key);
 %>
 
-<tr><td><%= book.getKeyText() %></td><td><%= new String(book.getRenderText().getBytes(), "UTF-8") %></td></tr>
+<tr><td><%= book.getKeyText() %></td><td><%= new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8") %></td></tr>
 
 <%
 	}
