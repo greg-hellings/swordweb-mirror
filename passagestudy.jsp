@@ -27,7 +27,9 @@
 		<%
 			}
 		%>
+			</ul>
 		<hr/>
+			<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].type.equals(SwordOrb.BIBLES)) {
@@ -53,7 +55,9 @@
 		<%
 			}
 		%>
+			</ul>
 		<hr />
+			<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].type.equals(SwordOrb.COMMENTARIES)) {

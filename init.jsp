@@ -1,11 +1,11 @@
-<%@ page import="org.crosswire.util.Base64" %>
-<%@ page import="java.util.Vector" %>
-<%@ page import="org.crosswire.sword.orb.*" %>
-<%@ page import="java.net.URLEncoder" %>
 <%@ page
     language="java"
     contentType="text/html;charset=utf-8"
 %>
+<%@ page import="org.crosswire.util.Base64" %>
+<%@ page import="java.util.Vector" %>
+<%@ page import="org.crosswire.sword.orb.*" %>
+<%@ page import="java.net.URLEncoder" %>
 <%
 	SWMgr mgr = SwordOrb.getSWMgrInstance(session);
 	// let's cache the modInfo in the session cuz this is alot to grab each time we need it from the orb

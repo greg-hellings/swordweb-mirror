@@ -1,5 +1,4 @@
 <%@ include file="defines/tiles.jsp" %>
-
 <%
 	String []addMods = request.getParameterValues("add");
 	if (addMods != null) {
@@ -33,18 +32,14 @@
 	if (activeKey == null)
 		activeKey = "jas 1:19"; // our fallback key
 %>
-
-
 <tiles:insert beanName="basic" flush="true" >
 	<%-- override lookup URL, so this script is used to display the keys --%>
 	<tiles:put name="lookup_url" value="parallelstudy.jsp" />
-
 	<tiles:put name="title" value="Parallel Bible study" />
 	<tiles:put name="sidebar_left" type="string">
 		<h2>Translations:</h2>
 		<p class="textname">Displayed modules (click to remove)</p>
 		<ul>
-
 		<%
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
@@ -153,10 +148,9 @@
 		%>
 
 		<%-- table which contains all verse items --%>
-		<table id="paralleldisplay">
-
+		<table>
 		<caption></caption>
-		<summary></summary>
+
 		<thead>
 		<tr>
 
