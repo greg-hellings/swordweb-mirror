@@ -676,6 +676,13 @@ padding:0px 0px 0px 0px;
 border-bottom:1px solid white;
 }
 
+#genbooknav #current {
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+border-bottom:1px solid white;
+font-weight:bold;
+}
+
 #genbooknav ul ul {
 text-indent:0em;
 padding:0px;
