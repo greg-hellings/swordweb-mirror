@@ -93,9 +93,11 @@
 			<%
 			}
 			%>
-		<ul>
 		<%
-			if (open) {
+			if ((open) && (modInfo.length > 0)) {
+%>
+		<ul>
+<%
 				for (int i = 0; i < modInfo.length; i++) {
 					if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
 						SWModule module = mgr.getModuleByName(modInfo[i].name);
@@ -104,9 +106,11 @@
 			<%
 					}
 				}
+%>
+		</ul>
+<%
 			}
 		%>
-		</ul>
 		</div>
 	</tiles:put>
 	<tiles:put name="sidebar_right" type="string">
