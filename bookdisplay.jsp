@@ -53,29 +53,31 @@
 	<tiles:put name="lookup_url" value="bookdisplay.jsp" />
 	<tiles:put name="title" value="General Book Display" />
 	<tiles:put name="sidebar_left" type="string">
-<%
-	if (module != null) {
-		printTree(bookTreeOpen, out, module, "/", gbsEntry);
-	}
-	else {
-		out.print("no book selected");
-	}
-%>
+
+	<div id="genbooknav">
+	<%
+		if (module != null) {
+			printTree(bookTreeOpen, out, module, "/", gbsEntry);
+		}
+		else {
+			out.print("no book selected");
+		}
+	%>
+	</div>
 	</tiles:put>
+
 	<tiles:put name="content" type="string">
-<%
-	if (module != null) {
-		module.setKeyText(gbsEntry);
-%>
-		<div class="verse">
-			<span class="versenum">
-				<%= gbsEntry %>
-			</span>
-			<%= new String(module.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-		</div>
-<%
-	}
-%>
+	<%
+		if (module != null) {
+			module.setKeyText(gbsEntry);
+	%>
+			<div id="genbook">
+				<h2><%= gbsEntry %></h2>
+				<%= new String(module.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+			</div>
+	<%
+		}
+	%>
 	</tiles:put>
 </tiles:insert>
 
@@ -92,15 +94,15 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 		if (offset > 0) {
 			String localName = rootTreeKey.substring(offset+1);
 			out.print("<li>");
-			if (target.equals(rootTreeKey))
-				out.print("<b>");
+			//if (target.equals(rootTreeKey))
+			//	out.print("<b>");
 
 			if (children.length > 0) {
 				out.print("<a class=\"" + ((open)?"closed":"open") + "\" href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(rootTreeKey) + "\"><img src=\"images/" + ((open)?"minus":"plus") + ".png\" alt=\"action\"/></a>");
 			}
 
-			if (target.equals(rootTreeKey))
-				out.print("</b>");
+			//if (target.equals(rootTreeKey))
+			//	out.print("</b>");
 
 			out.print(" <a href=\"bookdisplay.jsp?gbsEntry=" + URLEncoder.encode(rootTreeKey) + "\">" + localName + "</a>");
 

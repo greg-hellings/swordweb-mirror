@@ -271,128 +271,7 @@ font-style: italic;
 
 #translations hr {display:none;}
 
-/*   Devotionals   */
-
-#devotionals {
-margin: 0px -0.5em 0px 0px;
-padding: 0px 0 0px 0px;
-}
-
-#devotionals ul, #devotionals li {
-list-style-type: none;
-}
-
-
-#devotionals ul {
-background: #E8EBF0;
-text-indent: 0em;
-padding: 0px;
-margin: 0px 0px 10px 0px;
-}
-
-#devotionals li{
-list-style: none;
-margin: 0;
-border-top: 1px solid #ccc;
-text-align: left;
-border-bottom: 1px solid #E8EBF0;
-}
-
-#devotionals li a{
-display: block;
-padding: 0.25em 0.5em 0.25em 0.75em;
-background: #E8EBF0;
-text-decoration: none;
-}
-
-#devotionals li a:link { color: #000; }
-#externallinks li a:visited { color: #000; }
-
-#devotionals li a:hover{
-border-color: #8EABCD;
-color: #f00;
-background: #C5D6EA;
-}
-
-#devotionals h3 {
-background: #C5D6EA;
-margin: 0px 0px 0px 0px;
-padding: 2px 0.5em 2px 0.5em;
-text-align: center;
-font-size: 1.1em;
-border-top: 2px solid #ccc;
-}
-
-#devotionals p {
-background: #C5D6EA;
-margin: 0px 0px 0px 0px;
-padding: 2px 0.5em 2px 0.5em;
-text-align: center;
-font-style: italic;
-}
-
-/*   Study Tools  */
-
-#studytools {
-margin: 0px 0px 0px -1em;
-padding: 0px 0px 0px 0px;
-}
-
-#studytools ul, #studytools li {
-list-style-type: none;
-}
-
-#studytools ul {
-background: #E8EBF0;
-text-indent: 0em;
-padding: 0px;
-margin: 0px 0px 10px 0px;
-}
-
-#studytools li{
-list-style: none;
-margin: 0;
-border-top: 1px solid #ccc;
-text-align: left;
-border-bottom: 1px solid #E8EBF0;
-}
-
-#studytools li a{
-display: block;
-padding: 0.25em 0.5em 0.25em 0.75em;
-background: #E8EBF0;
-text-decoration: none;
-}
-
-#studytools li a:link { color: #000; }
-#externallinks li a:visited { color: #000; }
-
-#studytools li a:hover{
-border-color: #8EABCD;
-color: #f00;
-background: #C5D6EA;
-}
-
-#studytools h3 {
-background: #C5D6EA;
-margin: 0px 0px 0px 0px;
-padding: 2px 0.5em 2px 0.5em;
-text-align: center;
-font-size: 1.1em;
-border-top: 2px solid #ccc;
-}
-
-#studytools p {
-background: #C5D6EA;
-margin: 0px 0px 0px 0px;
-padding: 2px 0.5em 2px 0.5em;
-text-align: center;
-font-style: italic;
-}
-
-
-
-/*   Commentaries  */
+/*   Commentaries   */
 
 #commentaries {
 margin: 0px 0px 0px -1em;
@@ -454,11 +333,10 @@ font-style: italic;
 #commentaries hr {display:none;}
 
 
-#welcome, #about, #help, #preferences, #powersearch, #daily, #genbook   {
+#welcome, #about, #help  {
 margin: 0px 14em 0px 11.5em;
 padding: 0px .5em 0px .5em;
 }
-
 
 
 /*   Search Results   */
@@ -570,7 +448,7 @@ background: #eee;
 border-top: 1px solid #ccc;
 border-bottom: 1px solid #ccc;
 margin: 0px 0px 5px 0px;
-padding: 0px 0px 0px 1em;
+padding: 0px 0px 0px 0px;
 text-indent: 0px;
 }
 
@@ -610,7 +488,7 @@ background: #eee;
 border-top: 1px solid #ccc;
 border-bottom: 1px solid #ccc;
 margin: 0px 0px 5px 0px;
-padding: 0px 0px 0px 1em;
+padding: 0px 0px 0px 0px;
 text-indent: 0px;
 }
 
@@ -643,9 +521,54 @@ color:#f00;
 }
 
 
-.wordsOfJesus {
-color: #bb0000;
+
+
+/*   GenBook navigation tree  */
+#genbooknav {
+margin:0px 5px;
+padding:0px 5px;
 }
 
-#footer img {border:0;
+#genbooknav ul, #genbooknav li {
+list-style-type: none;
 }
+
+#genbooknav ul {
+text-indent:0em;
+padding:0px 0px 0px 0px;
+margin:0px 0px 0px 0px;
+}
+
+#genbooknav li {
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+border-bottom:1px solid white;
+}
+
+#genbooknav ul ul {
+text-indent:0em;
+padding:0px;
+margin:0px 0px 0px 15px;
+}
+
+#genbooknav li img {
+border:0px;
+}
+
+#genbooknav li a {
+text-decoration:none;
+color:#000
+}
+
+#genbooknav li a:hover {
+text-decoration:underline;
+color:#f00;
+}
+
+
+
+
+#footer img {
+	border:0;
+}
+
