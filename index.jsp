@@ -144,8 +144,7 @@ href="index.jsp?setStyle=Parchment">Parchment</a></li>
 	<p>Download a number of free Bible software downloads for Windows, Mac, Linux and Palm produced by CrossWire Bible Society.
 	</p>
 
-	<h3>SWORD for Windows
-	</h3>
+	<h3><a href="http://crosswire.org/sword/" title="SWORD for Windows">SWORD for Windows</a></h3>
 	<p>Bible software developed for the Windows operating environment. Features include:
 	</p>
 
@@ -174,7 +173,7 @@ href="index.jsp?setStyle=Parchment">Parchment</a></li>
 	</p>
 
 
-	<h3>Bible+ for Palm OS</h3>
+	<h3><a href="http://palmbibleplus.sourceforge.net/" title="Bible+ for Palm OS">Bible+ for Palm OS</a></h3>
 	<p>Bible software developed for Palm.
 	</p>
 
