@@ -1005,7 +1005,8 @@ color: #bb0000;
 
 
 #about ul {
-margin: 1em 0px 2em 0px;
+  margin: 12px 0px 2em 0px;
+  padding: 5px 0em 3px 2em;
 }
 
 #about .q {

@@ -42,6 +42,7 @@ I commented this section out until it can be made functional.
 <p>Have you produced serious academic scholarship related to Biblical text?  Using our Scholar OSIS Tool, you can upload it for students or fellow scholars to review, or submit it to SBL for inclusion on OSIS Bible Tool.</p>
 <p>Only works reviewed and approved by SBL will be added for viewing by the public at large.</p>
 </div>
+
  -->
 
 <div id="style">

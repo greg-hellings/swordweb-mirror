@@ -759,10 +759,17 @@ color:#f00;
 color: #bb0000;
 }
 
-/* FAQ */
 
+/* FAQ
+// DON I CHANGED THIS FOR IE
 #about ul {
 margin: 1em 0px 2em 0px;
+}
+ */
+
+#about ul {
+  margin: 12px 0px 2em 0px;
+  padding: 5px 0em 3px 2em;
 }
 
 #about .q {
