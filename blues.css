@@ -130,14 +130,14 @@ a:active {
 
 #content-sub-1 {
 	float: left;
-	width: 185px;
+	width: 200px;
 	text-align: left;
 	padding-right: 5px;
 	background-color: #ffffff;
 	}
 
 #content-wrap > #content-sub-1 {
-	width: 170px;
+	width: 190px;
 	}
 
 #content-sub-1 ul {
@@ -150,14 +150,14 @@ a:active {
 
 #content-sub-2 {
 	float: right;
-	width: 180px;
+	width: 200px;
 	text-align: left;
 	padding-left: 5px;
 	background-color: #fff;
 	}
 
 #content-wrap > #content-sub-2 {
-	width: 170px;
+	width: 190px;
 	}
 
 #content-sub-2 ul {
@@ -263,6 +263,37 @@ a:active {
 	}
 
 
+/* blue panel */
+.bluepanel {
+	background-color: #eeeeee;
+	border: 1px dotted #dddddd;
+	padding: 0px 5px 0px 5px;
+	text-align: left;
+}
+
+.bluepanel input.textinput{
+	border-style: solid;
+	border: 1px solid #555555;
+	width:100px;
+}
+
+.bluepanel input.searchbutton{
+	border: 2px outset #eeeeee;
+	color:#ffffff;
+	background-color:#000099;
+}
+
+.bluepanel input.searchbutton:hover{
+	border: 2px inset #eeeeee;
+	color:#ffffff;
+	background-color:#000099;
+}
+
+.bluepanel fieldset{
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
 /* ----------------*/
 
 .quicksearch {
