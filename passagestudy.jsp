@@ -5,7 +5,7 @@
 	if (resetModule != null)
 		session.setAttribute("ActiveModule", resetModule);
 	String activeModuleName = (String) session.getAttribute("ActiveModule");
-	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? "WEB" : activeModuleName);
+	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? "KJV" : activeModuleName);
 
 	String resetKey = request.getParameter("key");
 	if (resetKey != null)
@@ -132,7 +132,7 @@
 			if (showMorph != null) {
 				String [] keyInfo = activeModule.getKeyChildren();
 				SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongHebrew":"Robinson");
-				lex.setKeyText(showStrong);
+				lex.setKeyText(showMorph);
 		%>
 				<li>
 				<span>
