@@ -231,20 +231,20 @@ color:#f00;
 
 #library li.closed {
 margin: .5em 0px 0px 0px;
-background-image: url(images/plus.png);
+background-image: url(images/wash_plus.png);
 background-repeat: no-repeat;
-border-left: 5px solid #fff;
+border-left: 0px solid #fff;
 border-bottom: 1px solid #fff;
 }
 
 #library li.open {
 margin: .5em 0px 0px 0px;
-background-image: url(images/minus.png);
+background-image: url(images/wash_minus.png);
 background-repeat: no-repeat;
 background-color: #C5D6EA;
 border-bottom: 1px solid #C5D6EA;
 border-top: 5px solid #C5D6EA;
-border-left: 5px solid #C5D6EA;
+border-left: 0px solid #C5D6EA;
 border-bottom: 1px solid #C5D6EA;
 }
 
@@ -252,15 +252,15 @@ border-bottom: 1px solid #C5D6EA;
 display:block;
 padding: 0px 0px 0px 0px;
 text-decoration: none;
-color:#000}
+color:#000099;}
 
 #library li.closed a {
 padding: 0px 0px 0px 15px;
-color:#000}
+color:#000099}
 
 #library li.open a {
 padding: 0px 0px 0px 15px;
-color:#000}
+color:#000o9}
 
 
 
@@ -759,4 +759,19 @@ color:#f00;
 color: #bb0000;
 }
 
+/* FAQ */
 
+#about ul {
+margin: 1em 0px 2em 0px;
+}
+
+#about .q {
+font-weight: bold;
+font-style: italic;
+}
+
+#about h3 {
+margin: 1em 0px .5em 0px;
+padding: 0px 0px 0px 0px;
+border-bottom: 1px solid #ccc; 
+}

@@ -10,6 +10,9 @@ margin: 0px 0px 0px 0px;
 #header{
 border-top: 7px solid #808072;
 font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+background: #DEDACA;
+background-image: url(images/sandyfade2.png);
+background-repeat: repeat-x;
 }
 
 #header h1 {
@@ -22,7 +25,7 @@ padding: 0;
 margin: 0;
 text-align: center;
 color: #808072;
-background: #DEDACA;
+
 font-weight: bold;
 letter-spacing: .5em;
 text-decoration: none;
@@ -105,8 +108,8 @@ a:visited {color:#808072;}
 #content-wrap{
 margin: 0px 0px 0px 0px;
 padding: 0px 0px 0px 0px;
-border-top: 1px solid #808072;
-
+background-image: url(images/sandyfade.png);
+background-repeat: repeat-x;
 }
 
 #content-sub-1{
@@ -114,7 +117,7 @@ width:14em;
 float:right;
 margin: 0;
 padding: 0px .5em 20px 1em;
-border-left: 1px solid #808072;
+border-left: 1px dashed #DEDACA;
 }
 
 #content-sub-2{
@@ -123,7 +126,7 @@ width:14em;
 float:right;
 margin: 0;
 padding: 0px .5em 20px 1em;
-border-left: 1px solid #808072;
+border-left: 1px dashed #DEDACA;
 }
 
 #content-main {
@@ -136,9 +139,14 @@ font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
 #footer{
 clear:both;
 margin: 0px 0px 0px 0px;
-border-top: 1px solid #808072;
+
 text-align: center;
+background-color: #808072;
+background-image: url(images/sandyfade3.png);
+background-repeat: repeat-x;
 }
+
+#footer a{color:black}
 
 #footer img {
 border:0;
@@ -565,4 +573,21 @@ color:#f00;
 color: #bb0000;
 }
 
+
+/* FAQ */
+
+#about ul {
+margin: 1em 0px 2em 0px;
+}
+
+#about .q {
+font-weight: bold;
+font-style: italic;
+}
+
+#about h3 {
+margin: 1em 0px .5em 0px;
+padding: 0px 0px 0px 0px;
+border-bottom: 1px solid #DEDACA;
+}
 

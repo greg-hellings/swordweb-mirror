@@ -5,7 +5,7 @@
 <div id="contentTray2">
   <div id="pageBorderTop"></div>
   <div id="header">
-    <h1><acronym title="Open Scripture Information Standard">OSIS</acronym> Bible Tool</h1>
+    <h1>The Bible Tool</h1>
   </div>
   <div id="navlist">
     <ul>

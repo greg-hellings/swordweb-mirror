@@ -52,7 +52,7 @@
 		<div id="printer">
 		<p>
 		<img src="images/printer.gif" width="17" height="16" alt="This is a printer friendly version" />
-		This page is printer friendly.
+		<a href="about.jsp#faq_11" title="What does &quot;Printer Friendly&quot; mean?">This page is printer friendly</a>.
 		</p>
 		</div>
 
