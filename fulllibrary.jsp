@@ -43,6 +43,7 @@
 	<tiles:put name="lookup_url" value="fulllibrary.jsp" />
 	<tiles:put name="title" value="Full Library Catalog" />
 	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
+	<tiles:put name="sidebar_right" type="string" ><div></div></tiles:put>
 	<tiles:put name="sidebar_left" type="string">
 
 	<div id="library">
@@ -98,6 +99,7 @@
 			<div id="genbook">
 <%
 				String about = module.getConfigEntry("About");
+// out.write("<!-- ***" + about + "*** ->");
 				if (about != null) {
 					RE pardRegex = new RE("\\\\pard");
 					about = pardRegex.substituteAll(about, "");
