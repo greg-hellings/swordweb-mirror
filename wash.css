@@ -331,8 +331,68 @@ text-align: center;
 font-style: italic;
 }
 
+/*   Study Tools  */
 
-/*   Commentaries   */
+#studytools {
+margin: 0px 0px 0px -1em;
+padding: 0px 0px 0px 0px;
+}
+
+#studytools ul, #studytools li {
+list-style-type: none;
+}
+
+#studytools ul {
+background: #E8EBF0;
+text-indent: 0em;
+padding: 0px;
+margin: 0px 0px 10px 0px;
+}
+
+#studytools li{
+list-style: none;
+margin: 0;
+border-top: 1px solid #ccc;
+text-align: left;
+border-bottom: 1px solid #E8EBF0;
+}
+
+#studytools li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+background: #E8EBF0;
+text-decoration: none;
+}
+
+#studytools li a:link { color: #000; }
+#externallinks li a:visited { color: #000; }
+
+#studytools li a:hover{
+border-color: #8EABCD;
+color: #f00;
+background: #C5D6EA;
+}
+
+#studytools h3 {
+background: #C5D6EA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-size: 1.1em;
+border-top: 2px solid #ccc;
+}
+
+#studytools p {
+background: #C5D6EA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-style: italic;
+}
+
+
+
+/*   Commentaries  */
 
 #commentaries {
 margin: 0px 0px 0px -1em;

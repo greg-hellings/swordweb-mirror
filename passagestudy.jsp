@@ -108,10 +108,12 @@
 		</div>
 	</tiles:put>
 	<tiles:put name="sidebar_right" type="string">
-	<div class="studytools">
-		<h2>Word Study</h2>
-			<h3><a href="passagestudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>">Strongs</a></h3>
-			<h3><a href="passagestudy.jsp?morph=<%= (morph) ? "off" : "on" %>">Morphology</a></h3>
+	<div id="studytools">
+		<h2>Word Study:</h2>
+			<ul>
+			<li><a href="passagestudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>" title="Turn on Strongs numbers">View Strongs</a></li>
+			<li><a href="passagestudy.jsp?morph=<%= (morph) ? "off" : "on" %>" title="Turn on morphology">View Morphology</a></li>
+			</ul>
 	</div>
 
 	<div id="commentaries">
