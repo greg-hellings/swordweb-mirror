@@ -179,18 +179,18 @@ padding: 0px 0px 0px 0px;
 margin: 0px 0px 0px 0px;}
 #library li{
 margin: 3px 0px 0px 10px;
-background-image: url(arrow.png);
+background-image: url(images/arrow.png);
 background-repeat: no-repeat;
 border-bottom: 1px solid white;
 }
 
 #library li.closed {
-background-image: url(plus.png);
+background-image: url(images/plus.png);
 background-repeat: no-repeat;
 }
 
 #library li.open {
-background-image: url(minus.png);
+background-image: url(images/minus.png);
 background-repeat: no-repeat;
 }
 
