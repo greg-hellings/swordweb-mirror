@@ -5,11 +5,11 @@
 	if (addModule != null) {
 		SWModule mod = mgr.getModuleByName(addModule);
 		if (mod != null) {
-			if (mod.getType().equals(SwordOrb.BIBLES)) {
+			if (mod.getCategory().equals(SwordOrb.BIBLES)) {
 				prefBibles.remove(mod.getName());
 				prefBibles.add(0, mod.getName());
 			}
-			if (mod.getType().equals(SwordOrb.COMMENTARIES)) {
+			if (mod.getCategory().equals(SwordOrb.COMMENTARIES)) {
 				prefCommentaries.remove(mod.getName());
 				prefCommentaries.add(0, mod.getName());
 			}
@@ -20,10 +20,10 @@
 	if (delModule != null) {
 		SWModule mod = mgr.getModuleByName(delModule);
 		if (mod != null) {
-			if (mod.getType().equals(SwordOrb.BIBLES)) {
+			if (mod.getCategory().equals(SwordOrb.BIBLES)) {
 				prefBibles.remove(mod.getName());
 			}
-			if (mod.getType().equals(SwordOrb.COMMENTARIES)) {
+			if (mod.getCategory().equals(SwordOrb.COMMENTARIES)) {
 				prefCommentaries.remove(mod.getName());
 			}
 		}
@@ -51,7 +51,7 @@
 		<hr/>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].type.equals(SwordOrb.BIBLES)) {
+				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 		%>
 				<li><a href="preferences.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
@@ -76,7 +76,7 @@
 		<hr/>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].type.equals(SwordOrb.COMMENTARIES)) {
+				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 		%>
 				<li><a href="preferences.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>

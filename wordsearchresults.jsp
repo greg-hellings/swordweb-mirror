@@ -42,7 +42,7 @@
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].type.equals(SwordOrb.BIBLES)) {
+				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 		%>
 				<li><a href="wordsearchresults.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="view Romans 8:26-39 in <%= module.getDescription() %>"><%= module.getDescription() %></a></li>

@@ -47,19 +47,19 @@
 <%
 			Vector leaves = new Vector();
 			for (int i = 0; i < modInfo.length; i++) {
-				if (!leaves.contains(modInfo[i].type)) {
-					leaves.add(modInfo[i].type);
-					boolean open = catTreeOpen.contains(modInfo[i].type);
+				if (!leaves.contains(modInfo[i].category)) {
+					leaves.add(modInfo[i].category);
+					boolean open = catTreeOpen.contains(modInfo[i].category);
 %>
 		
-					<li><b><a href="fulllibrary.jsp?<%= (open)?"close":"open" %>=<%= URLEncoder.encode(modInfo[i].type) %>"><%= ((open)?"[-]":"[+]") %></a>  <%= modInfo[i].type %></b></li>
+					<li><b><a href="fulllibrary.jsp?<%= (open)?"close":"open" %>=<%= URLEncoder.encode(modInfo[i].category) %>"><%= ((open)?"[-]":"[+]") %></a>  <%= modInfo[i].category %></b></li>
 <%
 					if (open) {
 %>
 						<ul>
 <%
 						for (int j = 0; j < modInfo.length; j++) {
-							if (modInfo[i].type.equals(modInfo[j].type)) {
+							if (modInfo[i].category.equals(modInfo[j].category)) {
 								SWModule module = mgr.getModuleByName(modInfo[j].name);
 								if (module != null) {
 %>
@@ -95,15 +95,15 @@
 				}
 				String type = module.getConfigEntry("Category");
 				if ((type == null) || (type.length() < 2))
-					type = module.getType();
+					type = module.getCategory();
 				String targetURL = "";
 				if ((SwordOrb.BIBLES.equals(type)) || (SwordOrb.COMMENTARIES.equals(type))) {
 					targetURL = "passagestudy.jsp?mod="+URLEncoder.encode(module.getName());
 				}
-				else if ("Daily Devotional".equals(type)) {
+				else if (SwordOrb.DAILYDEVOS.equals(type)) {
 					targetURL = "dailydevotion.jsp?mod="+URLEncoder.encode(module.getName());
 				}
-				else if ("Generic Books".equals(type)) {
+				else if (SwordOrb.GENBOOKS.equals(type)) {
 					targetURL = "bookdisplay.jsp?mod="+URLEncoder.encode(module.getName());
 				}
 %>

@@ -21,8 +21,8 @@
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				SWModule module = mgr.getModuleByName(modInfo[i].name);
-				if (("Daily Devotional".equals(modInfo[i].type)) ||
-					 ("Daily Devotional".equals(module.getConfigEntry("Category")))) {
+				if ((SwordOrb.DAILYDEVOS.equals(modInfo[i].category)) ||
+					 (SwordOrb.DAILYDEVOS.equals(module.getConfigEntry("Category")))) {
 	%>
 			<li><a href="dailydevotion.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
 	<%

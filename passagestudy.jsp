@@ -32,7 +32,7 @@
 			<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].type.equals(SwordOrb.BIBLES)) {
+				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 		%>
 				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
@@ -60,7 +60,7 @@
 			<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].type.equals(SwordOrb.COMMENTARIES)) {
+				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 		%>
 				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
@@ -84,7 +84,7 @@
 			<li><a href="" title="display Romans 10">next chapter</a></li>
 		</ul>
 		<%
-			if (activeModule.getType().equals(SwordOrb.BIBLES)) {
+			if (activeModule.getCategory().equals(SwordOrb.BIBLES)) {
 				String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
 				for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
 					String keyText = activeModule.getKeyText();

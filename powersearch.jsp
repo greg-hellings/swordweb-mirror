@@ -24,7 +24,7 @@
 		<hr/>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].type.equals(SwordOrb.BIBLES)) {
+				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 		%>
 				<li><a href="powersearch.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
@@ -48,7 +48,7 @@
 		<hr/>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].type.equals(SwordOrb.COMMENTARIES)) {
+				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 		%>
 				<li><a href="powersearch.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>

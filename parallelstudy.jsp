@@ -43,7 +43,7 @@
 		<%
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
-				if (module != null && module.getType().equals(SwordOrb.BIBLES)) {
+				if (module != null && module.getCategory().equals(SwordOrb.BIBLES)) {
 		%>
 					<li>
 						<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>" title="Remove from displayed modules">
@@ -63,7 +63,7 @@
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].type.equals(SwordOrb.BIBLES)) {
+				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 					if ( parDispModules.contains(module.getName()) ) {
 						continue;
@@ -90,7 +90,7 @@
 		<%
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
-				if (module != null && module.getType().equals(SwordOrb.COMMENTARIES)) {
+				if (module != null && module.getCategory().equals(SwordOrb.COMMENTARIES)) {
 		%>
 				<li>
 					<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>" title="Remove from displayed modules">
@@ -109,7 +109,7 @@
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].type.equals(SwordOrb.COMMENTARIES)) {
+				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 					if ( parDispModules.contains(module.getName()) ) {
 						continue;
@@ -142,8 +142,8 @@
 		</ul>
 		<%
 			activeModule = mgr.getModuleByName((String)parDispModules.get(0));
-			if (activeModule.getType().equals(SwordOrb.BIBLES) ||
-			    activeModule.getType().equals(SwordOrb.COMMENTARIES))
+			if (activeModule.getCategory().equals(SwordOrb.BIBLES) ||
+			    activeModule.getCategory().equals(SwordOrb.COMMENTARIES))
 			{
 		%>
 
