@@ -982,8 +982,6 @@ color: #bb0000;
   background-color: #7F673C;
 }
 
-{background-color: #C9CEA8; width: 100%; height: 100px; margin: 0px; border-bottom: 4px solid #999; background-image: url("/img/topback.jpg"); background-repeat: repeat-x; background-position: top left;}
-
 
 #header h1 {
   display: none;
@@ -1056,8 +1054,6 @@ border-bottom: 1px solid #7F673C;
      margin-left : 0;
      overflow: visible;
      z-index:6;
-     filter: Alpha(Opacity=92)
-     layer-background-color: #fff3cf;
      border: 1px #000000;
      border-style: solid;
      padding: 7px 7px 7px 7px;

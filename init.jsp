@@ -269,6 +269,8 @@
 	session.setAttribute("Headings", headings);
 	session.setAttribute("Javascript", javascript);
 	session.setAttribute("showTabs", showTabs);
+	mgr.setJavascript(!"Off".equalsIgnoreCase(javascript));
+	mgr.setGlobalOption("Headings", ("Off".equalsIgnoreCase(headings)) ? "Off":"On");
 /*
 	// kept around in case we ever need it again
 				// de-serialize from cookie

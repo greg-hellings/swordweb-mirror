@@ -43,16 +43,20 @@
 
 		<h2>Translations:</h2>
 		<h3>Preferred Translations</h3>
-		<ul>
 		<%
+		if (prefBibles.size() > 0) {
+			out.println("<ul>");
+		}
 			for (int i = 0; i < prefBibles.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)prefBibles.get(i));
 		%>
 				<li><a href="preferences.jsp?add=<%= URLEncoder.encode(module.getName()) %>" title="Add <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
 		<%
 			}
+		if (prefBibles.size() > 0) {
+			out.println("</ul>");
+		}
 		%>
-		</ul>
 
 		<h3>All Translations</h3>
 		<ul>
@@ -76,16 +80,20 @@
 
 		<h2>Comentaries:</h2>
 		<h3>Preferred Comentaries</h3>
-		<ul>
 		<%
+		if (prefCommentaries.size() > 0) {
+			out.println("<ul>");
+		}
 			for (int i = 0; i < prefCommentaries.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)prefCommentaries.get(i));
 		%>
 				<li><a href="preferences.jsp?add=<%= URLEncoder.encode(module.getName()) %>" title="Add <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
 		<%
 			}
+		if (prefCommentaries.size() > 0) {
+			out.println("</ul>");
+		}
 		%>
-		</ul>
 
 
 <h3>All Comentaries</h3>
@@ -109,8 +117,10 @@
 <div id="preferences">
 		<h2>Preferred Translations</h2>
 		<p>Click to remove.  Reselect on the side to move to the top.</p>
-		<ul>
 		<%
+		if (prefBibles.size() > 0) {
+			out.println("<ul>");
+		}
 			for (int i = 0; i < prefBibles.size(); i++) {
 				SWModule mod = mgr.getModuleByName((String)prefBibles.get(i));
 		%>
@@ -118,12 +128,16 @@
 
 		<%
 			}
+		if (prefBibles.size() > 0) {
+			out.println("</ul>");
+		}
 		%>
-		</ul>
 		<h2>Preferred Commentaries</h2>
 		<p>Click to remove.  Reselect on the side to move to the top.</p>
-		<ul>
 		<%
+		if (prefCommentaries.size() > 0) {
+			out.println("<ul>");
+		}
 			for (int i = 0; i < prefCommentaries.size(); i++) {
 				SWModule mod = mgr.getModuleByName((String)prefCommentaries.get(i));
 		%>
@@ -131,8 +145,10 @@
 
 		<%
 			}
+		if (prefCommentaries.size() > 0) {
+			out.println("</ul>");
+		}
 		%>
-		</ul>
 		<h2>Preferred Style</h2>
 		<ul>
 <% for (int i = 0; i < styleNames.size(); i++) { %>
@@ -153,8 +169,8 @@
 		</ul>
 		<h2 id="misc">Misc Options</h2>
 		<ul>
-			<li><a id="headings" href="preferences.jsp?Headings=<%= "Off".equalsIgnoreCase(headings)?"On":"Off" %>#misc" title=<%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles"><%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles</a></li>
-			<li><a id="javascript" href="preferences.jsp?Javascript=<%= "Off".equalsIgnoreCase(javascript)?"On":"Off" %>#misc" title=<%= "Off".equalsIgnoreCase(javascript)?"Use":"Don't Use" %> Javascript"><%= "Off".equalsIgnoreCase(javascript)?"Use":"Don't Use" %> Javascript</a></li>
+			<li><a id="headings" href="preferences.jsp?Headings=<%= "Off".equalsIgnoreCase(headings)?"On":"Off" %>#misc" title="<%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles"><%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles</a></li>
+			<li><a id="javascript" href="preferences.jsp?Javascript=<%= "Off".equalsIgnoreCase(javascript)?"On":"Off" %>#misc" title="<%= "Off".equalsIgnoreCase(javascript)?"Use":"Don't Use" %> Javascript"><%= "Off".equalsIgnoreCase(javascript)?"Use":"Don't Use" %> Javascript</a></li>
 		</ul>
 
 </div>

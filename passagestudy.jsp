@@ -35,8 +35,6 @@
 	String showStrong = request.getParameter("showStrong");
 	String showMorph = request.getParameter("showMorph");
 
-	mgr.setGlobalOption("Headings", ("Off".equalsIgnoreCase(headings)) ? "Off":"On");
-	mgr.setJavascript(!"Off".equalsIgnoreCase(javascript));
 
 	for (int i = 0; i < 2; i++) {
 		String []nodes = request.getParameterValues((i>0)?"close":"open");
