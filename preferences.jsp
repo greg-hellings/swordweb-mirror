@@ -139,6 +139,18 @@
 <% } %>
 		</ul>
 
+		<h2>Tabs</h2>
+		<ul>
+<% for (int i = 0; i < tabNames.size(); i++) {
+	boolean visible = !"false".equals(showTabs.get(i));
+	String n = (String)tabNames.get(i);
+	String l = (String)tabLinks.get(i);
+	if (!"preferences.jsp".equals(l)) {
+ %>
+			<li><a href="preferences.jsp?<%=(visible)?"hide":"show"%>Tab=<%= Integer.toString(i)%>" title="<%= ((visible)?"Hide ":"Show ") + n %> Tab"><%= ((visible)?"Hide ":"Show ") + n %> Tab</a></li>
+<% }} %>
+		</ul>
+
 </div>
 	</tiles:put>
 </tiles:insert>

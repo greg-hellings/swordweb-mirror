@@ -13,6 +13,8 @@
 	static Vector styleNames = null;
 	static Vector styleFiles = null;
 	static Vector styleDescriptions = null;
+	static Vector tabNames = null;
+	static Vector tabLinks = null;
 %>
 
 <%
@@ -31,6 +33,25 @@
 
 			styleNames.add("Parchment");
 			styleFiles.add("parchment.css");
+
+			tabNames = new Vector();
+			tabLinks = new Vector();
+			tabNames.add("Home");
+			tabLinks.add("index.jsp");
+			tabNames.add("Passage Study");
+			tabLinks.add("passagestudy.jsp");
+			tabNames.add("Parallel");
+			tabLinks.add("parallelstudy.jsp");
+			tabNames.add("Search");
+			tabLinks.add("powersearch.jsp");
+			tabNames.add("Devotionals");
+			tabLinks.add("dailydevotion.jsp");
+			tabNames.add("Library");
+			tabLinks.add("fulllibrary.jsp");
+			tabNames.add("Preferences");
+			tabLinks.add("preferences.jsp");
+			tabNames.add("About");
+			tabLinks.add("about.jsp");
 		}
 	}
 
@@ -76,6 +97,7 @@
 	Vector prefBibles = (Vector)session.getAttribute("PrefBibles");
 	Vector prefCommentaries = (Vector)session.getAttribute("PrefCommentaries");
 	Vector parDispModules = (Vector)session.getAttribute("ParDispModules");
+
 	String prefStyle = (String)request.getParameter("setStyle");
 	if (prefStyle == null)
 		prefStyle = (String)session.getAttribute("PrefStyle");
@@ -86,6 +108,42 @@
 		response.addCookie(c);
 	}
 
+	Vector showTabs = (Vector)session.getAttribute("showTabs");
+	if (showTabs == null) {
+		showTabs = new Vector();
+		for (int i = 0; i < tabNames.size(); i++) {
+			showTabs.add("true");
+		}
+	}
+	String[] showTab = request.getParameterValues("showTab");
+	if (showTab != null) {
+		for (int i = 0; i < showTab.length; i++) {
+			try {
+				int tabNum = Integer.parseInt(showTab[i]);
+				showTabs.set(tabNum, "true");
+				Cookie c = new Cookie("showTab"+Integer.toString(tabNum), "t");
+				c.setMaxAge(java.lang.Integer.MAX_VALUE);
+				c.setPath("/");
+				response.addCookie(c);
+			}
+			catch(Exception e) {}
+		}
+	}
+	showTab = request.getParameterValues("hideTab");
+	if (showTab != null) {
+		for (int i = 0; i < showTab.length; i++) {
+			try {
+				int tabNum = Integer.parseInt(showTab[i]);
+				showTabs.set(tabNum, "false");
+				Cookie c = new Cookie("showTab"+Integer.toString(tabNum), "f");
+				c.setMaxAge(java.lang.Integer.MAX_VALUE);
+				c.setPath("/");
+				response.addCookie(c);
+			}
+			catch(Exception e) {}
+		}
+	}
+
 
 	Cookie[] cookies = request.getCookies();
 	if ((prefBibles == null) && (cookies != null)) {
@@ -94,7 +152,14 @@
 			int start, end;
 			String field;
 			String line;
-			if (cookies[i].getName().equals("PrefStyle")) {
+			if (cookies[i].getName().startsWith("showTab")) {
+				try {
+					int tabNum = Integer.parseInt(cookies[i].getName().substring(8));
+					showTabs.set(tabNum, ("t".equals(cookies[i].getValue()))?"true":"false");
+				}
+				catch (Exception e) {}
+			}
+			else if (cookies[i].getName().equals("PrefStyle")) {
 				prefStyle = cookies[i].getValue();
 			}
 			else if (cookies[i].getName().equals("PrefBibles")) {
@@ -153,6 +218,7 @@
 	session.setAttribute("PrefCommentaries", prefCommentaries);
 	session.setAttribute("ParDispModules", parDispModules);
 	session.setAttribute("PrefStyle", prefStyle);
+	session.setAttribute("showTabs", showTabs);
 /*
 	// kept around in case we ever need it again
 				// de-serialize from cookie
