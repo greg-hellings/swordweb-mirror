@@ -53,11 +53,11 @@
 		<fieldset>
 <%
 		for (int i = 0; i < pageTags.size(); i++) {
-			String key   = HTMLEncoder.encode((String)pageTags.get(i));
+			String key   = (String)pageTags.get(i);
 			String value = TranslateTag.getTranslation(pageContext, key, false);
 %>
-			<legend><%= key %></legend>
-			<input type="text" name="t<%=i%>" size="100" value="<%=value%>"/>
+			<legend><%= HTMLEncoder.encode(key) %></legend>
+			<input type="text" name="t<%=i%>" size="100" value="<%= HTMLEncoder.encode(value)%>"/>
 			<br/>
 <%
 		}
