@@ -8,3 +8,6 @@
 <p>Copyright &copy; 2003  <a href="http://www.crosswire.org/">Crosswire Bible Society</a></p>
 <p><a href="http://validator.w3.org/check/referer" title="valid xhtml">xhtml</a></p>
 </div>
+</div>
+</div>
+</div>
