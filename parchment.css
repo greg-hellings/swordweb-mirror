@@ -1,8 +1,8 @@
 body{
   color: #000000;
   background-color: #ffffff;
-  font-size: 76%;
   margin: 0px 0px 0px 0px;
+  font-size: 76%;
 }
 
 a:link { color: #8A0010; }
@@ -571,10 +571,10 @@ color:#8A0010;
 /* Passage Study */
 
 #passagestudy{
-font-size: 1em;
-line-height: 1.4em;
+line-height: 1.5em;
 margin: 0px 14em 0px 11.5em;
 padding: 0 0 0px 0;
+font-size: 1.0em;
 }
 
 #passagestudy div{
