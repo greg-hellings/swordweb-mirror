@@ -34,7 +34,7 @@
 
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" type="string">
-		Search results for "<%= activeSearchTerm %>"
+		Search results for <%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %>
 	</tiles:put>
 
 	<tiles:put name="sidebar_left" type="string">
@@ -102,7 +102,9 @@
 				activeModule.setKeyText(results[i]);
 		%>
 			<dt><a href="passagestudy.jsp?key=<%= URLEncoder.encode(results[i]) %>" title="<%= results[i] %>"><%= results[i] %></a></dt>
-			<dd><%= activeModule.getRenderText() %></dd>
+			<dd>
+					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+			</dd>
 		<%
 			}
 		%>
