@@ -24,7 +24,9 @@
         <li><a <%= libraryID %> href="fulllibrary.jsp" title="Full Library">Library</a></li>
         <li><a <%= preferencesID %> href="preferences.jsp" title="Preferences">Preferences</a></li>
         <li><a <%= aboutID %> href="about.jsp" title="About">About</a></li>
+<!--  
         <li><a <%= helpID %> href="help.jsp" title="Help">Help</a></li>
+-->
       </ul>
     </div>
   </div>

@@ -24,6 +24,8 @@ padding: 0px 0px 0px 70px;
 margin: 0px 0px 0px 0px;
 }
 
+
+
 /* Main Navigation */
 
 #navlist{
@@ -147,16 +149,19 @@ border: 1px solid #ccc;
 padding: 3px;
 }
 
-
 /* External Links */
 
 #externallinks{
-padding: 0 1px 1px;
-margin-left: 0;
+padding: 0;
+margin: 0;
 }
 
 #externallinks ul{
-background: #E8EBF0;}
+padding: 0;
+margin: 0;
+background: #E8EBF0;
+border-bottom: 8px solid white;
+}
 
 #externallinks li{
 list-style: none;
@@ -169,7 +174,7 @@ border-bottom: 1px solid #E8EBF0;
 #externallinks li a{
 display: block;
 padding: 0.25em 0.5em 0.25em 0.75em;
-border-left: .5em solid #ccc;
+border-right: .5em solid #ccc;
 background: #E8EBF0;
 text-decoration: none;
 }
@@ -564,8 +569,10 @@ padding: 0 0 0px 0;
 }
 
 #passagestudy div{
-	padding: 0px .5em 0px .5em;
+	padding: 2px .5em 0px .5em;
 }
+
+
 
  span.versenum{
 	font-size: 1.2em;
@@ -582,6 +589,12 @@ padding: 0 0 0px 0;
  span.versenum a:hover {
 	text-decoration: underline;
 	color:#ff0000;
+}
+
+div.lexiconentry {
+	background-color: #FFFFEF;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 }
 
 div.currentverse {
