@@ -102,8 +102,10 @@
 				activeModule.setKeyText(results[i]);
 		%>
 			<dt><a href="passagestudy.jsp?key=<%= URLEncoder.encode(results[i]) %>" title="<%= results[i] %>"><%= results[i] %></a></dt>
-			<dd>
-					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+
+			<% boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction"))); %>
+			<dd dir="<%= rtol ? "rtl" : "ltr" %>">
+				<%= new String(activeModule.getRenderText().getBytes("iso-8859-1"), "UTF-8") %>
 			</dd>
 		<%
 			}
@@ -118,7 +120,7 @@
 
 				int navEnd = navStart + 10;
 				if ( navEnd*resultLimit.intValue() > results.length ) {
-					navEnd = results.length / resultLimit.intValue();
+					navEnd = (results.length / resultLimit.intValue()) + ((results.length % resultLimit.intValue()) > 0 ? 1 : 0);
 				}
 			%>
 
@@ -128,13 +130,20 @@
 			if ( navStart > 0 ) {
 		%>
 				<li><a href="wordsearchresults.jsp?start=0" title="First page (<%= results[0] %>) of search results">1</a>&nbsp;[...]</li>
-		<% 	}
-
+		<%
+			}
+			else {
+				if (results.length < resultLimit.intValue()) {
+		%>
+					<li><%= 1 %></li>
+		<%
+				}
+			}
 			for (int i = navStart; i < navEnd; ++i) {
 				if (i == (resultStart.intValue() / resultLimit.intValue())) {
 		%>
 					<li><%= i+1 %></li>
-		<%		}
+		<%	}
 				else {
 		%>
 					<li><a href="wordsearchresults.jsp?start=<%= i * resultLimit.intValue() %>" title="page <%= i+1 %> (<%= results[i * resultLimit.intValue()] %>) of search results"><%= i+1 %></a></li>
@@ -144,8 +153,8 @@
 		%>
 
 		<%
-			if ( navEnd < (results.length / resultLimit.intValue()) ) {
-				int lastPage = (results.length - resultLimit.intValue()) -  (results.length % resultLimit.intValue());
+			if (navEnd < (results.length / resultLimit.intValue()) ) {
+				int lastPage = (results.length - resultLimit.intValue()) - (results.length % resultLimit.intValue());
 		%>
 				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage %>" title="Last page (<%= results[lastPage] %>) of search results"><%= results.length / resultLimit.intValue() %></a></li>
 		<%
