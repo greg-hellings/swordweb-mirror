@@ -193,7 +193,7 @@
 						if (mod != activeModule)
 							mod.setKeyText( keyText );
 		%>
-							<td dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %> >
+							<td dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>" >
 								<span class="versenum">
 									<a href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>">
 										<%= keyText.substring(keyText.indexOf(":")+1) %>
