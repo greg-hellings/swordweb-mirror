@@ -237,9 +237,9 @@
 						SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongsHebrew":"StrongsGreek");
 						lex.setKeyText(showStrong);
 				%>
-						<div class="lexiconentry">
+						<div class="lexiconentry"><p>
 						<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-						</div>
+						</p></div>
 				<%	} %>
 				<%
 					if (showMorph != null) {
@@ -247,9 +247,9 @@
 						SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongHebrew":"Robinson");
 						lex.setKeyText(showMorph);
 				%>
-						<div class="lexiconentry">
+						<div class="lexiconentry"><p>
 						<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-						</div>
+						</p></div>
 				<%	}
 				}
 				}
