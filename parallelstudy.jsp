@@ -79,9 +79,6 @@
 		</ul>
 		<% } %>
 
-
-		<hr/>
-
 		<h3>Available modules</h3><p>click to add</p>
 		<% if (modInfo.length > 0) { %>
 
@@ -142,8 +139,6 @@
 		%>
 		</ul>
 		<% } %>
-
-		<hr/>
 
 		<h3>Available modules</h3> <p>click to add</p>
 		<% if (modInfo.length > 0) { %>
