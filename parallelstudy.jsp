@@ -160,15 +160,9 @@
 			}
 		%>
 
-		<%-- table which contains all verse items --%>
-		<table id="paralleldisplay">
-		<caption>
-		</caption>
-		<thead>
+		<div id="paralleldisplay">
 
-		<tr><td>
-
-		<h2>Parallel Viewing</h2>
+		<h2>Parallel Viewing: <%= activeKey %></h2>
 		<p>
 		Parallel viewing allows you to see two or more texts side by side.
 		For example, you could view two Bible versions of the same verse next to
@@ -183,6 +177,13 @@
 			<li><a href="">next chapter</a></li>
 		</ul>
 
+
+		<%-- table which contains all verse items --%>
+		<table>
+		<caption>
+		</caption>
+		<thead>
+
 		<%
 			activeModule = mgr.getModuleByName((String)parDispModules.get(0));
 			if (activeModule.getCategory().equals(SwordOrb.BIBLES) ||
@@ -190,7 +191,6 @@
 			{
 		%>
 
-		</td></tr>
 		<tr>
 
 		<% //insert module names at the top
@@ -244,5 +244,7 @@
 
 		</tbody>
 		</table>
+
+		</div>
 	</tiles:put>
 </tiles:insert>
