@@ -305,7 +305,9 @@ list-style-type: none;
 background: #E8EBF0;
 text-indent: 0em;
 padding: 0px;
-margin: 0px 0px 10px 0px;
+margin: 0px 0px 0px 0px;
+	height: 170px;
+	overflow: auto;
 }
 
 #devotionals li{
@@ -424,6 +426,7 @@ background: #E8EBF0;
 text-indent: 0em;
 padding: 0px;
 margin: 0px 0px 10px 0px;
+
 }
 
 #commentaries li{
