@@ -19,6 +19,17 @@
 		session.setAttribute("toolsTreeOpen", toolsTreeOpen);
 	}
 
+	boolean strongs = "on".equals((String) session.getAttribute("strongs"));
+	String buf = request.getParameter("strongs");
+	strongs = (buf != null) ? "on".equalsIgnoreCase(buf) : strongs;
+	session.setAttribute("strongs", (strongs)?"on":"off");
+
+	boolean morph = "on".equals((String) session.getAttribute("morph"));
+	buf = request.getParameter("morph");
+	morph = (buf != null) ? "on".equalsIgnoreCase(buf) : morph;
+	session.setAttribute("morph", (morph)?"on":"off");
+
+
 	for (int i = 0; i < 2; i++) {
 		String []nodes = request.getParameterValues((i>0)?"close":"open");
 		if (nodes != null) {
@@ -86,8 +97,8 @@
 	<tiles:put name="sidebar_right" type="string">
 		<div id="commentaries">
 		<h2>Word Study</h2>
-			<h3><a href="passagestudy.jsp?strongs=on">Strongs</a></h3>
-			<h3><a href="passagestudy.jsp?morph=on">Morphology</a></h3>
+			<h3><a href="passagestudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>">Strongs</a></h3>
+			<h3><a href="passagestudy.jsp?morph=<%= (morph) ? "off" : "on" %>">Morphology</a></h3>
 		<h2>Preferred Comentaries:</h2>
 
 	<% if (prefCommentaries.size() > 0) { %>
@@ -148,10 +159,16 @@
 		<%
 			if (activeModule.getCategory().equals(SwordOrb.BIBLES)) {
 				String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
+				int activeVerse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
 				for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
 					String keyText = activeModule.getKeyText();
+					int curVerse = Integer.parseInt(keyText.substring(keyText.indexOf(":")+1));
 					if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":"))))
 						break;
+					mgr.setGlobalOption("Strong's Numbers",
+							((strongs) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
+					mgr.setGlobalOption("Morphological Tags", 
+							((morph) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
 					boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 			%>
 				<div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
