@@ -5,7 +5,7 @@
 	if (resetModule != null)
 		session.setAttribute("ActiveModule", resetModule);
 	String activeModuleName = (String) session.getAttribute("ActiveModule");
-	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? "KJV" : activeModuleName);
+	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? defaultBible : activeModuleName);
 
 	String resetSearchTerm = request.getParameter("searchTerm");
 	if (resetSearchTerm != null)

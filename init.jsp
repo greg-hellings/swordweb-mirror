@@ -17,6 +17,7 @@
 	static Vector tabLinks = null;
 	static Vector tabTitles = null;
 	static Vector tabDefaults = null;
+	static String defaultBible = "NASB";
 %>
 
 <%

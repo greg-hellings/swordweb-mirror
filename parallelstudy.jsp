@@ -20,7 +20,7 @@
 	}
 
 	if (parDispModules.size() == 0) {
-		parDispModules.add(0, "KJV"); //our standard, fallback module
+		parDispModules.add(0, defaultBible); //our standard, fallback module
 	}
 
 	SWModule activeModule = mgr.getModuleByName((String)parDispModules.get(0));
