@@ -13,6 +13,59 @@ var winH;
 var refwindow;
 var stevec = 0;
 
+
+var xmlhttp=false;
+/*@cc_on @*/
+/*@if (@_jscript_version >= 5)
+// JScript gives us Conditional compilation, we can cope with old IE versions.
+// and security blocked creation of the objects.
+ try {
+  xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+ } catch (e) {
+  try {
+   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  } catch (E) {
+   xmlhttp = false;
+  }
+ }
+@end @*/
+if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+  xmlhttp = new XMLHttpRequest();
+}
+
+var lastword = "";
+
+function p(mod, key, wordnum, extratext) {
+
+	/* check for aliases */
+	if (mod == "G") mod = "StrongsGreek";
+	if (mod == "H") mod = "StrongsHebrew";
+
+	xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+key,true);
+	xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState==4) {
+			b=document.getElementById("onlywlayer");
+			if (b==null) {
+				b=document.createElement("div");
+				b.id="onlywlayer";
+				b.className="word-layer";
+				document.body.appendChild(b);
+				b.style.visibility = "hidden";
+			}
+			b.innerHTML=xmlhttp.responseText + "<br/>"+extratext;
+			if ((wordnum == lastword) && (b.style.visibility == "visible")) {
+				showhide("onlywlayer", "hidden");
+			}
+			else {
+				showhide("onlywlayer", "visible");
+			}
+			lastword = wordnum;
+		}
+	}
+	xmlhttp.send(null)
+}
+
+
 function openref(url) {
 		stevec++;
 		var ime = "okno" + stevec;
@@ -175,7 +228,7 @@ function note (layer,image){
   var graphic1 = 'opomba.gif';
   var graphic2 = 'opomba2.gif';
 
-  showhide(layer,image,graphic1,graphic2);
+  showhide(layer);
 }
 
 
@@ -183,11 +236,11 @@ function wordInfo (layer,image){
   var graphic1 = 'ref.gif';
   var graphic2 = 'ref2.gif';
 
-  showhide(layer,image,graphic1,graphic2);
+  showhide(layer);
 }
 
 
-function showhide (layer,image,graphic1,graphic2){
+function showhide (layer, vis) {
 //	if(document.layers || document.all || navigator.userAgent.indexOf("Mozilla/5")!=-1)
 //	alert ("stanje od " + num + ": " + document.all[num].style.visibility + ", kaj= " + kaj);
 
@@ -205,14 +258,12 @@ function showhide (layer,image,graphic1,graphic2){
 		cx = 5;
 		cy = cy + 20;
 	}
-	if (l.style.visibility == "visible"){
-		l.style.visibility = "hidden";
-	}
-	else{
+
+	if (vis == "visible") {
 		l.style.left = "" + cx + "px";
 		l.style.top = "" + cy + "px";
-		l.style.visibility = "visible";
 	}
+	l.style.visibility = vis;
 }
 
 
@@ -230,4 +281,5 @@ function popup(lang){
 	else
 		alert('Žal!\nNepoznan brkljalnik...\n.');
 }
+
 
