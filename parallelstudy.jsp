@@ -44,7 +44,9 @@
 		<div id="translations">
 
 		<h2>Translations:</h2>
-		<p>Displayed modules (click to remove)</p>
+		<h3>Displayed modules <h3>
+		<p>click to remove</p>
+		<% if (parDispModules.size() > 0) { %>
 		<ul>
 		<%
 			for (int i = 0; i < parDispModules.size(); i++) {
@@ -62,10 +64,14 @@
 		%>
 
 		</ul>
+		<% } %>
+
 
 		<hr/>
 
-		<p>Available modules (click to add)</p>
+		<h3>Available modules</h3><p>click to add</p>
+		<% if (modInfo.length > 0) { %>
+
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
@@ -86,6 +92,7 @@
 			}
 		%>
 		</ul>
+		<% } %>
 
 		</div>
 
@@ -97,7 +104,8 @@
 
 		<h2>Comentaries:</h2>
 
-		<p>Displayed modules (click to remove)</p>
+		<h3>Displayed modules</h3> <p>click to remove</p>
+		<% if (parDispModules.size() > 0) { %>
 		<ul>
 		<%
 			for (int i = 0; i < parDispModules.size(); i++) {
@@ -114,10 +122,12 @@
 			}
 		%>
 		</ul>
+		<% } %>
 
 		<hr/>
 
-		<p>Available modules (click to add)</p>
+		<h3>Available modules</h3> <p>click to add</p>
+		<% if (modInfo.length > 0) { %>
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
@@ -137,6 +147,8 @@
 			}
 		%>
 		</ul>
+		<% } %>
+
 		</div>
 
 	</tiles:put>
