@@ -10,7 +10,7 @@
 	if (gbsBook != null)
 		session.setAttribute("gbsBook", gbsBook);
 	gbsBook = (String)session.getAttribute("gbsBook");
-	SWModule module = mgr.getModuleByName(gbsBook);
+	SWModule module = (gbsBook == null) ? null : mgr.getModuleByName(gbsBook);
 
 	String gbsEntry = (String)request.getParameter("gbsEntry");
 	if (gbsEntry != null)
