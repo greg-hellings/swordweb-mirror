@@ -68,6 +68,7 @@
 	</tiles:put>
 
 	<tiles:put name="content" type="string">
+<div id="powersearch">
 		<h2>Power Search</h2>
 		Module to search:
 		<p class="textname">&raquo; <%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></p>
@@ -87,6 +88,6 @@
 				<input type="submit" class="searchbutton" value=" Search " />
 			</fieldset>
 		</form>
-
+</div>
 	</tiles:put>
 </tiles:insert>

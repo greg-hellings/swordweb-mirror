@@ -52,7 +52,6 @@
 		%>
 		</ul>
 
-		<hr/>
 
 		<ul>
 		<%
@@ -85,7 +84,7 @@
 		%>
 		</ul>
 
-		<hr/>
+
 
 		<ul>
 		<%
@@ -104,6 +103,7 @@
 	</tiles:put>
 
 	<tiles:put name="content" type="string">
+<div id="preferences">
 		<h2>Preferred Bibles</h2>
 		Click to remove.  Reselect on the side to move to the top.
 		<ul>
@@ -130,6 +130,7 @@
 			}
 		%>
 		</ul>
+</div>
 	</tiles:put>
 </tiles:insert>
 

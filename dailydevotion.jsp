@@ -16,6 +16,7 @@
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" value="Daily devotional" />
 	<tiles:put name="sidebar_left" type="string">
+<div id="devotionals">
 		<h2>Daily Devotionals:</h2>
 		<ul>
 		<%
@@ -32,7 +33,7 @@
 			activeDevo.setKeyText(formatter.format(new Date()));
 		%>
 		</ul>
-
+</div>
 	</tiles:put>
 
 	<tiles:put name="sidebar_right" type="string">
@@ -42,13 +43,14 @@
 		<%
 			formatter = new SimpleDateFormat("EEEE, MMM dd");
 		%>
+<div id="daily">
 		<h2>Today's Devotion (<%= formatter.format(new Date()) %>)</h2>
-		<br/>
-		From:
+
 		<p class="textname">&raquo; <%= activeDevo.getDescription().replaceAll("&", "&amp;") + " (" + activeDevo.getName() + ")" %></p>
-		<br/>
+
 		<div class="verse">
 			<%= new String(activeDevo.getRenderText().getBytes(), "UTF-8") %>
 		</div>
+</div>
 	</tiles:put>
 </tiles:insert>
