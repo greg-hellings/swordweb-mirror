@@ -1,3 +1,7 @@
+<%@ page
+    language="java"
+    contentType="text/html;charset=utf-8"
+%>
 <%@ page import="java.util.Vector" %>
 <%@ page import="java.util.Properties" %>
 <%@ page import="java.io.File" %>
@@ -26,6 +30,7 @@
 				String key = (String)pageTags.get(i);
 				String value = (String)request.getParameter("t"+Integer.toString(i));
 				if ((key != null) && (value != null)) {
+					value = new String(value.getBytes("iso8859-1"), "UTF-8");
 					locale.setProperty(""+key.hashCode(), value);
 				}
 			}
