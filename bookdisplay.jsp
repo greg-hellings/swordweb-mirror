@@ -93,16 +93,14 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 
 		if (offset > 0) {
 			String localName = rootTreeKey.substring(offset+1);
-			out.print("<li>");
-			//if (target.equals(rootTreeKey))
-			//	out.print("<b>");
+			if (target.equals(rootTreeKey))
+				out.print("<li id=\"current\">"); //the current entry in the navigation tree
+			else
+				out.print("<li>");
 
 			if (children.length > 0) {
 				out.print("<a class=\"" + ((open)?"closed":"open") + "\" href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(rootTreeKey) + "\"><img src=\"images/" + ((open)?"minus":"plus") + ".png\" alt=\"action\"/></a>");
 			}
-
-			//if (target.equals(rootTreeKey))
-			//	out.print("</b>");
 
 			out.print(" <a href=\"bookdisplay.jsp?gbsEntry=" + URLEncoder.encode(rootTreeKey) + "\">" + localName + "</a>");
 

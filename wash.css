@@ -181,9 +181,17 @@ background: #C5D6EA;
 /* OSIS Library */
 
 #library ul, #library li {list-style-type: none;}
+
 #library ul {text-indent: 0em;
 padding: 0px 0px 0px 0px;
 margin: 0px 0px 0px 0px;}
+
+#library ul ul {
+text-indent: 0em;
+padding: 0px 0px 0px 0px;
+margin: 0px 0px 0px 10px;
+}
+
 #library li{
 margin: 3px 0px 0px 10px;
 background-image: url(images/arrow.png);
@@ -201,7 +209,8 @@ background-image: url(images/minus.png);
 background-repeat: no-repeat;
 }
 
-#library li a {display:block;
+#library li a {
+display:block;
 padding: 0px 0px 0px 15px;
 text-decoration: none;
 color:#000}
