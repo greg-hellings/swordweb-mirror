@@ -4,8 +4,8 @@
 	String resetModule = request.getParameter("mod");
 	if (resetModule != null)
 		session.setAttribute("ActiveModule", mgr.getModuleByName(resetModule));
-	SWModule activeModule = (SWModule) session.getAttribute("ActiveModule");
-	if (activeModule == null) activeModule = mgr.getModuleByName("WEB");
+	String activeModuleName = (String) session.getAttribute("ActiveModule");
+	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? "WEB" : activeModuleName);
 
 	String resetSearchTerm = request.getParameter("searchTerm");
 	if (resetSearchTerm != null)
@@ -74,9 +74,10 @@
 	</tiles:put>
 
 	<tiles:put name="content" type="string">
+	<div class="verse">
 		<h2>Results for "<em><%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %></em>"</h2>
 		<%
-			String[] results = null;
+			SearchHit[] results = null;
 			if ((activeSearchTerm != null) && (activeSearchTerm.trim().length() > 0)) {
 				results = activeModule.search(activeSearchTerm, stype, soptions, range);
 
@@ -84,11 +85,11 @@
 				session.setAttribute("SearchResults", results);
 			}
 			else if ( activeSearchTerm == null ) { //no search term given, try to see if we have a valid search result saved
-				results = (String[]) session.getAttribute("SearchResults");
+				results = (SearchHit[]) session.getAttribute("SearchResults");
 			}
 
 			if ( results == null )
-				results = new String[0];
+				results = new SearchHit[0];
 		%>
 
 		<p class="textname">&raquo; <%= results.length %> result<%= (results.length == 1)?"s":""%> in the text of <%= activeModule.getDescription() %></p>
@@ -99,9 +100,19 @@
 			Integer resultLimit = new Integer(30);
 
 			for (int i = resultStart.intValue(); i < results.length && i < resultStart.intValue() + resultLimit.intValue(); i++) {
-				activeModule.setKeyText(results[i]);
+				activeModule.setKeyText(results[i].key);
 		%>
-			<dt><a href="passagestudy.jsp?key=<%= URLEncoder.encode(results[i]) %>" title="<%= results[i] %>"><%= results[i] %></a></dt>
+			<dt>
+<div class="bluepanel">
+<% // I know, A TABLE!!!  Please fix me!!! %>
+<table width="100%">
+<tr><td>
+<a href="passagestudy.jsp?key=<%= URLEncoder.encode(results[i].key)+"#cv" %>" title="<%= results[i].key %>"><%= results[i].key %></a>
+</td><td align="right"><%= (results[i].score > 0)?("<i>score: "+results[i].score)+"</i>" : "" %>
+</td></tr></table>
+
+</div>
+</dt>
 
 			<% boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction"))); %>
 			<dd dir="<%= rtol ? "rtl" : "ltr" %>">
@@ -129,7 +140,7 @@
 		<%
 			if ( navStart > 0 ) {
 		%>
-				<li><a href="wordsearchresults.jsp?start=0" title="First page (<%= results[0] %>) of search results">1</a>&nbsp;[...]</li>
+				<li><a href="wordsearchresults.jsp?start=0" title="First page (<%= results[0].key %>) of search results">1</a>&nbsp;[...]</li>
 		<%
 			}
 			else {
@@ -146,7 +157,7 @@
 		<%	}
 				else {
 		%>
-					<li><a href="wordsearchresults.jsp?start=<%= i * resultLimit.intValue() %>" title="page <%= i+1 %> (<%= results[i * resultLimit.intValue()] %>) of search results"><%= i+1 %></a></li>
+					<li><a href="wordsearchresults.jsp?start=<%= i * resultLimit.intValue() %>" title="page <%= i+1 %> (<%= results[i * resultLimit.intValue()].key %>) of search results"><%= i+1 %></a></li>
 		<%
 				}
 			}
@@ -156,11 +167,12 @@
 				int lastPage = (results.length / resultLimit.intValue()) + ((results.length % resultLimit.intValue()) > 0 ? 1 : 0) -1;
 			if (navEnd < lastPage) {
 		%>
-				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage*resultLimit.intValue() %>" title="Last page (<%= results[lastPage] %>) of search results"><%= lastPage+1 %></a></li>
+				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage*resultLimit.intValue() %>" title="Last page (<%= results[lastPage].key %>) of search results"><%= lastPage+1 %></a></li>
 		<%
 			}
 		%>
 		</ul>
+	</div>
 
 	</tiles:put>
 </tiles:insert>

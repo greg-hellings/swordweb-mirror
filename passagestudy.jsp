@@ -2,9 +2,9 @@
 <%
 	String resetModule = request.getParameter("mod");
 	if (resetModule != null)
-		session.setAttribute("ActiveModule", mgr.getModuleByName(resetModule));
-	SWModule activeModule = (SWModule) session.getAttribute("ActiveModule");
-	if (activeModule == null) activeModule = mgr.getModuleByName("WEB");
+		session.setAttribute("ActiveModule", resetModule);
+	String activeModuleName = (String) session.getAttribute("ActiveModule");
+	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? "WEB" : activeModuleName);
 
 	String resetKey = request.getParameter("key");
 	if (resetKey != null)
@@ -23,7 +23,7 @@
 			for (int i = 0; i < prefBibles.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)prefBibles.get(i));
 		%>
-				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(module.getName()) %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(module.getName())+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
 		<%
 			}
 		%>
@@ -35,7 +35,7 @@
 				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 		%>
-				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name)+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
 		<%
 				}
 			}
@@ -51,7 +51,7 @@
 			for (int i = 0; i < prefCommentaries.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)prefCommentaries.get(i));
 		%>
-				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(module.getName()) %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(module.getName())+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
 		<%
 			}
 		%>
@@ -63,7 +63,7 @@
 				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 		%>
-				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name)+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
 		<%
 				}
 			}
@@ -93,7 +93,7 @@
 					boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 			%>
 				<div dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-					<span class="versenum"><a href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText) %>">
+					<span class="versenum"><a <%= (keyText.equals(activeKey))?"name=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
 						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
 					</span>
 

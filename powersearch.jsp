@@ -4,8 +4,8 @@
 	String resetModule = request.getParameter("mod");
 	if (resetModule != null)
 		session.setAttribute("ActiveModule", mgr.getModuleByName(resetModule));
-	SWModule activeModule = (SWModule) session.getAttribute("ActiveModule");
-	if (activeModule == null) activeModule = mgr.getModuleByName("WEB");
+	String activeModuleName = (String) session.getAttribute("ActiveModule");
+	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? "WEB" : activeModuleName);
 %>
 
 <tiles:insert beanName="basic" flush="true" >

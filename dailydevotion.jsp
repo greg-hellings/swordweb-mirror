@@ -5,9 +5,9 @@
 <%
 	String resetModule = request.getParameter("mod");
 	if (resetModule != null)
-		session.setAttribute("ActiveDevo", mgr.getModuleByName(resetModule));
-	SWModule activeDevo = (SWModule) session.getAttribute("ActiveDevo");
-	if (activeDevo == null) activeDevo = mgr.getModuleByName("SME");
+		session.setAttribute("ActiveDevo", resetModule);
+	String activeDevoName = (String) session.getAttribute("ActiveDevo");
+	SWModule activeDevo = mgr.getModuleByName((activeDevoName == null) ? "SME" : activeDevoName);
 
 	SimpleDateFormat formatter;
 %>

@@ -4,7 +4,7 @@
 	<tiles:put name="title" value="OSIS Bible Tool" />
 
 	<tiles:put name="sidebar_left" type="string">
-<div class="bluepanel">
+<div>
 <br/>
 <h3>Tools And Things</h3>
 <br/>
@@ -15,17 +15,8 @@
 <li><a href="http://www.bibleresourcecenter.org/research/virtuallibrary.dsp">Virtual Bible Library</a><br/><br/></li>
 </ul>
 </div>
-	</tiles:put>
-
-	<tiles:put name="sidebar_right" type="string">
-<div class="bluepanel">
-<center><h4>Library Upload Tool</h4></center><br/>
-<form><input type="submit" class="searchbutton" value="ADD YOUR TEXT HERE" /></form><br/>
-<i>Have you produced serious academic scholarship related to Biblical text?  Using our Scholar OSIS Tool, you can upload it for students or fellow scholars to review, or submit it to SBL for inclusion on OSIS Bible Tool.<br/><br>
-Only works reviewed and approved by SBL will be added for viewing by the public at large.</i>
-</div>
-<div class="bluepanel">
-<h2><a href="fulllibrary.jsp?action=closeAll">OSIS Library</a></h2>
+<div>
+<h3>OSIS Library</h3><br/>
 		<ul>
 <%
 			Vector leaves = new Vector();
@@ -34,12 +25,21 @@ Only works reviewed and approved by SBL will be added for viewing by the public 
 					leaves.add(modInfo[i].category);
 %>
 		
-<li><a href="fulllibrary.jsp?action=closeAll&open=<%= URLEncoder.encode(modInfo[i].category) %>"><%= modInfo[i].category %></a></td>
+<li><a href="fulllibrary.jsp?action=closeAll&open=<%= URLEncoder.encode(modInfo[i].category) %>"><%= modInfo[i].category %></a></li><br/>
 <%
 				}
 			}
 %>
 		</ul>
+</div>
+	</tiles:put>
+
+	<tiles:put name="sidebar_right" type="string">
+<div class="bluepanel">
+<center><h4>Library Upload Tool</h4></center><br/>
+<form><input type="submit" class="searchbutton" value="ADD YOUR TEXT HERE" /></form><br/>
+<i>Have you produced serious academic scholarship related to Biblical text?  Using our Scholar OSIS Tool, you can upload it for students or fellow scholars to review, or submit it to SBL for inclusion on OSIS Bible Tool.<br/><br>
+Only works reviewed and approved by SBL will be added for viewing by the public at large.</i>
 </div>
 	</tiles:put>
 
