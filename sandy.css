@@ -474,8 +474,8 @@ padding: 0px .5em 0px .5em;
 
  span.versenum a {
 	text-decoration: none;
-	color#808072;
-padding: 0px .5em 0px .5em;
+	color:#808072;
+padding: 0px 0.5em 0px 0.5em;
 }
 
  span.versenum a:hover {
