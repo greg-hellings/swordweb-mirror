@@ -16,6 +16,7 @@
 	static Vector tabNames = null;
 	static Vector tabLinks = null;
 	static Vector tabTitles = null;
+	static Vector tabDefaults = null;
 %>
 
 <%
@@ -26,42 +27,52 @@
 			styleFiles = new Vector();
 			styleDescriptions = new Vector();
 
-			styleNames.add("Washed Out");
-			styleFiles.add("wash.css");
+			styleNames.add("Parchment");
+			styleFiles.add("parchment.css");
 
 			styleNames.add("Sandy Creek");
 			styleFiles.add("sandy.css");
 
-			styleNames.add("Parchment");
-			styleFiles.add("parchment.css");
+			styleNames.add("Washed Out");
+			styleFiles.add("wash.css");
 
 			tabNames  = new Vector();
 			tabLinks  = new Vector();
 			tabTitles = new Vector();
+			tabDefaults = new Vector();
+
 			tabNames.add("Home");
 			tabTitles.add("Home");
 			tabLinks.add("index.jsp");
+			tabDefaults.add("true");
 			tabNames.add("Passage Study");
 			tabTitles.add("Passage Study");
 			tabLinks.add("passagestudy.jsp");
+			tabDefaults.add("true");
 			tabNames.add("Parallel");
 			tabTitles.add("Parallel Display");
 			tabLinks.add("parallelstudy.jsp");
+			tabDefaults.add("true");
 			tabNames.add("Power Search");
 			tabTitles.add("Power Search");
 			tabLinks.add("powersearch.jsp");
+			tabDefaults.add("true");
 			tabNames.add("Devotionals");
 			tabTitles.add("Daily Devotionals");
 			tabLinks.add("dailydevotion.jsp");
+			tabDefaults.add("false");
 			tabNames.add("Library");
 			tabTitles.add("Full Library");
 			tabLinks.add("fulllibrary.jsp");
+			tabDefaults.add("false");
 			tabNames.add("Preferences");
 			tabTitles.add("Preferences");
 			tabLinks.add("preferences.jsp");
+			tabDefaults.add("true");
 			tabNames.add("FAQ");
 			tabTitles.add("Frequently Asked Questions");
 			tabLinks.add("about.jsp");
+			tabDefaults.add("true");
 		}
 	}
 
@@ -122,7 +133,7 @@
 	if (showTabs == null) {
 		showTabs = new Vector();
 		for (int i = 0; i < tabNames.size(); i++) {
-			showTabs.add("true");
+			showTabs.add((String)tabDefaults.get(i));
 		}
 	}
 	String[] showTab = request.getParameterValues("showTab");

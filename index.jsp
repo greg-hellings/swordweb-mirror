@@ -48,12 +48,9 @@ I commented this section out until it can be made functional.
 <div id="style">
 <h2>Style:</h2>
 		<ul>
-			<li><a title="Washed Out" 
-href="index.jsp?setStyle=Washed+Out">Washed Out</a></li>
-			<li><a title="Sandy Creek" 
-href="index.jsp?setStyle=Sandy+Creek">Sandy Creek</a></li>
-			<li><a title="Parchment" 
-href="index.jsp?setStyle=Parchment">Parchment</a></li>
+<% for (int i = 0; i < styleNames.size(); i++) { %>
+			<li><a href="index.jsp?setStyle=<%= URLEncoder.encode((String)styleNames.get(i)) %>" title="<%= (String) styleNames.get(i) %>"><%= (String) styleNames.get(i) %></a></li>
+<% } %>
 		</ul>
 </div>
 
