@@ -208,6 +208,18 @@
 		<table>
 		<caption>
 		</caption>
+
+		<colgroup>
+		<% //setup col attributes
+				for (int i = 0; i < parDispModules.size(); i++) {
+					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
+		%>
+					<col width="<%= 100/parDispModules.size() %>%" />
+		<%
+				}
+		%>
+		</colgroup>
+
 		<thead>
 
 		<%
@@ -260,7 +272,7 @@
 						if (mod != activeModule)
 							mod.setKeyText( keyText );
 		%>
-							<td width="<%= 100/parDispModules.size() %>%" <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+							<td <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 								<span class="versenum">
 									<a <%= (keyText.equals(activeKey)) ? "id=\"cv\"" : "" %> href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>#cv"> <%= keyText.substring(keyText.indexOf(":")+1) %></a>
 								</span>
