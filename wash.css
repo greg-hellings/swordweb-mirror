@@ -523,9 +523,3 @@ color:#f00;
 
 #footer img {border:0;
 }
-
-/* Unicode stuff */
-span.unicode {
-	font-family:code2000, code2001, arial unicode ms,bitstream cyberbit,arial,georgia,palatino,sans-serif;
-	font-size:1.5em;
-}

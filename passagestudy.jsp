@@ -69,7 +69,7 @@
 		</ul>
 	<% } else { %>
 		<ul>
-		<li>Preferred Translations can be selected from the preferences tab<li>
+		<li>Preferred Translations can be selected from the preferences tab</li>
 		</ul>
 	<% } %>
 
@@ -79,7 +79,18 @@
 			boolean open = toolsTreeOpen.contains("allBibles");
 		%>
 <h3>All Translations</h3>
-			<p><a class="<%= ((open)?"closed":"open")%>" href="passagestudy.jsp?<%= ((open)?"close":"open")%>=allBibles" title="View all translations">View All</a></p>
+			<%
+			if (open) { //already open
+			%>
+				<p><a class="closed" href="passagestudy.jsp?close=allBibles" title="Hide all translations">Hide All</a></p>
+			<%
+			}
+			else { //closed
+			%>
+				<p><a class="open" href="passagestudy.jsp?open=allBibles" title="View all translations">View All</a></p>
+			<%
+			}
+			%>
 		<ul>
 		<%
 			if (open) {
@@ -119,7 +130,7 @@
 		</ul>
 	<% } else { %>
 		<ul>
-		<li>Preferred commentaries can be selected from the preferences tab<li>
+		<li>Preferred commentaries can be selected from the preferences tab</li>
 		</ul>
 	<% } %>
 
@@ -128,8 +139,20 @@
 		<%
 			boolean open = toolsTreeOpen.contains("allComm");
 		%>
-<h3>All Commentaries</h3>
-			<p><a class="<%= ((open)?"closed":"open")%>" href="passagestudy.jsp?<%= ((open)?"close":"open")%>=allComm" title="View all commentaries">View All</a></p>
+		<h3>All Commentaries</h3>
+		<%
+			if (open) { //already open
+		%>
+			<p><a class="closed" href="passagestudy.jsp?close=allComm" title="Hide all commentaries">Hide All</a></p>
+		<%
+		}
+		else { //closed
+		%>
+			<p><a class="open" href="passagestudy.jsp?open=allComm" title="View all commentaries">View All</a></p>
+		<%
+		}
+		%>
+
 		<ul>
 		<%
 			if (open) {
@@ -183,19 +206,11 @@
 					</span>
 
 					<%
-					boolean utf8 = ("UTF-8".equalsIgnoreCase(activeModule.getConfigEntry("Encoding")));
-					if (utf8) {
-						out.println("<span class=\"unicode\">");
-					}
+					String lang = activeModule.getConfigEntry("Lang");
 					%>
-
+					<span xml:lang="<%= (lang.equals("")) ? "en" : lang %>">
 					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-
-					<%
-					if (utf8) {
-						out.println("</span>");
-					}
-					%>
+					</span>
 				</div>
 			<%
 				}

@@ -226,25 +226,16 @@
 		%>
 							<td width="<%= 100/parDispModules.size() %>%" dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 								<span class="versenum">
-									<a <%= (keyText.equals(activeKey)) ? "name=\"cv\"" : "" %> href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>#cv">
-										<%= keyText.substring(keyText.indexOf(":")+1) %>
-									</a>
+									<a <%= (keyText.equals(activeKey)) ? "name=\"cv\"" : "" %> href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>#cv"> <%= keyText.substring(keyText.indexOf(":")+1) %></a>
 								</span>
 
 					<%
-						boolean utf8 = ("UTF-8".equalsIgnoreCase(mod.getConfigEntry("Encoding")));
-						if (utf8) {
-							out.println("<span class=\"unicode\">");
-						}
-						%>
-
-						<%= new String(mod.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-
-						<%
-						if (utf8) {
-							out.println("</span>");
-						}
+					String lang = mod.getConfigEntry("Lang");
 					%>
+
+					<span xml:lang="<%= (lang.equals("")) ? "en" : lang %>">
+					<%= new String(mod.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+					</span>
 
 					</td>
 		<%
