@@ -7,6 +7,7 @@
 
 <p>Copyright &copy; 2003  <a href="http://www.crosswire.org/">Crosswire Bible Society</a></p>
 <p><a href="http://validator.w3.org/check/referer" title="valid xhtml">xhtml</a></p>
+<div id="pageBorderBottom"><img src="./images/parchment/dot.gif" width="1" height="16" /><br /></div>
 </div>
 </div>
 </div>
