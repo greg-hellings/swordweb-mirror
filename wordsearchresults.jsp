@@ -123,7 +123,7 @@
 			<li>Result Page:</li>
 
 		<%
-			if ( navStart >= 0 ) {
+			if ( navStart > 0 ) {
 		%>
 				<li><a href="wordsearchresults.jsp?start=0" title="First page (<%= results[0] %>) of search results">1</a>&nbsp;[...]</li>
 		<% 	}
