@@ -1,4 +1,4 @@
-<%@ include file="defines/defines.jsp" %>
+<%@ include file="defines/tiles.jsp" %>
 
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>

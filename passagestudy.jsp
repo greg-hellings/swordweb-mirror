@@ -1,4 +1,4 @@
-<%@ include file="defines/defines.jsp" %>
+<%@ include file="defines/tiles.jsp" %>
 <%
 	String resetModule = request.getParameter("mod");
 	if (resetModule != null)
