@@ -74,11 +74,11 @@
 
 		<hr/>
 
-		<ul>
 		<%
 			boolean open = toolsTreeOpen.contains("allBibles");
 		%>
 			<h2><a class="<%= ((open)?"closed":"open")%>" href="passagestudy.jsp?<%= ((open)?"close":"open")%>=allBibles"><img src="images/<%=((open)?"minus":"plus") + ".png"%>" alt="action"/></a>All Translations</h2>
+		<ul>
 		<%
 			if (open) {
 				for (int i = 0; i < modInfo.length; i++) {
@@ -95,12 +95,14 @@
 		</div>
 	</tiles:put>
 	<tiles:put name="sidebar_right" type="string">
-		<div id="commentaries">
+	<div class="studytools">
 		<h2>Word Study</h2>
 			<h3><a href="passagestudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>">Strongs</a></h3>
 			<h3><a href="passagestudy.jsp?morph=<%= (morph) ? "off" : "on" %>">Morphology</a></h3>
 		<h2>Preferred Comentaries:</h2>
+	</div>
 
+	<div id="commentaries">
 	<% if (prefCommentaries.size() > 0) { %>
 		<ul>
 		<%
@@ -120,11 +122,11 @@
 
 		<hr />
 
-		<ul>
 		<%
 			boolean open = toolsTreeOpen.contains("allComm");
 		%>
 			<h2><a class="<%= ((open)?"closed":"open")%>" href="passagestudy.jsp?<%= ((open)?"close":"open")%>=allComm"><img src="images/<%=((open)?"minus":"plus") + ".png"%>" alt="action"/></a>All Commentaries</h2>
+		<ul>
 		<%
 			if (open) {
 				for (int i = 0; i < modInfo.length; i++) {

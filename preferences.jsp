@@ -51,7 +51,6 @@
 			}
 		%>
 		</ul>
-		</div>
 
 		<hr/>
 
@@ -86,8 +85,9 @@
 		%>
 		</ul>
 
-		<ul>
 		<hr/>
+
+		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
