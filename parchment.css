@@ -32,41 +32,48 @@ margin: 0px 0px 0px 0px;
 /* Main Navigation */
 
 #navlist{
-border-bottom: 1px solid #222;
-margin: 0;
-padding-bottom: 19px;
-padding-left: 10px;
+padding: 0px 0px 0px 0px;
+margin: 0px 15px 0px 15px;
+text-align: center;
 }
 
-#navlist ul, #navlist li{
-display: inline;
+#navlist ul{
+border-bottom: 3px solid #222;
+border-top: 3px solid #222;
 list-style-type: none;
 margin: 0;
-padding: 0;
+padding: 3px 0px 2px 0px;
+width:100%;
+text-align: center;
+}
+
+#navlist li{
+display: inline;
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
 }
 
 #navlist a:link, #navlist a:visited {
-background: #C3AB7F;
-border: 1px solid #222;
-color: #000;
-float: left;
-font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+color: #A13033;
+font-family: Georgia, Times New Roman, Times, Serif;
+text-transform: uppercase;
 font-size: 1.0em;
 font-weight: normal;
-line-height: 1.4em;
-margin-right: 8px;
-padding: 1px 5px 0px 5px;
+line-height: 1.0em;
+padding: 0px 5px 0px 5px;
 text-decoration: none;
+font-weight: bold;
 }
 
 #navlist a:link#current, #navlist a:visited#current {
-background: #E1C99F;
-border-bottom: 1px solid #E1C99F;
 color: #000;
+
+border-bottom: 3px solid #222;
 }
 
 #navlist a:hover { 
-color: #8A0010;
+color: #222;
+border-bottom: 3px solid #222;
 background : #FFFFCC
 }
 
@@ -95,7 +102,7 @@ font-size: 1.0em;
 #content-wrap{
 margin: 5px 0px 0px 0px;
 padding: 0px 20px 0px 20px;
-border-top: 1px solid #222;
+
 clear:left;
 }
 
