@@ -182,7 +182,7 @@
 
 		<div id="passagestudy">
 		<h2><%= activeKey %></h2>
-		<h3>&raquo; <%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></h3>
+		<h3><%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></h3>
 
 		<% //insert next and previous chapter links
 			// activeKey contains the current key ATM

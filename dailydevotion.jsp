@@ -46,7 +46,8 @@
 <div id="daily">
 		<h2>Today's Devotion (<%= formatter.format(new Date()) %>)</h2>
 
-		<p class="textname">&raquo; <%= activeDevo.getDescription().replaceAll("&", "&amp;") + " (" + activeDevo.getName() + ")" %></p>
+		<h3>; <%= activeDevo.getDescription().replaceAll("&", 
+"&amp;") + " (" + activeDevo.getName() + ")" %></h3>
 
 		<div class="verse">
 			<%= new String(activeDevo.getRenderText().getBytes(), "UTF-8") %>
