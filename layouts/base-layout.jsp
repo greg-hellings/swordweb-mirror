@@ -6,11 +6,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>OSIS Web:<tiles:getAsString name="title"/></title>
-	<link href="blues.css" title="Blue" rel="stylesheet" type="text/css" />
-	<link href="wash.css" title="Washed Out" rel="alternate stylesheet" type="text/css" />
-	<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
+
+	<%
+		String print = request.getParameter("print");
+		if ("1".equals(print)) {
+	%>
+			<link href="print.css" title="Printer friendly" rel="stylesheet" type="text/css" />
+	<%
+		}
+		else {
+	%>
+			<link href="blues.css" title="Blue" rel="stylesheet" type="text/css" />
+			<link href="wash.css" title="Washed Out" rel="alternate stylesheet" type="text/css" />
+			<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
+	<%
+		}
+	%>
 </head>
-<body>
+
+<%
+	if ("1".equals(request.getParameter("print"))) {
+%>
+	<body onLoad="window.print();">
+<%
+	}
+	else {
+%>
+	<body>
+<%
+	}
+%>
+
 	<%-- include footer --%>
 	<tiles:insert attribute="header" />
 

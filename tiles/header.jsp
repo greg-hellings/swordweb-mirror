@@ -12,5 +12,15 @@
         <li><a href="about.jsp" title="About">About</a></li>
         <li><a href="help.jsp" title="Help">Help</a></li>
       </ul>
+		<%
+		String uri = request.getRequestURI();
+		if (request.getQueryString() != null) {
+			uri += "?print=1&" + request.getQueryString();
+		}
+		else {
+			uri += "?print=1";
+		}
+		%>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="<%= uri %>">Print</a>
     </div>
   </div>
