@@ -112,7 +112,7 @@
 				}
 				String type = module.getCategory();
 				String targetURL = "";
-				if ((SwordOrb.BIBLES.equals(type)) || (SwordOrb.COMMENTARIES.equals(type))) {
+				if ((SwordOrb.BIBLES.equals(type)) || ("Cults / Unorthodox / Questionable Material".equals(type)) || (SwordOrb.COMMENTARIES.equals(type))) {
 					targetURL = "passagestudy.jsp?mod="+URLEncoder.encode(module.getName())+"#cv";
 				}
 				else if (SwordOrb.DAILYDEVOS.equals(type)) {

@@ -216,7 +216,7 @@
 		</ul>
 
 		<%
-			if (activeModule.getCategory().equals(SwordOrb.BIBLES)) {
+			if ((activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material")) || (activeModule.getCategory().equals(SwordOrb.BIBLES))) {
 				String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
 				int activeVerse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
 				int anchorVerse = (activeVerse > 2)?activeVerse - 2: -1;
@@ -285,6 +285,9 @@
 				copyLine = "";
 			if (promoLine.equalsIgnoreCase("<swnull>"))
 				promoLine = "";
+			if (activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material")) {
+				copyLine = "WARNING: This text is considered unorthodox by most of Christendom. " + copyLine;
+			}
 		%>
 		<div class="copyLine"><%= copyLine %></div>
 		<ul class="booknav">

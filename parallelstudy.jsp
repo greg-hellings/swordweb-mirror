@@ -65,7 +65,7 @@
 			startList = false;
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
-				if (module != null && module.getCategory().equals(SwordOrb.BIBLES)) {
+				if (module != null && ((module.getCategory().equals(SwordOrb.BIBLES))||(module.getCategory().equals("Cults / Unorthodox / Questionable Material")))) {
 				if (!startList) { out.print("<ul>"); startList = true; }
 		%>
 					<li>
@@ -84,6 +84,29 @@
 			startList = false;
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
+					SWModule module = mgr.getModuleByName(modInfo[i].name);
+					if ( parDispModules.contains(module.getName()) ) {
+						continue;
+					}
+
+					if (!startList) { out.print("<ul>"); startList = true; }
+		%>
+				<li>
+					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
+						<%= module.getDescription().replaceAll("&", "&amp;") %>
+					</a>
+				</li>
+		<%
+				}
+			}
+			if (startList) { out.print("</ul>"); startList = true; }
+		%>
+
+		<h3>Cults / Unorthodox / Questionable Material</h3><p>click to add</p>
+		<%
+			startList = false;
+			for (int i = 0; i < modInfo.length; i++) {
+				if (modInfo[i].category.equals("Cults / Unorthodox / Questionable Material")) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 					if ( parDispModules.contains(module.getName()) ) {
 						continue;
@@ -225,7 +248,8 @@
 		<%
 			activeModule = mgr.getModuleByName((String)parDispModules.get(0));
 			if (activeModule.getCategory().equals(SwordOrb.BIBLES) ||
-			    activeModule.getCategory().equals(SwordOrb.COMMENTARIES))
+			    activeModule.getCategory().equals(SwordOrb.COMMENTARIES) ||
+			    activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material"))
 			{
 		%>
 
@@ -304,6 +328,9 @@
 						copyLine = "";
 					if (promoLine.equalsIgnoreCase("<swnull>"))
 						promoLine = "";
+					if (mod.getCategory().equals("Cults / Unorthodox / Questionable Material")) {
+						copyLine = "WARNING: This text is considered unorthodox by most of Christendom. " + copyLine;
+					}
 		%>
 					<td>
 		<div class="copyLine"><%= copyLine %></div>
