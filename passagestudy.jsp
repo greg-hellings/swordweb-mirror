@@ -181,10 +181,24 @@
 		<div id="passagestudy">
 		<h2><%= activeKey %></h2>
 		<h3>&raquo; <%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></h3>
+
+		<% //insert next and previous chapter links
+			// activeKey contains the current key ATM
+			// Split up into book, chapter and verse.
+			// Then add and subtract 1 to the chapter to the next and previous one
+
+			String bookname = activeKey.substring(0, activeKey.lastIndexOf(" "));
+			int chapter = Integer.parseInt( activeKey.substring(activeKey.lastIndexOf(" ")+1, activeKey.indexOf(":")) );
+			//int verse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
+
+			String prevChapterString = bookname + " " + String.valueOf(chapter-1) + ":1";
+			String nextChapterString = bookname + " " + String.valueOf(chapter+1) + ":1";
+
+		%>
 		<ul class="booknav">
-			<li><a href="" title="display Romans 7">previous chapter</a></li>
-			<li><a href="" title="display all of Romans 8">this chapter</a></li>
-			<li><a href="" title="display Romans 10">next chapter</a></li>
+			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>">previous chapter</a></li>
+			<!-- <li><a href="" title="display all of Romans 8">this chapter</a></li> -->
+			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>">next chapter</a></li>
 		</ul>
 
 		<%
@@ -198,7 +212,7 @@
 						break;
 					mgr.setGlobalOption("Strong's Numbers",
 							((strongs) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
-					mgr.setGlobalOption("Morphological Tags", 
+					mgr.setGlobalOption("Morphological Tags",
 							((morph) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
 					boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 			%>

@@ -170,10 +170,23 @@
 		has to say about that specific verse.
 		</p>
 
+		<% //insert next and previous chapter links
+			// activeKey contains the current key ATM
+			// Split up into book, chapter and verse.
+			// Then add and subtract 1 to the chapter to the next and previous one
+
+			String bookname = activeKey.substring(0, activeKey.lastIndexOf(" "));
+			int chapter = Integer.parseInt( activeKey.substring(activeKey.lastIndexOf(" ")+1, activeKey.indexOf(":")) );
+			//int verse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
+
+			String prevChapterString = bookname + " " + String.valueOf(chapter-1) + ":1";
+			String nextChapterString = bookname + " " + String.valueOf(chapter+1) + ":1";
+
+		%>
 		<ul class="booknav">
-			<li><a href="">previous chapter</a></li>
-			<li><a href="">this chapter</a></li>
-			<li><a href="">next chapter</a></li>
+			<li><a href="parallelstudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>">previous chapter</a></li>
+			<!-- <li><a href="" title="display all of Romans 8">this chapter</a></li> -->
+			<li><a href="parallelstudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>">next chapter</a></li>
 		</ul>
 
 
