@@ -44,6 +44,7 @@
 	morph = (buf != null) ? "on".equalsIgnoreCase(buf) : morph;
 	session.setAttribute("morph", (morph)?"on":"off");
 
+	boolean startList = false;
 %>
 
 
@@ -60,12 +61,12 @@
 		<h2>Translations:</h2>
 		<h3>Displayed modules </h3>
 		<p>click to remove</p>
-		<% if (parDispModules.size() > 0) { %>
-		<ul>
 		<%
+			startList = false;
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getCategory().equals(SwordOrb.BIBLES)) {
+				if (!startList) { out.print("<ul>"); startList = true; }
 		%>
 					<li>
 						<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>#cv" title="Remove from displayed modules">
@@ -75,16 +76,12 @@
 		<%
 				}
 			}
+			if (startList) { out.print("</ul>"); startList = true; }
 		%>
 
-		</ul>
-		<% } %>
-
 		<h3>Available modules</h3><p>click to add</p>
-		<% if (modInfo.length > 0) { %>
-
-		<ul>
 		<%
+			startList = false;
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
@@ -92,6 +89,7 @@
 						continue;
 					}
 
+					if (!startList) { out.print("<ul>"); startList = true; }
 		%>
 				<li>
 					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
@@ -101,9 +99,8 @@
 		<%
 				}
 			}
+			if (startList) { out.print("</ul>"); startList = true; }
 		%>
-		</ul>
-		<% } %>
 
 		</div>
 
@@ -124,12 +121,12 @@
 		<h2>Comentaries:</h2>
 
 		<h3>Displayed modules</h3> <p>click to remove</p>
-		<% if (parDispModules.size() > 0) { %>
-		<ul>
 		<%
+			startList = false;
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getCategory().equals(SwordOrb.COMMENTARIES)) {
+				if (!startList) { out.print("<ul>"); startList = true; }
 		%>
 				<li>
 					<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>#cv" title="Remove from displayed modules">
@@ -139,20 +136,19 @@
 		<%
 				}
 			}
+			if (startList) { out.print("</ul>"); startList = true; }
 		%>
-		</ul>
-		<% } %>
 
 		<h3>Available modules</h3> <p>click to add</p>
-		<% if (modInfo.length > 0) { %>
-		<ul>
 		<%
+			startList = false;
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 					if ( parDispModules.contains(module.getName()) ) {
 						continue;
 					}
+					if (!startList) { out.print("<ul>"); startList = true; }
 		%>
 				<li>
 					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
@@ -162,9 +158,8 @@
 		<%
 				}
 			}
+			if (startList) { out.print("</ul>"); startList = true; }
 		%>
-		</ul>
-		<% } %>
 
 		</div>
 
@@ -265,9 +260,9 @@
 						if (mod != activeModule)
 							mod.setKeyText( keyText );
 		%>
-							<td width="<%= 100/parDispModules.size() %>%" <%= rtol ? "dir=\"rtl\"" : "" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+							<td width="<%= 100/parDispModules.size() %>%" <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 								<span class="versenum">
-									<a <%= (keyText.equals(activeKey)) ? "name=\"cv\"" : "" %> href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>#cv"> <%= keyText.substring(keyText.indexOf(":")+1) %></a>
+									<a <%= (keyText.equals(activeKey)) ? "id=\"cv\"" : "" %> href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>#cv"> <%= keyText.substring(keyText.indexOf(":")+1) %></a>
 								</span>
 
 					<%
