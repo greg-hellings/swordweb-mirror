@@ -1,109 +1,41 @@
-html, body {
-	padding: 0;
-	margin: 0;
-	}
-
 body {
 	color: #000;
 	background-color: #fff;
-	}
-
-div {
 	padding: 0;
 	margin: 0;
 	}
 
-dl {
-	font: 11px/16px verdana, geneva, arial, helvetica, sans-serif;
-	}
+h1	{font-size: 24px;}
+h2	{font-size: 18px;}
+h3	{font-size: 16px;}
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: palatino, georgia, serif;
-	font-weight: normal;
 	line-height: 1.5em;
-	text-transform: uppercase;
 	padding: 0;
 	margin: 0;
-	}
-
-h1	{
-	font-size: 24px;
-	}
-	
-h2	{
-	font-size: 18px;
-	}
-	
-h3	{
-	font-size: 16px;
-	}
-	
-h4	{
-	font-size: 14px;
-	}
-	
-h5	{
-	font-size: 12px;
-	}
-
-h6	{
-	font-size: 11px;
-	}
-
-img {
-	padding: 0;
-	border: 0 none;
-	margin: 0;
-	}
-
-p {
-	font: 11px/1.5em verdana, geneva, arial, helvetica, sans-serif;
-	color: #000;
-	background-color: transparent;
-	padding: 0;
-	margin: .5em 0 0 0;
-	}
-
-a {
-	font: bold 11px/16px verdana, geneva, arial, helvetica, sans-serif;
-	color: #69c;
-	background: transparent;
-	text-decoration: none;
 	}
 
 a:link {
-	color: #69c;
-	background:transparent;
-	}
+color: #69c;
+background:transparent;
+text-decoration: none;
+}
 
-a:visited {
-	color: #69c;
-	background: transparent;
-	}
-a:hover {
-	color: #000099;
-	background: transparent;
-	text-decoration: none;
-	}
-a:active {
-	color: #69c;
-	background:transparent;
-	text-decoration: none;}
 
-/* header content section ---------- */
+
+/* header  ---------- */
 
 #header {
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+}
+
+#navlist {
 	display:none;
 	}
 
-/* content section ---------- */
 
-#content-wrap {
-	padding: 15px 15px 0 15px;
-	margin-bottom: 15px;
-}
-
-/* --- left column ---------- */
+/* --- Hide Side Columns ---------- */
 
 #content-sub-1 {
 	display:none;
@@ -113,147 +45,41 @@ a:active {
 	width:0px;
 	}
 
-/* --- right column ---------- */
-
 #content-sub-2 {
 	display:none;
 	width:0px;
 }
 
 #content-wrap > #content-sub-2 {
-	width: 0px;
-	}
-
-/* --- center column  (main content)---------- */
-
-#content-main {
-	margin:0px;
-	text-align: justify;
-	background-color: #fff;
-	padding: 0px 5px 0px 5px;
-}
-
-
-#content-main h2 {
-	font-size: 22px;
-	letter-spacing: 0.1em;
-	}
-
-#content-main p {
-	text-indent: 1.5em;
-	}
-
-#content-main .first {
-	text-indent: 0;
-	}
-
-#content-main .first:first-letter {
-	float: left;
-	font: 36px palatino, georgia, serif;
-	padding-right: 5px;
-	}
-
-#content-main span.versenum {
-	vertical-align:text-top;
-	font-size: x-small;
-	margin: 0px 3px 0px 10px;
-	font-weight: bold;
-}
-
-#content-main .verse {
-	margin: 0px 0px 5px 0px;
-	padding: 0px 5px 0px 5px;
-	vertical-align:text-top;
-}
-
-#content-main .currentverse {
-	vertical-align:text-top;
-	margin: 0px 0px 5px 0px;
-	background-color: #eeeeee;
-	border: 1px dotted #dddddd;
-	padding: 0px 5px 0px 5px;
-}
-
-#content-main p.textname {
-	margin: 0px 0px 5px 0px;
-}
-
-#content-main *[dir=rtl] {
-	font-family:code2000,code2001,arial unicode ms,arial,sans serif,serif;
-	font-size:larger;
-}
-
-
-/* --- parallel display stuff---------- */
-
-#paralleldisplay {
-	width:100%;
-}
-
-#paralleldisplay tr th {
-	font-weight:bold;
-	font-size:small;
-}
-
-#paralleldisplay td {
-
-}
-
-#paralleldisplay tr {
-
-}
-
-/* footer section ---------- */
-
-#footer {
 	display:none;
+	width:0px;
+	}
+
+/* --- Main Content ---- */
+
+#content-wrap {
+	padding: 0;
+	margin-bottom: 15px;
 }
 
-/* blue panel */
-.bluepanel {
+
+#welcome, #about, #help, #preferences, #passagestudy, #powersearch, #daily, #genbook   {
+margin: 0;
+padding: 0;
+font-family: Times New Roman, Times, Serif;
+font-size: 12pt;
+font-weight: normal;
+color: black;
+background: white;
+}
+
+ul {
 	display:none;
+	width:0px;
 }
 
-
-/* ----------------*/
-
-#quicksearch {
-	display:none;
-}
-
-ul.booknav {
-	padding: 0px 0px 0px 0px;
-	margin: 0px 0px 10px 0px;
-	border-bottom: 1px solid #dddddd;
-	border-top: 1px solid #dddddd;
-	background-color: #eeeeee;
-}
-
-ul.booknav li{
-	padding: 3px 3px 3px 3px;
-	margin: 0px 0px 0px 0px;
-	list-style-type: none;
-	display: inline;
-}
-
-ul.searchresultsnav {
-	padding: 0px 0px 0px 0px;
-	margin: 0px 0px 10px 0px;
-	border-bottom: 1px solid #dddddd;
-	border-top: 1px solid #dddddd;
-	background-color: #eeeeee;
-}
-
-ul.searchresultsnav li{
-	padding: 3px 3px 3px 3px;
-	margin: 0px 0px 0px 0px;
-	list-style-type: none;
-	display: inline;
-}
-
-form {
-	margin: 0px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
-}
-
+img{display:none;
+	padding: 0;
+	border: 0 none;
+	margin: 0;}
 
