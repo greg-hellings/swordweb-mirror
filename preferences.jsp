@@ -154,6 +154,7 @@
 		<h2 id="misc">Misc Options</h2>
 		<ul>
 			<li><a id="headings" href="preferences.jsp?Headings=<%= "Off".equalsIgnoreCase(headings)?"On":"Off" %>#misc" title=<%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles"><%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles</a></li>
+			<li><a id="javascript" href="preferences.jsp?Javascript=<%= "Off".equalsIgnoreCase(javascript)?"On":"Off" %>#misc" title=<%= "Off".equalsIgnoreCase(javascript)?"Use":"Don't Use" %> Javascript"><%= "Off".equalsIgnoreCase(javascript)?"Use":"Don't Use" %> Javascript</a></li>
 		</ul>
 
 </div>

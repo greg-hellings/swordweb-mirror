@@ -23,6 +23,7 @@
 
 	<!--For printing stuff -->
 	<link rel="stylesheet" type="text/css" media="print" href="print.css" />
+	<script type="text/javascript" language="JavaScript" src="swordweb.js"></script>
 </head>
 
 	<body>
