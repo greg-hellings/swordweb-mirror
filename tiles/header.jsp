@@ -16,8 +16,8 @@
 <div id="contentTray1">
 <div id="contentTray2">
 <!--    <div id="pageHeader"><img src="./images/parchment/top_logo.gif" width="504" height="119" /></div> -->
+  <div id="pageBorderTop"><br /></div>
   <div id="header">
-    <div id="pageBorderTop"><br /></div>
     <h1><acronym title="Open Scripture Information Standard">OSIS</acronym> Bible Tool</h1>
     <div id="navlist">
       <ul>
