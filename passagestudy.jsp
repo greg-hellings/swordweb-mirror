@@ -111,8 +111,8 @@
 	<div id="studytools">
 		<h2>Word Study:</h2>
 			<ul>
-			<li><a href="passagestudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>" title="Turn on Strongs numbers">View Strongs</a></li>
-			<li><a href="passagestudy.jsp?morph=<%= (morph) ? "off" : "on" %>" title="Turn on morphology">View Morphology</a></li>
+			<li><a href="passagestudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>" title="Turn <%= (strongs) ? "off" : "on"%> Strongs numbers"><%= (strongs) ? "Hide" : "Show" %> Strongs</a></li>
+			<li><a href="passagestudy.jsp?morph=<%= (morph) ? "off" : "on" %>" title="Turn <%= (morph) ? "off" : "on" %> morphology"><%= (morph) ? "Hide" : "Show" %> Morphology</a></li>
 			</ul>
 	</div>
 
