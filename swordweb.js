@@ -74,28 +74,28 @@ function p(mod, key, wordnum, extratext) {
 	if (mod == "G") mod = "StrongsGreek";
 	if (mod == "H") mod = "StrongsHebrew";
 
-	xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+key,true);
-	xmlhttp.onreadystatechange=function() {
-		if (xmlhttp.readyState==4) {
-			b=document.getElementById("onlywlayer");
-			if (b==null) {
-				b=document.createElement("div");
-				b.id="onlywlayer";
-				b.className="word-layer";
-				document.body.appendChild(b);
-				b.style.visibility = "hidden";
-			}
-			b.innerHTML=xmlhttp.responseText + "<br/>"+extratext;
-			if ((wordnum == lastword) && (b.style.visibility == "visible")) {
-				showhide("onlywlayer", "hidden");
-			}
-			else {
-				showhide("onlywlayer", "visible");
-			}
-			lastword = wordnum;
-		}
+	if ((wordnum == lastword) && (b.style.visibility == "visible")) {
+		showhide("onlywlayer", "hidden");
 	}
-	xmlhttp.send(null)
+	else {
+		xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+key,true);
+		xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState==4) {
+				b=document.getElementById("onlywlayer");
+				if (b==null) {
+					b=document.createElement("div");
+					b.id="onlywlayer";
+					b.className="word-layer";
+					document.body.appendChild(b);
+					b.style.visibility = "hidden";
+				}
+				b.innerHTML=xmlhttp.responseText + "<br/>"+extratext;
+				showhide("onlywlayer", "visible");
+				lastword = wordnum;
+			}
+		}
+		xmlhttp.send(null)
+	}
 }
 
 
