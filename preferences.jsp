@@ -1,4 +1,4 @@
-<%@ include file="defines/tiles.jsp" %>
+<%@ include file="init.jsp" %>
 
 <%
 	String addModule = (String)request.getParameter("add");
@@ -41,8 +41,8 @@
 	<tiles:put name="sidebar_left" type="string">
 		<div id="translations">
 
-		<h2>Translations:</h2>
-		<h3>Preferred Translations</h3>
+		<h2><t:t>Translations:</t:t></h2>
+		<h3><t:t>Preferred Translations</t:t></h3>
 		<%
 		if (prefBibles.size() > 0) {
 			out.println("<ul>");
@@ -58,7 +58,7 @@
 		}
 		%>
 
-		<h3>All Translations</h3>
+		<h3><t:t>All Translations</t:t></h3>
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
@@ -78,8 +78,8 @@
 	<tiles:put name="sidebar_right" type="string">
 		<div id="commentaries">
 
-		<h2>Comentaries:</h2>
-		<h3>Preferred Comentaries</h3>
+		<h2><t:t>Comentaries:</t:t></h2>
+		<h3><t:t>Preferred Comentaries</t:t></h3>
 		<%
 		if (prefCommentaries.size() > 0) {
 			out.println("<ul>");
@@ -96,7 +96,7 @@
 		%>
 
 
-<h3>All Comentaries</h3>
+<h3><t:t>All Comentaries</t:t></h3>
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
@@ -115,8 +115,8 @@
 
 	<tiles:put name="content" type="string">
 <div id="preferences">
-		<h2>Preferred Translations</h2>
-		<p>Click to remove.  Reselect on the side to move to the top.</p>
+		<h2><t:t>Preferred Translations</t:t></h2>
+		<p><t:t>Click to remove.  Reselect on the side to move to the top.</t:t></p>
 		<%
 		if (prefBibles.size() > 0) {
 			out.println("<ul>");
@@ -132,8 +132,8 @@
 			out.println("</ul>");
 		}
 		%>
-		<h2>Preferred Commentaries</h2>
-		<p>Click to remove.  Reselect on the side to move to the top.</p>
+		<h2><t:t>Preferred Commentaries</t:t></h2>
+		<p><t:t>Click to remove.  Reselect on the side to move to the top.</t:t></p>
 		<%
 		if (prefCommentaries.size() > 0) {
 			out.println("<ul>");
@@ -149,14 +149,14 @@
 			out.println("</ul>");
 		}
 		%>
-		<h2>Preferred Style</h2>
+		<h2><t:t>Preferred Style</t:t></h2>
 		<ul>
 <% for (int i = 0; i < styleNames.size(); i++) { %>
 			<li><a href="preferences.jsp?setStyle=<%= URLEncoder.encode((String)styleNames.get(i)) %>" title="<%= (String) styleNames.get(i) %>"><%= (String) styleNames.get(i) %></a></li>
 <% } %>
 		</ul>
 
-		<h2>Tabs</h2>
+		<h2><t:t>Tabs</t:t></h2>
 		<ul>
 <% for (int i = 0; i < tabNames.size(); i++) {
 	boolean visible = !"false".equals(showTabs.get(i));
@@ -164,13 +164,13 @@
 	String l = (String)tabLinks.get(i);
 	if (!"preferences.jsp".equals(l)) {
  %>
-			<li><a href="preferences.jsp?<%=(visible)?"hide":"show"%>Tab=<%= Integer.toString(i)%>" title="<%= ((visible)?"Hide ":"Show ") + n %> Tab"><%= ((visible)?"Hide ":"Show ") + n %> Tab</a></li>
+			<li><a href="preferences.jsp?<%=(visible)?"hide":"show"%>Tab=<%= Integer.toString(i)%>" title="<%= ((visible)?"Hide ":"Show ") + n %> Tab"><t:t><%= ((visible)?"Hide ":"Show ") + n %> Tab</t:t></a></li>
 <% }} %>
 		</ul>
-		<h2 id="misc">Misc Options</h2>
+		<h2 id="misc"><t:t>Misc Options</t:t></h2>
 		<ul>
-			<li><a id="headings" href="preferences.jsp?Headings=<%= "Off".equalsIgnoreCase(headings)?"On":"Off" %>#misc" title="<%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles"><%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles</a></li>
-			<li><a id="javascript" href="preferences.jsp?Javascript=<%= "Off".equalsIgnoreCase(javascript)?"On":"Off" %>#misc" title="<%= "Off".equalsIgnoreCase(javascript)?"Use":"Don't Use" %> Javascript"><%= "Off".equalsIgnoreCase(javascript)?"Use":"Don't Use" %> Javascript</a></li>
+			<li><a id="headings" href="preferences.jsp?Headings=<%= "Off".equalsIgnoreCase(headings)?"On":"Off" %>#misc" title="<%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles"><t:t><%= "Off".equalsIgnoreCase(headings)?"Show":"Hide" %> Headings in Bibles</t:t></a></li>
+			<li><a id="javascript" href="preferences.jsp?Javascript=<%= "Off".equalsIgnoreCase(javascript)?"On":"Off" %>#misc" title="<%= "Off".equalsIgnoreCase(javascript)?"Use":"Don't Use" %> Javascript"><t:t><%= "Off".equalsIgnoreCase(javascript)?"Use":"Don't Use" %> Javascript</t:t></a></li>
 		</ul>
 
 </div>

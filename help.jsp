@@ -1,4 +1,4 @@
-<%@ include file="defines/tiles.jsp" %>
+<%@ include file="init.jsp" %>
 
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" value="About" />

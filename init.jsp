@@ -8,6 +8,9 @@
 <%@ page import="java.util.Comparator" %>
 <%@ page import="org.crosswire.sword.orb.*" %>
 <%@ page import="java.net.URLEncoder" %>
+<%@ taglib uri="/WEB-INF/lib/crosswire-i18n.tld" prefix="t" %>
+
+<t:pagestart />
 
 <%!
 	static Vector styleNames = null;
@@ -271,6 +274,14 @@
 	session.setAttribute("showTabs", showTabs);
 	mgr.setJavascript(!"Off".equalsIgnoreCase(javascript));
 	mgr.setGlobalOption("Headings", ("Off".equalsIgnoreCase(headings)) ? "Off":"On");
+
+	{
+	String lang = request.getParameter("lang");
+	if (lang != null) {
+		session.setAttribute("lang", lang);
+	}
+	}
+
 /*
 	// kept around in case we ever need it again
 				// de-serialize from cookie
@@ -279,4 +290,16 @@
 				prefBibles = (Vector)ois.readObject();
 				prefCommentaries = (Vector)ois.readObject();
 */
+	{
+		Vector [] tabs = new Vector[4];
+		tabs[0] = tabNames;
+		tabs[1] = tabTitles;
+		tabs[2] = tabLinks;
+		tabs[3] = tabDefaults;
+		session.setAttribute("tabs", tabs);
+		session.setAttribute("styleNames", styleNames);
+		session.setAttribute("styleFiles", styleFiles);
+	}
 %>
+
+<%@ include file="defines/tiles.jsp" %>

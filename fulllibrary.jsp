@@ -1,4 +1,5 @@
-<%@ include file="defines/tiles.jsp" %>
+<%@ include file="init.jsp" %>
+
 <%@ page import="java.util.Enumeration,java.util.Vector" %>
 <%@ page import="gnu.regexp.RE" %>
 
@@ -48,7 +49,7 @@
 
 	<div id="library">
 
-		<h2>OSIS Library</h2>
+		<h2><t:t>OSIS Library</t:t></h2>
 		<ul>
 <%
 			Vector leaves = new Vector();

@@ -1,4 +1,5 @@
-<%@ include file="defines/tiles.jsp" %>
+<%@ include file="init.jsp" %>
+
 <%
 	String []addMods = request.getParameterValues("add");
 	if (addMods != null) {
@@ -58,9 +59,9 @@
 
 		<div id="translations">
 
-		<h2>Translations:</h2>
-		<h3>Displayed modules </h3>
-		<p>click to remove</p>
+		<h2><t:t>Translations:</t:t></h2>
+		<h3><t:t>Displayed modules</t:t></h3>
+		<p><t:t>click to remove</t:t></p>
 		<%
 			startList = false;
 			for (int i = 0; i < parDispModules.size(); i++) {
@@ -79,7 +80,8 @@
 			if (startList) { out.print("</ul>"); startList = true; }
 		%>
 
-		<h3>Available modules</h3><p>click to add</p>
+		<h3><t:t>Available modules</t:t></h3>
+		<p><t:t>click to add</t:t></p>
 		<%
 			startList = false;
 			for (int i = 0; i < modInfo.length; i++) {
@@ -102,7 +104,7 @@
 			if (startList) { out.print("</ul>"); startList = true; }
 		%>
 
-		<h3>Cults / Unorthodox / Questionable Material</h3><p>click to add</p>
+		<h3><t:t>Cults / Unorthodox / Questionable Material</t:t></h3><p><t:t>click to add</t:t></p>
 		<%
 			startList = false;
 			for (int i = 0; i < modInfo.length; i++) {
@@ -132,7 +134,7 @@
 	<tiles:put name="sidebar_right" type="string">
 <!--
 		<div id="studytools">
-			<h2>Word Study:</h2>
+			<h2><t:t>Word Study:</t:t></h2>
 			<ul>
 				<li><a href="parallelstudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>" title="Turn <%= (strongs) ? "off" : "on"%> Strongs numbers"><%= (strongs) ? "Hide" : "Show" %> Strongs</a></li>
 				<li><a href="parallelstudy.jsp?morph=<%= (morph) ? "off" : "on" %>" title="Turn <%= (morph) ? "off" : "on" %> morphology"><%= (morph) ? "Hide" : "Show" %> Morphology</a></li>
@@ -141,9 +143,10 @@
 -->
 
 		<div id="commentaries">
-		<h2>Comentaries:</h2>
+		<h2><t:t>Comentaries:</t:t></h2>
 
-		<h3>Displayed modules</h3> <p>click to remove</p>
+		<h3><t:t>Displayed modules</t:t></h3>
+		<p><t:t>click to remove</t:t></p>
 		<%
 			startList = false;
 			for (int i = 0; i < parDispModules.size(); i++) {
@@ -162,7 +165,8 @@
 			if (startList) { out.print("</ul>"); startList = true; }
 		%>
 
-		<h3>Available modules</h3> <p>click to add</p>
+		<h3><t:t>Available modules</t:t></h3>
+		<p><t:t>click to add</t:t></p>
 		<%
 			startList = false;
 			for (int i = 0; i < modInfo.length; i++) {
@@ -197,14 +201,9 @@
 
 		<div id="paralleldisplay">
 
-		<h2>Parallel Viewing: <%= activeKey %></h2>
+		<h2><t:t>Parallel Viewing: </t:t><%= activeKey %></h2>
 		<div id="introhelp">
-		<p>
-		Parallel viewing allows you to see two or more texts side by side.
-		For example, you could view two Bible versions of the same verse next to
-		each other, or a verse from a specific translation and what a commentary
-		has to say about that specific verse.
-		</p>
+		<p><t:t>Parallel viewing allows you to see two or more texts side by side.  For example, you could view two Bible versions of the same verse next to each other, or a verse from a specific translation and what a commentary has to say about that specific verse.</t:t></p>
 		</div>
 
 		<% //insert next and previous chapter links
@@ -221,9 +220,9 @@
 
 		%>
 		<ul class="booknav">
-			<li><a href="parallelstudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>">previous chapter</a></li>
-			<!-- <li><a href="" title="display all of Romans 8">this chapter</a></li> -->
-			<li><a href="parallelstudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>">next chapter</a></li>
+			<li><a href="parallelstudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>"><t:t>previous chapter</t:t></a></li>
+			<!-- <li><a href="" title="display all of Romans 8"><t:t>this chapter</t:t></a></li> -->
+			<li><a href="parallelstudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>"><t:t>next chapter</t:t></a></li>
 		</ul>
 
 
@@ -331,7 +330,7 @@
 					if (promoLine.equalsIgnoreCase("<swnull>"))
 						promoLine = "";
 					if (mod.getCategory().equals("Cults / Unorthodox / Questionable Material")) {
-						copyLine = "WARNING: This text is considered unorthodox by most of Christendom. " + copyLine;
+						copyLine = "<t:t>WARNING: This text is considered unorthodox by most of Christendom.</t:t> " + copyLine;
 					}
 		%>
 					<td>

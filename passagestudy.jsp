@@ -1,4 +1,5 @@
-<%@ include file="defines/tiles.jsp" %>
+<%@ include file="init.jsp" %>
+
 <%
 	Vector toolsTreeOpen = (Vector)session.getAttribute("toolsTreeOpen");
 	String resetModule = request.getParameter("mod");
@@ -60,8 +61,8 @@
 	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
 	<tiles:put name="sidebar_left" type="string">
 		<div id="translations">
-		<h2>Translations:</h2>
-		<h3>Preferred Translations</h3>
+		<h2><t:t>Translations:</t:t></h2>
+		<h3><t:t>Preferred Translations</t:t></h3>
 
 	<% if (prefBibles.size() > 0) { %>
 		<ul>
@@ -76,7 +77,7 @@
 		</ul>
 	<% } else { %>
 		<ul>
-		<li>Preferred Translations can be selected from the preferences tab</li>
+		<li><t:t>Preferred Translations can be selected from the preferences tab</t:t></li>
 		</ul>
 	<% } %>
 
@@ -84,16 +85,16 @@
 		<%
 			boolean open = toolsTreeOpen.contains("allBibles");
 		%>
-<h3>All Translations</h3>
+<h3><t:t>All Translations</t:t></h3>
 			<%
 			if (open) { //already open
 			%>
-				<p><a class="closed" href="passagestudy.jsp?close=allBibles" title="Hide all translations">Hide All</a></p>
+				<p><a class="closed" href="passagestudy.jsp?close=allBibles" title="Hide all translations"><t:t>Hide All</t:t></a></p>
 			<%
 			}
 			else { //closed
 			%>
-				<p><a class="open" href="passagestudy.jsp?open=allBibles" title="View all translations">View All</a></p>
+				<p><a class="open" href="passagestudy.jsp?open=allBibles" title="View all translations"><t:t>View All</t:t></a></p>
 			<%
 			}
 			%>
@@ -122,14 +123,14 @@
 	<div id="studytools">
 		<h2>Word Study:</h2>
 			<ul>
-			<li><a href="passagestudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>#cv" title="Turn <%= (strongs) ? "off" : "on"%> Strongs numbers"><%= (strongs) ? "Hide" : "Show" %> Strongs</a></li>
-			<li><a href="passagestudy.jsp?morph=<%= (morph) ? "off" : "on" %>#cv" title="Turn <%= (morph) ? "off" : "on" %> morphology"><%= (morph) ? "Hide" : "Show" %> Morphology</a></li>
+			<li><a href="passagestudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>#cv" title="Turn <%= (strongs) ? "off" : "on"%> Strongs numbers"><t:t><%= (strongs) ? "Hide" : "Show" %> Strongs</t:t></a></li>
+			<li><a href="passagestudy.jsp?morph=<%= (morph) ? "off" : "on" %>#cv" title="Turn <%= (morph) ? "off" : "on" %> morphology"><t:t><%= (morph) ? "Hide" : "Show" %> Morphology</t:t></a></li>
 			</ul>
 	</div>
 
 	<div id="commentaries">
-		<h2>Comentaries:</h2>
-		<h3>Preferred Comentaries:</h3>
+		<h2><t:t>Comentaries:</t:t></h2>
+		<h3><t:t>Preferred Comentaries:</t:t></h3>
 	<% if (prefCommentaries.size() > 0) { %>
 		<ul>
 		<%
@@ -143,7 +144,7 @@
 		</ul>
 	<% } else { %>
 		<ul>
-		<li>Preferred commentaries can be selected from the preferences tab</li>
+		<li><t:t>Preferred commentaries can be selected from the preferences tab</t:t></li>
 		</ul>
 	<% } %>
 
@@ -152,7 +153,7 @@
 		<%
 			boolean open = toolsTreeOpen.contains("allComm");
 		%>
-		<h3>All Commentaries</h3>
+		<h3><t:t>All Commentaries</t:t></h3>
 		<%
 			if (open) { //already open
 		%>
@@ -211,9 +212,9 @@
 
 		%>
 		<ul class="booknav">
-			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>">previous chapter</a></li>
-			<!-- <li><a href="" title="display all of Romans 8">this chapter</a></li> -->
-			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>">next chapter</a></li>
+			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>"><t:t>previous chapter</t:t></a></li>
+			<!-- <li><a href="" title="display all of Romans 8"><t:t>this chapter</t:t></a></li> -->
+			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>"><t:t>next chapter</t:t></a></li>
 		</ul>
 
 		<%
@@ -287,14 +288,14 @@
 			if (copyLine.equalsIgnoreCase("<swnull>"))
 				copyLine = "";
 			if (activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material")) {
-				copyLine = "WARNING: This text is considered unorthodox by most of Christendom. " + copyLine;
+				copyLine = "<t:t>WARNING: This text is considered unorthodox by most of Christendom.</t:t> " + copyLine;
 			}
 		%>
 		<div class="copyLine"><%= copyLine %></div>
 		<ul class="booknav">
-			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>">previous chapter</a></li>
-			<!-- <li><a href="" title="display all of Romans 8">this chapter</a></li> -->
-			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>">next chapter</a></li>
+			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>"><t:t>previous chapter</t:t></a></li>
+			<!-- <li><a href="" title="display all of Romans 8"><t:t>this chapter</t:t></a></li> -->
+			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>"><t:t>next chapter</t:t></a></li>
 		</ul>
 		<div class="promoLine"><%= promoLine %></div>
 		</div>

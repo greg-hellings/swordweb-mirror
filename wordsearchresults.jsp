@@ -1,4 +1,4 @@
-<%@ include file="defines/tiles.jsp" %>
+<%@ include file="init.jsp" %>
 
 <%
 	String resetModule = request.getParameter("mod");
@@ -40,7 +40,7 @@
 
 	<tiles:put name="sidebar_left" type="string">
 		<div id="translations">
-		<h2>Translations:</h2>
+		<h2><t:t>Translations:</t:t></h2>
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
@@ -58,27 +58,11 @@
 
 	<tiles:put name="sidebar_right" type="string">
 		<h2>Original Language:</h2>
-		<p>The KJV translates 6 different Hebrew words and 3 Greek words into the English "<strong>sword</strong>."</p>
-		<h3>Hebrew:</h3>
-		<ul>
-			<li><a href="" title="If we want to we can place the full Strongs definition in here and a link to more info on this word. ">H1300 <em>baraq</em></a></li>
-			<li><a href="" title="If we want to we can place the full Strongs definition in here and a link to more info on this word. ">H2719 <em>chereb</em></a></li>
-			<li><a href="" title="If we want to we can place the full Strongs definition in here and a link to more info on this word. ">H3027 <em>yad</em></a></li>
-			<li><a href="" title="If we want to we can place the full Strongs definition in here and a link to more info on this word. ">H6609 <em>petiychah</em></a></li>
-			<li><a href="" title="If we want to we can place the full Strongs definition in here and a link to more info on this word. ">H7524 <em>retsach</em></a></li>
-			<li><a href="" title="If we want to we can place the full Strongs definition in here and a link to more info on this word. ">H7973 <em>shelach</em></a></li>
-		</ul>
-		<h3>Greek:</h3>
-		<ul>
-			<li><a href="" title="If we want to we can place the full Strongs definition in here and a link to more info on this word. ">G3162 <em>machaira</em></a></li>
-			<li><a href="" title="If we want to we can place the full Strongs definition in here and a link to more info on this word. ">G4501 <em>romphaia</em></a></li>
-			<li><a href="" title="If we want to we can place the full Strongs definition in here and a link to more info on this word. ">G5408 <em>phonos</em></a></li>
-		</ul>
 	</tiles:put>
 
 	<tiles:put name="content" type="string">
 	<div id="searchresults">
-		<h2>Results for "<em><%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %></em>"</h2>
+		<h2><t:t>Results for "</t:t><em><%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %></em>"</h2>
 		<%
 			SearchHit[] results = null;
 			if ((activeSearchTerm != null) && (activeSearchTerm.trim().length() > 0)) {

@@ -12,6 +12,6 @@ below is translated text<br/>
 <t:t>Translate text 2</t:t>
 
 <br/><br/>
-<a href="translate.jsp">Translate this page</a>
+<a href="../admin/translate.jsp">Translate this page</a>
 </body>
 </html>

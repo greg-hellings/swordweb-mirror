@@ -1,4 +1,4 @@
-<%@ include file="defines/tiles.jsp" %>
+<%@ include file="init.jsp" %>
 
 <%
 	String resetModule = request.getParameter("mod");
@@ -15,7 +15,7 @@
 
 	<div id="translations">
 
-		<h2>Translations:</h2>
+		<h2><t:t>Translations:</t:t></h2>
 		<ul>
 		<%
 			for (int i = 0; i < prefBibles.size(); i++) {
@@ -43,7 +43,7 @@
 	<tiles:put name="sidebar_right" type="string">
 		<div id="commentaries">
 
-		<h2>Comentaries:</h2>
+		<h2><t:t>Comentaries:</t:t></h2>
 		<ul>
 		<%
 			for (int i = 0; i < prefCommentaries.size(); i++) {
@@ -70,21 +70,21 @@
 
 	<tiles:put name="content" type="string">
 <div id="powersearch">
-		<h2>Power Search</h2>
-		Module to search:
+		<h2><t:t>Power Search</t:t></h2>
+		<t:t>Module to search:</t:t>
 		<p class="textname">&raquo; <%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></p>
 		<form action="wordsearchresults.jsp">
 			<fieldset>
-				<b>Search Term:</b><br/>
+				<b><t:t>Search Term:</t:t></b><br/>
 				<input type="text" name="searchTerm" class="textinput" value="" /><br/><br/>
 
-				<b>Search Type:</b><br/>
-				<input type="radio" name="stype" value="M" checked="checked" />All Words or Word Fragments<br/>
-				<input type="radio" name="stype" value="P" />Exact Phrase<br/>
-				<input type="radio" name="stype" value="R" />Advanced- Regular Expression<br/><br/>
-				<input type="checkbox" name="icase" value="1" checked="checked"/>Ignore Case (UPPER/lower isn't strictly matched)<br/><br/>
-				<b>Limit Search to Range:</b><br/>
-				<input type="text" name="range" class="textinput" value="" /><br/>(most syntax works, e.g.  mat-jn;rom;rev 1-5)<br/><br/>
+				<b><t:t>Search Type:</t:t></b><br/>
+				<input type="radio" name="stype" value="M" checked="checked" /><t:t>All Words or Word Fragments</t:t><br/>
+				<input type="radio" name="stype" value="P" /><t:t>Exact Phrase</t:t><br/>
+				<input type="radio" name="stype" value="R" /><t:t>Advanced- Regular Expression</t:t><br/><br/>
+				<input type="checkbox" name="icase" value="1" checked="checked"/><t:t>Ignore Case (UPPER/lower isn't strictly matched)</t:t><br/><br/>
+				<b><t:t>Limit Search to Range:</t:t></b><br/>
+				<input type="text" name="range" class="textinput" value="" /><br/><t:t>(most syntax works, e.g.  mat-jn;rom;rev 1-5)</t:t><br/><br/>
 
 				<input type="submit" class="searchbutton" value=" Search " />
 			</fieldset>

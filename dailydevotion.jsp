@@ -1,4 +1,4 @@
-<%@ include file="defines/tiles.jsp" %>
+<%@ include file="init.jsp" %>
 
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
@@ -18,7 +18,7 @@
 	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
 	<tiles:put name="sidebar_left" type="string">
 <div id="devotionals">
-		<h2>Daily Devotionals:</h2>
+		<h2><t:t>Daily Devotionals:</t:t></h2>
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
@@ -45,7 +45,7 @@
 			formatter = new SimpleDateFormat("EEEE, MMM dd");
 		%>
 <div id="daily">
-		<h2>Today's Devotion (<%= formatter.format(new Date()) %>)</h2>
+		<h2><t:t>Today's Devotion</t:t> (<%= formatter.format(new Date()) %>)</h2>
 
 		<h3><%= activeDevo.getDescription().replaceAll("&", 
 "&amp;") + " (" + activeDevo.getName() + ")" %></h3>

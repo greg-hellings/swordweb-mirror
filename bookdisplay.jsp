@@ -1,4 +1,5 @@
-<%@ include file="defines/tiles.jsp" %>
+<%@ include file="init.jsp" %>
+
 <%@ page import="java.util.Enumeration,java.util.Vector" %>
 <%@ page import="gnu.regexp.RE" %>
 
@@ -63,7 +64,9 @@
 			printTree(bookTreeOpen, out, module, "/", gbsEntry);
 		}
 		else {
-			out.print("no book selected");
+%>
+<b><t:t>no book selected</t:t></b>
+<%
 		}
 	%>
 	</div>
