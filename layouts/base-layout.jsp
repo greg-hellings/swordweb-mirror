@@ -18,7 +18,7 @@
 <link rel="stylesheet" type="text/css" media="all" title="<%= styleName %>" href="<%= styleFile %>"  />
 
 <% for (int i = 0; i < styleNames.size(); i++) { %>
-<link rel="alternate stylesheet" type="text/css" media="all" title="<%= (String)styleNames.get(i) %>" href=" (String)styleFiles.get(i) %>" />
+<link rel="alternate stylesheet" type="text/css" media="all" title="<%= (String)styleNames.get(i) %>" href="<%= (String)styleFiles.get(i) %>" />
 <% } %>
 
 	<!--For printing stuff -->
