@@ -1,0 +1,967 @@
+body{
+  color: #000000;
+  background-color: #ffffff;
+  font-size: 76%;
+  margin: 0px 0px 0px 0px;
+}
+
+a:link { color: #8A0010; }
+     
+a:visited { color: #8A0010; }
+
+/* Mast Head */
+
+#header{
+/*background-image: url(images/OSIS1.jpg);*/
+background-position: right top;
+background-repeat: no-repeat;
+padding: 0px 15px 0px 15px;
+font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+}
+
+#header h1 {
+font-family: georgia, palatino, Times New Roman, Times, Serif;
+font-weight: normal;
+font-size: 2.0em;
+line-height: 2.5em;
+text-transform: uppercase;
+padding: 0;
+margin: 0px 0px 0px 0px;
+}
+
+/* Main Navigation */
+
+#navlist{
+border-bottom: 1px solid #222;
+margin: 0;
+padding-bottom: 19px;
+padding-left: 10px;
+}
+
+#navlist ul, #navlist li{
+display: inline;
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+#navlist a:link, #navlist a:visited {
+background: #C3AB7F;
+border: 1px solid #222;
+color: #000;
+float: left;
+font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+font-size: 1.0em;
+font-weight: normal;
+line-height: 1.4em;
+margin-right: 8px;
+padding: 1px 5px 0px 5px;
+text-decoration: none;
+}
+
+#navlist a:link#current, #navlist a:visited#current {
+background: #E1C99F;
+border-bottom: 1px solid #E1C99F;
+color: #000;
+}
+
+#navlist a:hover { 
+color: #8A0010;
+background : #FFFFCC
+}
+
+#navlist li#skip {display:none;}
+
+/* General - Site wide style */
+
+h2{
+margin: 12px 0px 3px 0px;
+padding: 5px 0em 3px .5em;
+font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+font-size: 1.4em;
+}
+
+h3{
+margin: 12px 0px 3px 0px;
+padding: 5px 0em 3px .5em;
+font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+font-weight: bold;
+font-size: 1.0em;
+}
+
+
+/* Layout */
+
+#content-wrap{
+margin: 5px 0px 0px 0px;
+padding: 0px 20px 0px 20px;
+border-top: 1px solid #222;
+clear:left;
+}
+
+#content-sub-1{
+width:12em;
+float:left;
+margin: 0px 0em 0px 0px;
+padding: 0px 0.5em 20px 0px;
+border-right: 1px solid #222;
+}
+
+#content-sub-2{
+width:14em;
+float:right;
+margin: 0px 0px 0px 0px;
+padding: 0px 0 20px 1em;
+border-left: 1px solid #222;
+}
+
+#content-main {
+margin: 0px 0px 0px 0px;
+padding: 15px 15px 20px 15px;
+width:auto;
+font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+}
+
+
+#footer{clear:both;
+margin: 0px 0px 0px 0px;
+border-top: 1px solid #222;
+}
+
+#footer img {
+border:0;
+}
+
+
+/* ****** Individual Sections ****** */
+
+/* Quick Search */
+
+#quicksearch {
+padding: 0px 0px 0px 0px;
+}
+
+#quicksearch form{
+margin: 0px 0px 1em 0px;
+padding: 0px 0px 0px 0px;
+}
+
+#quicksearch form fieldset{
+border: 1px solid #222;
+padding: 3px;
+}
+
+/* External Links */
+
+#externallinks{
+padding: 0 1px 1px;
+margin-left: 0;
+}
+
+#externallinks ul{
+background: #C3AB7F;
+}
+
+#externallinks li{
+list-style: none;
+margin: 0;
+border-top: 1px solid #222;
+text-align: left;
+border-bottom: 1px solid #81693F;
+}
+
+#externallinks li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+border-left: .5em solid #222;
+background: #C3AB7F;
+text-decoration: none;
+}
+
+#externallinks ul {text-indent: 0em;
+padding: 0px;
+margin: 0px}
+
+#externallinks li a:link { color: #000; }
+#externallinks li a:visited { color: #000; }
+
+#externallinks li a:hover {
+border-color: #81693F;
+color: #8A0010;
+background : #FFFFCC
+}
+
+
+/* OSIS Library */
+
+#library ul, #library li {list-style-type: none;}
+
+#library ul {text-indent: 0em;
+padding: 0px 0px 0px 0px;
+margin: 0px 0px 0px 0px;}
+
+#library ul ul {
+text-indent: 0em;
+padding: 0px 0px 0px 0px;
+margin: 0px 0px 0px 10px;
+}
+
+#library li{
+margin: 3px 0px 0px 10px;
+background-image: url(images/arrow.png);
+background-repeat: no-repeat;
+border-bottom: 1px solid white;
+}
+
+#library li.closed {
+background-image: url(images/plus.png);
+background-repeat: no-repeat;
+}
+
+#library li.open {
+background-image: url(images/minus.png);
+background-repeat: no-repeat;
+}
+
+#library li a {
+display:block;
+padding: 0px 0px 0px 15px;
+text-decoration: none;
+color:#000}
+
+#library li a:hover {
+text-decoration: underline;
+color:#8A0010;
+}
+
+
+/*   Translations   */
+
+#translations {
+margin: 0px -0.5em 0px 0px;
+padding: 0px 0 0px 0px;
+}
+
+#translations ul, #translations li {
+list-style-type: none;
+}
+
+
+#translations ul {
+background: #C3AB7F;
+text-indent: 0em;
+padding: 0px;
+margin: 0px 0px 10px 0px;
+}
+
+#translations li{
+list-style: none;
+margin: 0;
+border-top: 1px solid #222;
+text-align: left;
+border-bottom: 1px solid #81693F;
+}
+
+#translations li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+background: #C3AB7F;
+text-decoration: none;
+}
+
+#translations li a:link { color: #000; }
+#translations li a:visited { color: #000; }
+
+#translations li a:hover{
+border-color: #81693F;
+color: #8A0010;
+background : #FFFFCC;
+}
+
+#translations h3 {
+background: #A1895F;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+border-top: 2px solid #222;
+
+}
+
+#translations p {
+background: #A1895F;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-style: italic;
+}
+
+#translations p a:link { color: #000; }
+#translations p a:visited { color: #000; }
+
+#translations hr {display:none;}
+
+/*   Devotionals   */
+
+#devotionals {
+margin: 0px -0.5em 0px 0px;
+padding: 0px 0 0px 0px;
+}
+
+#devotionals ul, #devotionals li {
+list-style-type: none;
+}
+
+
+#devotionals ul {
+background: #C3AB7F;
+text-indent: 0em;
+padding: 0px;
+margin: 0px 0px 0px 0px;
+	height: 170px;
+	overflow: auto;
+}
+
+#devotionals li{
+list-style: none;
+margin: 0;
+border-top: 1px solid #222;
+text-align: left;
+border-bottom: 1px solid #81693F;
+}
+
+#devotionals li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+background: #C3AB7F;
+text-decoration: none;
+}
+
+#devotionals li a:link { color: #000; }
+#externallinks li a:visited { color: #000; }
+
+#devotionals li a:hover{
+border-color: #81693F;
+color: #8A0010;
+background: #FFFFCC;
+}
+
+#devotionals h3 {
+background: #A1895F;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+border-top: 2px solid #222;
+}
+
+#devotionals p {
+background: #A1895F;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-style: italic;
+}
+
+/*   Study Tools  */
+
+#studytools {
+margin: 0px 0px 0px -1em;
+padding: 0px 0px 0px 0px;
+}
+
+#studytools ul, #studytools li {
+list-style-type: none;
+}
+
+#studytools ul {
+background: #C3AB7F;
+text-indent: 0em;
+padding: 0px;
+margin: 0px 0px 10px 0px;
+}
+
+#studytools li{
+list-style: none;
+margin: 0;
+border-top: 1px solid #222;
+text-align: left;
+border-bottom: 1px solid #81693F;
+}
+
+#studytools li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+background: #C3AB7F;
+text-decoration: none;
+}
+
+#studytools li a:link { color: #000; }
+#studytools li a:visited { color: #000; }
+
+#studytools li a:hover{
+border-color: #81693F;
+color: #8A0010;
+background: #FFFFCC;
+}
+
+#studytools h3 {
+background: #A1895F;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+border-top: 2px solid #222;
+}
+
+#studytools p {
+background: #A1895F;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-style: italic;
+}
+
+
+
+/*   Commentaries  */
+
+#commentaries {
+margin: 0px 0px 0px -1em;
+padding: 0px 0px 0px 0px;
+}
+
+#commentaries ul, #commentaries li {
+list-style-type: none;
+}
+
+#commentaries ul {
+background: #C3AB7F;
+text-indent: 0em;
+padding: 0px;
+margin: 0px 0px 10px 0px;
+
+}
+
+#commentaries li{
+list-style: none;
+margin: 0;
+border-top: 1px solid #222;
+text-align: left;
+border-bottom: 1px solid #81693F;
+}
+
+#commentaries li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+background: #C3AB7F;
+text-decoration: none;
+}
+
+#commentaries li a:link { color: #000; }
+#commentaries li a:visited { color: #000; }
+
+#commentaries li a:hover{
+border-color: #81693F;
+color: #8A0010;
+background: #FFFFCC;
+}
+
+#commentaries h3 {
+background: #A1895F;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+border-top: 2px solid #222;
+}
+
+#commentaries p {
+background: #A1895F;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-style: italic;
+}
+
+#commentaries p a:link { color: #000; }
+#commentaries p a:visited { color: #000; }
+
+#commentaries hr {display:none;}
+
+
+#welcome, #about, #help, #preferences, #powersearch, #daily, #genbook   {
+margin: 0px 14em 0px 11.5em;
+padding: 0px .5em 0px .5em;
+}
+
+#bluepanel p a:link { color: #000; }
+#bluepanel p a:visited { color: #000; }
+#welcome p a:link { color: #000; }
+#welcome p a:visited { color: #000; }
+
+
+/*   Search Results   */
+
+#searchresults {
+margin: 0px 14em 0px 11.5em;
+padding: 0 0 0px 0;
+}
+
+#searchresults dt {
+margin: 0px 0px 0px 0px;
+padding: 0px 2px 0px 2px;
+background: #eee;
+border-top: 1px solid #222;
+font-size: 1em;
+line-height: 1.8em;
+}
+
+#searchresults dt span {
+float: right;
+margin: -1.8em 0 0 0;
+font-style: italic;
+}
+
+#searchresults dd {
+background: #E1C99F;
+margin: 0px 0px 0px 0px;
+padding: 2px 5px 5px 3em;
+}
+
+#searchresults dt a {
+text-decoration: none;
+display:block;
+color:#000;
+font-size:1.1em;
+}
+
+#searchresults dt a:hover {
+text-decoration: none;
+background-color: #FFFFCC;
+color:#8A0010;
+text-decoration: underline;
+}
+
+
+#searchresults ul {
+background: #eee;
+border-top: 1px solid #222;
+border-bottom: 1px solid #222;
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+text-indent: 0px;
+}
+
+#searchresults ul li {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1em;
+margin: 0px 1.1em 0px 0px;
+}
+
+#searchresults ul li a {
+color:#000;
+}
+
+#searchresults ul li a:hover {
+color:#8A0010;
+}
+
+
+/* Passage Study */
+
+#passagestudy{
+font-size: 1em;
+line-height: 1.4em;
+margin: 0px 14em 0px 11.5em;
+padding: 0 0 0px 0;
+}
+
+#passagestudy div{
+	padding: 0px .5em 0px .5em;
+}
+
+ span.versenum{
+	font-size: 1.1em;
+	padding: 0px 3px 0px 10px;
+	font-weight: bold;
+
+}
+
+ span.versenum a {
+	text-decoration: none;
+     color: #8A0010;
+}
+
+ span.versenum a:hover {
+	text-decoration: underline;
+	color:#8A0010;
+}
+
+div.currentverse {
+	background: #C1A97F;
+}
+
+#passagestudy  ul {
+background: #eee;
+border-top: 1px solid #222;
+border-bottom: 1px solid #222;
+margin: 0px 0px 5px 0px;
+padding: 0px 0px 0px 1em;
+text-indent: 0px;
+}
+
+#passagestudy  ul li {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1em;
+margin: 0px 1.1em 0px 0px;
+}
+
+#passagestudy  ul li a {
+color:#000;
+}
+
+#passagestudy  ul li a:hover {
+color:#8A0010;
+}
+
+/* Parallel Display */
+
+#paralleldisplay {
+font-size: 1em;
+line-height: 1.4em;
+margin: 0px 14em 0px 11.5em;
+padding: 0 0 0px 0;
+}
+
+#paralleldisplay p {
+padding: 0px .5em 0px .5em;
+}
+
+
+#paralleldisplay  ul {
+background: #eee;
+border-top: 1px solid #222;
+border-bottom: 1px solid #222;
+margin: 0px 0px 5px 0px;
+padding: 0px 0px 0px 1em;
+text-indent: 0px;
+}
+
+#paralleldisplay  ul li {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1em;
+margin: 0px 1.1em 0px 0px;
+}
+
+#paralleldisplay  ul li a {
+color:#000;
+}
+
+#paralleldisplay  ul li a:hover {
+color:#8A0010;
+}
+
+#paralleldisplay td {
+ vertical-align: top;
+}
+
+#paralleldisplay td {
+	padding: 0px .5em 0px .5em;
+}
+
+#paralleldisplay td.currentverse {
+	background-color: #C1A97F;
+}
+
+/*   GenBook navigation tree  */
+#genbooknav {
+margin:0px 5px;
+padding:0px 5px;
+}
+
+#genbooknav ul, #genbooknav li {
+list-style-type: none;
+}
+
+#genbooknav ul {
+text-indent:0em;
+padding:0px 0px 0px 0px;
+margin:0px 0px 0px 0px;
+}
+
+#genbooknav li {
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+border-bottom:1px solid white;
+}
+
+#genbooknav #current {
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+border-bottom:1px solid white;
+font-weight:bold;
+}
+
+#genbooknav ul ul {
+text-indent:0em;
+padding:0px;
+margin:0px 0px 0px 15px;
+}
+
+#genbooknav li img {
+border:0px;
+}
+
+#genbooknav li a {
+text-decoration:none;
+color:#000
+}
+
+#genbooknav li a:hover {
+text-decoration:underline;
+color:#8A0010;
+}
+
+.wordsOfJesus {
+color: #bb0000;
+}
+
+
+#contentTray0{
+  width: 100%;
+  background-image: url("./imgs/page_bg.jpg");
+}
+
+#contentTray1{
+  width: 100%;
+  background-color: transparent;
+  background-image: url("./imgs/page_bg_l.gif");
+  background-repeat: repeat-y;
+  background-position: top left;
+}
+
+#contentTray2{
+  width: 100%;
+  background-color: transparent;
+  background-image: url("./imgs/page_bg_r.gif");
+  background-repeat: repeat-y;
+  background-position: top right;
+}
+
+#pageHeader {
+  width: 100%;
+  padding-top: 25px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+#pageIntro {
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+
+
+/*
+#navBar{
+
+}
+
+#navBar ul, #navBar li{
+  display: inline;
+  color: #000000;
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+#navBar a:link, #navBar a:visited{
+  color: #000000;
+  font-size: 13pt;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#navBar a:hover { 
+  text-decoration: underline;
+}
+*/
+
+
+
+
+#pageBorderTop {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 16px;
+  background-color: transparent;
+  background-image: url("./imgs/page_bg_t.gif");
+  background-repeat: repeat-x;
+  background-position: top center;
+}
+
+#pageBorderBottom {
+  width: 100%;
+  height: 16px;
+  background-color: transparent;
+  background-image: url("./imgs/page_bg_b.gif");
+  background-repeat: repeat-x;
+  background-position: top center;
+}
+
+#pageBorderTop1 {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  background-image: url("./imgs/page_bg_t_.gif");
+  background-position: top center;
+  vertical-align: bottom;
+}
+
+#pageBorderTop2 {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./imgs/page_bg_t_.gif");
+  background-position: top center;
+  vertical-align: bottom;
+}
+
+
+
+#pageBorderBottomTray {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./imgs/page_bg_t_.gif");
+  background-position: top center;
+  vertical-align: bottom;
+}
+
+#pageBorderBottom {
+  position: relative static;
+  width: 100%;
+  height: 16px;
+  background-image: url("./imgs/page_bg_b.gif");
+  background-repeat: repeat-x;
+  background-position: bottom center;
+}
+
+
+
+.txtMnuTray {
+  width: 100%;
+  text-align: center;
+  display: list-item;
+}
+
+.txtMnu {
+  color: #000000;
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+#txtMnuBlt1 {
+  display: inline;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#txtMnuBlt2 {
+  vertical-align: middle;
+  display: inline;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#txtMnuBlt3 {
+  vertical-align: middle;
+  display: inline;
+  margin-left: 30px;
+  margin-right: 13px;
+}
+
+#MnuLnk {
+  vertical-align: middle;
+  display: inline;
+  color: #000000;
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+#MnuLnk a:link, #MnuLnk a:visited{
+  vertical-align: middle;
+  color: #000000;
+  font-size: 13pt;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.txtHdl {
+  display: inline;
+  color: #8A0010;
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+.txtHdl a:link, .txtHdl a:visited {
+  display: inline;
+  color: #8A0010;
+  font-size: 13pt;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.txtHdl a:hover {
+  display: inline;
+  color: #8A0010;
+  font-size: 13pt;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.txtPlain {
+  color: #000000;
+  padding-top: 5px;
+  padding-left: 56px;
+  padding-right: 30px;
+  padding-bottom: 15px;
+  font-size: 11pt;
+}
+
+.txtSearch {
+  color: #81693F;
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+
+#hLineTray {
+  width: 90%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+#hLine {
+  width: 100%;
+  height: 2px;
+  left: auto;
+  right: auto;
+  background-color: #7F673C;
+}
+
+{background-color: #C9CEA8; width: 100%; height: 100px; margin: 0px; border-bottom: 4px solid #999; background-image: url("/img/topback.jpg"); background-repeat: repeat-x; background-position: top left;}
+
+
+
+
+
