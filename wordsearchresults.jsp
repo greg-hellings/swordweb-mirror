@@ -74,7 +74,7 @@
 	</tiles:put>
 
 	<tiles:put name="content" type="string">
-		<h2>Results for "<em><%= activeSearchTerm %></em>"</h2>
+		<h2>Results for "<em><%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %></em>"</h2>
 		<%
 			String[] results = null;
 			if ((activeSearchTerm != null) && (activeSearchTerm.trim().length() > 0)) {
