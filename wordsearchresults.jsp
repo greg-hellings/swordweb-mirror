@@ -77,28 +77,28 @@
 		<h2>Results for "<em><%= activeSearchTerm %></em>"</h2>
 		<%
 			String[] results = null;
-			if ((activeSearchTerm != null) && (activeSearchTerm.trim().length() > 0))
+			if ((activeSearchTerm != null) && (activeSearchTerm.trim().length() > 0)) {
 				results = activeModule.search(activeSearchTerm, stype, soptions, range);
-			else	results = new String[0];
+
+				//save the search reusult into the session so it can be retrived later on to browse through it
+				session.setAttribute("SearchResults", results);
+			}
+			else if ( activeSearchTerm == null ) { //no search term given, try to see if we have a valid search result saved
+				results = (String[]) session.getAttribute("SearchResults");
+			}
+
+			if ( results == null )
+				results = new String[0];
 		%>
+
 		<p class="textname">&raquo; <%= results.length %> result<%= (results.length == 1)?"s":""%> in the text of <%= activeModule.getDescription() %></p>
-		<ul class="searchresultsnav">
-			<li>Result Page:</li>
-			<li><a href="" title="page 1: Genesis 3:24-Exodus 15:9">1</a></li>
-			<li><a href="" title="page 2 of search results">2</a></li>
-			<li><a href="" title="page 3 of search results">3</a></li>
-			<li><a href="" title="page 4 of search results">4</a></li>
-			<li><a href="" title="page 5 of search results">5</a></li>
-			<li><a href="" title="page 6 of search results">6</a></li>
-			<li><a href="" title="page 7 of search results">7</a></li>
-			<li><a href="" title="page 8 of search results">8</a></li>
-			<li><a href="" title="page 9 of search results">9</a></li>
-			<li><a href="" title="page 10 of search results">10</a></li>
-			<li><a href="" title="next page of search results">Next</a></li>
-		</ul>
+
 		<dl>
 		<%
-			for (int i = 0; i < results.length; i++) {
+			Integer resultStart = new Integer(request.getParameter("start") != null ? request.getParameter("start") : "0");
+			Integer resultLimit = new Integer(30);
+
+			for (int i = resultStart.intValue(); i < results.length && i < resultStart.intValue() + resultLimit.intValue(); i++) {
 				activeModule.setKeyText(results[i]);
 		%>
 			<dt><a href="passagestudy.jsp?key=<%= URLEncoder.encode(results[i]) %>" title="<%= results[i] %>"><%= results[i] %></a></dt>
@@ -109,18 +109,46 @@
 
 		</dl>
 		<ul class="searchresultsnav">
+			<%
+				int navStart = (resultStart.intValue() / resultLimit.intValue()) - 5;
+				if (navStart < 0)
+					navStart = 0;
+
+				int navEnd = navStart + 10;
+				if ( navEnd*resultLimit.intValue() > results.length ) {
+					navEnd = results.length / resultLimit.intValue();
+				}
+			%>
+
 			<li>Result Page:</li>
-			<li><a href="" title="page 1: Genesis 3:24-Exodus 15:9">1</a></li>
-			<li><a href="" title="page 2 of search results">2</a></li>
-			<li><a href="" title="page 3 of search results">3</a></li>
-			<li><a href="" title="page 4 of search results">4</a></li>
-			<li><a href="" title="page 5 of search results">5</a></li>
-			<li><a href="" title="page 6 of search results">6</a></li>
-			<li><a href="" title="page 7 of search results">7</a></li>
-			<li><a href="" title="page 8 of search results">8</a></li>
-			<li><a href="" title="page 9 of search results">9</a></li>
-			<li><a href="" title="page 10 of search results">10</a></li>
-			<li><a href="" title="next page of search results">Next</a></li>
+
+		<%
+			if ( navStart >= 0 ) {
+		%>
+				<li><a href="wordsearchresults.jsp?start=0" title="First page (<%= results[0] %>) of search results">1</a>&nbsp;[...]</li>
+		<% 	}
+
+			for (int i = navStart; i < navEnd; ++i) {
+				if (i == (resultStart.intValue() / resultLimit.intValue())) {
+		%>
+					<li><%= i+1 %></li>
+		<%		}
+				else {
+		%>
+					<li><a href="wordsearchresults.jsp?start=<%= i * resultLimit.intValue() %>" title="page <%= i+1 %> (<%= results[i * resultLimit.intValue()] %>) of search results"><%= i+1 %></a></li>
+		<%
+				}
+			}
+		%>
+
+		<%
+			if ( navEnd < (results.length / resultLimit.intValue()) ) {
+				int lastPage = (results.length - resultLimit.intValue()) -  (results.length % resultLimit.intValue());
+		%>
+				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage %>" title="Last page (<%= results[lastPage] %>) of search results"><%= results.length / resultLimit.intValue() %></a></li>
+		<%
+			}
+		%>
 		</ul>
 
 	</tiles:put>

@@ -6,9 +6,7 @@
 	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>
-		OSIS Web: <tiles:getAsString name="title"/>
-	</title>
+	<title>OSIS Web:<tiles:getAsString name="title"/></title>
 	<link href="blues.css" title="Blue" rel="stylesheet" type="text/css" />
 	<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
 </head>
