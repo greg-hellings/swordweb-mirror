@@ -21,9 +21,9 @@ would like to add content to the tool, either your own or something in the
 public domain, please send the text to SBL for review and we will put it on
 the site.<br/><br/>
 
-The OSIS Bible Tool was built by the Crosswire Bible Society, and
+The OSIS Bible Tool was built by the CrossWire Bible Society, an
 organization which provides free open source software.  You can visit
-Crosswire at <a href="www.crosswire.org">www.crosswire.org</a>.<br/><br/>
+CrossWire at <a href="www.crosswire.org">www.crosswire.org</a>.<br/><br/>
 
 To learn more about the OSIS initiative, visit <a href="www.bibletechnology.org">www.bibletechnologies.org</a>.
 
