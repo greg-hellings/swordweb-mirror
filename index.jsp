@@ -240,7 +240,7 @@ translated, word by word, into Klingon.  This table was used to transform
 the WEB into Klingon. Though it is not a grammatical Klingon text 
 (actually it is more of a pidgin-Klingon, mixing English vocabulary and 
 grammar with Klingon) it does provide vocabulary which can be used in 
-doing a proper Klingon translaion.
+doing a proper Klingon translation.
 </p>
 
 
