@@ -30,7 +30,7 @@ Only works reviewed and approved by SBL will be added for viewing by the public 
 	</tiles:put>
 
 	<tiles:put name="content" type="string">
-Welcome to the XpressBible; a free, open source tool for exploring the Bible and related public domain texts online.  We provide power searching capabilities and cutting edge tools to help you engage the Bible at a deeper level.  Our entire library is available here.<br/><br/>
+Welcome to the OSIS Bible Tool; a free, open source tool for exploring the Bible and related public domain texts online.  We provide power searching capabilities and cutting edge tools to help you engage the Bible at a deeper level.  Our entire library is available here.<br/><br/>
 Also, be sure to check out these other sites for free Bible resources:  The SWORD Project, Unbound Bible, Bible Gateway, Crosswalk, and Blue Letter Bible.
 	</tiles:put>
 </tiles:insert>
