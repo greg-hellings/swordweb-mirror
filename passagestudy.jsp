@@ -1,5 +1,6 @@
 <%@ include file="defines/tiles.jsp" %>
 <%
+	Vector toolsTreeOpen = (Vector)session.getAttribute("toolsTreeOpen");
 	String resetModule = request.getParameter("mod");
 	if (resetModule != null)
 		session.setAttribute("ActiveModule", resetModule);
@@ -12,13 +13,36 @@
 	String activeKey = (String) session.getAttribute("ActiveKey");
 	if (activeKey == null)
 		activeKey = "jas 1:19";
+
+	if (toolsTreeOpen == null) {
+		toolsTreeOpen = new Vector();
+		session.setAttribute("toolsTreeOpen", toolsTreeOpen);
+	}
+
+	for (int i = 0; i < 2; i++) {
+		String []nodes = request.getParameterValues((i>0)?"close":"open");
+		if (nodes != null) {
+			for (int j = 0; j < nodes.length; j++) {
+				String node = nodes[j];
+				if (node != null) {
+					if (i>0)
+						toolsTreeOpen.remove(node);
+					else {
+						if (!toolsTreeOpen.contains(node)) {
+							toolsTreeOpen.add(node);
+						}
+					}
+				}
+			}
+		}
+	}
 %>
 
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" value="Passage Bible study" />
 	<tiles:put name="sidebar_left" type="string">
 		<div id="translations">
-		<h2>Translations:</h2>
+		<h2>Preferred Translations:</h2>
 
 	<% if (prefBibles.size() > 0) { %>
 		<ul>
@@ -31,18 +55,28 @@
 			}
 		%>
 		</ul>
+	<% } else { %>
+		<ul>
+		<li>Preferred Translations can be selected from the preferences tab<li>
+		</ul>
 	<% } %>
 
 		<hr/>
 
 		<ul>
 		<%
-			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
-					SWModule module = mgr.getModuleByName(modInfo[i].name);
+			boolean open = toolsTreeOpen.contains("allBibles");
 		%>
-				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name)+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+			<h2><a class="<%= ((open)?"closed":"open")%>" href="passagestudy.jsp?<%= ((open)?"close":"open")%>=allBibles"><img src="images/<%=((open)?"minus":"plus") + ".png"%>" alt="action"/></a>All Translations</h2>
 		<%
+			if (open) {
+				for (int i = 0; i < modInfo.length; i++) {
+					if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
+						SWModule module = mgr.getModuleByName(modInfo[i].name);
+			%>
+					<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name)+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+			<%
+					}
 				}
 			}
 		%>
@@ -51,7 +85,10 @@
 	</tiles:put>
 	<tiles:put name="sidebar_right" type="string">
 		<div id="commentaries">
-		<h2>Comentaries:</h2>
+		<h2>Word Study</h2>
+			<h3><a href="passagestudy.jsp?strongs=on">Strongs</a></h3>
+			<h3><a href="passagestudy.jsp?morph=on">Morphology</a></h3>
+		<h2>Preferred Comentaries:</h2>
 
 	<% if (prefCommentaries.size() > 0) { %>
 		<ul>
@@ -64,18 +101,28 @@
 			}
 		%>
 		</ul>
+	<% } else { %>
+		<ul>
+		<li>Preferred commentaries can be selected from the preferences tab<li>
+		</ul>
 	<% } %>
 
 		<hr />
 
 		<ul>
 		<%
-			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
-					SWModule module = mgr.getModuleByName(modInfo[i].name);
+			boolean open = toolsTreeOpen.contains("allComm");
 		%>
-				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name)+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+			<h2><a class="<%= ((open)?"closed":"open")%>" href="passagestudy.jsp?<%= ((open)?"close":"open")%>=allComm"><img src="images/<%=((open)?"minus":"plus") + ".png"%>" alt="action"/></a>All Commentaries</h2>
 		<%
+			if (open) {
+				for (int i = 0; i < modInfo.length; i++) {
+					if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
+						SWModule module = mgr.getModuleByName(modInfo[i].name);
+			%>
+					<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name)+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+			<%
+					}
 				}
 			}
 		%>
