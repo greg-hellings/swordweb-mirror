@@ -6,6 +6,7 @@
 		session.setAttribute("ActiveModule", resetModule);
 	String activeModuleName = (String) session.getAttribute("ActiveModule");
 	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? defaultBible : activeModuleName);
+	String promoLine = activeModule.getConfigEntry("ShortPromo");
 
 	String resetKey = request.getParameter("key");
 	if (resetKey != null)
@@ -116,6 +117,7 @@
 		</div>
 	</tiles:put>
 	<tiles:put name="sidebar_right" type="string">
+	<div id="promoLine"><%= promoLine %></div>
 	<div id="studytools">
 		<h2>Word Study:</h2>
 			<ul>
@@ -279,7 +281,6 @@
 		<%
 			}
 			String copyLine = activeModule.getConfigEntry("ShortCopyright");
-			String promoLine = activeModule.getConfigEntry("ShortPromo");
 			if (copyLine.equalsIgnoreCase("<swnull>"))
 				copyLine = "";
 			if (promoLine.equalsIgnoreCase("<swnull>"))
