@@ -11,6 +11,14 @@
 	if (pageTags != null) {
 
 		
+		String lang = request.getParameter("lang");
+		if (lang != null) {
+			session.setAttribute("lang", lang);
+		}
+		else {
+			lang = (String)session.getAttribute("lang");
+		}
+
 		if (request.getParameter("t0") != null) {
 			Properties locale = TranslateTag.getSessionLocale(pageContext);
 			for (int i = 0; i < pageTags.size(); i++) {
@@ -32,8 +40,15 @@
 	
 %>
 <p><a href="<%=requestURL%>">Return to website</a></p>
+	<form action="translate.jsp">
+		<fieldset>
+			<legend>Language: </legend>
+			<input type="text" name="lang" size="10" value="<%=lang%>"/>
+			<input type="submit" value="switch" title="switch language" />
+		</fieldset>
+	</form>
 <p>Strings which are marked for translation:</p>
-	<form action="translate.jsp?action=save">
+	<form action="translate.jsp">
 		<fieldset>
 <%
 		for (int i = 0; i < pageTags.size(); i++) {
@@ -46,7 +61,7 @@
 <%
 		}
 %>
-			<input type="submit" value="go" title="Search by keyword or phrase" />
+			<input type="submit" value="save" title="Save translation strings" />
 		</fieldset>
 	</form>
 <%
