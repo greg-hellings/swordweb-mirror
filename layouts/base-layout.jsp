@@ -7,6 +7,7 @@
 <head>
 	<title>OSIS Web:<tiles:getAsString name="title"/></title>
 	<link href="blues.css" title="Blue" rel="stylesheet" type="text/css" />
+	<link href="wash.css" title="Washed Out" rel="alternate stylesheet" type="text/css" />
 	<link href="blank.css" title="Blank" rel="alternate stylesheet" type="text/css" />
 </head>
 <body>

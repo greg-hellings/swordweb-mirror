@@ -38,11 +38,10 @@
 	<tiles:put name="sidebar_right" type="string">
 
 <div class="bluepanel">
-<h4>Library Upload Tool</h4>
-
-<form><input type="submit" class="searchbutton" value="ADD YOUR TEXT HERE" /></form><br/>
-<i>Have you produced serious academic scholarship related to Biblical text?  Using our Scholar OSIS Tool, you can upload it for students or fellow scholars to review, or submit it to SBL for inclusion on OSIS Bible Tool.<br/><br>
-Only works reviewed and approved by SBL will be added for viewing by the public at large.</i>
+<h2>Library Upload Tool</h2>
+<p><a href="place_holder">ADD YOUR TEXT HERE</a></p>
+<p>Have you produced serious academic scholarship related to Biblical text?  Using our Scholar OSIS Tool, you can upload it for students or fellow scholars to review, or submit it to SBL for inclusion on OSIS Bible Tool.</p>
+<p>Only works reviewed and approved by SBL will be added for viewing by the public at large.</p>
 </div>
 	</tiles:put>
 
