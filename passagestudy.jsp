@@ -73,7 +73,6 @@
 		</ul>
 	<% } %>
 
-		<hr/>
 
 		<%
 			boolean open = toolsTreeOpen.contains("allBibles");
@@ -136,7 +135,7 @@
 		</ul>
 	<% } %>
 
-		<hr />
+
 
 		<%
 			boolean open = toolsTreeOpen.contains("allComm");

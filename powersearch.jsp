@@ -24,7 +24,7 @@
 		<%
 			}
 		%>
-		<hr/>
+
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
@@ -52,7 +52,7 @@
 		<%
 			}
 		%>
-		<hr/>
+
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
