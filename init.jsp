@@ -56,6 +56,19 @@
 					start = end + 1;
 				}
 			}
+			else if (cookies[i].getName().equals("ParDispModules")) {
+				parDispModules = new Vector();
+				start = 0;
+				end = 1;
+				line = cookies[i].getValue();
+				while (end > 0) {
+					end = line.indexOf("+",start);
+					field = (end > 0) ? line.substring(start, end) : line.substring(start);
+					if (start > 3)  		// skip the first one cuz it's not a real module
+						parDispModules.add(field);
+					start = end + 1;
+				}
+			}
 		}
 	}
 

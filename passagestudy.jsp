@@ -88,15 +88,12 @@
 						break;
 					boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 			%>
-				<div class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-		<%			if (!rtol) {	%>
-				<span class="versenum"><a href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText) %>"><%= keyText.substring(keyText.indexOf(":")+1) %></a></span>
-		<%			}	%>
+				<div dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+					<span class="versenum"><a href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText) %>">
+						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
+					</span>
 
-					<%= new String(activeModule.getRenderText().getBytes(), "UTF-8") %>
-		<%			if (rtol) {	%>
-				<span class="versenum"><a href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText) %>"><%= keyText.substring(keyText.indexOf(":")+1) %></a></span>
-		<%			}	%>
+					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
 				</div>
 			<%
 				}
@@ -105,7 +102,7 @@
 			%>
 				<div class="verse">
 				<span class="versenum"><%= activeKey %></span>
-					<%= new String(activeModule.getRenderText().getBytes(), "UTF-8") %>
+					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
 				</div>
 		<%
 			}

@@ -203,12 +203,12 @@ a:active {
 	font-weight: bold;
 }
 
-#content-main div.verse {
+#content-main .verse {
 	margin: 0px 0px 5px 0px;
 	padding: 0px 5px 0px 5px;
 }
 
-#content-main div.currentverse {
+#content-main .currentverse {
 	margin: 0px 0px 5px 0px;
 	background-color: #eeeeee;
 	border: 1px dotted #dddddd;
@@ -218,6 +218,12 @@ a:active {
 #content-main p.textname {
 	margin: 0px 0px 5px 0px;
 }
+
+#content-main *[dir=rtl] {
+	font-family:code2000,code2001,arial unicode ms,arial, sans serif;
+	font-size:larger;
+}
+
 
 /* footer section ---------- */
 

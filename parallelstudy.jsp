@@ -1,4 +1,4 @@
-<%@ include file="defines/defines.jsp" %>
+<%@ include file="defines/tiles.jsp" %>
 
 <%
 	String addModule = (String)request.getParameter("add");
@@ -11,13 +11,12 @@
 	}
 
 	String delModule = (String)request.getParameter("del");
-	if (delModule != null) {
+	if ( (delModule != null) && parDispModules.contains(delModule)) {
 		parDispModules.remove(delModule);
 	}
 
-
 	if (parDispModules.size() == 0) {
-		parDispModules.add(0, "KJV");
+		parDispModules.add(0, "KJV"); //our standard, fallback module
 	}
 
 	SWModule activeModule = mgr.getModuleByName((String)parDispModules.get(0));
@@ -27,7 +26,7 @@
 		session.setAttribute("ActiveKey", resetKey);
 	String activeKey = (String) session.getAttribute("ActiveKey");
 	if (activeKey == null)
-		activeKey = "jas 1:19";
+		activeKey = "jas 1:19"; // our fallback key
 %>
 
 
@@ -37,7 +36,7 @@
 
 	<tiles:put name="title" value="Parallel Bible study" />
 	<tiles:put name="sidebar_left" type="string">
-	      	<h2>Translations:</h2>
+		<h2>Translations:</h2>
 		<p class="textname">Displayed modules (click to remove)</p>
 		<ul>
 
@@ -46,8 +45,11 @@
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getType().equals(SwordOrb.BIBLES)) {
 		%>
-
-					<li><a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>" title="Remove from displayed modules"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+					<li>
+						<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>" title="Remove from displayed modules">
+							<%= module.getDescription().replaceAll("&", "&amp;") %>
+						</a>
+					</li>
 		<%
 				}
 			}
@@ -68,7 +70,11 @@
 					}
 
 		%>
-				<li><a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add to displayed modules"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+				<li>
+					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add to displayed modules">
+						<%= module.getDescription().replaceAll("&", "&amp;") %>
+					</a>
+				</li>
 		<%
 				}
 			}
@@ -86,7 +92,11 @@
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getType().equals(SwordOrb.COMMENTARIES)) {
 		%>
-				<li><a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>" title="Remove from displayed modules"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+				<li>
+					<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>" title="Remove from displayed modules">
+						<%= module.getDescription().replaceAll("&", "&amp;") %>
+					</a>
+				</li>
 		<%
 				}
 			}
@@ -105,7 +115,11 @@
 						continue;
 					}
 		%>
-				<li><a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add to displaued modules"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+				<li>
+					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add to displaued modules">
+						<%= module.getDescription().replaceAll("&", "&amp;") %>
+					</a>
+				</li>
 		<%
 				}
 			}
@@ -133,18 +147,29 @@
 			    activeModule.getType().equals(SwordOrb.COMMENTARIES))
 			{
 		%>
-			<div style="clear:both;float:left;display:table-row;width:100%;"">
+
+		<%-- table which contains all verse items --%>
+		<table width="100%" cellspacing="0" border="0" cellpadding="0" align="center">
+
+		<thead>
+		<tr>
+
 		<% //insert module names at the top
+				int colWidth = 100 / parDispModules.size();
+
 				for (int i = 0; i < parDispModules.size(); i++) {
 					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
 		%>
-					<div style="padding:3px; float:left; text-align:left; display:table-cell; width:<%= 100/parDispModules.size() %>%;">
-					<b><%= mod.getDescription() %></b>
-					</div>
+					<td>
+						<b><%= mod.getDescription() %></b>
+					</td>
 		<%
 				}
 		%>
-			</div>
+		</tr>
+		</thead>
+
+		<tbody>
 		<%
 				String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
 				for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
@@ -153,7 +178,7 @@
 						break;
 
 		%>
-					<div style="clear:both;float:left;display:table-row;width:100%;">
+					<tr align="left" valign="top">
 		<%
 					for (int i = 0; i < parDispModules.size(); i++) {
 						SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
@@ -161,24 +186,27 @@
 							mod.setKeyText( keyText );
 						boolean rtol = ("RtoL".equalsIgnoreCase(mod.getConfigEntry("Direction")));
 		%>
-						<div style="float:left;display:table-cell;padding:3px;width:<%= 100/parDispModules.size() %>%; <%= i<parDispModules.size() ? "padding-right:10px;" : ""%>" dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-						<span class="versenum">
-							<a href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>">
-								<%= keyText.substring(keyText.indexOf(":")+1) %>
-							</a>
-						</span>
+							<td style="padding:4px;" align="<%= rtol ? "right" : "left" %>" width="<%= colWidth %>%" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+								<div dir="<%= rtol ? "rtl" : "ltr" %>">
+									<span class="versenum">
+										<a href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>">
+											<%= keyText.substring(keyText.indexOf(":")+1) %>
+									</a>
+									</span>
 
-							<%= new String(mod.getRenderText().getBytes("iso-8859-1"), "UTF-8") %>
-						</div>
-
+									<%= new String(mod.getRenderText().getBytes("iso-8859-1"), "UTF-8") %>
+								</div>
+							</td>
 		<%
 					}
 		%>
-
-					</div>
-			<%
+				</tr>
+		<%
 				}
 			}
-			%>
+		%>
+
+		</tbody>
+		</table>
 	</tiles:put>
 </tiles:insert>
