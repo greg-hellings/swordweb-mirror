@@ -38,6 +38,7 @@
 	</tiles:put>
 
 	<tiles:put name="sidebar_left" type="string">
+		<div id="translations">
 		<h2>Translations:</h2>
 		<ul>
 		<%
@@ -51,6 +52,7 @@
 			}
 		%>
 		</ul>
+		</div>
 	</tiles:put>
 
 	<tiles:put name="sidebar_right" type="string">

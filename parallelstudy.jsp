@@ -41,7 +41,7 @@
 
 	<tiles:put name="sidebar_left" type="string">
 
-		<div id="paralleldisplay">
+		<div id="translations">
 
 		<h2>Translations:</h2>
 		<p class="textname">Displayed modules (click to remove)</p>
@@ -92,7 +92,10 @@
 	</tiles:put>
 
 	<tiles:put name="sidebar_right" type="string">
-      		<h2>Comentaries:</h2>
+
+		<div id="commentaries">
+
+		<h2>Comentaries:</h2>
 
 		<p class="textname">Displayed modules (click to remove)</p>
 		<ul class="plain">
@@ -101,8 +104,7 @@
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getCategory().equals(SwordOrb.COMMENTARIES)) {
 		%>
-				<li>
-					<img src="images/remove.png"/>
+				<li class="remove">
 					<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>#cv" title="Remove from displayed modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>
@@ -125,9 +127,8 @@
 						continue;
 					}
 		%>
-				<li>
-					<img src="images/add.png"/>
-					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displaued modules">
+				<li class="add">
+					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>
 				</li>
@@ -136,6 +137,7 @@
 			}
 		%>
 		</ul>
+		</div>
 
 	</tiles:put>
 	<tiles:put name="content" type="string">

@@ -17,8 +17,9 @@
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" value="Passage Bible study" />
 	<tiles:put name="sidebar_left" type="string">
-	   	<h2>Translations:</h2>
-      	   	<ul>
+		<div id="translations">
+		<h2>Translations:</h2>
+      	<ul>
 		<%
 			for (int i = 0; i < prefBibles.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)prefBibles.get(i));
@@ -27,9 +28,10 @@
 		<%
 			}
 		%>
-			</ul>
+		</ul>
 		<hr/>
-			<ul>
+
+		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
@@ -41,9 +43,10 @@
 			}
 		%>
 		</ul>
-
+		</div>
 	</tiles:put>
 	<tiles:put name="sidebar_right" type="string">
+		<div id="commentaries">
 		<h2>Comentaries:</h2>
 	      	<ul>
 
@@ -55,9 +58,9 @@
 		<%
 			}
 		%>
-			</ul>
+		</ul>
 		<hr />
-			<ul>
+		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
@@ -69,6 +72,7 @@
 			}
 		%>
 		</ul>
+		</div>
 
 	</tiles:put>
 	<tiles:put name="content" type="string">
