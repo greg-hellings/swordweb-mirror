@@ -57,21 +57,13 @@ I commented this section out until it can be made functional.
    <div id="externallinks">
 	<h2>External Links:</h2>
         <ul>
-          <li><a href="http://www.sbl-site.org/Resources/" title="Society of Biblical Literature Online Resources">SBL Online Resources</a></li>
-          <li><a href="http://www.bibleresourcecenter.org" title="ABS Bible Research Center">Bible Research Center</a></li>
-          <li><a href="http://www.bibleresourcecenter.org/Research/multimedia/maps/" title="Interactive Maps">Interactive Maps</a></li>
-          <li><a href="http://www.bibleresourcecenter.org/research/virtuallibrary.dsp" title="Virtual Bible Library">Virtual Bible Library</a></li>
-        </ul>
-
-<ul>
-
-<li><a href="http://crosswire.org/" title="CrossWire Bible Society">CrossWire Bible Society</a></li>
-<li><a href="http://www.americanbible.org/" title="American Bible Society">American Bible Society</a></li>
-<li><a href="http://sbl-site.org/" title="Society of Biblical Literature">Society of Biblical Literature</a></li>
-<li><a href="http://crosswire.org/sword/" title="The Sword Project">The Sword Project</a></li>
-<li><a href="http://www.bibletechnologies.net/" title="Open Scripture Information Standard">OSIS</a></li>
-
-
+	<li><a href="http://www.bibleresourcecenter.org" title="ABS Bible Research Center">Bible Research Center</a></li>
+	<li><a href="http://www.bibleresourcecenter.org/Research/multimedia/maps/" title="Interactive Maps">Interactive Maps</a></li>
+	<li><a href="http://crosswire.org/" title="CrossWire Bible Society">CrossWire Bible Society</a></li>
+	<li><a href="http://www.americanbible.org/" title="American Bible Society">American Bible Society</a></li>
+	<li><a href="http://sbl-site.org/" title="Society of Biblical Literature">Society of Biblical Literature</a></li>
+	<li><a href="http://crosswire.org/sword/" title="The Sword Project">The Sword Project</a></li>
+	<li><a href="http://www.bibletechnologies.net/" title="Open Scripture Information Standard">OSIS</a></li>
 </ul>
 
 
