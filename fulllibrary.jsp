@@ -43,7 +43,8 @@
 	<tiles:put name="lookup_url" value="fulllibrary.jsp" />
 	<tiles:put name="title" value="Full Library Catalog" />
 	<tiles:put name="sidebar_left" type="string">
-		<ul>
+		<h3>OSIS Library</h3>
+		<ul class="library">
 <%
 			Vector leaves = new Vector();
 			for (int i = 0; i < modInfo.length; i++) {
@@ -51,8 +52,8 @@
 					leaves.add(modInfo[i].category);
 					boolean open = catTreeOpen.contains(modInfo[i].category);
 %>
-		
-					<li><b><a href="fulllibrary.jsp?<%= (open)?"close":"open" %>=<%= URLEncoder.encode(modInfo[i].category) %>"><%= ((open)?"[-]":"[+]") %></a>  <%= modInfo[i].category %></b></li>
+
+					<li><a href="fulllibrary.jsp?<%= (open)?"close":"open" %>=<%= URLEncoder.encode(modInfo[i].category) %>"> <img src="images/<%= ((open)?"minus":"plus") %>.png"/></a>  <%= modInfo[i].category %></li>
 <%
 					if (open) {
 %>

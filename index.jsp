@@ -16,7 +16,7 @@
 </ul>
 </div>
 <div>
-<h3>OSIS Library</h3><br/>
+<h3>OSIS Library</h3>
 		<ul>
 <%
 			Vector leaves = new Vector();
@@ -24,8 +24,7 @@
 				if (!leaves.contains(modInfo[i].category)) {
 					leaves.add(modInfo[i].category);
 %>
-		
-<li><a href="fulllibrary.jsp?action=closeAll&open=<%= URLEncoder.encode(modInfo[i].category) %>"><%= modInfo[i].category %></a></li><br/>
+<li><a href="fulllibrary.jsp?action=closeAll&amp;open=<%= URLEncoder.encode(modInfo[i].category) %>"><img width="10" height="10" alt="+" src="images/plus.png"/> <%= modInfo[i].category %></a></li>
 <%
 				}
 			}

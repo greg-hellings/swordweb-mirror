@@ -64,23 +64,32 @@ p {
 	margin: .5em 0 0 0;
 	}
 
-a {font: bold 11px/16px verdana, geneva, arial, helvetica, sans-serif; 
+a {
+	font: bold 11px/16px verdana, geneva, arial, helvetica, sans-serif;
 	color: #69c;
-	background: transparent; 
-	text-decoration: none;}
-a:link {color: #69c; 
-	background: 
-	ransparent;}
+	background: transparent;
+	text-decoration: none;
+	}
+
+a:link {
+	color: #69c;
+	background:
+	ransparent;
+	}
+
 a:visited {
-	color: #69c; 
-	background: transparent;}
-a:hover {color: #000099; 
-	background: transparent; 
-	text-decoration: none;}
+	color: #69c;
+	background: transparent;
+	}
+a:hover {
+	color: #000099;
+	background: transparent;
+	text-decoration: none;
+	}
 a:active {
-	color: #69c; 
-	background: 
-	transparent; 
+	color: #69c;
+	background:
+	transparent;
 	text-decoration: none;}
 
 /* header content section ---------- */
@@ -100,12 +109,21 @@ a:active {
 	background-color: transparent;
 	}
 
-#header ul li {display:inline;
+#header img {
+	align:right;
+	top:5px;
+	right:5px;
+	position:absolute;
+	}
+
+#header ul li {
+	display:inline;
 	padding: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 }
 
 #header ul {
+	display:inline;
 	padding: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 }
@@ -144,7 +162,9 @@ a:active {
 	padding: 0px 0px 0px 10px;
 	margin: 0px 0px 0px 5px;
 	list-style-type: square;
+	list-style-type:none;
 }
+
 
 /* --- right column ---------- */
 
@@ -167,7 +187,7 @@ a:active {
 }
 
 
-	/* --- center column  (main content)---------- */
+/* --- center column  (main content)---------- */
 
 #content-main {
 	margin: 0 185px;
@@ -266,19 +286,18 @@ a:active {
 /* blue panel */
 .bluepanel {
 	background-color: #eeeeee;
-	border: 1px dotted #dddddd;
-	padding: 0px 5px 0px 5px;
-	text-align: left;
+	border:1px solid #dddddd;
+	padding:0px 5px 0px 5px;
+	text-align:left;
 }
 
 .bluepanel input.textinput{
-	border-style: solid;
-	border: 1px solid #555555;
+	border:1px solid #555555;
 	width:100px;
 }
 
-.bluepanel input.searchbutton{
-	border: 2px outset #eeeeee;
+.bluepanel input.searchbutton {
+	border: 2px solid #eeeeee;
 	color:#ffffff;
 	background-color:#000099;
 }
@@ -326,6 +345,22 @@ a:active {
 	padding: 0;
 	margin: 0;
 }
+
+
+ul.library {
+}
+
+ul.library li {
+	font-size:small;
+}
+ul.library ul  {
+
+}
+ul.library ul li {
+	font-size:x-small;
+}
+
+
 
 ul.booknav {
 	padding: 0px 0px 0px 0px;

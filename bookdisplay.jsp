@@ -96,13 +96,13 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 			if (target.equals(rootTreeKey))
 				out.print("<b>");
 			if (children.length > 0) {
-				out.print("<a href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(rootTreeKey) + "\">" + ((open)?"[-]":"[+]") + "</a>");
+				out.print("<a href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(rootTreeKey) + "\"><img src=\"images/" + ((open)?"minus":"plus") + ".png\"/></a>");
 			}
 			if (target.equals(rootTreeKey))
 				out.print("</b>");
 			out.print(" <a href=\"bookdisplay.jsp?gbsEntry=" + URLEncoder.encode(rootTreeKey) + "\">" + localName + "</a></li>");
 		}
-				
+
 		if ((open) || (offset < 1)) {
 			if (children.length > 0)
 				out.print("<ul>");
@@ -110,7 +110,7 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 			for (int i = 0; i < children.length; i++) {
 				printTree(bookTreeOpen, out, module, rootTreeKey+"/"+children[i], target);
 			}
-				
+
 			if (children.length > 0)
 				out.print("</ul>");
 		}
