@@ -189,7 +189,7 @@
 	<tiles:put name="content" type="string">
 		<%
 			activeModule.setKeyText(activeKey);
-			activeKey = activeModule.getKeyText(); 	// be sure it's formatted nicely
+			activeKey = activeModule.getKeyText(); 	// be sure it is formatted nicely
 		%>
 
 		<div id="passagestudy">
@@ -287,6 +287,11 @@
 				promoLine = "";
 		%>
 		<div class="copyLine"><%= copyLine %></div>
+		<ul class="booknav">
+			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>">previous chapter</a></li>
+			<!-- <li><a href="" title="display all of Romans 8">this chapter</a></li> -->
+			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>">next chapter</a></li>
+		</ul>
 		<div class="promoLine"><%= promoLine %></div>
 		</div>
 	</tiles:put>
