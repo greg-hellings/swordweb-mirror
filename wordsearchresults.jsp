@@ -153,10 +153,10 @@
 		%>
 
 		<%
-			if (navEnd < (results.length / resultLimit.intValue()) ) {
-				int lastPage = (results.length - resultLimit.intValue()) - (results.length % resultLimit.intValue());
+				int lastPage = (results.length / resultLimit.intValue()) + ((results.length % resultLimit.intValue()) > 0 ? 1 : 0) -1;
+			if (navEnd < lastPage) {
 		%>
-				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage %>" title="Last page (<%= results[lastPage] %>) of search results"><%= results.length / resultLimit.intValue() %></a></li>
+				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage*resultLimit.intValue() %>" title="Last page (<%= results[lastPage] %>) of search results"><%= lastPage+1 %></a></li>
 		<%
 			}
 		%>
