@@ -18,14 +18,18 @@
 
    <div id="library">
 	<h2>OSIS Library</h2>
-	<ul>
+	<ul class="plain">
 <%
 			Vector leaves = new Vector();
 			for (int i = 0; i < modInfo.length; i++) {
 				if (!leaves.contains(modInfo[i].category)) {
 					leaves.add(modInfo[i].category);
 %>
-	<li class="closed"><a href="fulllibrary.jsp?action=closeAll&amp;open=<%= URLEncoder.encode(modInfo[i].category) %>"><%= modInfo[i].category %></a></li>
+		<li class="closed">
+			<a href="fulllibrary.jsp?action=closeAll&amp;open=<%= URLEncoder.encode(modInfo[i].category) %>">
+				<img src="images/plus.png"/> <%= modInfo[i].category %>
+			</a>
+		</li>
 <%
 				}
 			}

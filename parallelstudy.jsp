@@ -49,7 +49,7 @@
 		%>
 					<li>
 						<img src="images/remove.png"/>
-						<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>" title="Remove from displayed modules">
+						<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>#cv" title="Remove from displayed modules">
 							<%= module.getDescription().replaceAll("&", "&amp;") %>
 						</a>
 					</li>
@@ -75,7 +75,7 @@
 		%>
 				<li>
 					<img src="images/add.png"/>
-					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add to displayed modules">
+					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>
 				</li>
@@ -98,7 +98,7 @@
 		%>
 				<li>
 					<img src="images/remove.png"/>
-					<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>" title="Remove from displayed modules">
+					<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>#cv" title="Remove from displayed modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>
 				</li>
@@ -122,7 +122,7 @@
 		%>
 				<li>
 					<img src="images/add.png"/>
-					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>" title="Add to displaued modules">
+					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displaued modules">
 						<%= module.getDescription().replaceAll("&", "&amp;") %>
 					</a>
 				</li>
@@ -203,7 +203,7 @@
 		%>
 							<td width="<%= 100/parDispModules.size() %>%" dir="<%= rtol ? "rtl" : "ltr" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 								<span class="versenum">
-									<a href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>">
+									<a <%= (keyText.equals(activeKey)) ? "name=\"cv\"" : "" %> href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>#cv">
 										<%= keyText.substring(keyText.indexOf(":")+1) %>
 									</a>
 								</span>

@@ -44,7 +44,7 @@
 	<tiles:put name="title" value="Full Library Catalog" />
 	<tiles:put name="sidebar_left" type="string">
 		<h3>OSIS Library</h3>
-		<ul class="library">
+		<ul class="plain">
 <%
 			Vector leaves = new Vector();
 			for (int i = 0; i < modInfo.length; i++) {
@@ -73,7 +73,7 @@
 						</ul>
 <%
 					}
-					
+
 				}
 			}
 %>
