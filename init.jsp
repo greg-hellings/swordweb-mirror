@@ -8,7 +8,29 @@
 <%@ page import="java.util.Comparator" %>
 <%@ page import="org.crosswire.sword.orb.*" %>
 <%@ page import="java.net.URLEncoder" %>
+
+<%!
+	static Vector styleNames = null;
+	static Vector styleFiles = null;
+	static Vector styleDescriptions = null;
+%>
+
 <%
+	synchronized(this) {
+		if (styleNames == null) {
+
+			styleNames = new Vector();
+			styleFiles = new Vector();
+			styleDescriptions = new Vector();
+
+			styleNames.add("Washed Out");
+			styleFiles.add("wash.css");
+
+			styleNames.add("Sandy Creek");
+			styleFiles.add("sandy.css");
+		}
+	}
+
 	SWMgr mgr = SwordOrb.getSWMgrInstance(session);
 	// let's cache the modInfo in the session cuz this is alot to grab each time we need it from the orb
 	ModInfo[] modInfo = (ModInfo[])session.getAttribute("ModInfo");
@@ -51,25 +73,16 @@
 	Vector prefBibles = (Vector)session.getAttribute("PrefBibles");
 	Vector prefCommentaries = (Vector)session.getAttribute("PrefCommentaries");
 	Vector parDispModules = (Vector)session.getAttribute("ParDispModules");
-	String prefStyle = (String)session.getAttribute("PrefStyle");
-	static Vector styleNames = null;
-	static Vector styleFiles = null;
-	static Vector styleDescriptions = null;
-
-	synchronized(this) {
-		if (styleNames == null) {
-
-			styleNames = new Vector();
-			styleFiles = new Vector();
-			styleDescriptions = new Vector();
-
-			styleNames.add("Washed Out");
-			styleFiles.add("wash.css");
-
-			styleNames.add("Sandy Creek");
-			styleFiles.add("sandy.css");
-		}
+	String prefStyle = (String)request.getParameter("setStyle");
+	if (prefStyle == null)
+		prefStyle = (String)session.getAttribute("PrefStyle");
+	else {	// set style cookie
+		Cookie c = new Cookie("PrefStyle", prefStyle);
+		c.setMaxAge(java.lang.Integer.MAX_VALUE);
+		c.setPath("/");
+		response.addCookie(c);
 	}
+
 
 	Cookie[] cookies = request.getCookies();
 	if ((prefBibles == null) && (cookies != null)) {
@@ -136,6 +149,7 @@
 	session.setAttribute("PrefBibles", prefBibles);
 	session.setAttribute("PrefCommentaries", prefCommentaries);
 	session.setAttribute("ParDispModules", parDispModules);
+	session.setAttribute("PrefStyle", prefStyle);
 /*
 	// kept around in case we ever need it again
 				// de-serialize from cookie

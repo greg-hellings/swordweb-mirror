@@ -1,0 +1,724 @@
+body{
+color: #000000;
+background-color: #F5F3EA;
+font-size: 76%;
+margin: 0px 0px 0px 0px;
+}
+
+/* Mast Head */
+
+#header{
+border-top: 7px solid #808072;
+font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+}
+
+#header h1 {
+font-family: Georgia, Times New Roman, Times, Serif;
+font-weight: normal;
+font-size: 2.0em;
+line-height: 2.0em;
+text-transform: uppercase;
+padding: 0;
+margin: 0;
+text-align: center;
+color: #808072;
+background: #DEDACA;
+font-weight: bold;
+letter-spacing: .5em;
+text-decoration: none;
+}
+
+#header h1 acronym
+{border:0;}
+
+
+/* Main Navigation */
+
+#navlist{
+margin: 0px 0px 0px 0.5em;
+padding: 0px;
+float:left;
+width:10.5em;
+}
+
+#navlist ul{
+list-style-type: none;
+
+padding: 0;
+text-align: right;
+}
+
+#navlist li {
+margin: 0px 0px 5px 0px;
+}
+
+#navlist a:link, #navlist a:visited{
+background: #F5F3EA;
+border: 1px solid #808072;
+color: #666;
+font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+font-size: 1.5em;
+font-weight: normal;
+line-height: 1.4em;
+display:block;
+padding: 3px 5px 3px 5px;
+text-decoration: none;
+}
+
+#navlist a:link#current, #navlist a:visited#current{
+background: #DEDACA;
+color: #000;
+}
+
+#navlist a:hover { 
+color: #808072;
+background: #DEDACA;
+}
+
+#navlist li#skip {display:none;}
+
+/* General - Site wide style */
+
+h2{
+margin: 12px 0px 3px 0px;
+padding: 0;
+font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+font-size: 1.4em;
+text-align: center;
+}
+
+h3{
+font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+font-weight: bold;
+font-size: 1.0em;
+}
+
+
+/* Layout */
+
+#content-wrap{
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+border-top: 1px solid #808072;
+
+}
+
+#content-sub-1{
+width:14em;
+float:right;
+margin: 0;
+padding: 0px .5em 20px 1em;
+border-left: 1px solid #808072;
+}
+
+#content-sub-2{
+clear:right;
+width:14em;
+float:right;
+margin: 0;
+padding: 0px .5em 20px 1em;
+border-left: 1px solid #808072;
+}
+
+#content-main {
+margin: 0px 0px 0px 0px;
+padding: 15px 15px 20px 15px;
+width:auto;
+font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+}
+
+
+
+#footer{
+clear:both;
+margin: 0px 0px 0px 0px;
+border-top: 1px solid #808072;
+text-align: center;
+}
+
+#footer img {
+border:0;
+margin: 0px 20px 0px 20px;
+}
+
+
+/* ****** Individual Sections ****** */
+
+/* Quick Search */
+
+#quicksearch {
+padding: 0px 0px 0px 0px;
+}
+
+#quicksearch form{
+margin: 0px 0px 1em 0px;
+padding: 0px 0px 0px 0px;
+}
+
+#quicksearch form fieldset{
+border: 1px solid #808072;
+padding: 3px;
+}
+
+/* External Links */
+
+#externallinks{
+padding: 0 1px 1px;
+margin-left: 5px;
+}
+
+#externallinks ul{
+background: #F5F3EA;}
+
+#externallinks li{
+list-style-type: square;
+text-align: left;
+}
+
+#externallinks li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+background: #F5F3EA;
+text-decoration: none;
+}
+
+#externallinks ul {
+text-indent: 0em;
+padding: 5px;
+margin: 0px
+}
+
+#externallinks li a:link { color: #000; }
+#externallinks li a:visited { color: #000; }
+
+#externallinks li a:hover{
+text-decoration: underline;
+color: #808072;
+}
+
+
+/* OSIS Library */
+
+#library ul, #library li {list-style-type: none;
+background-color: #F5F3EA;}
+
+#library ul {text-indent: 0em;
+padding: 0px 0px 0px 0px;
+margin: 0px 0px 0px 0px;}
+
+#library ul ul {
+text-indent: 0em;
+padding: 0px 0px 0px 0px;
+margin: 0px 0px 0px 10px;
+}
+
+#library li{
+margin: 3px 0px 0px 10px;
+background-image: url(images/arrow.png);
+background-repeat: no-repeat;
+border-bottom: 1px solid #F5F3EA;
+}
+
+#library li.closed {
+background-image: url(images/plus.png);
+background-repeat: no-repeat;
+}
+
+#library li.open {
+background-image: url(images/minus.png);
+background-repeat: no-repeat;
+}
+
+#library li a {
+display:block;
+padding: 0px 0px 0px 15px;
+text-decoration: none;
+color:#000}
+
+#library li a:hover {
+text-decoration: underline;
+color:#f00;
+}
+
+
+/*   Translations   */
+
+#translations {
+margin: 0px 0px 0px -1em;
+padding: 0px 0px 0px 0px;
+}
+
+#translations ul, #translations li {
+list-style-type: none;
+}
+
+
+#translations ul {
+background: #F5F3EA;
+text-indent: 0em;
+padding: 0px;
+margin: 0px 0px 10px 0px;
+}
+
+#translations li{
+list-style: none;
+margin: 0;
+border-top: 1px solid #808072;
+text-align: left;
+border-bottom: 1px solid #F5F3EA;
+}
+
+#translations li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+background: #F5F3EA;
+text-decoration: none;
+}
+
+#translations li a:link { color: #000; }
+#externallinks li a:visited { color: #000; }
+
+#translations li a:hover{
+border-color: #8EABCD;
+color: #f00;
+background: #DEDACA;
+}
+
+#translations h3 {
+background: #DEDACA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+border-top: 1px solid #808072;
+}
+
+#translations p {
+background: #DEDACA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-style: italic;
+}
+
+#translations hr {display:none;}
+
+/*   Devotionals   */
+
+#devotionals {
+margin: 0px -0.5em 0px 0px;
+padding: 0px 0 0px 0px;
+}
+
+#devotionals ul, #devotionals li {
+list-style-type: none;
+}
+
+
+#devotionals ul {
+background: #F5F3EA;
+text-indent: 0em;
+padding: 0px;
+margin: 0px 0px 0px 0px;
+}
+
+#devotionals li{
+list-style: none;
+margin: 0;
+border-top: 1px solid #808072;
+text-align: left;
+border-bottom: 1px solid #F5F3EA;
+}
+
+#devotionals li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+background: #F5F3EA;
+text-decoration: none;
+}
+
+#devotionals li a:link { color: #000; }
+#externallinks li a:visited { color: #000; }
+
+#devotionals li a:hover{
+border-color: #8EABCD;
+color: #f00;
+background: #DEDACA;
+}
+
+#devotionals h3 {
+background: #DEDACA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+border-top: 2px solid #808072;
+}
+
+#devotionals p {
+background: #DEDACA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-style: italic;
+}
+
+/*   Study Tools  */
+
+#studytools {
+margin: 0px 0px 0px -1em;
+padding: 0px 0px 0px 0px;
+}
+
+#studytools ul, #studytools li {
+list-style-type: none;
+}
+
+#studytools ul {
+background: #F5F3EA;
+text-indent: 0em;
+padding: 0px;
+margin: 0px 0px 10px 0px;
+}
+
+#studytools li{
+list-style: none;
+margin: 0;
+border-top: 1px solid #808072;
+text-align: left;
+border-bottom: 1px solid #F5F3EA;
+}
+
+#studytools li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+background: #F5F3EA;
+text-decoration: none;
+}
+
+#studytools li a:link { color: #000; }
+#externallinks li a:visited { color: #000; }
+
+#studytools li a:hover{
+border-color: #8EABCD;
+color: #f00;
+background: #DEDACA;
+}
+
+#studytools h3 {
+background: #DEDACA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+border-top: 2px solid #808072;
+}
+
+#studytools p {
+background: #DEDACA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-style: italic;
+}
+
+
+
+/*   Commentaries  */
+
+#commentaries {
+margin: 0px 0px 0px -1em;
+padding: 0px 0px 0px 0px;
+}
+
+#commentaries ul, #commentaries li {
+list-style-type: none;
+}
+
+#commentaries ul {
+background: #F5F3EA;
+text-indent: 0em;
+padding: 0px;
+margin: 0px 0px 10px 0px;
+
+}
+
+#commentaries li{
+list-style: none;
+margin: 0;
+border-top: 1px solid #808072;
+text-align: left;
+border-bottom: 1px solid #F5F3EA;
+}
+
+#commentaries li a{
+display: block;
+padding: 0.25em 0.5em 0.25em 0.75em;
+background: #F5F3EA;
+text-decoration: none;
+}
+
+#commentaries li a:link { color: #000; }
+#externallinks li a:visited { color: #000; }
+
+#commentaries li a:hover{
+border-color: #8EABCD;
+color: #f00;
+background: #DEDACA;
+}
+
+#commentaries h3 {
+background: #DEDACA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+border-top: 2px solid #808072;
+}
+
+#commentaries p {
+background: #DEDACA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-style: italic;
+}
+
+#commentaries hr {display:none;}
+
+
+#welcome, #about, #help, #preferences, #powersearch, #daily, #genbook, #passagestudy {
+margin: 0px 14em 0px 10em;
+padding: 0px .5em 0px .5em;
+}
+
+
+/*   Search Results   */
+
+#searchresults {
+margin: 0px 14em 0px 11.5em;
+padding: 0 0 0px 0;
+}
+
+#searchresults dt {
+margin: 0px 0px 0px 0px;
+padding: 0px 2px 0px 2px;
+background: #eee;
+border-top: 1px solid #808072;
+font-size: 1em;
+line-height: 1.8em;
+}
+
+#searchresults dt span {
+float: right;
+margin: -1.8em 0 0 0;
+font-style: italic;
+}
+
+#searchresults dd {
+background: #fff;
+margin: 0px 0px 0px 0px;
+padding: 2px 5px 5px 3em;
+}
+
+#searchresults dt a {
+text-decoration: none;
+display:block;
+color:#000;
+font-size:1.1em;
+}
+
+#searchresults dt a:hover {
+text-decoration: none;
+background-color: #DEDACA;
+color:#f00;
+text-decoration: underline;
+}
+
+
+#searchresults ul {
+background: #eee;
+border-top: 1px solid #808072;
+border-bottom: 1px solid #808072;
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+text-indent: 0px;
+}
+
+#searchresults ul li {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1em;
+margin: 0px 1.1em 0px 0px;
+}
+
+#searchresults ul li a {
+color:#000;
+}
+
+#searchresults ul li a:hover {
+color:#f00;
+}
+
+
+/* Passage Study */
+
+#passagestudy{
+font-size: 1em;
+line-height: 1.4em;
+margin: 0px 14em 0px 10em;
+padding: 0px .5em 0px .5em;
+}
+
+#passagestudy div{
+	padding: 0px .5em 0px .5em;
+}
+
+ span.versenum{
+	font-size: 0.7em;
+	padding: 0px 3px 0px 10px;
+	font-weight: bold;
+
+}
+
+ span.versenum a {
+	text-decoration: none;
+	color:navy;
+}
+
+ span.versenum a:hover {
+	text-decoration: underline;
+	color:#ff0000;
+}
+
+div.currentverse {
+	background-color: #eee;
+}
+
+#passagestudy  ul {
+background: #eee;
+border-top: 1px solid #808072;
+border-bottom: 1px solid #808072;
+margin: 0px 0px 5px 0px;
+padding: 0px 0px 0px 1em;
+text-indent: 0px;
+}
+
+#passagestudy  ul li {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1em;
+margin: 0px 1.1em 0px 0px;
+}
+
+#passagestudy  ul li a {
+color:#000;
+}
+
+#passagestudy  ul li a:hover {
+color:#f00;
+}
+
+/* Parallel Display */
+
+#paralleldisplay {
+font-size: 1em;
+line-height: 1.4em;
+margin: 0px 14em 0px 11.5em;
+padding: 0 0 0px 0;
+}
+
+#paralleldisplay p {
+padding: 0px .5em 0px .5em;
+}
+
+
+#paralleldisplay  ul {
+background: #eee;
+border-top: 1px solid #808072;
+border-bottom: 1px solid #808072;
+margin: 0px 0px 5px 0px;
+padding: 0px 0px 0px 1em;
+text-indent: 0px;
+}
+
+#paralleldisplay  ul li {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1em;
+margin: 0px 1.1em 0px 0px;
+}
+
+#paralleldisplay  ul li a {
+color:#000;
+}
+
+#paralleldisplay  ul li a:hover {
+color:#f00;
+}
+
+#paralleldisplay td {
+ vertical-align: top;
+}
+
+#paralleldisplay td {
+	padding: 0px .5em 0px .5em;
+}
+
+#paralleldisplay td.currentverse {
+	background-color: #eee;
+}
+
+/*   GenBook navigation tree  */
+#genbooknav {
+margin:0px 5px;
+padding:0px 5px;
+}
+
+#genbooknav ul, #genbooknav li {
+list-style-type: none;
+}
+
+#genbooknav ul {
+text-indent:0em;
+padding:0px 0px 0px 0px;
+margin:0px 0px 0px 0px;
+}
+
+#genbooknav li {
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+border-bottom:1px solid white;
+}
+
+#genbooknav #current {
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+border-bottom:1px solid white;
+font-weight:bold;
+}
+
+#genbooknav ul ul {
+text-indent:0em;
+padding:0px;
+margin:0px 0px 0px 15px;
+}
+
+#genbooknav li img {
+border:0px;
+}
+
+#genbooknav li a {
+text-decoration:none;
+color:#000
+}
+
+#genbooknav li a:hover {
+text-decoration:underline;
+color:#f00;
+}
+
+.wordsOfJesus {
+color: #bb0000;
+}
+
+

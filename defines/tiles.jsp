@@ -1,5 +1,7 @@
 <%@ taglib uri="/WEB-INF/lib/struts-tiles.tld" prefix="tiles" %>
+
 <%@ include file="../init.jsp" %>
+
 <tiles:definition id="basic" page="layouts/base-layout.jsp">
 	<tiles:put name="lookup_url" value="passagestudy.jsp" />
 	<tiles:put name="title" value="OSIS web application" />

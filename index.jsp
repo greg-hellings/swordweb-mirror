@@ -1,5 +1,7 @@
 <%@ include file="defines/tiles.jsp" %>
 
+<%@ page import="java.util.Vector" %>
+
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" value="OSIS Bible Tool" />
 
