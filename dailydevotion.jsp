@@ -7,7 +7,7 @@
 	if (resetModule != null)
 		session.setAttribute("ActiveDevo", resetModule);
 	String activeDevoName = (String) session.getAttribute("ActiveDevo");
-	SWModule activeDevo = mgr.getModuleByName((activeDevoName == null) ? "SME" : activeDevoName);
+	SWModule activeDevo = mgr.getModuleByName((activeDevoName == null) ? "DBD" : activeDevoName);
 
 	SimpleDateFormat formatter;
 %>
@@ -47,7 +47,7 @@
 <div id="daily">
 		<h2>Today's Devotion (<%= formatter.format(new Date()) %>)</h2>
 
-		<h3>; <%= activeDevo.getDescription().replaceAll("&", 
+		<h3><%= activeDevo.getDescription().replaceAll("&", 
 "&amp;") + " (" + activeDevo.getName() + ")" %></h3>
 
 		<div class="verse">
