@@ -82,14 +82,16 @@
 			activeModule.setKeyText(activeKey);
 			activeKey = activeModule.getKeyText(); 	// be sure it's formatted nicely
 		%>
+
+		<div id="passagestudy">
 		<h2><%= activeKey %></h2>
-		<p class="textname">&raquo; <%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></p>
+		<h3>&raquo; <%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></h3>
 		<ul class="booknav">
 			<li><a href="" title="display Romans 7">previous chapter</a></li>
 			<li><a href="" title="display all of Romans 8">this chapter</a></li>
 			<li><a href="" title="display Romans 10">next chapter</a></li>
 		</ul>
-		<div id="passagestudy">
+
 		<%
 			if (activeModule.getCategory().equals(SwordOrb.BIBLES)) {
 				String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));

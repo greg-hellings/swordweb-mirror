@@ -247,7 +247,7 @@ color: #f00;
 background: #C5D6EA;
 }
 
-#translations p {
+#translations h3 {
 background: #C5D6EA;
 margin: 0px 0px 0px 0px;
 padding: 2px 0.5em 2px 0.5em;
@@ -256,9 +256,17 @@ font-size: 1.1em;
 border-top: 2px solid #ccc;
 }
 
+#translations p {
+background: #C5D6EA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-style: italic;
+}
+
 #translations hr {display:none;}
 
-/*   commentaries   */
+/*   Commentaries   */
 
 #commentaries {
 margin: 0px 0px 0px -1em;
@@ -300,13 +308,21 @@ color: #f00;
 background: #C5D6EA;
 }
 
-#commentaries p {
+#commentaries h3 {
 background: #C5D6EA;
 margin: 0px 0px 0px 0px;
 padding: 2px 0.5em 2px 0.5em;
 text-align: center;
 font-size: 1.1em;
 border-top: 2px solid #ccc;
+}
+
+#commentaries p {
+background: #C5D6EA;
+margin: 0px 0px 0px 0px;
+padding: 2px 0.5em 2px 0.5em;
+text-align: center;
+font-style: italic;
 }
 
 #commentaries hr {display:none;}
