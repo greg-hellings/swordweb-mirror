@@ -110,6 +110,7 @@
 	</tiles:put>
 
 	<tiles:put name="sidebar_right" type="string">
+<!--
 		<div id="studytools">
 			<h2>Word Study:</h2>
 			<ul>
@@ -117,6 +118,7 @@
 				<li><a href="parallelstudy.jsp?morph=<%= (morph) ? "off" : "on" %>" title="Turn <%= (morph) ? "off" : "on" %> morphology"><%= (morph) ? "Hide" : "Show" %> Morphology</a></li>
 			</ul>
 		</div>
+-->
 
 		<div id="commentaries">
 		<h2>Comentaries:</h2>
