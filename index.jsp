@@ -41,7 +41,7 @@
 
 	<tiles:put name="sidebar_right" type="string">
 
-<div class="bluepanel">
+<div id="uploadtool">
 <h2>Library Upload Tool</h2>
 <p><a href="place_holder">ADD YOUR TEXT HERE</a></p>
 <p>Have you produced serious academic scholarship related to Biblical text?  Using our Scholar OSIS Tool, you can upload it for students or fellow scholars to review, or submit it to SBL for inclusion on OSIS Bible Tool.</p>
@@ -51,9 +51,41 @@
 
 	<tiles:put name="content" type="string">
 <div id="welcome">
+
+<h2>ABOUT THE BIBLE TOOL</h2>
 <p>
-Welcome to the OSIS Bible Tool-- a free, open source tool for exploring the Bible and related public domain texts online.  We provide power searching capabilities and cutting edge tools to help you engage the Bible at a deeper level.  Our entire library is available here.
+    Welcome to the OSIS Bible Tool-- a free, open source tool for exploring the Bible and related public domain texts online. We provide power searching capabilities and cutting edge tools to help you engage the Bible at a deeper level. Our entire library is available here.
 </p>
+
+
+    <h2>UPLOAD TEXTS</h2>
+<p>
+    Welcome to the OSIS Bible Tool-- a free, open source tool for exploring the Bible and related public domain texts online. We provide power searching capabilities and cutting edge tools to help you engage the Bible at a deeper level. Our entire library is available here.
+</p>
+
+    <h2>BIBLE TOOLS</h2>
+<p>
+    Welcome to the OSIS Bible Tool-- a free, open source tool for exploring the Bible and related public domain texts online. We provide power searching capabilities and cutting edge tools to help you engage the Bible at a deeper level. Our entire library is available here.
+</p>
+
+
+    <h2>HELP</h2>
+<p>
+    Welcome to the OSIS Bible Tool-- a free, open source tool for exploring the Bible and related public domain texts online. We provide power searching capabilities and cutting edge tools to help you engage the Bible at a deeper level. Our entire library is available here.
+</p>
+
+
+    <h2>DOWNLOADS</h2>
+<p>
+    Welcome to the OSIS Bible Tool-- a free, open source tool for exploring the Bible and related public domain texts online. We provide power searching capabilities and cutting edge tools to help you engage the Bible at a deeper level. Our entire library is available here.
+</p>
+
+
+    <h2>FUN BIBLE RESOURCES</h2>
+<p>
+    Welcome to the OSIS Bible Tool-- a free, open source tool for exploring the Bible and related public domain texts online. We provide power searching capabilities and cutting edge tools to help you engage the Bible at a deeper level. Our entire library is available here.
+</p>
+
 <p>
 Also, be sure to check out these other sites for free Bible resources:  <a href="http://www.crosswire.org/sword">The SWORD Project</a>, <a href="http://www.unboundbible.com/">Unbound Bible</a>, <a href="http://www.biblegateway.com">Bible Gateway</a>, <a href="http://bible.crosswalk.com/">Crosswalk</a>, and <a href="http://www.blueletterbible.org">Blue Letter Bible</a>. 
 </p>
