@@ -45,22 +45,22 @@
 			tabTitles.add("Passage Study");
 			tabLinks.add("passagestudy.jsp");
 			tabNames.add("Parallel");
-			tabTitles.add("Parallel");
+			tabTitles.add("Parallel Display");
 			tabLinks.add("parallelstudy.jsp");
 			tabNames.add("Power Search");
 			tabTitles.add("Power Search");
 			tabLinks.add("powersearch.jsp");
 			tabNames.add("Devotionals");
-			tabTitles.add("Devotionals");
+			tabTitles.add("Daily Devotionals");
 			tabLinks.add("dailydevotion.jsp");
 			tabNames.add("Library");
-			tabTitles.add("Library");
+			tabTitles.add("Full Library");
 			tabLinks.add("fulllibrary.jsp");
 			tabNames.add("Preferences");
 			tabTitles.add("Preferences");
 			tabLinks.add("preferences.jsp");
 			tabNames.add("FAQ");
-			tabTitles.add("FAQ");
+			tabTitles.add("Frequently Asked Questions");
 			tabLinks.add("about.jsp");
 		}
 	}
