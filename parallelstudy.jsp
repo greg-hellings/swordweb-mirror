@@ -135,7 +135,6 @@
 			}
 		%>
 		<h2><%= activeKey %></h2>
-		<p class="textname">&raquo; <%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></p>
 		<ul class="booknav">
 			<li><a href="" title="display Romans 7">previous chapter</a></li>
 			<li><a href="" title="display all of Romans 8">this chapter</a></li>
@@ -161,7 +160,8 @@
 					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
 		%>
 					<td>
-						<b><%= mod.getDescription() %></b>
+						<p class="textname">&raquo; <B><%= mod.getDescription().replaceAll("&", "&amp;") + " (" + mod.getName() + ")" %></b></p>
+
 					</td>
 		<%
 				}
