@@ -83,7 +83,7 @@ href="index.jsp?setStyle=Parchment">Parchment</a></li>
 
 	<h2>ABOUT THE BIBLE TOOL
 	</h2>
-	<p>Welcome to The Bible Tool-- a free, evolving open source tool for exploring the Bible and related texts online. Created by Crosswire Bible Society, the Society of Biblical Literature and the American Bible Society as the first in a number of coming Bible engagement tools using an XML standard called <acronym title="Open Scripture Information Standard">OSIS</acronym>, we provide power searching capabilities and cutting edge tools to help you engage the Bible at a deeper level. <a href="index.jsp?section=aboutthetool">Learn More...</a>
+	<p>Welcome to The Bible Tool-- a free, evolving open source tool for exploring the Bible and related texts online. Created by CrossWire Bible Society, the Society of Biblical Literature and the American Bible Society as the first in a number of coming Bible engagement tools using an XML standard called <acronym title="Open Scripture Information Standard">OSIS</acronym>, we provide power searching capabilities and cutting edge tools to help you engage the Bible at a deeper level. <a href="index.jsp?section=aboutthetool">Learn More...</a>
 	</p>
 
 	<h2>OTHER BIBLE TOOLS
@@ -93,7 +93,7 @@ href="index.jsp?setStyle=Parchment">Parchment</a></li>
 
 	<h2>DOWNLOADS
 	</h2>
-	<p>We offer a number of free Bible software downloads for Windows, Mac, Linux and Palm produced by Crosswire Bible Society. <a href="index.jsp?section=downloads">Learn More...</a>
+	<p>We offer a number of free Bible software downloads for Windows, Mac, Linux and Palm produced by CrossWire Bible Society. <a href="index.jsp?section=downloads">Learn More...</a>
 	</p>
 
 	<h2>UPLOAD TEXTS
@@ -111,7 +111,7 @@ href="index.jsp?setStyle=Parchment">Parchment</a></li>
 <% if ("aboutthetool".equals((String)request.getParameter("section"))) { %>
 	<h2 id="aboutthetool">ABOUT THE BIBLE TOOL</h2>
 
-	<p>Welcome to The Bible Tool-- a free, evolving open source tool for exploring the Bible and related texts online. Created by Crosswire Bible Society, the Society of Biblical Literature and the American Bible Society as the first in a number of coming Bible engagement tools using an XML standard called <acronym title="Open Scripture Information Standard">OSIS</acronym> , we provide power searching capabilities to help you engage the Bible at a deeper level.
+	<p>Welcome to The Bible Tool-- a free, evolving open source tool for exploring the Bible and related texts online. Created by CrossWire Bible Society, the Society of Biblical Literature and the American Bible Society as the first in a number of coming Bible engagement tools using an XML standard called <acronym title="Open Scripture Information Standard">OSIS</acronym> , we provide power searching capabilities to help you engage the Bible at a deeper level.
 	</p>
 	<p>The Bible Tool began as part of an effort by the <acronym title="Society of Biblical Literature">SBL</acronym> and <acronym title="American Bible Society">ABS</acronym> to bridge the gap between academia and the church. We want both scholars and laypeople to engage the Bible, gaining contextual understanding through:
 	</p>
@@ -124,7 +124,7 @@ href="index.jsp?setStyle=Parchment">Parchment</a></li>
 	<p>We plan to further this effort by:
 	</p>
 	<ul>
-	<li>making free, open source Bible tools available which people can customize for themselves and others, built by the hundreds of technical experts who volunteer their time to the Crosswire Bible Society;</li>
+	<li>making free, open source Bible tools available which people can customize for themselves and others, built by the hundreds of technical experts who volunteer their time to the CrossWire Bible Society;</li>
 
 	<li>providing an OSIS editor using MS Word 2003, so you can encode your texts and make them available for others</li>
 
@@ -141,7 +141,7 @@ href="index.jsp?setStyle=Parchment">Parchment</a></li>
 
 <% if ("downloads".equals((String)request.getParameter("section"))) { %>
 	<h2 id="downloads">DOWNLOADS</h2>
-	<p>Download a number of free Bible software downloads for Windows, Mac, Linux and Palm produced by Crosswire Bible Society.
+	<p>Download a number of free Bible software downloads for Windows, Mac, Linux and Palm produced by CrossWire Bible Society.
 	</p>
 
 	<h3>SWORD for Windows
@@ -178,7 +178,7 @@ href="index.jsp?setStyle=Parchment">Parchment</a></li>
 	<p>Bible software developed for Palm.
 	</p>
 
-	<p>To view all the software available from Crosswire, go to the <a href="http://www.crosswire.org/">Crosswire Bible Society</a>.
+	<p>To view all the software available from CrossWire, go to the <a href="http://www.crosswire.org/">CrossWire Bible Society</a>.
 	</p>
 
 <% } %>

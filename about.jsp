@@ -68,7 +68,7 @@
   <h3>GENERAL QUESTIONS</h3>
   <p class="q" id="faq_1">Who is behind the Bible Tool? Why are you wearing that wig?</p>
   <p class="a">The technology was developed by <a 
-href="http://crosswire.org/"  title="Crosswire Bible Society">Crosswire Bible Society</a>. The software is a combined project of the <a href="http://www.americanbible.org/" title="American Bible Society">American Bible Society</a> and <a href="http://sbl-site.org/" title="Society of Biblical Literature">Society of Biblical Literature</a>.</p>
+href="http://crosswire.org/"  title="CrossWire Bible Society">CrossWire Bible Society</a>. The software is a combined project of the <a href="http://www.americanbible.org/" title="American Bible Society">American Bible Society</a> and <a href="http://sbl-site.org/" title="Society of Biblical Literature">Society of Biblical Literature</a>.</p>
   <p class="q" id="faq_2">What makes the Bible Tool different from other Bible search tools?</p>
   <p>The Bible Tool is part of a larger initiative co-sponsored by ABS and the SBL to allow people to approach the Bible on their terms, in the culture, community, context, media and format of their choice. This tool will evolve in the coming months / years to help us reach that goal.</p>
   <p>This means we will strive to enable you, the user, to have the look / feel you want, the functionality you want, the texts you want (by adding popular ones and allowing you to upload your own) in the format you want (initially electronic or print). Because the tool is open source, if you have some technical skills you are free to download the tool and make changes as you see fit.</p>
@@ -104,9 +104,9 @@ href="http://crosswire.org/"  title="Crosswire Bible Society">Crosswire Bible So
   <p>This allows you to print the results of your study directly to your printer, without including the tabs on the top and tools/texts in the margins as part of your printout.</p>
   <h3>GETTING FREE BIBLE SOFTWARE</h3>
   <p class="q" id="faq_12">Is the Bible Tool available on CD?</p>
-  <p>You can get Crosswire Sword software, on which this tool was built, by getting in touch with <a href="http://www.crosswire.org/">www.crosswire.org</a>. However, it&rsquo;s easier to just download the software from the website.</p>
+  <p>You can get CrossWire SWORD software, on which this tool was built, by getting in touch with <a href="http://www.crosswire.org/">www.crosswire.org</a>. However, it&rsquo;s easier to just download the software from the website.</p>
   <p class="q" id="faq_13">Can I download Bible Tool Bibles and other content?</p>
-  <p>You can download a number of Bibles freely at <a href="http://www.crosswire.org/">www.crosswire.org</a> if you download the Sword tool. As we add modern translations to the tool, some restrictions determined by the organizations that hold the license for the content will apply. You can copy some Biblical material from the online Bibles, as long as you follow copyright restrictions.</p>
+  <p>You can download a number of Bibles freely at <a href="http://www.crosswire.org/">www.crosswire.org</a> if you download the SWORD tool. As we add modern translations to the tool, some restrictions determined by the organizations that hold the license for the content will apply. You can copy some Biblical material from the online Bibles, as long as you follow copyright restrictions.</p>
   <h3>APPROPRIATE USE AND PERMISSIONS</h3>
   <p class="q" id="faq_14">Can I modify the Bible Tool to make it better fit on my own site?</p>
   <p>Yes. This tool was built using open source code, so feel free to use it however you like.</p>
