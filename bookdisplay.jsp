@@ -7,9 +7,11 @@
 	Vector bookTreeOpen = (Vector)session.getAttribute("bookTreeOpen");
 
 
+	session.setAttribute("lastModType", "GBS");
 	String gbsBook = (String)request.getParameter("mod");
-	if (gbsBook != null)
+	if (gbsBook != null) {
 		session.setAttribute("gbsBook", gbsBook);
+	}
 	gbsBook = (String)session.getAttribute("gbsBook");
 	SWModule module = (gbsBook == null) ? null : mgr.getModuleByName(gbsBook);
 

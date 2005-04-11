@@ -2,10 +2,20 @@
 
 <%
 	String resetModule = request.getParameter("mod");
-	if (resetModule != null)
-		session.setAttribute("ActiveModule", resetModule);
-	String activeModuleName = (String) session.getAttribute("ActiveModule");
+	String lastModType = (String) session.getAttribute("lastModType");
+	String activeModuleName = (resetModule != null)?resetModule : ((String) session.getAttribute(("GBS".equals(lastModType))?"gbsBook":"ActiveModule"));
 	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? defaultBible : activeModuleName);
+	if ((resetModule != null) && (activeModule != null)) {
+		if ("Generic Books".equals(activeModule.getCategory())) {
+			session.setAttribute("gbsBook", resetModule);
+			session.setAttribute("lastModType", "GBS");
+		}
+		else {
+			session.setAttribute("ActiveModule", resetModule);
+			session.setAttribute("lastModType", "Bible");
+		}
+	}
+	lastModType = (String) session.getAttribute("lastModType");
 
 	String resetSearchTerm = request.getParameter("searchTerm");
 	if (resetSearchTerm != null)
@@ -91,7 +101,7 @@
 				activeModule.setKeyText(results[i].key);
 		%>
 				<dt>
-					<a href="passagestudy.jsp?key=<%= URLEncoder.encode(results[i].key)+"#cv" %>" title="<%= results[i].key %>"><%= results[i].key %></a>
+					<a href="<%= ("GBS".equals(lastModType))?"bookdisplay.jsp?gbsEntry=":"passagestudy.jsp?key=" %><%= URLEncoder.encode(results[i].key)+"#cv" %>" title="<%= results[i].key %>"><%= results[i].key %></a>
 					<span><%= (results[i].score > 0)?("score: " + results[i].score) : "" %></span>
 				</dt>
 				<% boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction"))); %>

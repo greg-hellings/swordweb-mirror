@@ -1,6 +1,7 @@
 <%@ include file="init.jsp" %>
 
 <%
+	session.setAttribute("lastModType", "Bible");
 	Vector toolsTreeOpen = (Vector)session.getAttribute("toolsTreeOpen");
 	String resetModule = request.getParameter("mod");
 	if (resetModule != null)

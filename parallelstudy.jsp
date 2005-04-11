@@ -1,6 +1,7 @@
 <%@ include file="init.jsp" %>
 
 <%
+	session.setAttribute("lastModType", "Bible");
 	String []addMods = request.getParameterValues("add");
 	if (addMods != null) {
 		for (int i = 0; i < addMods.length; i++) {
