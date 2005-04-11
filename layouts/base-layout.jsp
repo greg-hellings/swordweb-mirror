@@ -1,5 +1,6 @@
 <%@ taglib uri="/WEB-INF/lib/struts-tiles.tld" prefix="tiles" %>
 <%@ taglib uri="/WEB-INF/lib/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/lib/crosswire-i18n.tld" prefix="t" %>
 
 <%@ page import="java.util.Vector" %>
 
