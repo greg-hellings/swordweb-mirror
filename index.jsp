@@ -21,7 +21,7 @@
 %>
 		<li class="closed">
 			<a href="fulllibrary.jsp?action=closeAll&amp;open=<%= URLEncoder.encode(modInfo[i].category) %>">
- <%= modInfo[i].category %>
+ <t:t><%= modInfo[i].category %></t:t>
 			</a>
 		</li>
 <%
@@ -49,7 +49,7 @@ I commented this section out until it can be made functional.
 <h2><t:t>Style:</t:t></h2>
 		<ul>
 <% for (int i = 0; i < styleNames.size(); i++) { %>
-			<li><a href="index.jsp?setStyle=<%= URLEncoder.encode((String)styleNames.get(i)) %>" title="<%= (String) styleNames.get(i) %>"><%= (String) styleNames.get(i) %></a></li>
+			<li><a href="index.jsp?setStyle=<%= URLEncoder.encode((String)styleNames.get(i)) %>" title="<%= (String) styleNames.get(i) %>"><t:t><%= (String) styleNames.get(i) %></t:t></a></li>
 <% } %>
 		</ul>
 </div>

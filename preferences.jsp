@@ -152,7 +152,7 @@
 		<h2><t:t>Preferred Style</t:t></h2>
 		<ul>
 <% for (int i = 0; i < styleNames.size(); i++) { %>
-			<li><a href="preferences.jsp?setStyle=<%= URLEncoder.encode((String)styleNames.get(i)) %>" title="<%= (String) styleNames.get(i) %>"><%= (String) styleNames.get(i) %></a></li>
+			<li><a href="preferences.jsp?setStyle=<%= URLEncoder.encode((String)styleNames.get(i)) %>" title="<%= (String) styleNames.get(i) %>"><t:t><%= (String) styleNames.get(i) %></t:t></a></li>
 <% } %>
 		</ul>
 
