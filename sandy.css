@@ -647,3 +647,16 @@ border-bottom: 1px solid #DEDACA;
      line-height : normal;
 }
 
+
+span.curWord {
+	text-decoration: underline;
+     font-weight : bold;
+	background: #a1895F;
+}
+span.sameLemmaMorph {
+	text-decoration: underline;
+     font-weight : bold;
+}
+span.sameLemma {
+     font-weight : bold;
+}

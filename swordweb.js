@@ -51,28 +51,83 @@ if (isNS4)
 document.onmousemove = getMouseXY;
 
 // Temporary variables to hold mouse x-y pos.s
-var tempX = 0
-var tempY = 0
+var mouseDocX = 0
+var mouseDocY = 0
+var mouseClientX = 0
+var mouseClientY = 0
 
 function getMouseXY(e) {
   if (isIE4) { // grab the x-y pos.s if browser is IE
-    tempX = event.clientX + document.body.scrollLeft
-    tempY = event.clientY + document.body.scrollTop
+    mouseDocX = event.clientX + document.body.scrollLeft
+    mouseDocY = event.clientY + document.body.scrollTop
+    mouseClientX = event.clientX;
+    mouseClientY = event.clientY;
   } else {  // grab the x-y pos.s if browser is NS
-    tempX = e.pageX
-    tempY = e.pageY
+    mouseDocX = e.pageX
+    mouseDocY = e.pageY
+    mouseClientX = e.clientX;
+    mouseClientY = e.clientY;
   }  
   // catch possible negative values in NS4
-  if (tempX < 0){tempX = 0}
-  if (tempY < 0){tempY = 0}  
+  if (mouseDocX < 0){mouseDocX = 0}
+  if (mouseDocY < 0){mouseDocY = 0}  
   return true
 }
+
+function changeCSS(myclass,element,value) {
+	var CSSRules
+	if (document.all)		  CSSRules = 'rules'
+	else if (document.getElementById) CSSRules = 'cssRules'
+	else return
+	for (var i = 0; i < document.styleSheets.length; i++) {
+		for (var j = 0; j < document.styleSheets[i][CSSRules].length; j++) {
+			if (document.styleSheets[i][CSSRules][j].selectorText == myclass) {
+		    	document.styleSheets[i][CSSRules][j].style[element] = value
+			}
+		}
+	}
+}
+
+
+function pi(mod, key, wordnum, extratext) {
+	changeCSS('.'+lastword, 'color', '');
+	p(mod, key, wordnum, extratext);
+	changeCSS('.'+wordnum, 'color', 'red');
+}
+
+
+var wd_strong = '';
+var wd_morph = '';
+var wd_wnum = '';
+function wd(mod, key, wordnum, extratext) {
+	wd_strong = '';
+	wd_morph = '';
+	wd_wnum = '';
+
+	if ((mod == 'G') || (mod == 'StrongsGreek')) {
+		wd_strong = key;
+		wd_morph = extratext;
+		wd_wnum = wordnum;
+	}
+
+}
+
+var curspans = new Array();
 
 function p(mod, key, wordnum, extratext) {
 
 	/* check for aliases */
 	if (mod == "G") mod = "StrongsGreek";
 	if (mod == "H") mod = "StrongsHebrew";
+
+	b=document.getElementById("onlywlayer");
+	if (b==null) {
+		b=document.createElement("div");
+		b.id="onlywlayer";
+		b.className="word-layer";
+		document.body.appendChild(b);
+		b.style.visibility = "hidden";
+	}
 
 	if ((wordnum == lastword) && (b.style.visibility == "visible")) {
 		showhide("onlywlayer", "hidden");
@@ -81,43 +136,71 @@ function p(mod, key, wordnum, extratext) {
 		xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+key,true);
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4) {
-				b=document.getElementById("onlywlayer");
-				if (b==null) {
-					b=document.createElement("div");
-					b.id="onlywlayer";
-					b.className="word-layer";
-					document.body.appendChild(b);
-					b.style.visibility = "hidden";
-				}
 				b.innerHTML=xmlhttp.responseText + "<br/>"+extratext;
 				showhide("onlywlayer", "visible");
 				lastword = wordnum;
 			}
 		}
-		xmlhttp.send(null)
+		xmlhttp.send(null);
+		if (mod.substring(0,12) == 'StrongsGreek') {
+			spans = document.getElementsByTagName('span');
+			for (i = 0; i < curspans.length; i++) {
+				curspans[i].className='';
+			}
+			curspans.length = 0;
+			for (i = 0; i < spans.length; i++) {
+				oc = spans[i].getAttribute('onclick');
+				if (oc) {
+					fe = oc.indexOf('(');
+					if (fe > 0) {
+						wdata = eval('wd'+oc.substring(fe, oc.length));
+						if (wd_wnum == wordnum) {
+							curspans[curspans.length] = spans[i];
+							spans[i].className='curWord';
+						}
+						else if (wd_strong == key) {
+							if (wd_morph == extratext) {
+								curspans[curspans.length] = spans[i];
+								spans[i].className='sameLemmaMorph';
+							}
+							else { curspans[curspans.length] = spans[i];
+								spans[i].className='sameLemma';
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
 
 
 function showhide (layer, vis) {
-	// to ne sme biti na zaèetku, ker mora biti body že naložen, kar na zaèetku še ni
-	winW = isNS4 ? window.innerWidth-16 : document.body.offsetWidth-20;
-	winH = isNS4 ? window.innerHeight : document.body.offsetHeight;
-	var l = document.getElementById(layer);
-	var cx = tempX + 10;
-	var cy = tempY - 10;
-	if (cx + 200 > winW)
-		cx = tempX - 220;
-	if (cx < 5){
-		cx = 5;
-		cy = cy + 20;
-	}
 
+	var l = document.getElementById(layer);
 	if (vis == "visible") {
+		winW = isNS4 ? window.innerWidth-16 : document.body.offsetWidth-20;
+		winH = isNS4 ? window.innerHeight : document.body.offsetHeight;
+		var cx = mouseDocX + 10;
+		var cy = mouseDocY - 10;
+		if (cx + 200 > winW)
+			cx = mouseDocX - 220;
+		if (cx < 5){
+			cx = 5;
+			cy = cy + 20;
+		}
+
+//		alert('window.innerHeight:'+window.innerHeight+'mouseClientY:'+mouseClientY);
+		// adjust for above or below verse
+		if (mouseClientY < (window.innerHeight/2))
+			cy = cy + 50;
+		else cy = cy - (l.clientHeight + 50);
+
 		l.style.left = "" + cx + "px";
 		l.style.top = "" + cy + "px";
 	}
+	
 	l.style.visibility = vis;
 }
 
