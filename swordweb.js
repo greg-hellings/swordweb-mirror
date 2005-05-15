@@ -149,11 +149,14 @@ function p(mod, key, wordnum, extratext) {
 			}
 			curspans.length = 0;
 			for (i = 0; i < spans.length; i++) {
-				oc = spans[i].getAttribute('onclick');
-				if (oc) {
-					fe = oc.indexOf('(');
-					if (fe > 0) {
-						wdata = eval('wd'+oc.substring(fe, oc.length));
+				ocf = spans[i].getAttribute('onclick');
+				if (ocf) {
+					oc = ocf.toString();
+					fb = oc.indexOf('p(');
+					if (fb >= 0) {
+						fe = oc.indexOf(')', fb);
+						wdf = 'wd'+oc.substring(fb+1, fe+1);
+						wdata = eval(wdf);
 						if (wd_wnum == wordnum) {
 							curspans[curspans.length] = spans[i];
 							spans[i].className='curWord';
@@ -181,7 +184,7 @@ function showhide (layer, vis) {
 	var l = document.getElementById(layer);
 	if (vis == "visible") {
 		winW = isNS4 ? window.innerWidth-16 : document.body.offsetWidth-20;
-		winH = isNS4 ? window.innerHeight : document.body.offsetHeight;
+		winH = (window.innerHeight) ? window.innerHeight : document.body.offsetHeight;
 		var cx = mouseDocX + 10;
 		var cy = mouseDocY - 10;
 		if (cx + 200 > winW)
@@ -191,9 +194,9 @@ function showhide (layer, vis) {
 			cy = cy + 20;
 		}
 
-//		alert('window.innerHeight:'+window.innerHeight+'mouseClientY:'+mouseClientY);
+//		alert('winH:'+winH+'mouseClientY:'+mouseClientY);
 		// adjust for above or below verse
-		if (mouseClientY < (window.innerHeight/2))
+		if (mouseClientY < (winH/2))
 			cy = cy + 50;
 		else cy = cy - (l.clientHeight + 50);
 
