@@ -19,6 +19,11 @@
 	int style = styleNames.indexOf(prefStyle);
 	String styleName = (String)styleNames.get(style);
 	String styleFile = (String)styleFiles.get(style);
+	String searchTerm = request.getParameter("searchTerm");
+	if (searchTerm != null) {
+		searchTerm = new String(searchTerm.getBytes("iso8859-1"), "UTF-8");
+	}
+	else searchTerm = "";
 %>
 
 <link rel="stylesheet" type="text/css" media="all" title="<%= styleName %>" href="<%= styleFile %>"  />
@@ -43,7 +48,7 @@
         <h2><t:t>Search:</t:t></h2>
         <form action="wordsearchresults.jsp">
           <fieldset>
-            <legend><t:t>by keyword or phrase:</t:t></legend> <input type="text" name="searchTerm" size="10" /> <input type="submit" value="go" title="Search by keyword or phrase" />
+            <legend><t:t>by keyword or phrase:</t:t></legend> <input type="text" name="searchTerm" value="<%=searchTerm%>" size="10" /> <input type="submit" value="go" title="Search by keyword or phrase" />
           </fieldset>
         </form>
 	<form action="<tiles:getAsString name="lookup_url"/>">
