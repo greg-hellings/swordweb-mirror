@@ -154,7 +154,7 @@ function p(mod, key, wordnum, extratext) {
 		xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+key,true);
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4) {
-				b.innerHTML=xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pd('"+extratext+"')\">"+extratext+"</a></div>";
+				b.innerHTML=xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a></div>";
 				showhide("onlywlayer", "visible");
 				lastword = wordnum;
 			}
