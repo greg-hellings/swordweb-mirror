@@ -95,7 +95,7 @@ function pi(mod, key, wordnum, extratext) {
 	changeCSS('.'+wordnum, 'color', 'red');
 }
 
-
+// get lemma morph and wnum for a word
 var wd_strong = '';
 var wd_morph = '';
 var wd_wnum = '';
@@ -113,6 +113,24 @@ function wd(mod, key, wordnum, extratext) {
 }
 
 var curspans = new Array();
+
+
+function pd(extratext) {
+	b=document.getElementById("onlywlayer");
+	if (b!=null) {
+		c=document.getElementById("dm");
+		if (c!=null) {
+			xmlhttp.open("GET", "fetchdata.jsp?mod=Robinson&key="+extratext,true);
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4) {
+					c.innerHTML="<br/>"+extratext+"<br/>"+xmlhttp.responseText;
+				}
+			}
+			xmlhttp.send(null);
+		}
+	}
+}
+
 
 function p(mod, key, wordnum, extratext) {
 
@@ -136,7 +154,7 @@ function p(mod, key, wordnum, extratext) {
 		xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+key,true);
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4) {
-				b.innerHTML=xmlhttp.responseText + "<br/>"+extratext;
+				b.innerHTML=xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pd('"+extratext+"')\">"+extratext+"</a></div>";
 				showhide("onlywlayer", "visible");
 				lastword = wordnum;
 			}
