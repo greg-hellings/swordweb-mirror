@@ -223,7 +223,14 @@
 				String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
 				int activeVerse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
 				int anchorVerse = (activeVerse > 2)?activeVerse - 2: -1;
+				boolean first = true;
 				for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
+					if (first) {
+			%>
+				<table>
+			<%
+						first = false;
+					}
 					String keyText = activeModule.getKeyText();
 					int curVerse = Integer.parseInt(keyText.substring(keyText.indexOf(":")+1));
 					if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":"))))
@@ -234,15 +241,29 @@
 							((morph) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
 					boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 			%>
-				<div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 			<%
 					String[] heads = activeModule.getEntryAttribute("Heading", "Preverse", "0");
-					if (heads.length > 0)
-						out.print("<h3>" + heads[0] + "</h3>");
+					if (heads.length > 0) {
 			%>
+					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+						<h3> <%= heads[0] %> </h3></div></td><tr>
+			<%
+					}
+			%>
+					<tr>
+
+			<%
+					if (!rtol) {
+			%>
+					<td valign="top" align="right"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 					<span class="versenum"><a <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
 						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
-					</span>
+					</span></div></td>
+			<%
+					}
+			%>
+
+					<td><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 
 					<%
 					String lang = activeModule.getConfigEntry("Lang");
@@ -252,29 +273,51 @@
 <%
 //					</div>
 %>
-				</div>
+					</div></td>
+			<%
+					if (rtol) {
+			%>
+					<td valign="top" align="right"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+					<span class="versenum"><a <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
+						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
+					</span></div></td>
+			<%
+					}
+			%>
+
+
+					</tr>
 		<%
-				if (keyText.equals(activeKey)) {
-					if (showStrong != null) {
-						String [] keyInfo = activeModule.getKeyChildren();
-						SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongsHebrew":"StrongsGreek");
-						lex.setKeyText(showStrong);
-				%>
-						<div class="lexiconentry"><p>
-						<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-						</p></div>
-				<%	} %>
-				<%
-					if (showMorph != null) {
-						String [] keyInfo = activeModule.getKeyChildren();
-						SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongHebrew":"Robinson");
-						lex.setKeyText(showMorph);
-				%>
-						<div class="lexiconentry"><p>
-						<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-						</p></div>
-				<%	}
+					if (keyText.equals(activeKey)) {
+						if (showStrong != null) {
+							String [] keyInfo = activeModule.getKeyChildren();
+							SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongsHebrew":"StrongsGreek");
+							lex.setKeyText(showStrong);
+					%>
+					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+							<div class="lexiconentry"><p>
+							<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+							</p></div>
+					</div></td></tr>
+					<%	} %>
+					<%
+						if (showMorph != null) {
+							String [] keyInfo = activeModule.getKeyChildren();
+							SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongHebrew":"Robinson");
+							lex.setKeyText(showMorph);
+					%>
+					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+							<div class="lexiconentry"><p>
+							<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+							</p></div>
+					</div></td></tr>
+					<%	}
+					}
 				}
+				if (!first) {
+			%>
+				</table>
+			<%
 				}
 			}
 			else {
@@ -283,7 +326,7 @@
 				<span class="versenum"><%= activeKey %></span>
 					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
 				</div>
-		<%
+			<%
 			}
 			String copyLine = activeModule.getConfigEntry("ShortCopyright");
 			if (copyLine.equalsIgnoreCase("<swnull>"))
