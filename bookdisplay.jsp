@@ -5,6 +5,7 @@
 
 <%
 	Vector bookTreeOpen = (Vector)session.getAttribute("bookTreeOpen");
+	String currentJumpNode = null;
 
 
 	session.setAttribute("lastModType", "GBS");
@@ -47,6 +48,8 @@
 					}
 				}
 			}
+			if (nodes.length > 0)
+				currentJumpNode = nodes[0];
 		}
 	}
 
@@ -63,7 +66,7 @@
 	<div id="genbooknav">
 	<%
 		if (module != null) {
-			printTree(bookTreeOpen, out, module, "/", gbsEntry);
+			printTree(bookTreeOpen, out, module, "/", gbsEntry, currentJumpNode);
 		}
 		else {
 %>
@@ -77,11 +80,54 @@
 	<tiles:put name="content" type="string">
 	<%
 		if (module != null) {
-			module.setKeyText(gbsEntry);
 	%>
 			<div id="genbook">
 				<h2><%= gbsEntry %></h2>
+	<%
+			module.setKeyText(gbsEntry);
+			gbsEntry = module.getKeyText();
+			boolean printed = false;
+			boolean rtol = ("RtoL".equalsIgnoreCase(module.getConfigEntry("Direction")));
+			if ("2".equals(module.getConfigEntry("DisplayLevel"))) {
+				// be sure we're at the bottom leaf before we enforce display level
+				if (!module.hasKeyChildren()) {
+					module.setKeyText(gbsEntry);
+					String parent = module.getKeyParent();
+					if (parent != null) {
+						module.setKeyText(parent);
+						String[] children = module.getKeyChildren();
+						// we better have children.  We should have been one of them
+						if ((children != null) && (children.length > 0)) {
+	%>
+					<table>
+	<%
+							for (int i = 0; i < children.length; i++) {
+								String k = parent + "/" + children[i];
+								module.setKeyText(k);
+								k = module.getKeyText();
+			%>
+				<%= "<tr><td bgcolor=\"#C2C2C2\" align=\"right\">" + children[i] + "</td><td>" %>
+				<div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (k.equals(gbsEntry)) ? "currentverse" : "verse" %>">
 				<%= new String(module.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+				</div></td></tr>
+	<%
+							}
+	%>
+					</table>
+	<%
+							printed = true;
+						}
+					}
+				}
+			}
+			if (!printed) {
+	%>
+				<div <%= rtol ? "dir=\"rtl\"" : "" %> class="verse">
+				<%= new String(module.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+				</div>
+	<%
+			}
+	%>
 			</div>
 	<%
 		}
@@ -91,7 +137,7 @@
 
 
 <%!
-private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, SWModule module, String rootTreeKey, String target) {
+private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, SWModule module, String rootTreeKey, String target, String currentJumpNode) {
 
 	try {
 		int offset = rootTreeKey.lastIndexOf("/");
@@ -107,7 +153,7 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 				out.print("<li>");
 
 			if (children.length > 0) {
-				out.print("<a class=\"" + ((open)?"closed":"open") + "\" href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(rootTreeKey) + "\"><img src=\"images/" + ((open)?"minus":"plus") + ".png\" alt=\"action\"/></a>");
+				out.print("<a " + (rootTreeKey.equals(currentJumpNode)? "id=\"cur\"":"") + " class=\"" + ((open)?"closed":"open") + "\" href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(rootTreeKey) + "#cur\"><img src=\"images/" + ((open)?"minus":"plus") + ".png\" alt=\"action\"/></a>");
 			}
 
 			out.print(" <a href=\"bookdisplay.jsp?gbsEntry=" + URLEncoder.encode(rootTreeKey) + "\">" + localName + "</a>");
@@ -120,7 +166,7 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 				out.print("<ul>");
 
 			for (int i = 0; i < children.length; i++) {
-				printTree(bookTreeOpen, out, module, rootTreeKey+"/"+children[i], target);
+				printTree(bookTreeOpen, out, module, rootTreeKey+"/"+children[i], target, currentJumpNode);
 			}
 
 			if (children.length > 0)
