@@ -18,8 +18,11 @@
 	lastModType = (String) session.getAttribute("lastModType");
 
 	String resetSearchTerm = request.getParameter("searchTerm");
-	if (resetSearchTerm != null)
-		session.setAttribute("ActiveSearchTerm", resetSearchTerm);
+	if (resetSearchTerm != null) {
+		mgr.setGlobalOption("Greek Accents", "Off");
+		session.setAttribute("ActiveSearchTerm", mgr.filterText("Greek Accents", resetSearchTerm));
+		mgr.setGlobalOption("Greek Accents", "On");
+	}
 	String activeSearchTerm = (String) session.getAttribute("ActiveSearchTerm");
 
 	String range = "";
@@ -76,7 +79,9 @@
 		<%
 			SearchHit[] results = null;
 			if ((activeSearchTerm != null) && (activeSearchTerm.trim().length() > 0)) {
+				mgr.setGlobalOption("Greek Accents", "Off");
 				results = activeModule.search(activeSearchTerm, stype, soptions, range);
+				mgr.setGlobalOption("Greek Accents", "On");
 
 				//save the search reusult into the session so it can be retrived later on to browse through it
 				session.setAttribute("SearchResults", results);
