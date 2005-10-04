@@ -246,7 +246,9 @@
 					if (heads.length > 0) {
 			%>
 					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-						<h3> <%= heads[0] %> </h3></div></td><tr>
+				<h3>
+					<%= new String(heads[0].getBytes("iso8859-1"), "UTF-8") %>
+				 </h3></div></td><tr>
 			<%
 					}
 			%>
