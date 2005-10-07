@@ -638,6 +638,8 @@ border-bottom: 1px solid #ccc;
 margin: 0px 0px 5px 0px;
 padding: 0px 0px 0px 1em;
 text-indent: 0px;
+text-align: center;
+vertical-align:middle;
 }
 
 #passagestudy  ul li {
@@ -645,6 +647,14 @@ display: inline;
 list-style-type: none;
 line-height: 2em;
 font-size: 1em;
+margin: 0px 1.1em 0px 0px;
+}
+
+#passagestudy  ul li h3 {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1.3em;
 margin: 0px 1.1em 0px 0px;
 }
 
@@ -677,6 +687,8 @@ border-bottom: 1px solid #ccc;
 margin: 0px 0px 5px 0px;
 padding: 0px 0px 0px 1em;
 text-indent: 0px;
+text-align: center;
+vertical-align: middle;
 }
 
 #paralleldisplay  ul li {
@@ -684,6 +696,14 @@ display: inline;
 list-style-type: none;
 line-height: 2em;
 font-size: 1em;
+margin: 0px 1.1em 0px 0px;
+}
+
+#paralleldisplay  ul li h3 {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1.3em;
 margin: 0px 1.1em 0px 0px;
 }
 
@@ -805,19 +825,19 @@ border-bottom: 1px solid #ccc;
   font-weight: bold;
 }
 
-.word-layer {
+.word-layer { /* The layer which appears after clicking on a word */
      visibility: hidden;
      position:absolute;
      left:50px;
      top:50px;
      width:200px;
-     background-color: #fff3cf;
+     background-color: #EEEEEE;
      margin-left : 0;
      overflow: visible;
      z-index:6;
      border: 1px #000000;
      border-style: solid;
-     padding: 7px 7px 7px 7px;
+     padding: 7px;
      color : #000000;
      font-size : x-small;
      font-style : normal;
@@ -832,15 +852,16 @@ border-bottom: 1px solid #ccc;
      line-height : normal;
 }
 
-span.curWord {
-	text-decoration: underline;
+/* Formating options for the grammatical highlighting */
+span.curWord { /* The clicked word */
+     text-decoration: underline;
      font-weight : bold;
-	background: #a1895F;
+     background: #C5D6EA;
 }
-span.sameLemmaMorph {
-	text-decoration: underline;
+span.sameLemmaMorph { /* The other words with the same morph code */
+     text-decoration: underline;
      font-weight : bold;
 }
-span.sameLemma {
+span.sameLemma { /* The other words with the same lemma on the page */
      font-weight : bold;
 }

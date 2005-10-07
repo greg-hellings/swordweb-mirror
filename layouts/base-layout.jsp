@@ -51,9 +51,10 @@
             <legend><t:t>by keyword or phrase:</t:t></legend> <input type="text" name="searchTerm" value="<%=searchTerm%>" size="10" /> <input type="submit" value="go" title="Search by keyword or phrase" />
           </fieldset>
         </form>
+        <h2><t:t>Go to:</t:t></h2>
 	<form action="<tiles:getAsString name="lookup_url"/>">
           <fieldset>
-            <legend><t:t>by verse or passage:</t:t></legend> <input type="text" name="key" size="10" /> <input type="submit" value="go" title="Search by verse or passage" />
+            <legend><t:t>verse or passage:</t:t></legend> <input type="text" name="key" size="10" /> <input type="submit" value="go" title="Go to verse or passage" />
           </fieldset>
         </form>
       </div>

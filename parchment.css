@@ -640,6 +640,15 @@ font-size: 1em;
 margin: 0px 1.1em 0px 0px;
 }
 
+#passagestudy ul li h3 {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1.3em;
+margin: 0px 1.1em 0px 0px;
+}
+
+
 #passagestudy  ul li a {
 color:#000;
 }
@@ -676,6 +685,14 @@ display: inline;
 list-style-type: none;
 line-height: 2em;
 font-size: 1em;
+margin: 0px 1.1em 0px 0px;
+}
+
+#paralleldisplay  ul li h3 {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1.3em;
 margin: 0px 1.1em 0px 0px;
 }
 

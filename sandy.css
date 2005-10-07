@@ -505,6 +505,14 @@ font-size: 1em;
 margin: 0px 1.1em 0px 0px;
 }
 
+#passagestudy ul li h3 {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1.3em;
+margin: 0px 1.1em 0px 0px;
+}
+
 #passagestudy  ul li a {
 color:#000;
 }
@@ -540,6 +548,7 @@ border-bottom: 1px solid #808072;
 margin: 0px 0px 5px 0px;
 padding: 0px 0px 0px 1em;
 text-indent: 0px;
+text-align: center;
 }
 
 #paralleldisplay  ul li {
@@ -549,6 +558,15 @@ line-height: 2em;
 font-size: 1em;
 margin: 0px 1.1em 0px 0px;
 }
+
+#paralleldisplay  ul li h3 {
+display: inline;
+list-style-type: none;
+line-height: 2em;
+font-size: 1.3em;
+margin: 0px 1.1em 0px 0px;
+}
+
 
 #paralleldisplay  ul li a {
 color:#000;

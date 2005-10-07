@@ -1,4 +1,5 @@
 <%@ include file="init.jsp" %>
+<%@ page import="org.crosswire.swordweb.*" %>
 
 <%
 	session.setAttribute("lastModType", "Bible");
@@ -55,6 +56,21 @@
 			}
 		}
 	}
+
+	//the sidebar rendering object is shared in the left (Bibles) and right (Commentaries) sidebar
+	SidebarModuleView sidebarView = new SimpleModuleView(mgr);
+	SidebarItemRenderer displayModRenderer = new SidebarItemRenderer() { //an anonymous class which renders a list of modules with links to read each of them
+		public String renderModuleItem(SWModule module) {
+			StringBuffer ret = new StringBuffer();
+			ret.append("<li><a href=\"passagestudy.jsp?mod=")
+				.append(URLEncoder.encode(module.getName()))
+				.append("#cv\" title=\"Read text of this module\">")
+				.append(module.getDescription().replaceAll("&", "&amp;"))
+				.append("</a></li>");
+
+			return ret.toString();
+		}
+	};
 %>
 
 <tiles:insert beanName="basic" flush="true" >
@@ -65,28 +81,21 @@
 		<h2><t:t>Translations:</t:t></h2>
 		<h3><t:t>Preferred Translations</t:t></h3>
 
-	<% if (prefBibles.size() > 0) { %>
-		<ul>
-		<%
-			for (int i = 0; i < prefBibles.size(); i++) {
-				SWModule module = mgr.getModuleByName((String)prefBibles.get(i));
-		%>
-				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(module.getName())+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
-		<%
-			}
-		%>
-		</ul>
-	<% } else { %>
+	<% if (prefBibles.size() > 0) {
+		out.print( sidebarView.renderView(prefBibles, displayModRenderer) ); //render the preferred Bibles section
+		
+	} else { //no preferred Bibles
+	%>
 		<ul>
 		<li><t:t>Preferred Translations can be selected from the preferences tab</t:t></li>
 		</ul>
 	<% } %>
 
 
-		<%
-			boolean open = toolsTreeOpen.contains("allBibles");
-		%>
-<h3><t:t>All Translations</t:t></h3>
+	<%
+		boolean open = toolsTreeOpen.contains("allBibles");
+	%>
+	<h3><t:t>All Translations</t:t></h3>
 			<%
 			if (open) { //already open
 			%>
@@ -100,21 +109,15 @@
 			}
 			%>
 		<%
-			if ((open) && (modInfo.length > 0)) {
-%>
-		<ul>
-<%
+			if (open && (modInfo.length > 0)) {
+				Vector modules = new Vector();
 				for (int i = 0; i < modInfo.length; i++) {
 					if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
-						SWModule module = mgr.getModuleByName(modInfo[i].name);
-			%>
-					<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name)+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
-			<%
+						modules.add(modInfo[i].name);
 					}
 				}
-%>
-		</ul>
-<%
+				modules.removeAll( prefBibles );
+				out.print( sidebarView.renderView(modules, displayModRenderer) ); //render the complete Bible modules list
 			}
 		%>
 		</div>
@@ -132,22 +135,15 @@
 	<div id="commentaries">
 		<h2><t:t>Comentaries:</t:t></h2>
 		<h3><t:t>Preferred Comentaries:</t:t></h3>
-	<% if (prefCommentaries.size() > 0) { %>
-		<ul>
-		<%
-			for (int i = 0; i < prefCommentaries.size(); i++) {
-				SWModule module = mgr.getModuleByName((String)prefCommentaries.get(i));
-		%>
-				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(module.getName())+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
-		<%
-			}
-		%>
-		</ul>
-	<% } else { %>
-		<ul>
-		<li><t:t>Preferred commentaries can be selected from the preferences tab</t:t></li>
-		</ul>
-	<% } %>
+	<% 
+		if (prefCommentaries.size() > 0) {
+			out.print( sidebarView.renderView(prefCommentaries, displayModRenderer) ); //render the preferred Commentaries list
+	   	} else { 
+	%>
+			<ul>
+				<li><t:t>Preferred commentaries can be selected from the preferences tab</t:t></li>
+			</ul>
+	<% 	} %>
 
 
 
@@ -169,21 +165,17 @@
 		%>
 
 		<%
-			if ((open) && (modInfo.length > 0)) {
-%>
-		<ul>
-<%
+			if (open && (modInfo.length > 0)) {
+				Vector modules = new Vector();
+				
 				for (int i = 0; i < modInfo.length; i++) {
 					if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
-						SWModule module = mgr.getModuleByName(modInfo[i].name);
-			%>
-					<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name)+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
-			<%
+						modules.add(modInfo[i].name);
 					}
 				}
-%>
-		</ul>
-<%
+				modules.removeAll( prefCommentaries );
+				
+				out.print( sidebarView.renderView(modules, displayModRenderer) ); //render the complete Commentary module list
 			}
 		%>
 		</div>
@@ -196,153 +188,58 @@
 		%>
 
 		<div id="passagestudy">
-		<h2><%= activeKey %></h2>
-		<h3><a href="fulllibrary.jsp?show=<%= URLEncoder.encode(activeModule.getName()) %>"><%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></a></h3>
+<%--  		<h2><%= activeKey %></h2>  --%>
 
 		<% //insert next and previous chapter links
-			// activeKey contains the current key ATM
-			// Split up into book, chapter and verse.
-			// Then add and subtract 1 to the chapter to the next and previous one
-
-			String bookname = activeKey.substring(0, activeKey.lastIndexOf(" "));
-			int chapter = Integer.parseInt( activeKey.substring(activeKey.lastIndexOf(" ")+1, activeKey.indexOf(":")) );
-			//int verse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
-
-			String prevChapterString = bookname + " " + String.valueOf(chapter-1) + ":1";
-			String nextChapterString = bookname + " " + String.valueOf(chapter+1) + ":1";
-
+			String prevChapterString = RangeInformation.getPreviousChapter(activeKey, activeModule);
+			String nextChapterString = RangeInformation.getNextChapter(activeKey, activeModule);
 		%>
 		<ul class="booknav">
 			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>"><t:t>previous chapter</t:t></a></li>
-			<!-- <li><a href="" title="display all of Romans 8"><t:t>this chapter</t:t></a></li> -->
+			<li><h3><%= activeKey %></h3></li>
 			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>"><t:t>next chapter</t:t></a></li>
 		</ul>
 
 		<%
+			Vector moduleList = new Vector();
+			moduleList.add( activeModule );
+			
+			Vector entryList;
 			if ((activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material")) || (activeModule.getCategory().equals(SwordOrb.BIBLES))) {
-				String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
-				int activeVerse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
-				int anchorVerse = (activeVerse > 2)?activeVerse - 2: -1;
-				boolean first = true;
-				for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
-					if (first) {
-			%>
-				<table>
-			<%
-						first = false;
-					}
-					String keyText = activeModule.getKeyText();
-					int curVerse = Integer.parseInt(keyText.substring(keyText.indexOf(":")+1));
-					if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":"))))
-						break;
-					mgr.setGlobalOption("Strong's Numbers",
-							((strongs) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
-					mgr.setGlobalOption("Morphological Tags",
-							((morph) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
-					boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
-			%>
-			<%
-					String[] heads = activeModule.getEntryAttribute("Heading", "Preverse", "0");
-					if (heads.length > 0) {
-			%>
-					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-				<h3>
-					<%= new String(heads[0].getBytes("iso8859-1"), "UTF-8") %>
-				 </h3></div></td><tr>
-			<%
-					}
-			%>
-					<tr>
-
-			<%
-					if (!rtol) {
-			%>
-					<td valign="top" align="right"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-					<span class="versenum"><a <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
-						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
-					</span></div></td>
-			<%
-					}
-			%>
-
-					<td><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-
-					<%
-					String lang = activeModule.getConfigEntry("Lang");
-//					<div xml:lang="<%= (lang.equals("")) ? "en" : lang 
-					%>
-					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-<%
-//					</div>
-%>
-					</div></td>
-			<%
-					if (rtol) {
-			%>
-					<td valign="top" align="right"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-					<span class="versenum"><a <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
-						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
-					</span></div></td>
-			<%
-					}
-			%>
-
-
-					</tr>
-		<%
-					if (keyText.equals(activeKey)) {
-						if (showStrong != null) {
-							String [] keyInfo = activeModule.getKeyChildren();
-							SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongsHebrew":"StrongsGreek");
-							lex.setKeyText(showStrong);
-					%>
-					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-							<div class="lexiconentry"><p>
-							<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-							</p></div>
-					</div></td></tr>
-					<%	} %>
-					<%
-						if (showMorph != null) {
-							String [] keyInfo = activeModule.getKeyChildren();
-							SWModule lex =  mgr.getModuleByName(("1".equals(keyInfo[0])) ? "StrongHebrew":"Robinson");
-							lex.setKeyText(showMorph);
-					%>
-					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-							<div class="lexiconentry"><p>
-							<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-							</p></div>
-					</div></td></tr>
-					<%	}
-					}
-				}
-				if (!first) {
-			%>
-				</table>
-			<%
-				}
+				entryList = RangeInformation.getChapterEntryList(activeKey, activeModule);
 			}
-			else {
-			%>
-				<div class="verse">
-				<span class="versenum"><%= activeKey %></span>
-					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
-				</div>
-			<%
+			else { //a simple commentary entry, not multiple ones
+				entryList = new Vector();
+				entryList.add(activeKey);
 			}
+				
+			ModuleTextRendering rendering = new HorizontallyParallelTextRendering(); //passagestudy is a parallel view with just one module at the same time
+			ModuleEntryRenderer entryRenderer = new StandardEntryRenderer( new String("passagestudy.jsp"), activeKey, mgr );
+			if (strongs) {
+				entryRenderer.enableFilterOption("Strong's Numbers");
+			}
+			if (morph) {
+				entryRenderer.enableFilterOption("Morphological Tags");
+			}
+			
+			//Do the actual rendering
+			out.print( rendering.render(moduleList, entryList, entryRenderer) );
+						
 			String copyLine = activeModule.getConfigEntry("ShortCopyright");
-			if (copyLine.equalsIgnoreCase("<swnull>"))
+			if (copyLine.equalsIgnoreCase("<swnull>")) {
 				copyLine = "";
+			}
 			if (activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material")) {
 				copyLine = "<t:t>WARNING: This text is considered unorthodox by most of Christendom.</t:t> " + copyLine;
 			}
 		%>
+		
 		<div class="copyLine"><%= copyLine %></div>
-		<ul class="booknav">
+<%-- 		<ul class="booknav">
 			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>"><t:t>previous chapter</t:t></a></li>
-			<!-- <li><a href="" title="display all of Romans 8"><t:t>this chapter</t:t></a></li> -->
+			<li><h3><%= activeKey %></h3></li>
 			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>"><t:t>next chapter</t:t></a></li>
-		</ul>
+		</ul> --%>
 		<div class="promoLine"><%= promoLine %></div>
 		</div>
 	</tiles:put>
