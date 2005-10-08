@@ -116,7 +116,7 @@
 						modules.add(modInfo[i].name);
 					}
 				}
-				modules.removeAll( prefBibles );
+				modules.removeAll( prefBibles ); //don't include the prefered bibles in the long module list
 				out.print( sidebarView.renderView(modules, displayModRenderer) ); //render the complete Bible modules list
 			}
 		%>
@@ -173,8 +173,7 @@
 						modules.add(modInfo[i].name);
 					}
 				}
-				modules.removeAll( prefCommentaries );
-				
+				modules.removeAll( prefCommentaries ); //no preferred commentaries in the long list				
 				out.print( sidebarView.renderView(modules, displayModRenderer) ); //render the complete Commentary module list
 			}
 		%>
@@ -204,7 +203,7 @@
 			Vector moduleList = new Vector();
 			moduleList.add( activeModule );
 			
-			Vector entryList;
+			Vector entryList = null;
 			if ((activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material")) || (activeModule.getCategory().equals(SwordOrb.BIBLES))) {
 				entryList = RangeInformation.getChapterEntryList(activeKey, activeModule);
 			}
@@ -212,7 +211,7 @@
 				entryList = new Vector();
 				entryList.add(activeKey);
 			}
-				
+
 			ModuleTextRendering rendering = new HorizontallyParallelTextRendering(); //passagestudy is a parallel view with just one module at the same time
 			ModuleEntryRenderer entryRenderer = new StandardEntryRenderer( new String("passagestudy.jsp"), activeKey, mgr );
 			if (strongs) {
@@ -235,11 +234,6 @@
 		%>
 		
 		<div class="copyLine"><%= copyLine %></div>
-<%-- 		<ul class="booknav">
-			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>"><t:t>previous chapter</t:t></a></li>
-			<li><h3><%= activeKey %></h3></li>
-			<li><a href="passagestudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>"><t:t>next chapter</t:t></a></li>
-		</ul> --%>
 		<div class="promoLine"><%= promoLine %></div>
 		</div>
 	</tiles:put>

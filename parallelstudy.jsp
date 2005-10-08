@@ -49,15 +49,15 @@
 
 	boolean startList = false;
 
-	String parallelViewType = (String) session.getAttribute("parallelViewType");
-	buf = request.getParameter("parallelViewType");
+	String parallelViewType = (String) session.getAttribute("parallel");
+	buf = request.getParameter("parallel");
 	if (buf != null) {
 		parallelViewType = buf;
 	}
 	if (parallelViewType == null) {
 		parallelViewType = "sidebyside";
 	}
-	session.setAttribute("parallelViewType", parallelViewType);
+	session.setAttribute("parallel", parallelViewType);
 	
 	SidebarModuleView sidebarView = new SimpleModuleView(mgr);
 	SidebarItemRenderer delModRenderer = new SidebarItemRenderer() {
@@ -103,29 +103,24 @@
 		<p><t:t>click to remove</t:t></p>
 		<%
 			Vector modules = new Vector();
-			
-			modules.clear();
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && ((module.getCategory().equals(SwordOrb.BIBLES))||(module.getCategory().equals("Cults / Unorthodox / Questionable Material")))) {
 					modules.add(module.getName());
 				}
 			}
-
 			out.print( sidebarView.renderView(modules, delModRenderer) );
 		%>
 
 		<h3><t:t>Available modules</t:t></h3>
 		<p><t:t>click to add</t:t></p>
-		<%
-			
+		<%			
 			modules.clear();
 			for (int i = 0; i < modInfo.length; i++) {
 				if (modInfo[i].category.equals(SwordOrb.BIBLES) && !parDispModules.contains(modInfo[i].name)) {
 					modules.add(modInfo[i].name);
 				}
 			}
-
 			out.print( sidebarView.renderView(modules, addModRenderer) );
 		%>
 
@@ -137,7 +132,6 @@
 					modules.add(modInfo[i].name);
 				}
 			}
-
 			out.print( sidebarView.renderView(modules, addModRenderer) );	
 		%>
 
@@ -158,8 +152,8 @@
 		<div id="studytools">
 			<h2><t:t>Parallel viewing:</t:t></h2>
 			<ul>
-				<li><a href="parallelstudy.jsp?parallelViewType=sidebyside">Side by side</a></li>
-				<li><a href="parallelstudy.jsp?parallelViewType=toptobottom">Top to bottom</a></li>
+				<li><a href="parallelstudy.jsp?parallel=sidebyside">Side by side</a></li>
+				<li><a href="parallelstudy.jsp?parallel=toptobottom">Top to bottom</a></li>
 			</ul>
 		</div>
 
@@ -169,7 +163,7 @@
 		<h3><t:t>Displayed modules</t:t></h3>
 		<p><t:t>click to remove</t:t></p>
 		<%
-			Vector modules =  new Vector();
+			Vector modules = new Vector();
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getCategory().equals(SwordOrb.COMMENTARIES)) {
@@ -268,8 +262,6 @@
 				copyLine = "<t:t>WARNING: This text is considered unorthodox by most of Christendom.</t:t> " + copyLine;
 			}
 		%>
-
-
 		</div>
 	</tiles:put>
 </tiles:insert>
