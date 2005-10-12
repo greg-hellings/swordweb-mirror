@@ -259,7 +259,7 @@ a:active {
 }
 
 #content-main *[dir=rtl] {
-	font-family:code2000,code2001,arial unicode ms,arial,sans serif,serif;
+	font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
 	font-size:larger;
 }
 
