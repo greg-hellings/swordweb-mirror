@@ -94,9 +94,15 @@
 
 
 	<div id="genbooknav">
-	<%
+<%
 		if (module != null) {
+%>
+		<ul>
+<%
 			printTree(bookTreeOpen, out, module, "/", gbsEntry, currentJumpNode);
+%>
+		</ul>
+<%
 		}
 		else {
 %>
@@ -260,19 +266,19 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 
 			out.print(" <a href=\"bookdisplay.jsp?gbsEntry=" + URLEncoder.encode(linkRef) + "#cv\">" + localName + "</a>");
 
-			out.print("</li>");
+			out.print("</li>\n");
 		}
 		else open = true;
 		
 
 		if (open) {
 			if (dig) {
-				out.print("<ul>");
+				out.print("<li><ul>");
 
 				for (int i = 0; ((i < children.length) && (i < max)); i++) {
 					printTree(bookTreeOpen, out, module, rootTreeKey+"/"+children[i], target, currentJumpNode);
 				}
-				out.print("</ul>");
+				out.print("</ul></li>\n");
 			}
 		}
 	}
