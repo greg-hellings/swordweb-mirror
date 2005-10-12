@@ -115,6 +115,22 @@ function wd(mod, key, wordnum, extratext) {
 var curspans = new Array();
 
 
+function pe(extratext) {
+	b=document.getElementById("onlywlayer");
+	if (b!=null) {
+		c=document.getElementById("dm");
+		if (c!=null) {
+			xmlhttp.open("GET", "fetchdata.jsp?mod=Packard&key="+extratext,true);
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4) {
+					c.innerHTML="<br/>"+extratext+"<br/>"+xmlhttp.responseText;
+				}
+			}
+			xmlhttp.send(null);
+		}
+	}
+}
+
 function pd(extratext) {
 	b=document.getElementById("onlywlayer");
 	if (b!=null) {
@@ -154,7 +170,10 @@ function p(mod, key, wordnum, extratext) {
 		xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+key,true);
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4) {
-				b.innerHTML=xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a></div>";
+				if (mod != "betacode")
+					b.innerHTML=xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a></div>";
+				else
+					b.innerHTML=xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pe('"+extratext+"');return false;\">"+extratext+"</a></div>";
 				showhide("onlywlayer", "visible");
 				lastword = wordnum;
 			}

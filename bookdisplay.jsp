@@ -8,6 +8,19 @@
 	String currentJumpNode = null;
 	boolean forceOpen = false;
 
+	boolean strongs = "on".equals((String) session.getAttribute("strongs"));
+	String buf = request.getParameter("strongs");
+	strongs = (buf != null) ? "on".equalsIgnoreCase(buf) : strongs;
+	session.setAttribute("strongs", (strongs)?"on":"off");
+
+	boolean morph = "on".equals((String) session.getAttribute("morph"));
+	buf = request.getParameter("morph");
+	morph = (buf != null) ? "on".equalsIgnoreCase(buf) : morph;
+	session.setAttribute("morph", (morph)?"on":"off");
+
+	String showStrong = request.getParameter("showStrong");
+	String showMorph = request.getParameter("showMorph");
+
 
 	session.setAttribute("lastModType", "GBS");
 	String gbsBook = (String)request.getParameter("mod");
@@ -148,10 +161,12 @@
 
 					<td><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (k.equals(gbsEntry)) ? "currentverse" : "verse" %>">
 
-					<%
+<%
 								String lang = module.getConfigEntry("Lang");
 //					<div xml:lang="<%= (lang.equals("")) ? "en" : lang 
-					%>
+				  mgr.setGlobalOption("Strong's Numbers", (strongs)?"On":"Off");
+				  mgr.setGlobalOption("Morphological Tags", (morph)?"On":"Off");
+%>
 					<%= new String(module.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
 <%
 //					</div>

@@ -830,7 +830,7 @@ border-bottom: 1px solid #ccc;
      position:absolute;
      left:50px;
      top:50px;
-     width:200px;
+     width:275px;
      background-color: #EEEEEE;
      margin-left : 0;
      overflow: visible;
@@ -863,5 +863,8 @@ span.sameLemmaMorph { /* The other words with the same morph code */
      font-weight : bold;
 }
 span.sameLemma { /* The other words with the same lemma on the page */
+     font-weight : bold;
+}
+.word-layer.span.sameLemma { /* The other words with the same lemma on the page */
      font-weight : bold;
 }
