@@ -202,11 +202,18 @@
 				</div>
 	<%
 			}
-	%>
-			</div>
-	<%
+			String copyLine = module.getConfigEntry("ShortCopyright");
+			if (copyLine.equalsIgnoreCase("<swnull>"))
+				copyLine = "";
+			if (module.getCategory().equals("Cults / Unorthodox / Questionable Material")) {
+				copyLine = "<t:t>WARNING: This text is considered unorthodox by most of Christendom.</t:t> " + copyLine;
+			}
+%>
+		<div class="copyLine"><%= copyLine %></div>
+		</div>
+<%
 		}
-	%>
+%>
 	</tiles:put>
 </tiles:insert>
 
