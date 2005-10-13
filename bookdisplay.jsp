@@ -119,6 +119,7 @@
 	%>
 			<div id="genbook">
 				<h2><%= gbsEntry %></h2>
+				<h3><a href="fulllibrary.jsp?show=<%= URLEncoder.encode(module.getName()) %>"><%= module.getDescription().replaceAll("&", "&amp;") + " (" + module.getName() + ")" %></a></h3>
 	<%
 			module.setKeyText(gbsEntry);
 			gbsEntry = module.getKeyText();
@@ -148,7 +149,7 @@
 								if (heads.length > 0) {
 			%>
 					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (k.equals(gbsEntry)) ? "currentverse" : "verse" %>">
-						<h3><span class="verse"><%= new String(heads[0].getBytes("iso8859-1"), "UTF-8") %></span></h3></div></td><tr>
+						<h3><span class="verse"><%= new String(heads[0].getBytes("iso8859-1"), "UTF-8") %></span></h3></div></td></tr>
 			<%
 								}
 			%>
