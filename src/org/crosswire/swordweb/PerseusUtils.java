@@ -17,7 +17,8 @@ import greekconverter.BetacodeToUnicode;
 public class PerseusUtils {
     public static String getLiddellScottDef(String lemma) {
         UnicodeToBetacode bc = new UnicodeToBetacode();
-        String retVal = "<h2>"+lemma+"</h2>";
+        String retVal = "";
+        String lemmaUnicode = lemma;
         lemma = bc.convertString(lemma).toLowerCase();
         // Perseus wants final sigma to be "s"
         if (lemma.endsWith("j")) lemma = lemma.substring(0, lemma.length()-1) + "s";
@@ -28,9 +29,12 @@ public class PerseusUtils {
             url = new URL("http://www.perseus.tufts.edu/hopper/xmlchunk.jsp?doc=Perseus%3Atext%3A1999.04.0058%3Aentry%3D"+URLEncoder.encode(lemma));
             InputSource inputSource = new InputSource(url.openStream());
             DTMNodeList nodes = (DTMNodeList)xpath.evaluate(expression, inputSource, XPathConstants.NODESET);
-            for (int i = 0; i < nodes.getLength(); i++) {
-                Node n = nodes.item(i);
-                retVal += outputSenseNode(n);
+            if (nodes.getLength() > 0) {
+                retVal = "<h2><span class=\"verse\">"+lemmaUnicode+"</span></h2>";
+                for (int i = 0; i < nodes.getLength(); i++) {
+                     Node n = nodes.item(i);
+                     retVal += outputSenseNode(n);
+                 }
             }
         } catch (Exception ex) { ex.printStackTrace(); }
         return retVal;

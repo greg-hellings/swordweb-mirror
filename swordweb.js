@@ -120,10 +120,10 @@ function pe(extratext) {
 	if (b!=null) {
 		c=document.getElementById("dm");
 		if (c!=null) {
-			xmlhttp.open("GET", "fetchdata.jsp?mod=Packard&key="+extratext,true);
+			xmlhttp.open("GET", "fetchdata.jsp?mod=Packard&key="+encodeURIComponent(extratext),true);
 			xmlhttp.onreadystatechange=function() {
 				if (xmlhttp.readyState==4) {
-					c.innerHTML="<br/>"+extratext+"<br/>"+xmlhttp.responseText;
+					c.innerHTML="<div class=\"verse\"><br/>"+extratext+"<br/>"+xmlhttp.responseText+"</div>";
 				}
 			}
 			xmlhttp.send(null);
@@ -136,10 +136,10 @@ function pd(extratext) {
 	if (b!=null) {
 		c=document.getElementById("dm");
 		if (c!=null) {
-			xmlhttp.open("GET", "fetchdata.jsp?mod=Robinson&key="+extratext,true);
+			xmlhttp.open("GET", "fetchdata.jsp?mod=Robinson&key="+encodeURIComponent(extratext),true);
 			xmlhttp.onreadystatechange=function() {
 				if (xmlhttp.readyState==4) {
-					c.innerHTML="<br/>"+extratext+"<br/>"+xmlhttp.responseText;
+					c.innerHTML="<div class=\"verse\"><br/>"+extratext+"<br/>"+xmlhttp.responseText+"</div>";
 				}
 			}
 			xmlhttp.send(null);
@@ -167,14 +167,15 @@ function p(mod, key, wordnum, extratext) {
 		showhide("onlywlayer", "hidden");
 	}
 	else {
-		xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+key,true);
+		b.innerHTML="Please wait...";
+		showhide("onlywlayer", "visible");
+		xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+encodeURIComponent(key),true);
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4) {
 				if (mod != "betacode")
-					b.innerHTML=xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a></div>";
+					b.innerHTML="<div class=\"verse\">"+xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a></div></div>";
 				else
-					b.innerHTML=xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pe('"+extratext+"');return false;\">"+extratext+"</a></div>";
-				showhide("onlywlayer", "visible");
+					b.innerHTML="<div class=\"verse\">"+xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pe('"+extratext+"');return false;\">"+extratext+"</a></div></div>";
 				lastword = wordnum;
 			}
 		}

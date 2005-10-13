@@ -148,7 +148,7 @@
 								if (heads.length > 0) {
 			%>
 					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (k.equals(gbsEntry)) ? "currentverse" : "verse" %>">
-						<h3> <%= heads[0] %> </h3></div></td><tr>
+						<h3><span class="verse"><%= new String(heads[0].getBytes("iso8859-1"), "UTF-8") %></span></h3></div></td><tr>
 			<%
 								}
 			%>

@@ -484,8 +484,16 @@ padding: 0px 0.5em 0px 0.5em;
 	color:#ff0000;
 }
 
-div.currentverse {
+.currentverse {
+	font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
 	background-color: #eee;
+}
+.verse {
+	font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
+}
+
+.clk {
+	cursor:hand;
 }
 
 #passagestudy  ul {

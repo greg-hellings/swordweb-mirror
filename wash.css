@@ -627,8 +627,16 @@ div.lexiconentry {
 	border-bottom: 1px solid #ccc;
 }
 
-div.currentverse {
+.currentverse {
 	background-color: #eee;
+	font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
+}
+.verse {
+	font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
+}
+
+.clk {
+	cursor:hand;
 }
 
 #passagestudy  ul {

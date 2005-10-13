@@ -31,7 +31,7 @@
 	else {
 		key = new String(key.getBytes("iso8859-1"), "UTF-8");
 		String ls = org.crosswire.swordweb.PerseusUtils.getLiddellScottDef(key);
-		if (ls.length() > 15+key.length()) {
+		if (ls.length() > 0) {
 %>
 		<%= ls %>
 <div class="copyLine">from Liddell and Scott, <i>An Intermediate Greek-English Lexicon</i><br/>
@@ -40,7 +40,7 @@ Courtesy of <a href="http://www.perseus.tufts.edu">Perseus Digital Library</a></
 		}
 		else {
 %>
-		<%= key %>
+		<h2><span class="verse"><%= key %></span></h2>
 <%
 		}
 	}

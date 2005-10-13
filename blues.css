@@ -240,13 +240,19 @@ a:active {
 	font-weight: bold;
 }
 
-#content-main .verse {
+.clk {
+	cursor:pointer;
+}
+
+.verse {
+	font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
 	margin: 0px 0px 5px 0px;
 	padding: 0px 5px 0px 5px;
 	vertical-align:text-top;
 }
 
-#content-main .currentverse {
+.currentverse {
+	font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
 	vertical-align:text-top;
 	margin: 0px 0px 5px 0px;
 	background-color: #eeeeee;

@@ -90,10 +90,9 @@ h2 {
   color: #A13033;
 }
 
-h3{
+h3 {
   margin: 12px 0px 3px 0px;
   padding: 5px 0em 3px .5em;
-  font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
   font-weight: bold;
   font-size: 1.0em;
 }
@@ -128,9 +127,20 @@ border-left: 2px solid #7F673C;
 margin: 0px 0px 0px 0px;
 padding: 15px 15px 20px 15px;
 width:auto;
-font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
+font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
 }
 
+.currentverse {
+	font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
+	background: #C1A97F;
+}
+.verse {
+	font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
+}
+
+.clk {
+	cursor:pointer;
+}
 
 #footer{
 clear:both;
@@ -619,9 +629,6 @@ font-size: 1.0em;
 	color:#8A0010;
 }
 
-div.currentverse {
-	background: #C1A97F;
-}
 
 #passagestudy  ul {
 background: #eee;
