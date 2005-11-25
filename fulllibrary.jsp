@@ -2,8 +2,6 @@
 
 <%@ page import="java.util.Enumeration,java.util.Vector" %>
 <%@ page import="gnu.regexp.RE" %>
-<%@ page import="org.crosswire.swordweb.*" %>
-
 
 <%
 	Vector catTreeOpen = (Vector)session.getAttribute("catTreeOpen");
@@ -50,25 +48,11 @@
 	<tiles:put name="sidebar_left" type="string">
 
 	<div id="library">
+
 		<h2><t:t>OSIS Library</t:t></h2>
-		<ul>		
+		<ul>
 <%
-			SidebarModuleView sidebarView = new SimpleModuleView(mgr);
-			SidebarItemRenderer modRenderer = new SidebarItemRenderer() { //an anonymous class which renders a list of modules with links to read each of them
-				public String renderModuleItem(SWModule module) {
-					StringBuffer ret = new StringBuffer();
-					ret.append("<li><a href=\"fulllibrary.jsp?show=")
-						.append(URLEncoder.encode(module.getName()))
-						.append("#cv\" title=\"Information about this module\">")
-						.append(module.getDescription().replaceAll("&", "&amp;"))
-						.append("</a></li>");
-		
-					return ret.toString();
-				}
-			};
-		
 			Vector leaves = new Vector();
-			Vector modules = new Vector();
 			for (int i = 0; i < modInfo.length; i++) {
 				if (!leaves.contains(modInfo[i].category)) {
 					leaves.add(modInfo[i].category);
@@ -82,13 +66,22 @@
 					</li>
 <%
 					if (open) {
+%>
+						<ul>
+<%
 						for (int j = 0; j < modInfo.length; j++) {
 							if (modInfo[i].category.equals(modInfo[j].category)) {
-								modules.add(modInfo[j].name);
+								SWModule module = mgr.getModuleByName(modInfo[j].name);
+								if (module != null) {
+%>
+									<li><a href="fulllibrary.jsp?show=<%= URLEncoder.encode(modInfo[j].name) %>"><%= modInfo[j].name %></a>  <%= module.getDescription() %></li>
+<%
+								}
 							}
 						}
-
-						out.print( sidebarView.renderView( modules, modRenderer ) ); //insert the sub list of the modules in the current category
+%>
+						</ul>
+<%
 					}
 
 				}

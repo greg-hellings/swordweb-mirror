@@ -1,5 +1,4 @@
 <%@ include file="init.jsp" %>
-<%@ page import="org.crosswire.swordweb.*" %>
 
 <%
 	session.setAttribute("lastModType", "Bible");
@@ -48,43 +47,6 @@
 	session.setAttribute("morph", (morph)?"on":"off");
 
 	boolean startList = false;
-
-	String parallelViewType = (String) session.getAttribute("parallel");
-	buf = request.getParameter("parallel");
-	if (buf != null) {
-		parallelViewType = buf;
-	}
-	if (parallelViewType == null) {
-		parallelViewType = "sidebyside";
-	}
-	session.setAttribute("parallel", parallelViewType);
-	
-	SidebarModuleView sidebarView = new SimpleModuleView(mgr);
-	SidebarItemRenderer delModRenderer = new SidebarItemRenderer() {
-		public String renderModuleItem(SWModule module) {
-			StringBuffer ret = new StringBuffer();
-			ret.append("<li><a href=\"parallelstudy.jsp?del=")
-				.append(URLEncoder.encode(module.getName()))
-				.append("#cv\" title=\"Remove from displayed modules\">")
-				.append(module.getDescription().replaceAll("&", "&amp;"))
-				.append("</a></li>");
-
-			return ret.toString();
-		}
-	};
-	
-	SidebarItemRenderer addModRenderer = new SidebarItemRenderer() {
-		public String renderModuleItem(SWModule module) {
-			StringBuffer ret = new StringBuffer();
-			ret.append("<li><a href=\"parallelstudy.jsp?add=")
-				.append(URLEncoder.encode(module.getName()))
-				.append("#cv\" title=\"Add to displayed modules\">")
-				.append(module.getDescription().replaceAll("&", "&amp;"))
-				.append("</a></li>");
-
-			return ret.toString();
-		}
-	};
 %>
 
 
@@ -102,37 +64,68 @@
 		<h3><t:t>Displayed modules</t:t></h3>
 		<p><t:t>click to remove</t:t></p>
 		<%
-			Vector modules = new Vector();
+			startList = false;
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && ((module.getCategory().equals(SwordOrb.BIBLES))||(module.getCategory().equals("Cults / Unorthodox / Questionable Material")))) {
-					modules.add(module.getName());
+				if (!startList) { out.print("<ul>"); startList = true; }
+		%>
+					<li>
+						<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>#cv" title="Remove from displayed modules">
+							<%= module.getDescription().replaceAll("&", "&amp;") %>
+						</a>
+					</li>
+		<%
 				}
 			}
-			out.print( sidebarView.renderView(modules, delModRenderer) );
+			if (startList) { out.print("</ul>"); startList = true; }
 		%>
 
 		<h3><t:t>Available modules</t:t></h3>
 		<p><t:t>click to add</t:t></p>
-		<%			
-			modules.clear();
+		<%
+			startList = false;
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].category.equals(SwordOrb.BIBLES) && !parDispModules.contains(modInfo[i].name)) {
-					modules.add(modInfo[i].name);
+				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
+					SWModule module = mgr.getModuleByName(modInfo[i].name);
+					if ( parDispModules.contains(module.getName()) ) {
+						continue;
+					}
+
+					if (!startList) { out.print("<ul>"); startList = true; }
+		%>
+				<li>
+					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
+						<%= module.getDescription().replaceAll("&", "&amp;") %>
+					</a>
+				</li>
+		<%
 				}
 			}
-			out.print( sidebarView.renderView(modules, addModRenderer) );
+			if (startList) { out.print("</ul>"); startList = true; }
 		%>
 
 		<h3><t:t>Cults / Unorthodox / Questionable Material</t:t></h3><p><t:t>click to add</t:t></p>
 		<%
-			modules.clear();
+			startList = false;
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].category.equals("Cults / Unorthodox / Questionable Material") && !parDispModules.contains(modInfo[i].name)) {
-					modules.add(modInfo[i].name);
+				if (modInfo[i].category.equals("Cults / Unorthodox / Questionable Material")) {
+					SWModule module = mgr.getModuleByName(modInfo[i].name);
+					if ( parDispModules.contains(module.getName()) ) {
+						continue;
+					}
+
+					if (!startList) { out.print("<ul>"); startList = true; }
+		%>
+				<li>
+					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
+						<%= module.getDescription().replaceAll("&", "&amp;") %>
+					</a>
+				</li>
+		<%
 				}
 			}
-			out.print( sidebarView.renderView(modules, addModRenderer) );	
+			if (startList) { out.print("</ul>"); startList = true; }
 		%>
 
 		</div>
@@ -149,13 +142,6 @@
 			</ul>
 		</div>
 -->
-		<div id="studytools">
-			<h2><t:t>Parallel viewing:</t:t></h2>
-			<ul>
-				<li><a href="parallelstudy.jsp?parallel=sidebyside">Side by side</a></li>
-				<li><a href="parallelstudy.jsp?parallel=toptobottom">Top to bottom</a></li>
-			</ul>
-		</div>
 
 		<div id="commentaries">
 		<h2><t:t>Comentaries:</t:t></h2>
@@ -163,34 +149,49 @@
 		<h3><t:t>Displayed modules</t:t></h3>
 		<p><t:t>click to remove</t:t></p>
 		<%
-			Vector modules = new Vector();
+			startList = false;
 			for (int i = 0; i < parDispModules.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)parDispModules.get(i));
 				if (module != null && module.getCategory().equals(SwordOrb.COMMENTARIES)) {
-					modules.add(module.getName());
+				if (!startList) { out.print("<ul>"); startList = true; }
+		%>
+				<li>
+					<a href="parallelstudy.jsp?del=<%= URLEncoder.encode(module.getName()) %>#cv" title="Remove from displayed modules">
+						<%= module.getDescription().replaceAll("&", "&amp;") %>
+					</a>
+				</li>
+		<%
 				}
 			}
-
-			out.print( sidebarView.renderView(modules, delModRenderer) );
+			if (startList) { out.print("</ul>"); startList = true; }
 		%>
 
 		<h3><t:t>Available modules</t:t></h3>
 		<p><t:t>click to add</t:t></p>
 		<%
-			modules.clear();
+			startList = false;
 			for (int i = 0; i < modInfo.length; i++) {
-				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES) && !parDispModules.contains(modInfo[i].name)) {
-					modules.add(modInfo[i].name);
+				if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
+					SWModule module = mgr.getModuleByName(modInfo[i].name);
+					if ( parDispModules.contains(module.getName()) ) {
+						continue;
+					}
+					if (!startList) { out.print("<ul>"); startList = true; }
+		%>
+				<li>
+					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
+						<%= module.getDescription().replaceAll("&", "&amp;") %>
+					</a>
+				</li>
+		<%
 				}
 			}
-			
-			out.print( sidebarView.renderView(modules, addModRenderer) );
+			if (startList) { out.print("</ul>"); startList = true; }
 		%>
 
 		</div>
 
-	</tiles:put> 	<%--  	end of right sightbat tag area  --%>
-	
+	</tiles:put>
 	<tiles:put name="content" type="string">
 		<%
 			if (activeModule != null) {
@@ -207,61 +208,148 @@
 		</div>
 
 		<% //insert next and previous chapter links
-			String prevChapterString = RangeInformation.getPreviousChapter(activeKey, activeModule);
-			String nextChapterString = RangeInformation.getNextChapter(activeKey, activeModule);
+			// activeKey contains the current key ATM
+			// Split up into book, chapter and verse.
+			// Then add and subtract 1 to the chapter to the next and previous one
+
+			String bookname = activeKey.substring(0, activeKey.lastIndexOf(" "));
+			int chapter = Integer.parseInt( activeKey.substring(activeKey.lastIndexOf(" ")+1, activeKey.indexOf(":")) );
+			//int verse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
+
+			String prevChapterString = bookname + " " + String.valueOf(chapter-1) + ":1";
+			String nextChapterString = bookname + " " + String.valueOf(chapter+1) + ":1";
+
 		%>
 		<ul class="booknav">
 			<li><a href="parallelstudy.jsp?key=<%= URLEncoder.encode(prevChapterString) %>" title="Display <%= prevChapterString %>"><t:t>previous chapter</t:t></a></li>
-			<li><h3><%= activeKey %></h3></li>
+			<!-- <li><a href="" title="display all of Romans 8"><t:t>this chapter</t:t></a></li> -->
 			<li><a href="parallelstudy.jsp?key=<%= URLEncoder.encode(nextChapterString) %>" title="Display <%= nextChapterString %>"><t:t>next chapter</t:t></a></li>
 		</ul>
 
 
 		<%-- table which contains all verse items --%>
-		<%
-			Vector moduleList = new Vector();
-			for (int i = 0; i < parDispModules.size(); i++) {
-				moduleList.add( mgr.getModuleByName((String)parDispModules.get(i)) );
-			}
-			
-			Vector entryList = null;
-			if ((activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material")) || (activeModule.getCategory().equals(SwordOrb.BIBLES))) {
-				entryList = RangeInformation.getChapterEntryList(activeKey, activeModule);
-			}
-			else { //a simple commentary entry, not multiple ones
-				entryList = new Vector();
-				entryList.add(activeKey);
-			}
-			
-			ModuleTextRendering rendering = null;
-			ModuleEntryRenderer entryRenderer = null;
-			if (parallelViewType.equals("sidebyside")) {
-				rendering = new HorizontallyParallelTextRendering();
-				entryRenderer = new StandardEntryRenderer( new String("parallelstudy.jsp"), activeKey, mgr );
-			}
-			else { //if (parallelViewType.equals("toptobottom"))
-				rendering = new VerticallyParallelTextRendering();
-				entryRenderer = new SimpleEntryRenderer( new String("parallelstudy.jsp"), activeKey, mgr );
-			}
+		<table>
+		<caption>
+		</caption>
 
-			if (strongs) {
-				entryRenderer.enableFilterOption("Strong's Numbers");
-			}
-			if (morph) {
-				entryRenderer.enableFilterOption("Morphological Tags");
-			}
-			
-			out.print( rendering.render(moduleList, entryList, entryRenderer) ); //print out the text page
-			
-			
-			String copyLine = activeModule.getConfigEntry("ShortCopyright");
-			if (copyLine.equalsIgnoreCase("<swnull>")) {
-				copyLine = "";
-			}
-			if (activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material")) {
-				copyLine = "<t:t>WARNING: This text is considered unorthodox by most of Christendom.</t:t> " + copyLine;
+		<colgroup>
+		<% //setup col attributes
+				for (int i = 0; i < parDispModules.size(); i++) {
+					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
+		%>
+					<col width="<%= 100/parDispModules.size() %>%" />
+		<%
+				}
+		%>
+		</colgroup>
+
+		<thead>
+
+		<%
+			activeModule = mgr.getModuleByName((String)parDispModules.get(0));
+			if (activeModule.getCategory().equals(SwordOrb.BIBLES) ||
+			    activeModule.getCategory().equals(SwordOrb.COMMENTARIES) ||
+			    activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material"))
+			{
+		%>
+
+		<tr>
+
+		<% //insert module names at the top
+				for (int i = 0; i < parDispModules.size(); i++) {
+					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
+		%>
+					<th>
+						&quot;<%= mod.getDescription().replaceAll("&", "&amp;") + " (" + mod.getName() + ")" %>&quot;
+					</th>
+		<%
+				}
+		%>
+
+		</tr>
+		</thead>
+
+		<tbody>
+		<%
+			String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
+			int activeVerse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
+			for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
+
+				String keyText = activeModule.getKeyText();
+				if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":"))))
+					break;
+
+				int curVerse = Integer.parseInt(keyText.substring(keyText.indexOf(":")+1));
+				mgr.setGlobalOption("Strong's Numbers",
+					((strongs) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
+				mgr.setGlobalOption("Morphological Tags",
+					((morph) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
+			%>
+
+
+				<tr>
+		<%
+					for (int i = 0; i < parDispModules.size(); i++) {
+						SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
+						boolean rtol = ("RtoL".equalsIgnoreCase(mod.getConfigEntry("Direction")));
+
+						if (mod != activeModule)
+							mod.setKeyText( keyText );
+		%>
+							<td <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+								<span class="versenum">
+									<a <%= (keyText.equals(activeKey)) ? "id=\"cv\"" : "" %> href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>#cv"> <%= keyText.substring(keyText.indexOf(":")+1) %></a>
+								</span>
+
+					<%
+					String lang = mod.getConfigEntry("Lang");
+//					<span xml:lang="<%= (lang.equals("")) ? "en" : lang 
+					%>
+
+					<%= new String(mod.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+<%
+//					</span>
+%>
+
+					</td>
+		<%
+					}
+		%>
+				</tr>
+		<%
+				}
+		%>
+		<tr>
+
+		<% //insert module names at the top
+				for (int i = 0; i < parDispModules.size(); i++) {
+					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
+					String copyLine = mod.getConfigEntry("ShortCopyright");
+					String promoLine = mod.getConfigEntry("ShortPromo");
+					if (copyLine.equalsIgnoreCase("<swnull>"))
+						copyLine = "";
+					if (promoLine.equalsIgnoreCase("<swnull>"))
+						promoLine = "";
+					if (mod.getCategory().equals("Cults / Unorthodox / Questionable Material")) {
+						copyLine = "<t:t>WARNING: This text is considered unorthodox by most of Christendom.</t:t> " + copyLine;
+					}
+		%>
+					<td>
+		<div class="copyLine"><%= copyLine %></div>
+		<div class="promoLine"><%= promoLine %></div>
+					</td>
+		<%
+				}
+		%>
+
+		</tr>
+		<%
 			}
 		%>
+
+		</tbody>
+		</table>
+
 		</div>
 	</tiles:put>
 </tiles:insert>
