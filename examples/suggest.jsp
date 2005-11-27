@@ -12,16 +12,17 @@
                 String retVal = "<ul>";
                 if (mod != null && key != null)  {
                         SWModule book = mgr.getModuleByName(mod);
-                        book.setKeyText(key.toUpperCase());
+                        book.setKeyText(new String(key.toUpperCase().getBytes("UTF-8"), "iso8859-1"));
                         book.getRenderText();
                         String currentKey = book.getKeyText();
                         for (int i = 0; ((i < 10) && (book.error() == 0)); i++) {
                                 book.previous();
                         }
                         for (int i = 0; ((i < 20) && (book.error() == 0)); i++) {
-                                key = book.getKeyText();
+                                key = new String(book.getKeyText().getBytes("iso8859-1"), "UTF-8");
                                 retVal += (currentKey.equals(key)) ? "<li style=\"display: block; background: #C3AB7F;\">" : "<li style=\"display: block;\">";
-                                retVal += "<a href=\"#\" onclick=\"suggest('"+mod+"', '"+key+"'); return false;\">"+key+"</a></li>\n";
+                                retVal += "<a href=\"#\" onclick=\"suggest('"+mod+"', encodeURIComponent('"+key+"')); return false;\">"+key+"</a></li>\n";
+                                
                                 book.next();
                         }
                         out.print(retVal);
@@ -32,7 +33,7 @@
                 if (mod != null && key != null)  {
                         SWModule book = mgr.getModuleByName(mod);
                         if (book != null) {
-                                book.setKeyText(key.toUpperCase());
+				book.setKeyText(new String(key.toUpperCase().getBytes("UTF-8"), "iso8859-1"));
                                 out.print(new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8"));
                         }
                 }
