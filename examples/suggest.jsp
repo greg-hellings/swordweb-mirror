@@ -34,7 +34,9 @@
                         SWModule book = mgr.getModuleByName(mod);
                         if (book != null) {
 				book.setKeyText(new String(key.toUpperCase().getBytes("UTF-8"), "iso8859-1"));
-                                out.print(new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8"));
+                                String body = new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8");
+                                String keyText  = new String(book.getKeyText().getBytes("iso8859-1"), "UTF-8");
+                                out.print("<h2>"+keyText+"</h2>"+body);
                         }
                 }
                 return;
@@ -109,21 +111,21 @@ function suggest(mod, key) {
         for (int i = 0; i < modInfo.length; i++) {
             SWModule book = mgr.getModuleByName(modInfo[i].name);
 %>
-            <option value="<%= modInfo[i].name %>"><%=modInfo[i].description + " ("+modInfo[i].name+")" %></option>
+            <option value="<%= modInfo[i].name %>" <%= modInfo[i].name.equals(mod) ? "selected=\"selected\"":"" %>><%=modInfo[i].description + " ("+modInfo[i].name+")" %></option>
 <%
         }
  %>
    </select><br />
-   <input type="text"  onkeyup="suggest(document.suggestForm.modName.value, this.value); return false;" />
+   Lookup: <input type="text"  onkeyup="suggest(document.suggestForm.modName.value, this.value); return false;" />
 </form>
 
 <table width="100%">
 <tr>
-<td valign="top" width="20%">
+<td valign="top" width="30%">
 <div id="lexindex">
 </div>
 </td>
-<td valign="top" width="80%">
+<td valign="top" width="70%">
 <div id="lexentry">
 </div>
 </td>
