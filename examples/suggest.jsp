@@ -7,12 +7,13 @@
         SWMgr mgr     = SwordOrb.getSWMgrInstance(session);
         String mod    = request.getParameter("mod");
         String key    = request.getParameter("key");
+	if (key != null) key = new String(key.getBytes("UTF-8"), "iso8859-1");
         String action = request.getParameter("action");
         if ("keyList".equals(action)) {
                 String retVal = "<ul>";
                 if (mod != null && key != null)  {
                         SWModule book = mgr.getModuleByName(mod);
-                        book.setKeyText(new String(key.toUpperCase().getBytes("UTF-8"), "iso8859-1"));
+                        book.setKeyText(key);
                         book.getRenderText();
                         String currentKey = book.getKeyText();
                         for (int i = 0; ((i < 10) && (book.error() == 0)); i++) {
@@ -33,9 +34,9 @@
                 if (mod != null && key != null)  {
                         SWModule book = mgr.getModuleByName(mod);
                         if (book != null) {
-				book.setKeyText(new String(key.toUpperCase().getBytes("UTF-8"), "iso8859-1"));
-                                String body = new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8");
-                                String keyText  = new String(book.getKeyText().getBytes("iso8859-1"), "UTF-8");
+				book.setKeyText(key);
+                                String body    = new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8");
+                                String keyText = new String(book.getKeyText().getBytes("iso8859-1"), "UTF-8");
                                 out.print("<h2>"+keyText+"</h2>"+body);
                         }
                 }
@@ -116,7 +117,7 @@ function suggest(mod, key) {
         }
  %>
    </select><br />
-   Lookup: <input type="text"  onkeyup="suggest(document.suggestForm.modName.value, this.value); return false;" />
+   Lookup: <input type="text" value="<%=(key != null)?key:""%>" onkeyup="suggest(document.suggestForm.modName.value, this.value); return false;" />
 </form>
 
 <table width="100%">
@@ -131,7 +132,13 @@ function suggest(mod, key) {
 </td>
 </tr>
 </table>
-
+<script type="text/javascript">
+<% if ((mod != null) && (key != null)) { %>
+<!--
+suggest('<%=mod%>', '<%=key%>');
+-->
+</script>
+<% } %>
 
 </body>
 </html>
