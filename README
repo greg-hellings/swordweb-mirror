@@ -1,0 +1,13 @@
+Configuring ORbit
+-----------------
+
+ORbit must be configured to NOT use its own accelerated transport, but 
+instead, the standard IIOP. This is a little tricky. We do this by 
+editing the file: /etc/orbitrc and make sure it contains:
+
+ORBIIOPIPv4=1
+ORBIIOPIPv6=1
+ORBIIOPUSock=0
+
+This could alternatively be located at /usr/etc/orbitrc, or 
+/usr/local/etc/orbitrc, depending on how ORBit has been configured
