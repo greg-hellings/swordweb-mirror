@@ -1,7 +1,7 @@
-Configuring ORbit
+Configuring ORBit
 -----------------
 
-ORbit must be configured to NOT use its own accelerated transport, but 
+ORBit must be configured to NOT use its own accelerated transport, but 
 instead, the standard IIOP. This is a little tricky. We do this by 
 editing the file: /etc/orbitrc and make sure it contains:
 
