@@ -122,7 +122,7 @@
 	<tiles:put name="sidebar_right" type="string">
 	<div class="promoLine"><%= promoLine %></div>
 	<div id="studytools">
-		<h2>Word Study:</h2>
+		<h2>Study Tools:</h2>
 			<ul>
 			<li><a href="passagestudy.jsp?Footnotes=<%= ("On".equalsIgnoreCase(footnotes)) ? "Off" : "On" %>#cv" title="Turn <%= ("On".equalsIgnoreCase(footnotes)) ? "Off" : "On"%> Footnotes"><t:t><%= ("On".equalsIgnoreCase(footnotes)) ? "Hide" : "Show" %> Footnotes</t:t></a></li>
 			<li><a href="passagestudy.jsp?Cross-references=<%= ("On".equalsIgnoreCase(xrefs)) ? "Off" : "On" %>#cv" title="Turn <%= ("On".equalsIgnoreCase(xrefs)) ? "Off" : "On"%> Cross-references"><t:t><%= ("On".equalsIgnoreCase(xrefs)) ? "Hide" : "Show" %> Cross-references</t:t></a></li>
