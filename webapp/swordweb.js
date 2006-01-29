@@ -148,7 +148,7 @@ function pd(extratext) {
 }
 
 
-function p(mod, key, wordnum, extratext) {
+function p(mod, key, wordnum, extratext, fnnum) {
 
 	/* check for aliases */
 	if (mod == "G") mod = "StrongsGreek";
@@ -169,13 +169,26 @@ function p(mod, key, wordnum, extratext) {
 	else {
 		b.innerHTML="Please wait...";
 		showhide("onlywlayer", "visible");
-		xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+encodeURIComponent(key),true);
+		url = "fetchdata.jsp?mod="+mod+"&key="+encodeURIComponent(key);
+		if (fnnum != null)
+			url += "&fn="+encodeURIComponent(fnnum);
+		xmlhttp.open("GET", url, true);
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4) {
-				if (mod != "betacode")
-					b.innerHTML="<div class=\"verse\">"+xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a></div></div>";
-				else
-					b.innerHTML="<div class=\"verse\">"+xmlhttp.responseText + "<br/>"+"<div id=\"dm\"><a href=\"#\" onclick=\"pe('"+extratext+"');return false;\">"+extratext+"</a></div></div>";
+				if (mod != "betacode") {
+					resultBody="<div class=\"verse\">"+xmlhttp.responseText + "<br/>"+"<div id=\"dm\">";
+					if ((extratext != null) && (extratext.length > 0)) {
+						resultBody += "<a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a></div></div>";
+					}
+					b.innerHTML=resultBody;
+				}
+				else {
+					resultBody ="<div class=\"verse\">"+xmlhttp.responseText + "<br/>"+"<div id=\"dm\">";
+					if ((extratext != null) && (extratext.length > 0)) {
+						resultBody += "<a href=\"#\" onclick=\"pe('"+extratext+"');return false;\">"+extratext+"</a></div></div>";
+					}
+					b.innerHTML=resultBody;
+				}
 				lastword = wordnum;
 			}
 		}
@@ -215,7 +228,9 @@ function p(mod, key, wordnum, extratext) {
 	}
 }
 
-
+function f(mod, key, fnnum, extratext) {
+	p(mod, key, 'fn'+fnnum, extratext, fnnum);
+}
 
 function showhide (layer, vis) {
 

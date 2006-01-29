@@ -391,7 +391,7 @@ margin: 0px 14em 0px 11.5em;
 padding: 0 0 0px 0;
 }
 
-#searchresults dt {
+dt {
 margin: 0px 0px 0px 0px;
 padding: 0px 2px 0px 2px;
 background: #eee;
@@ -400,26 +400,26 @@ font-size: 1em;
 line-height: 1.8em;
 }
 
-#searchresults dt span {
+dt span {
 float: right;
 margin: -1.8em 0 0 0;
 font-style: italic;
 }
 
-#searchresults dd {
+dd {
 background: #fff;
 margin: 0px 0px 0px 0px;
 padding: 2px 5px 5px 3em;
 }
 
-#searchresults dt a {
+dt a {
 text-decoration: none;
 display:block;
 color:#000;
 font-size:1.1em;
 }
 
-#searchresults dt a:hover {
+dt a:hover {
 text-decoration: none;
 background-color: #DEDACA;
 color:#f00;
@@ -685,4 +685,23 @@ span.sameLemmaMorph {
 }
 span.sameLemma {
      font-weight : bold;
+}
+
+.fn {
+	cursor:pointer;
+	vertical-align: super;
+     margin-left : 0;
+     overflow: visible;
+     padding: 7px 7px 7px 7px;
+     color : #0000FF;
+     font-size : x-small;
+     font-style : normal;
+     font-weight : normal;
+     font-variant : normal;
+     word-spacing : normal;
+     letter-spacing : normal;
+     text-transform : none;
+     text-align : left;
+     text-indent : 0;
+     line-height : normal;
 }

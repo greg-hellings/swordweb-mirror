@@ -462,3 +462,22 @@ span.sameLemmaMorph {
 span.sameLemma {
      font-weight : bold;
 }
+
+.fn {
+	cursor:pointer;
+	vertical-align: super;
+     margin-left : 0;
+     overflow: visible;
+     padding: 7px 7px 7px 7px;
+     color : #0000FF;
+     font-size : x-small;
+     font-style : normal;
+     font-weight : normal;
+     font-variant : normal;
+     word-spacing : normal;
+     letter-spacing : normal;
+     text-transform : none;
+     text-align : left;
+     text-indent : 0;
+     line-height : normal;
+}

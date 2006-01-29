@@ -133,6 +133,26 @@
 		response.addCookie(c);
 	}
 
+	String footnotes = (String)request.getParameter("Footnotes");
+	if (footnotes == null)
+		footnotes = (String)session.getAttribute("Footnotes");
+	else {	// set style cookie
+		Cookie c = new Cookie("Footnotes", footnotes);
+		c.setMaxAge(java.lang.Integer.MAX_VALUE);
+		c.setPath("/");
+		response.addCookie(c);
+	}
+
+	String xrefs = (String)request.getParameter("Cross-references");
+	if (xrefs == null)
+		xrefs = (String)session.getAttribute("Cross-references");
+	else {	// set style cookie
+		Cookie c = new Cookie("Cross-references", xrefs);
+		c.setMaxAge(java.lang.Integer.MAX_VALUE);
+		c.setPath("/");
+		response.addCookie(c);
+	}
+
 	String headings = (String)request.getParameter("Headings");
 	if (headings == null)
 		headings = (String)session.getAttribute("Headings");
@@ -210,6 +230,12 @@
 			else if (cookies[i].getName().equals("Headings")) {
 				headings = cookies[i].getValue();
 			}
+			else if (cookies[i].getName().equals("Footnotes")) {
+				footnotes = cookies[i].getValue();
+			}
+			else if (cookies[i].getName().equals("Cross-references")) {
+				xrefs = cookies[i].getValue();
+			}
 			else if (cookies[i].getName().equals("Javascript")) {
 				javascript = cookies[i].getValue();
 			}
@@ -270,10 +296,14 @@
 	session.setAttribute("ParDispModules", parDispModules);
 	session.setAttribute("PrefStyle", prefStyle);
 	session.setAttribute("Headings", headings);
+	session.setAttribute("Footnotes", footnotes);
+	session.setAttribute("Cross-references", xrefs);
 	session.setAttribute("Javascript", javascript);
 	session.setAttribute("showTabs", showTabs);
 	mgr.setJavascript(!"Off".equalsIgnoreCase(javascript));
 	mgr.setGlobalOption("Headings", ("Off".equalsIgnoreCase(headings)) ? "Off":"On");
+	mgr.setGlobalOption("Footnotes", ("On".equalsIgnoreCase(footnotes)) ? "On":"Off");
+	mgr.setGlobalOption("Cross-references", ("On".equalsIgnoreCase(xrefs)) ? "On":"Off");
 
 	{
 	String lang = request.getParameter("lang");
