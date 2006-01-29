@@ -34,9 +34,11 @@
                 if (mod != null && key != null)  {
                         SWModule book = mgr.getModuleByName(mod);
                         if (book != null) {
+System.err.println("setting: ["+key+"]");
 				book.setKeyText(key);
                                 String body    = new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8");
                                 String keyText = new String(book.getKeyText().getBytes("iso8859-1"), "UTF-8");
+System.err.println("getting: ["+keyText+"]");
                                 out.print("<h2>"+keyText+"</h2>"+body);
                         }
                 }

@@ -31,14 +31,14 @@
 			styleFiles = new Vector();
 			styleDescriptions = new Vector();
 
+			styleNames.add("Washed Out");
+			styleFiles.add("wash.css");
+
 			styleNames.add("Parchment");
 			styleFiles.add("parchment.css");
 
 			styleNames.add("Sandy Creek");
 			styleFiles.add("sandy.css");
-
-			styleNames.add("Washed Out");
-			styleFiles.add("wash.css");
 
 			tabNames  = new Vector();
 			tabLinks  = new Vector();

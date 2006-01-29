@@ -41,7 +41,7 @@ public class StandardEntryRenderer implements ModuleEntryRenderer {
             final boolean rtol = ("RtoL".equalsIgnoreCase(mod
                     .getConfigEntry("Direction")));
 
-            String[] heads = mod.getEntryAttribute("Heading", "Preverse", "0");
+            String[] heads = mod.getEntryAttribute("Heading", "Preverse", "0", true);
             if (heads.length > 0) {
                 if (header == null) {
                     header = new StringBuffer();

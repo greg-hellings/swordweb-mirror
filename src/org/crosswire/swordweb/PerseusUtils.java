@@ -18,25 +18,35 @@ public class PerseusUtils {
     public static String getLiddellScottDef(String lemma) {
         UnicodeToBetacode bc = new UnicodeToBetacode();
         String retVal = "";
-        String lemmaUnicode = lemma;
-        lemma = bc.convertString(lemma).toLowerCase();
-        // Perseus wants final sigma to be "s"
-        if (lemma.endsWith("j")) lemma = lemma.substring(0, lemma.length()-1) + "s";
         XPath xpath = XPathFactory.newInstance().newXPath();
         String expression = "//entry/sense";
         URL url = null;
-        try {
-            url = new URL("http://www.perseus.tufts.edu/hopper/xmlchunk.jsp?doc=Perseus%3Atext%3A1999.04.0058%3Aentry%3D"+URLEncoder.encode(lemma));
-            InputSource inputSource = new InputSource(url.openStream());
-            DTMNodeList nodes = (DTMNodeList)xpath.evaluate(expression, inputSource, XPathConstants.NODESET);
-            if (nodes.getLength() > 0) {
-                retVal = "<h2><span class=\"verse\">"+lemmaUnicode+"</span></h2>";
-                for (int i = 0; i < nodes.getLength(); i++) {
-                     Node n = nodes.item(i);
-                     retVal += outputSenseNode(n);
-                 }
-            }
-        } catch (Exception ex) { ex.printStackTrace(); }
+	int start = 0;
+        int end = 0;
+	if (lemma.indexOf(", ") > -1) {
+            retVal = "<h2><span class=\"verse\">"+lemma+"</span></h2>";
+        }
+	do {
+	    end = lemma.indexOf(", ", start);
+	    String part = (end > -1) ? lemma.substring(start, end) : lemma.substring(start);
+            String lemmaUnicode = part;
+            part = bc.convertString(part).toLowerCase();
+            // Perseus wants final sigma to be "s"
+            if (part.endsWith("j")) part = part.substring(0, part.length()-1) + "s";
+	    start = end + 2;
+            try {
+                url = new URL("http://www.perseus.tufts.edu/hopper/xmlchunk.jsp?doc=Perseus%3Atext%3A1999.04.0058%3Aentry%3D"+URLEncoder.encode(part));
+                InputSource inputSource = new InputSource(url.openStream());
+                DTMNodeList nodes = (DTMNodeList)xpath.evaluate(expression, inputSource, XPathConstants.NODESET);
+                if (nodes.getLength() > 0) {
+                    retVal += "<h2><span class=\"verse\">"+lemmaUnicode+"</span></h2>";
+                    for (int i = 0; i < nodes.getLength(); i++) {
+                         Node n = nodes.item(i);
+                         retVal += outputSenseNode(n);
+                     }
+                }
+            } catch (Exception ex) { ex.printStackTrace(); }
+	} while (end > -1);
         return retVal;
     }
     
