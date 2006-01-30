@@ -229,7 +229,7 @@ function p(mod, key, wordnum, extratext, fnnum) {
 }
 
 function f(mod, key, fnnum, extratext) {
-	p(mod, key, 'fn'+fnnum, extratext, fnnum);
+	p(mod, key, 'fn'+key+fnnum, extratext, fnnum);
 }
 
 function showhide (layer, vis) {
