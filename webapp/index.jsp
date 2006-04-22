@@ -88,7 +88,7 @@ I commented this section out until it can be made functional.
 	</p>
 
 	<h2><t:t>DOWNLOADS</t:t></h2>
-	<p><t:t>We offer a number of free Bible software downloads for Windows, Mac, Linux and Palm produced by CrossWire Bible Society. </t:t><a href="index.jsp?section=downloads"><t:t>Learn More...</t:t></a>
+	<p><t:t>We offer a number of free Bible software downloads for Windows, Mac, Linux, and PDAs, produced by CrossWire Bible Society. </t:t><a href="index.jsp?section=downloads"><t:t>Learn More...</t:t></a>
 	</p>
 
 	<h2><t:t>UPLOAD TEXTS</t:t></h2>

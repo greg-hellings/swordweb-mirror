@@ -145,7 +145,7 @@
 								String k = parent + "/" + children[i];
 								module.setKeyText(k);
 								k = module.getKeyText();
-								String[] heads = module.getEntryAttribute("Heading", "Preverse", "0");
+								String[] heads = module.getEntryAttribute("Heading", "Preverse", "0", true);
 								if (heads.length > 0) {
 			%>
 					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (k.equals(gbsEntry)) ? "currentverse" : "verse" %>">

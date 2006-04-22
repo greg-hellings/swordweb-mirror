@@ -2,23 +2,33 @@
 
 <%
 	session.setAttribute("lastModType", "Bible");
+
+	String []delMods = request.getParameterValues("del");
+	if (delMods != null) {
+		for (int i = 0; i < delMods.length; i++) {
+			String delModule = delMods[i];
+			if ("all".equals(delModule)) {
+				parDispModules.clear();
+				break;
+			}
+			if ( (delModule != null) && parDispModules.contains(delModule)) {
+				parDispModules.remove(delModule);
+			}
+		}
+	}
+
 	String []addMods = request.getParameterValues("add");
 	if (addMods != null) {
 		for (int i = 0; i < addMods.length; i++) {
 			String addModule = addMods[i];
 			if (addModule != null) {
 				SWModule m = mgr.getModuleByName(addModule);
-				if (m != null) {
+				if (!"<SWNULL>".equals(m.getName())) {
 					parDispModules.remove(addModule);
 					parDispModules.add(parDispModules.size(), addModule);
 				}
 			}
 		}
-	}
-
-	String delModule = (String)request.getParameter("del");
-	if ( (delModule != null) && parDispModules.contains(delModule)) {
-		parDispModules.remove(delModule);
 	}
 
 	if (parDispModules.size() == 0) {
