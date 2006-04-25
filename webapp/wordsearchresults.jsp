@@ -81,6 +81,14 @@
 			if ((activeSearchTerm != null) && (activeSearchTerm.trim().length() > 0)) {
 				mgr.setGlobalOption("Greek Accents", "Off");
 				results = activeModule.search(activeSearchTerm, stype, soptions, range);
+				// let's make some intuitive decisions on when to sort by score
+				if ((results.length > 100) && (activeSearchTerm.indexOf(" ") > 0) && (activeSearchTerm.indexOf("+") < 1)) {
+					Arrays.sort(results, new Comparator() {
+						public int compare(Object o1, Object o2) {
+							return ((SearchHit)o2).score - ((SearchHit)o1).score;
+						}
+					});
+				}
 				mgr.setGlobalOption("Greek Accents", "On");
 
 				//save the search reusult into the session so it can be retrived later on to browse through it
