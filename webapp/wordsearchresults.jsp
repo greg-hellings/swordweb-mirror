@@ -75,14 +75,18 @@
 
 	<tiles:put name="content" type="string">
 	<div id="searchresults">
-		<h2><t:t>Results for "</t:t><em><%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %></em>"</h2>
+		<h2><t:t>Results for</t:t> <em><%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %></em></h2>
 		<%
 			SearchHit[] results = null;
 			if ((activeSearchTerm != null) && (activeSearchTerm.trim().length() > 0)) {
 				mgr.setGlobalOption("Greek Accents", "Off");
 				results = activeModule.search(activeSearchTerm, stype, soptions, range);
 				// let's make some intuitive decisions on when to sort by score
-				if ((results.length > 100) && (activeSearchTerm.indexOf(" ") > 0) && (activeSearchTerm.indexOf("+") < 1)) {
+				if ((results.length > 100) && (activeSearchTerm.indexOf(" ") > 0)
+						 && (activeSearchTerm.indexOf("+") < 1)
+						 && (activeSearchTerm.indexOf("\"") < 1)
+						 && (activeSearchTerm.indexOf("~") < 1)
+						) {
 					Arrays.sort(results, new Comparator() {
 						public int compare(Object o1, Object o2) {
 							return ((SearchHit)o2).score - ((SearchHit)o1).score;
