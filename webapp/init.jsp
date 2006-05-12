@@ -80,7 +80,7 @@
 		}
 	}
 
-	SWMgr mgr = SwordOrb.getSWMgrInstance(session);
+	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	// let's cache the modInfo in the session cuz this is alot to grab each time we need it from the orb
 	ModInfo[] modInfo = (ModInfo[])session.getAttribute("ModInfo");
 	if (modInfo == null) {
