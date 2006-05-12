@@ -8,7 +8,7 @@
 
 
 <%
-	SWMgr mgr = SwordOrb.getSWMgrInstance(session);
+	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	SWModule book = mgr.getModuleByName("KJV");
 %>
 

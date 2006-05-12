@@ -6,7 +6,7 @@
 <%@ page import="java.net.URLEncoder" %>
 <%
 
-	SWMgr mgr = SwordOrb.getSWMgrInstance(session);
+	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	SWModule book = null;
 	String key = request.getParameter("key");
 	String modName = request.getParameter("mod");

@@ -4,7 +4,7 @@
 %>
 <%@ page import="org.crosswire.sword.orb.*" %>
 <%
-        SWMgr mgr     = SwordOrb.getSWMgrInstance(session);
+        SWMgr mgr     = SwordOrb.getSWMgrInstance(request);
         String mod    = request.getParameter("mod");
         String key    = request.getParameter("key");
 	if (key != null) key = new String(key.getBytes("UTF-8"), "iso8859-1");
