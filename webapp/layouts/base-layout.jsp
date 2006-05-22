@@ -37,7 +37,7 @@
 	<script type="text/javascript" src="swordweb.js"></script>
 </head>
 
-	<body>
+	<body onload="onPageLoad();">
 	<%-- include header --%>
 	<tiles:insert attribute="header" />
 	<tiles:insert attribute="pintro" />

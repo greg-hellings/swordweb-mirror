@@ -147,12 +147,52 @@ function pd(extratext) {
 	}
 }
 
+function colorLemmas(wordnum, key, morph) {
+	spans = document.getElementsByTagName('span');
+	for (i = 0; i < curspans.length; i++) {
+		curspans[i].className='';
+	}
+	curspans.length = 0;
+	for (i = 0; i < spans.length; i++) {
+		ocf = spans[i].getAttribute('onclick');
+		if (ocf) {
+			oc = ocf.toString();
+			fb = oc.indexOf('p(');
+			if (fb >= 0) {
+				fe = oc.indexOf(')', fb);
+				wdf = 'wd'+oc.substring(fb+1, fe+1);
+				wdata = eval(wdf);
+				if (wd_wnum == wordnum) {
+					curspans[curspans.length] = spans[i];
+					spans[i].className='curWord';
+				}
+				else if (wd_strong == key) {
+					if (wd_morph == morph) {
+						curspans[curspans.length] = spans[i];
+						spans[i].className='sameLemmaMorph';
+					}
+					else { curspans[curspans.length] = spans[i];
+						spans[i].className='sameLemma';
+					}
+				}
+			}
+		}
+	}
+}
 
-function p(mod, key, wordnum, extratext, fnnum) {
 
+function p(mod, key, wordnum, extratext, fnnum, srcMod) {
+
+	skeyPre=""
 	/* check for aliases */
-	if (mod == "G") mod = "StrongsGreek";
-	if (mod == "H") mod = "StrongsHebrew";
+	if (mod == "G") {
+		skeyPre="G";
+		mod = "StrongsGreek";
+	}
+	if (mod == "H") {
+		skeyPre="H";
+		mod = "StrongsHebrew";
+	}
 
 	b=document.getElementById("onlywlayer");
 	if (b==null) {
@@ -170,7 +210,7 @@ function p(mod, key, wordnum, extratext, fnnum) {
 		b.innerHTML="Please wait...";
 		showhide("onlywlayer", "visible");
 		url = "fetchdata.jsp?mod="+mod+"&key="+encodeURIComponent(key);
-		if (fnnum != null)
+		if ((fnnum != null) && (fnnum != ''))
 			url += "&fn="+encodeURIComponent(fnnum);
 		xmlhttp.open("GET", url, true);
 		xmlhttp.onreadystatechange=function() {
@@ -178,15 +218,20 @@ function p(mod, key, wordnum, extratext, fnnum) {
 				if (mod != "betacode") {
 					resultBody="<div class=\"verse\">"+xmlhttp.responseText + "<br/>"+"<div id=\"dm\">";
 					if ((extratext != null) && (extratext.length > 0)) {
-						resultBody += "<a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a></div></div>";
+						resultBody += "<a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a>";
 					}
+					resultBody += "<dl>";
+					resultBody += "<dt><a href=\"wordsearchresults.jsp?mod="+srcMod+"&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\">Search for "+key+" in "+srcMod+"</a></dt>";
+					resultBody += "</dl>";
+					resultBody += "</div></div>";
 					b.innerHTML=resultBody;
 				}
 				else {
 					resultBody ="<div class=\"verse\">"+xmlhttp.responseText + "<br/>"+"<div id=\"dm\">";
 					if ((extratext != null) && (extratext.length > 0)) {
-						resultBody += "<a href=\"#\" onclick=\"pe('"+extratext+"');return false;\">"+extratext+"</a></div></div>";
+						resultBody += "<a href=\"#\" onclick=\"pe('"+extratext+"');return false;\">"+extratext+"</a>";
 					}
+					resultBody += "</div></div>";
 					b.innerHTML=resultBody;
 				}
 				lastword = wordnum;
@@ -194,36 +239,7 @@ function p(mod, key, wordnum, extratext, fnnum) {
 		}
 		xmlhttp.send(null);
 		if (mod.substring(0,12) == 'StrongsGreek') {
-			spans = document.getElementsByTagName('span');
-			for (i = 0; i < curspans.length; i++) {
-				curspans[i].className='';
-			}
-			curspans.length = 0;
-			for (i = 0; i < spans.length; i++) {
-				ocf = spans[i].getAttribute('onclick');
-				if (ocf) {
-					oc = ocf.toString();
-					fb = oc.indexOf('p(');
-					if (fb >= 0) {
-						fe = oc.indexOf(')', fb);
-						wdf = 'wd'+oc.substring(fb+1, fe+1);
-						wdata = eval(wdf);
-						if (wd_wnum == wordnum) {
-							curspans[curspans.length] = spans[i];
-							spans[i].className='curWord';
-						}
-						else if (wd_strong == key) {
-							if (wd_morph == extratext) {
-								curspans[curspans.length] = spans[i];
-								spans[i].className='sameLemmaMorph';
-							}
-							else { curspans[curspans.length] = spans[i];
-								spans[i].className='sameLemma';
-							}
-						}
-					}
-				}
-			}
+			colorLemmas(wordnum, key, extratext);
 		}
 	}
 }
@@ -260,3 +276,6 @@ function showhide (layer, vis) {
 	l.style.visibility = vis;
 }
 
+function onPageLoad() {
+// empty function redefined in a page that cares
+}

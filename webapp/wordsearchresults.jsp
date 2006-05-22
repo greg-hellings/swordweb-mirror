@@ -1,6 +1,8 @@
 <%@ include file="init.jsp" %>
 
 <%
+	String colorKey    = request.getParameter("colorKey");
+	String colorMorph  = request.getParameter("colorMorph");
 	String resetModule = request.getParameter("mod");
 	String lastModType = (String) session.getAttribute("lastModType");
 	String activeModuleName = (resetModule != null)?resetModule : ((String) session.getAttribute(("GBS".equals(lastModType))?"gbsBook":"ActiveModule"));
@@ -44,13 +46,27 @@
 	if ((tmp != null) && (!tmp.equals("1")))
 		soptions = 0;
 %>
-
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" type="string">
 		Search results for <%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %>
 	</tiles:put>
-	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
-
+	<tiles:put name="pintro" type="string" >
+<div>
+<%
+	if (colorKey != null) {
+%>
+    <script type="text/javascript" language="JavaScript">
+<!--
+function onPageLoad() {
+	colorLemmas('x','<%=colorKey%>','<%=colorMorph%>');
+}
+// -->
+    </script>
+<%
+	}
+%>
+</div>
+</tiles:put>
 	<tiles:put name="sidebar_left" type="string">
 		<div id="translations">
 		<h2><t:t>Translations:</t:t></h2>
@@ -170,10 +186,7 @@
 		<%
 				}
 			}
-		%>
-
-		<%
-				int lastPage = (results.length / resultLimit.intValue()) + ((results.length % resultLimit.intValue()) > 0 ? 1 : 0) -1;
+			int lastPage = (results.length / resultLimit.intValue()) + ((results.length % resultLimit.intValue()) > 0 ? 1 : 0) -1;
 			if (navEnd < lastPage) {
 		%>
 				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage*resultLimit.intValue() %>" title="Last page (<%= results[lastPage].key %>) of search results"><%= lastPage+1 %></a></li>
