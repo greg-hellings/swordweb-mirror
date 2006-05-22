@@ -104,7 +104,8 @@ function wd(mod, key, wordnum, extratext) {
 	wd_morph = '';
 	wd_wnum = '';
 
-	if ((mod == 'G') || (mod == 'StrongsGreek')) {
+	if ((mod == 'G') || (mod == 'StrongsGreek')
+	 || (mod == 'H') || (mod == 'StrongsHeb')) {
 		wd_strong = key;
 		wd_morph = extratext;
 		wd_wnum = wordnum;
@@ -238,7 +239,8 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 			}
 		}
 		xmlhttp.send(null);
-		if (mod.substring(0,12) == 'StrongsGreek') {
+		if ((mod.substring(0,12) == 'StrongsGreek')
+		 || (mod.substring(0,10) == 'StrongsHeb')) {
 			colorLemmas(wordnum, key, extratext);
 		}
 	}

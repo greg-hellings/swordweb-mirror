@@ -182,14 +182,14 @@ function onPageLoad() {
 		<%	}
 				else {
 		%>
-					<li><a href="wordsearchresults.jsp?start=<%= i * resultLimit.intValue() %>" title="page <%= i+1 %> (<%= results[i * resultLimit.intValue()].key %>) of search results"><%= i+1 %></a></li>
+					<li><a href="wordsearchresults.jsp?start=<%= i * resultLimit.intValue() %>&colorKey=<%=colorKey%>&colorMorph=<%=colorMorph%>" title="page <%= i+1 %> (<%= results[i * resultLimit.intValue()].key %>) of search results"><%= i+1 %></a></li>
 		<%
 				}
 			}
 			int lastPage = (results.length / resultLimit.intValue()) + ((results.length % resultLimit.intValue()) > 0 ? 1 : 0) -1;
 			if (navEnd < lastPage) {
 		%>
-				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage*resultLimit.intValue() %>" title="Last page (<%= results[lastPage].key %>) of search results"><%= lastPage+1 %></a></li>
+				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage*resultLimit.intValue() %>&colorKey=<%=colorKey%>&colorMorph=<%=colorMorph%>" title="Last page (<%= results[lastPage].key %>) of search results"><%= lastPage+1 %></a></li>
 		<%
 			}
 		%>
