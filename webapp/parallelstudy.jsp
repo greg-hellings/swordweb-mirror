@@ -303,10 +303,22 @@
 						SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
 						boolean rtol = ("RtoL".equalsIgnoreCase(mod.getConfigEntry("Direction")));
 
-						if (mod != activeModule)
-							mod.setKeyText( keyText );
-		%>
+						if (mod != activeModule) {
+							mod.setKeyText(keyText);
+						}
+
+%>
 							<td <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+<%
+						String[] heads = mod.getEntryAttribute("Heading", "Preverse", "0", true);
+						if (heads.length > 0) {
+%>
+							<h3>
+							<%= new String(heads[0].getBytes("iso8859-1"), "UTF-8") %>
+							</h3>
+<%
+						}
+%>
 								<span class="versenum">
 									<a <%= (keyText.equals(activeKey)) ? "id=\"cv\"" : "" %> href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>#cv"> <%= keyText.substring(keyText.indexOf(":")+1) %></a>
 								</span>
