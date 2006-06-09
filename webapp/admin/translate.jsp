@@ -7,7 +7,7 @@
 <%@ page import="java.io.File" %>
 <%@ page import="java.io.FileOutputStream" %>
 <%@ page import="org.crosswire.web.i18n.*" %>
-<%@ page import="org.crosswire.web.util.*" %>
+<%@ page import="org.crosswire.utils.*" %>
 
 <html>
 <body>
@@ -62,8 +62,8 @@
 			String value = TranslateTag.getTranslation(pageContext, key, false);
 %>
 	<p>
-			<%= HTMLEncoder.encode(key) %><br/>
-			<input type="text" name="t<%=i%>" size="120" value="<%= HTMLEncoder.encode(value)%>"/>
+			<%= HTTPUtils.canonize(key) %><br/>
+			<input type="text" name="t<%=i%>" size="120" value="<%= HTTPUtils.canonize(value)%>"/>
 	</p>
 <%
 		}
