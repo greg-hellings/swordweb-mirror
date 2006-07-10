@@ -311,10 +311,10 @@
 							<td <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 <%
 						String[] heads = mod.getEntryAttribute("Heading", "Preverse", "0", true);
-						if (heads.length > 0) {
+						for (int h = 0; h < heads.length; h++) {
 %>
 							<h3>
-							<%= new String(heads[0].getBytes("iso8859-1"), "UTF-8") %>
+							<%= new String(heads[h].getBytes("iso8859-1"), "UTF-8") %>
 							</h3>
 <%
 						}
