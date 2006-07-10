@@ -6,6 +6,9 @@
 <%@ page import="java.util.Vector" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.Comparator" %>
+<%@ page import="java.util.Properties" %>
+<%@ page import="java.io.File" %>
+<%@ page import="java.io.FileInputStream" %>
 <%@ page import="org.crosswire.sword.orb.*" %>
 <%@ page import="java.net.URLEncoder" %>
 <%@ taglib uri="/WEB-INF/lib/crosswire-i18n.tld" prefix="t" %>
@@ -20,12 +23,24 @@
 	static Vector tabLinks = null;
 	static Vector tabTitles = null;
 	static Vector tabDefaults = null;
-	static String defaultBible = "NASB";
+	static String defaultBible = null;
+	static Properties swordWebConfig = null;
 %>
 
 <%
 	synchronized(this) {
 		if (styleNames == null) {
+			try {
+				swordWebConfig = new Properties();
+				File propName = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/swordweb.properties"));
+				if (propName.exists()) {
+					FileInputStream propFile = new FileInputStream(propName);
+					swordWebConfig.load(propFile);
+					propFile.close();
+				}
+			}
+			catch (Exception e) { e.printStackTrace(); }
+			defaultBible = swordWebConfig.getProperty("defaultBible", "NASB");
 
 			styleNames = new Vector();
 			styleFiles = new Vector();
