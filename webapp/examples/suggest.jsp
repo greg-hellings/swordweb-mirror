@@ -106,6 +106,7 @@ function suggest(mod, key) {
 <body>
 
 <h1>SWORDWeb suggest Example</h1>
+<h2>This is experimental and doesn't work right yet.</h2>
 
 <form name="suggestForm" action="">
   <select name="modName">

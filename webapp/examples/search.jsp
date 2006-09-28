@@ -9,7 +9,7 @@
 
 <%
 	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
-	SWModule book = mgr.getModuleByName("NASB");
+	SWModule book = mgr.getModuleByName("ASV");
 %>
 
 <html>
@@ -26,7 +26,7 @@
 	SearchHit[] results = book.search(searchTerm, searchType, searchOptions, searchRange);
 %>
 
-<p> There are <%= results.length %> results searching for "<%= searchTerm %>" in <%= book.getName() %></p>
+<p> There are <%= results.length %> results searching for "<%= searchTerm %>" in the <%= book.getDescription() %> (<%= book.getName() %>)</p>
 <table border="1">
 <tr><th>Reference</th><th>Text</th></tr>
 
