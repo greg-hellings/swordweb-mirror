@@ -221,9 +221,11 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 					if ((extratext != null) && (extratext.length > 0)) {
 						resultBody += "<a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a>";
 					}
-					resultBody += "<dl>";
-					resultBody += "<dt><a href=\"wordsearchresults.jsp?mod="+srcMod+"&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\">Search for "+key+" in "+srcMod+"</a></dt>";
-					resultBody += "</dl>";
+					if ((fnnum == null) || (fnnum == '')) {
+						resultBody += "<dl>";
+						resultBody += "<dt><a href=\"wordsearchresults.jsp?mod="+srcMod+"&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\">Search for "+key+" in "+srcMod+"</a></dt>";
+						resultBody += "</dl>";
+					}
 					resultBody += "</div></div>";
 					b.innerHTML=resultBody;
 				}
