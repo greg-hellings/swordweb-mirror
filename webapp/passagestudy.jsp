@@ -124,6 +124,8 @@
 	<div id="studytools">
 		<h2>Study Tools:</h2>
 			<ul>
+			<li><t:t>Many Bibles support original language study help simply by clicking on the word in the text.</t:t></li>
+			<li></li>
 			<li><a href="passagestudy.jsp?Footnotes=<%= ("On".equalsIgnoreCase(footnotes)) ? "Off" : "On" %>#cv" title="Turn <%= ("On".equalsIgnoreCase(footnotes)) ? "Off" : "On"%> Notes"><t:t><%= ("On".equalsIgnoreCase(footnotes)) ? "Hide" : "Show" %> Notes</t:t></a></li>
 			<li><a href="passagestudy.jsp?Cross-references=<%= ("On".equalsIgnoreCase(xrefs)) ? "Off" : "On" %>#cv" title="Turn <%= ("On".equalsIgnoreCase(xrefs)) ? "Off" : "On"%> Cross-references"><t:t><%= ("On".equalsIgnoreCase(xrefs)) ? "Hide" : "Show" %> Cross-references</t:t></a></li>
 			<li><a href="passagestudy.jsp?strongs=<%= (strongs) ? "off" : "on" %>#cv" title="Turn <%= (strongs) ? "off" : "on"%> Strongs numbers"><t:t><%= (strongs) ? "Hide" : "Show" %> Strongs</t:t></a></li>
