@@ -227,7 +227,7 @@
 
 <%!
 private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, SWModule module, String rootTreeKey, String target, String currentJumpNode) {
-
+	if ((module == null) || ("<SWNULL>".equals(module.getName()))) return;
 	try {
 		int max = 400;
 		module.setKeyText(rootTreeKey);
