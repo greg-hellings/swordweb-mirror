@@ -132,9 +132,10 @@ function onPageLoad() {
 			for (int i = resultStart.intValue(); i < results.length && i < resultStart.intValue() + resultLimit.intValue(); i++)
 			{
 				activeModule.setKeyText(results[i].key);
+				String dispKey = new String(results[i].key.getBytes("iso-8859-1"), "UTF-8");
 		%>
 				<dt>
-					<a href="<%= ("GBS".equals(lastModType))?"bookdisplay.jsp?gbsEntry=":"passagestudy.jsp?key=" %><%= URLEncoder.encode(results[i].key)+"#cv" %>" title="<%= results[i].key %>"><%= results[i].key %></a>
+					<a href="<%= ("GBS".equals(lastModType))?"bookdisplay.jsp?gbsEntry=":"passagestudy.jsp?key=" %><%= URLEncoder.encode(dispKey)+"#cv" %>" title="<%= dispKey %>"><%= dispKey %></a>
 					<span><%= (results[i].score > 0)?("score: " + results[i].score) : "" %></span>
 				</dt>
 				<% boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction"))); %>
