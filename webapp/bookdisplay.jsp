@@ -66,7 +66,7 @@
 		String []nodes = request.getParameterValues((i>0)?"close":"open");
 		if (nodes != null) {
 			for (int j = 0; j < nodes.length; j++) {
-				String node = nodes[j];
+				String node = new String(nodes[j].getBytes("iso8859-1"), "UTF-8");
 				if (node != null) {
 					if (i>0) {
 						bookTreeOpen.remove(node);
@@ -266,7 +266,7 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 				linkRef = rootTreeKey + "/" + children[0];
 			}
 
-			out.print(" <a href=\"bookdisplay.jsp?gbsEntry=" + URLEncoder.encode(linkRef) + "#cv\">" + localName + "</a>");
+			out.print(" <a href=\"bookdisplay.jsp?gbsEntry=" + URLEncoder.encode(new String(linkRef.getBytes("iso8859-1"), "UTF-8")) + "#cv\">" + localName + "</a>");
 
 			out.print("</li>\n");
 		}
