@@ -41,10 +41,10 @@
 			stype = SearchType.REGEX;
 	}
 
-	int soptions = 2;	// default to ignore case
+	int soptions = 0;	// default to NOT ignore case
 	tmp = request.getParameter("icase");
-	if ((tmp != null) && (!tmp.equals("1")))
-		soptions = 0;
+	if ((tmp != null) && (tmp.equals("1")))
+		soptions = 2;
 %>
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" type="string">
