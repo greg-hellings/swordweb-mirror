@@ -87,7 +87,7 @@
 <tiles:insert beanName="basic" flush="true" >
 	<%-- override lookup URL, so this script is used to display the keys --%>
 	<tiles:put name="lookup_url" value="bookdisplay.jsp" />
-	<tiles:put name="title" value="General Book Display" />
+	<tiles:put name="title"><%=module.getDescription()%></tiles:put>
 	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
 	<tiles:put name="sidebar_right" type="string" ><div></div></tiles:put>
 	<tiles:put name="sidebar_left" type="string">

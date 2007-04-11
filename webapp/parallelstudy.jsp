@@ -40,10 +40,16 @@
 	String resetKey = request.getParameter("key");
 	if (resetKey != null)
 		session.setAttribute("ActiveKey", resetKey);
+
 	String activeKey = (String) session.getAttribute("ActiveKey");
 	if (activeKey == null)
 		activeKey = "jas 1:19"; // our fallback key
 
+ 	// be sure it's formatted nicely
+	if (activeModule != null) {
+		activeModule.setKeyText(activeKey);
+		activeKey = activeModule.getKeyText();
+	}
 
 	//taken from passagestudy.jsp. It's here useful, too.
 	boolean strongs = "on".equals((String) session.getAttribute("strongs"));
@@ -63,7 +69,7 @@
 <tiles:insert beanName="basic" flush="true" >
 	<%-- override lookup URL, so this script is used to display the keys --%>
 	<tiles:put name="lookup_url" value="parallelstudy.jsp" />
-	<tiles:put name="title" value="Parallel Bible study" />
+	<tiles:put name="title" type="string"><%= activeKey %> - Parallel Bible study</tiles:put>
 	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
 
 	<tiles:put name="sidebar_left" type="string">
@@ -203,12 +209,6 @@
 
 	</tiles:put>
 	<tiles:put name="content" type="string">
-		<%
-			if (activeModule != null) {
-				activeModule.setKeyText(activeKey);
-				activeKey = activeModule.getKeyText(); 	// be sure it's formatted nicely
-			}
-		%>
 
 		<div id="paralleldisplay">
 
