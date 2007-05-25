@@ -184,6 +184,12 @@ function colorLemmas(wordnum, key, morph) {
 
 function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 
+	windowBar=
+            '<div align="right">'+
+            '<a href="#" onclick="p(\''+mod+'\', \''+key+'\', \''+wordnum+'\', \''+extratext+'\', \''+fnnum+'\', \''+srcMod+'\');return false;">'+
+            '<img border="0" src="images/x.png"/>'+
+            '</a>'+
+            '</div>';
 	skeyPre=""
 	/* check for aliases */
 	if (mod == "G") {
@@ -232,7 +238,8 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 						}
 					}
 					resultBody += "</div></div>";
-					b.innerHTML=resultBody;
+					b.innerHTML=windowBar+resultBody;
+					showhide("onlywlayer", "visible");
 				}
 				else {
 					resultBody ="<div class=\"verse\">"+xmlhttp.responseText + "<br/>"+"<div id=\"dm\">";
@@ -240,7 +247,8 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 						resultBody += "<a href=\"#\" onclick=\"pe('"+extratext+"');return false;\">"+extratext+"</a>";
 					}
 					resultBody += "</div></div>";
-					b.innerHTML=resultBody;
+					b.innerHTML=windowBar+resultBody;
+					showhide("onlywlayer", "visible");
 				}
 				lastword = wordnum;
 			}
@@ -257,34 +265,70 @@ function f(mod, key, fnnum, extratext) {
 	p(mod, key, 'fn'+key+fnnum, extratext, fnnum);
 }
 
-function showhide (layer, vis) {
+function showhide (layer, vis, dontReposition) {
 
-	var l = document.getElementById(layer);
-	if (vis == "visible") {
-		winW = isNS4 ? window.innerWidth-16 : document.body.offsetWidth-20;
-		winH = (window.innerHeight) ? window.innerHeight : document.body.offsetHeight;
-		var cx = mouseDocX + 10;
-		var cy = mouseDocY - 10;
-		if (cx + 200 > winW)
-			cx = mouseDocX - 220;
-		if (cx < 5){
-			cx = 5;
-			cy = cy + 20;
-		}
+    var l = document.getElementById(layer);
+    var shim = document.getElementById('DivShim');
+    if (shim==null) {
+        shim=document.createElement("iframe");
+        shim.id="DivShim";
+        shim.className="shim-layer";
+        document.body.appendChild(shim);
+  	shim.src="javascript:false;"
+        shim.scrolling="no";
+        shim.frameborder="0";
+        shim.style.visibility = "hidden";
+        shim.style.display = "none";
+    }
+    var lw = l.clientWidth;
+    if (vis == "visible") {
+        winW = isNS4 ? window.innerWidth-16 : document.body.offsetWidth-20;
+        winH = (window.innerHeight) ? window.innerHeight : document.body.offsetHeight;
+        var cx = mouseDocX + 10;
+        var cy = mouseDocY - 10;
+        if (cx + lw > winW)
+            cx = mouseDocX - (lw + 20);
+        if (cx < 5){
+            cx = 5;
+            cy = cy + 20;
+        }
 
 //		alert('winH:'+winH+'mouseClientY:'+mouseClientY);
-		// adjust for above or below verse
-		if (mouseClientY < (winH/2))
-			cy = cy + 50;
-		else cy = cy - (l.clientHeight + 50);
+        // adjust for above or below verse
+        if (mouseClientY < (winH/2))
+            cy = cy + 50;
+        else cy = cy - (l.clientHeight + 50);
 
-		l.style.left = "" + cx + "px";
-		l.style.top = "" + cy + "px";
+        if (dontReposition == true) {
 	}
-	
-	l.style.visibility = vis;
-}
+	else {
+            l.style.left = "" + cx + "px";
+            l.style.top = "" + cy + "px";
+        }
+    }
 
+
+   if (vis == "visible") {
+    l.style.visibility = "visible";
+    l.style.display = "block";
+    shim.style.width = l.offsetWidth;
+    shim.style.height = l.offsetHeight;
+    shim.style.top = l.style.top;
+    shim.style.left = l.style.left;
+    shim.style.zIndex = 1; //l.style.zIndex - 1;
+  if (isIE4) {
+    shim.style.visibility = "visible";
+    shim.style.display = "block";
+  }
+   }
+   else
+   {
+    l.style.visibility = "hidden";
+    l.style.display = "none";
+    shim.style.visibility = "hidden";
+    shim.style.display = "none";
+   }
+}
 function onPageLoad() {
 // empty function redefined in a page that cares
 }
