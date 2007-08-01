@@ -148,12 +148,15 @@ function pd(extratext) {
 	}
 }
 
-function colorLemmas(wordnum, key, morph) {
-	spans = document.getElementsByTagName('span');
-	for (i = 0; i < curspans.length; i++) {
-		curspans[i].className='';
+function colorLemmas(wordnum, key, morph, augment) {
+	if (augment != true) {
+		for (i = 0; i < curspans.length; i++) {
+			curspans[i].className='';
+		}
+		curspans.length = 0;
 	}
-	curspans.length = 0;
+
+	spans = document.getElementsByTagName('span');
 	for (i = 0; i < spans.length; i++) {
 		ocf = spans[i].getAttribute('onclick');
 		if (ocf) {

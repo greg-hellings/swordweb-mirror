@@ -1,7 +1,7 @@
 <%@ include file="init.jsp" %>
 
 <%
-	String colorKey    = request.getParameter("colorKey");
+	String colorKeys[] = request.getParameterValues("colorKey");
 	String colorMorph  = request.getParameter("colorMorph");
 	String resetModule = request.getParameter("mod");
 	String lastModType = (String) session.getAttribute("lastModType");
@@ -53,12 +53,18 @@
 	<tiles:put name="pintro" type="string" >
 <div>
 <%
-	if (colorKey != null) {
+	if (colorKeys != null) {
 %>
     <script type="text/javascript" language="JavaScript">
 <!--
 function onPageLoad() {
-	colorLemmas('x','<%=colorKey%>','<%=colorMorph%>');
+<%
+		for (int k = 0; k < colorKeys.length; k++) {
+%>
+	colorLemmas('x','<%=colorKeys[k]%>','<%=colorMorph%>', true);
+<%
+		}
+%>
 }
 // -->
     </script>
@@ -176,21 +182,29 @@ function onPageLoad() {
 		<%
 				}
 			}
+			String linkOptions = "";
+			if (colorKeys != null) {
+				for (int k = 0; k < colorKeys.length; k++) {
+					linkOptions += "colorKey=" + colorKeys[k] + "&";  // we always force a final param to let this & be ok
+				}
+			}
+			linkOptions += "colorMorph=" + colorMorph;
+
 			for (int i = navStart; i < navEnd; ++i) {
 				if (i == (resultStart.intValue() / resultLimit.intValue())) {
 		%>
 					<li><%= i+1 %></li>
-		<%	}
+		<%		}
 				else {
 		%>
-					<li><a href="wordsearchresults.jsp?start=<%= i * resultLimit.intValue() %>&colorKey=<%=colorKey%>&colorMorph=<%=colorMorph%>" title="page <%= i+1 %> (<%= results[i * resultLimit.intValue()].key %>) of search results"><%= i+1 %></a></li>
+					<li><a href="wordsearchresults.jsp?start=<%= i * resultLimit.intValue() %>&<%= linkOptions %>" title="page <%= i+1 %> (<%= results[i * resultLimit.intValue()].key %>) of search results"><%= i+1 %></a></li>
 		<%
 				}
 			}
 			int lastPage = (results.length / resultLimit.intValue()) + ((results.length % resultLimit.intValue()) > 0 ? 1 : 0) -1;
 			if (navEnd < lastPage) {
 		%>
-				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage*resultLimit.intValue() %>&colorKey=<%=colorKey%>&colorMorph=<%=colorMorph%>" title="Last page (<%= results[lastPage].key %>) of search results"><%= lastPage+1 %></a></li>
+				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage*resultLimit.intValue() %>&<%= linkOptions %>" title="Last page (<%= results[lastPage].key %>) of search results"><%= lastPage+1 %></a></li>
 		<%
 			}
 		%>
