@@ -54,7 +54,7 @@
         <h2><t:t>Go to:</t:t></h2>
 	<form action="<tiles:getAsString name="lookup_url"/>">
           <fieldset>
-            <legend><t:t>verse or passage:</t:t></legend> <input type="text" name="key" size="15" /> <input type="submit" value="go" title="Go to verse or passage" />
+            <legend><t:t>Bible reference:</t:t></legend> <input type="text" name="key" size="15" /> <input type="submit" value="go" title="Go to verse or passage" />
           </fieldset>
         </form>
       </div>

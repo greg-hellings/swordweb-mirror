@@ -48,7 +48,7 @@
 <p><a href="<%=requestURL%>">Return to website</a></p>
 	<form action="translate.jsp">
 		<fieldset>
-			<legend>Language: </legend>
+			<legend>Language (use proper country codes (es, en, fr, etc.): </legend>
 			<input type="text" name="lang" size="10" value="<%=lang%>"/>
 			<input type="submit" value="switch" title="switch language" />
 		</fieldset>
