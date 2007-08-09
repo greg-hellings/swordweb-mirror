@@ -122,7 +122,7 @@
 	<tiles:put name="sidebar_right" type="string">
 	<div class="promoLine"><%= promoLine %></div>
 	<div id="studytools">
-		<h2>Study Tools:</h2>
+		<h2><t:t>Study Tools:</t:t></h2>
 			<ul>
 			<li><t:t>Many Bibles support original language study help simply by clicking on any word in the text.</t:t></li>
 			<li></li>
@@ -162,12 +162,12 @@
 		<%
 			if (open) { //already open
 		%>
-			<p><a class="closed" href="passagestudy.jsp?close=allComm" title="Hide all commentaries">Hide All</a></p>
+			<p><a class="closed" href="passagestudy.jsp?close=allComm" title="Hide all commentaries"><t:t>Hide All</t:t></a></p>
 		<%
 		}
 		else { //closed
 		%>
-			<p><a class="open" href="passagestudy.jsp?open=allComm" title="View all commentaries">View All</a></p>
+			<p><a class="open" href="passagestudy.jsp?open=allComm" title="View all commentaries"><t:t>View All</t:t></a></p>
 		<%
 		}
 		%>

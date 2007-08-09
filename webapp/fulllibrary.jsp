@@ -61,7 +61,7 @@
 
 					<li class="<%= open ? "open" : "closed" %>">
 						<a href="fulllibrary.jsp?<%= (open)?"close":"open" %>=<%= URLEncoder.encode(modInfo[i].category) %>">
-						<%= modInfo[i].category %>
+						<t:t><%= modInfo[i].category %></t:t>
 						</a>
 					</li>
 <%

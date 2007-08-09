@@ -84,7 +84,7 @@ I commented this section out until it can be made functional.
 	</p>
 
 	<h2><t:t>OTHER BIBLE TOOLS</t:t></h2>
-	<p><t:t>Be sure to check out these other sites for free Bible resources:  </t:t><a href="http://www.crosswire.org/sword"><t:t>The SWORD Project</t:t></a>, <a href="http://www.unboundbible.com/"><t:t>Unbound Bible</t:t></a>, <a href="http://www.biblegateway.com"><t:t>Bible Gateway</t:t></a>, <a href="http://bible.crosswalk.com/"><t:t>Crosswalk</t:t></a>, and <a href="http://www.blueletterbible.org"><t:t>Blue Letter Bible</t:t></a>.
+	<p><t:t>Be sure to check out these other sites for free Bible resources:  </t:t><a href="http://www.crosswire.org/sword"><t:t>The SWORD Project,</t:t></a> <a href="http://www.unboundbible.com/"><t:t>Unbound Bible,</t:t></a> <a href="http://www.biblegateway.com"><t:t>Bible Gateway,</t:t></a> <a href="http://bible.crosswalk.com/"><t:t>Crosswalk,</t:t></a> <a href="http://www.blueletterbible.org"><t:t>and Blue Letter Bible</t:t></a>.
 	</p>
 
 	<h2><t:t>DOWNLOADS</t:t></h2>
