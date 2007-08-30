@@ -48,13 +48,17 @@
         <h2><t:t>Search:</t:t></h2>
         <form action="wordsearchresults.jsp">
           <fieldset>
-            <legend><t:t>by keyword or phrase:</t:t></legend> <input type="text" name="searchTerm" value="<%=org.crosswire.utils.HTTPUtils.canonize(searchTerm)%>" size="15" /> <input type="submit" value="go" title="Search by keyword or phrase" />
+            <legend><t:t>by keyword or phrase:</t:t></legend>
+<input name="searchTerm" type="text" size="12" value="<%=org.crosswire.utils.HTTPUtils.canonize(searchTerm)%>" /> <input type="submit" value="go" title="Search by keyword or phrase" />
           </fieldset>
         </form>
         <h2><t:t>Go to:</t:t></h2>
 	<form action="<tiles:getAsString name="lookup_url"/>">
           <fieldset>
-            <legend><t:t>Bible reference:</t:t></legend> <input type="text" name="key" size="15" /> <input type="submit" value="go" title="Go to verse or passage" />
+            <legend><t:t>Bible reference:</t:t></legend>
+		<table>
+		<tr><td width="100%"><input name="key" type="text" size="12" /> <input type="submit" value="go" title="Go to verse or passage" /></td></tr>
+		</table>
           </fieldset>
         </form>
       </div>
