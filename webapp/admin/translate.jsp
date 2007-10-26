@@ -53,7 +53,7 @@
 			<input type="submit" value="switch" title="switch language" />
 		</fieldset>
 	</form>
-	<form action="translate.jsp" method="post">
+	<form action="translate.jsp" method="POST">
 		<fieldset>
 			<legend>Strings which are marked for translation:</legend>
 <%

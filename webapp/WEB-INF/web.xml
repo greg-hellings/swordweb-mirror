@@ -27,12 +27,8 @@
 </security-constraint>
 
 <login-config>
-        <auth-method>FORM</auth-method>
+        <auth-method>BASIC</auth-method>
         <realm-name>SWORDWeb Translators</realm-name>
-        <form-login-config>
-                <form-login-page>/login.html</form-login-page>
-                <form-error-page>/autherr.html</form-error-page>
-        </form-login-config>
 </login-config>
 
 <security-role>
