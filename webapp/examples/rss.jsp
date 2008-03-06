@@ -1,12 +1,13 @@
 <?xml version="1.0" ?>
 <%@ page
     language="java"
-    contentType="text/rdf;charset=utf-8"
+    contentType="text/xml;charset=utf-8"
 %>
 <%@ page import="org.crosswire.sword.orb.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%
+	response.setContentType("text/xml");
 	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	SWModule book = mgr.getModuleByName("losung_en_99");
 	SimpleDateFormat formatter = new SimpleDateFormat("MM.dd");
