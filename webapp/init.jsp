@@ -25,6 +25,7 @@
 	static Vector tabDefaults = null;
 	static String defaultBible = null;
 	static String defaultLang = null;
+	static String defaultStyle = null;
 	static Properties swordWebConfig = null;
 %>
 
