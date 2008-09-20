@@ -24,6 +24,7 @@
 	static Vector tabTitles = null;
 	static Vector tabDefaults = null;
 	static String defaultBible = null;
+	static String defaultLang = null;
 	static Properties swordWebConfig = null;
 %>
 
@@ -41,6 +42,7 @@
 			}
 			catch (Exception e) { e.printStackTrace(); }
 			defaultBible = swordWebConfig.getProperty("defaultBible", "NASB");
+			defaultLang  = swordWebConfig.getProperty("defaultLang", "en_US");
 
 			styleNames = new Vector();
 			styleFiles = new Vector();
@@ -306,6 +308,13 @@
 	if ((prefStyle == null) || (styleNames.indexOf(prefStyle) < 0))
 		prefStyle = (String)styleNames.get(0);
 
+	String appLang = request.getParameter("lang");
+	if (appLang == null) {
+		appLang = session.getAttribute("lang");
+		if (appLang == null) {
+			appLang = defaultLang;
+		}
+	}
 	session.setAttribute("PrefBibles", prefBibles);
 	session.setAttribute("PrefCommentaries", prefCommentaries);
 	session.setAttribute("ParDispModules", parDispModules);
@@ -315,17 +324,12 @@
 	session.setAttribute("Cross-references", xrefs);
 	session.setAttribute("Javascript", javascript);
 	session.setAttribute("showTabs", showTabs);
+	session.setAttribute("lang", appLang);
 	mgr.setJavascript(!"Off".equalsIgnoreCase(javascript));
 	mgr.setGlobalOption("Headings", ("Off".equalsIgnoreCase(headings)) ? "Off":"On");
 	mgr.setGlobalOption("Footnotes", ("On".equalsIgnoreCase(footnotes)) ? "On":"Off");
 	mgr.setGlobalOption("Cross-references", ("On".equalsIgnoreCase(xrefs)) ? "On":"Off");
 
-	{
-	String lang = request.getParameter("lang");
-	if (lang != null) {
-		session.setAttribute("lang", lang);
-	}
-	}
 
 /*
 	// kept around in case we ever need it again

@@ -1,93 +1,200 @@
-body{
-color: #000000;
-background-color: #ffffff;
-font-size: 76%;
-margin: 0px 10px 0px 10px;
+/* General - Site wide style */
+
+body {
+	color: #000000;
+	background-color: #ffffff;
+	font-size: 76%;
+	margin: 0px 10px 0px 10px;
 }
+
+
+h2 {
+	margin: 1em .5em 0 .5em;
+	font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+	font-size: 1.4em;
+}
+
+h3 {
+	margin: 1em .5em .5em 1em;
+	font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 1.0em;
+}
+
+a:link {
+	color:#000099;
+}
+
+.wordsOfJesus {
+	color: #bb0000;
+}
+
+.copyLine {
+	margin: 1em 0px .5em 0px;
+	padding: 0px 0px 0px 0px;
+	border-top: 1px solid #7F673C;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.promoLine {
+	margin: 1em 0px .5em 0px;
+	padding: 10px 0px 0px 0px;
+	font-weight: bold;
+}
+
+.word-layer { /* The layer which appears after clicking on a word */
+	visibility: hidden;
+	position: absolute;
+	left: 50px;
+	top: 50px;
+	width: 300px;
+	background-color: #EEEEEE;
+	margin-left: 0;
+	overflow: visible;
+	z-index: 6;
+	border: 1px #000000;
+	border-style: solid;
+	padding: 7px;
+	color: #000000;
+	font-size: x-small;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	word-spacing: normal;
+	letter-spacing: normal;
+	vertical-align: baseline;
+	text-transform: none;
+	text-align: left;
+	text-indent: 0;
+	line-height: normal;
+}
+
+/* Formating options for the grammatical highlighting */
+span.curWord { /* The clicked word */
+	text-decoration: underline;
+	font-weight: bold;
+	background: #C5D6EA;
+}
+span.sameLemmaMorph { /* The other words with the same morph code */
+	text-decoration: underline;
+	font-weight: bold;
+}
+span.sameLemma { /* The other words with the same lemma on the page */
+	font-weight: bold;
+}
+.word-layer.span.sameLemma { /* The other words with the same lemma on the page */
+	font-weight: bold;
+}
+
+.fn {
+	cursor: pointer;
+	vertical-align: super;
+	margin-left: 0;
+	overflow: visible;
+	padding: 7px 7px 7px 7px;
+	color: #0000FF;
+	font-size: x-small;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	word-spacing: normal;
+	letter-spacing: normal;
+	text-transform: none;
+	text-align: left;
+	text-indent: 0;
+	line-height: normal;
+}
+
+#aboutPromo {
+	margin: 1em 0px .5em 0px;
+	padding: 10px 0px 0px 0px;
+	border-top: 1px solid #7F673C;
+	font-weight: bold;
+}
+
+#about .q {
+	font-weight: bold;
+	font-style: italic;
+}
+
+#about h3 {
+	margin: 1em 0px .5em 0px;
+	padding: 0px 0px 0px 0px;
+	border-bottom: 1px solid #ccc; 
+}
+
+#about ul {
+	margin: 12px 0px 2em 0px;
+	padding: 5px 0em 3px 2em;
+}
+
 
 /* Mast Head */
 
-#header{
-background-image: url(images/osislogo.png);
-background-position: left top;
-background-repeat: no-repeat;
-font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
-height:60px;
+#header {
+	background-image: url(images/osislogo.png);
+	background-position: left top;
+	background-repeat: no-repeat;
+	font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+	height:60px;
 }
 
 #header h1 {
-font-family: georgia, palatino, Times New Roman, Times, Serif;
-font-weight: normal;
-font-size: 2.0em;
-line-height: 2.0em;
-text-transform: uppercase;
-padding: 0px 0px 0px 70px;
-margin: 0px 0px 0px 0px;
+	font-family: georgia, palatino, Times New Roman, Times, Serif;
+	font-weight: normal;
+	font-size: 2.0em;
+	line-height: 2.0em;
+	text-transform: uppercase;
+	padding: 0px 0px 0px 70px;
+	margin: 0px 0px 0px 0px;
 }
 
 
 
 /* Main Navigation */
 
-#navlist{
-border-bottom: 1px solid #ccc;
-margin: -15px 0 0 0;
-padding-bottom: 19px;
-padding-left: 70px;
+#navlist {
+	border-bottom: 1px solid #ccc;
+	margin: -15px 0 0 0;
+	padding-bottom: 19px;
+	padding-left: 70px;
 }
 
-#navlist ul, #navlist li{
-display: inline;
-list-style-type: none;
-margin: 0;
-padding: 0;
+#navlist ul, #navlist li {
+	display: inline;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
-#navlist a:link, #navlist a:visited{
-background: #E8EBF0;
-border: 1px solid #ccc;
-color: #666;
-float: left;
-font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
-font-size: 1.0em;
-font-weight: normal;
-line-height: 1.4em;
-margin-right: 8px;
-padding: 1px 5px 0px 5px;
-text-decoration: none;
+#navlist a:link, #navlist a:visited {
+	background: #E8EBF0;
+	border: 1px solid #ccc;
+	color: #666;
+	float: left;
+	font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
+	font-size: 1.0em;
+	font-weight: normal;
+	line-height: 1.4em;
+	margin-right: 8px;
+	padding: 1px 5px 0px 5px;
+	text-decoration: none;
 }
 
-#navlist a:link#current, #navlist a:visited#current{
-background: #fff;
-border-bottom: 1px solid #fff;
-color: #000;
+#navlist a:link#current, #navlist a:visited#current {
+	background: #fff;
+	border-bottom: 1px solid #fff;
+	color: #000;
 }
 
 #navlist a:hover { 
-color: #ff0000;
-background: #C5D6EA;
+	color: #ff0000;
+	background: #C5D6EA;
 }
 
 #navlist li#skip {display:none;}
 
-/* General - Site wide style */
-
-h2{
-margin: 1em .5em 0 .5em;
-font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
-font-size: 1.4em;
-}
-
-
-
-h3{
-margin: 1em .5em .5em 1em;
-font-family: "Trebuchet MS", verdana, lucida, arial, helvetica, sans-serif;
-font-weight: bold;
-font-size: 1.0em;
-}
-
-a:link {color:#000099;}
 
 /* Layout */
 
@@ -784,114 +891,3 @@ text-decoration:underline;
 color:#f00;
 }
 
-.wordsOfJesus {
-color: #bb0000;
-}
-
-
-/* FAQ
-// DON I CHANGED THIS FOR IE
-#about ul {
-margin: 1em 0px 2em 0px;
-}
- */
-
-#about ul {
-  margin: 12px 0px 2em 0px;
-  padding: 5px 0em 3px 2em;
-}
-
-#about .q {
-font-weight: bold;
-font-style: italic;
-}
-
-#about h3 {
-margin: 1em 0px .5em 0px;
-padding: 0px 0px 0px 0px;
-border-bottom: 1px solid #ccc; 
-}
-
-.copyLine {
-  margin: 1em 0px .5em 0px;
-  padding: 0px 0px 0px 0px;
-  border-top: 1px solid #7F673C;
-  font-weight: bold;
-  font-style: italic;
-}
-
-.promoLine {
-  margin: 1em 0px .5em 0px;
-  padding: 10px 0px 0px 0px;
-  font-weight: bold;
-}
-
-#aboutPromo {
-  margin: 1em 0px .5em 0px;
-  padding: 10px 0px 0px 0px;
-  border-top: 1px solid #7F673C;
-  font-weight: bold;
-}
-
-.word-layer { /* The layer which appears after clicking on a word */
-     visibility: hidden;
-     position:absolute;
-     left:50px;
-     top:50px;
-     width:300px;
-     background-color: #EEEEEE;
-     margin-left : 0;
-     overflow: visible;
-     z-index:6;
-     border: 1px #000000;
-     border-style: solid;
-     padding: 7px;
-     color : #000000;
-     font-size : x-small;
-     font-style : normal;
-     font-weight : normal;
-     font-variant : normal;
-     word-spacing : normal;
-     letter-spacing : normal;
-     vertical-align : baseline;
-     text-transform : none;
-     text-align : left;
-     text-indent : 0;
-     line-height : normal;
-}
-
-/* Formating options for the grammatical highlighting */
-span.curWord { /* The clicked word */
-     text-decoration: underline;
-     font-weight : bold;
-     background: #C5D6EA;
-}
-span.sameLemmaMorph { /* The other words with the same morph code */
-     text-decoration: underline;
-     font-weight : bold;
-}
-span.sameLemma { /* The other words with the same lemma on the page */
-     font-weight : bold;
-}
-.word-layer.span.sameLemma { /* The other words with the same lemma on the page */
-     font-weight : bold;
-}
-
-.fn {
-	cursor:pointer;
-	vertical-align: super;
-     margin-left : 0;
-     overflow: visible;
-     padding: 7px 7px 7px 7px;
-     color : #0000FF;
-     font-size : x-small;
-     font-style : normal;
-     font-weight : normal;
-     font-variant : normal;
-     word-spacing : normal;
-     letter-spacing : normal;
-     text-transform : none;
-     text-align : left;
-     text-indent : 0;
-     line-height : normal;
-}
