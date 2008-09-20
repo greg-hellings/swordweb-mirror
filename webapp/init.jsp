@@ -310,7 +310,7 @@
 
 	String appLang = request.getParameter("lang");
 	if (appLang == null) {
-		appLang = session.getAttribute("lang");
+		appLang = (String)session.getAttribute("lang");
 		if (appLang == null) {
 			appLang = defaultLang;
 		}
