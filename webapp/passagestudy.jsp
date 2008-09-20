@@ -71,7 +71,7 @@
 			for (int i = 0; i < prefBibles.size(); i++) {
 				SWModule module = mgr.getModuleByName((String)prefBibles.get(i));
 		%>
-				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(module.getName())+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+				<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(module.getName())+"#cv" %>" title="view in <%= new String(module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;").getBytes("iso8859-1"), "UTF-8" %></a></li>
 		<%
 			}
 		%>
