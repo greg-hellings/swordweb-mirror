@@ -43,6 +43,7 @@
 			catch (Exception e) { e.printStackTrace(); }
 			defaultBible = swordWebConfig.getProperty("defaultBible", "NASB");
 			defaultLang  = swordWebConfig.getProperty("defaultLang", "en_US");
+			defaultStyle = swordWebConfig.getProperty("defaultStyle", "Washed Out");
 
 			styleNames = new Vector();
 			styleFiles = new Vector();
