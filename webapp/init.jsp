@@ -306,7 +306,7 @@
 		parDispModules = new Vector();
 
 	if ((prefStyle == null) || (styleNames.indexOf(prefStyle) < 0))
-		prefStyle = (String)styleNames.get(0);
+		prefStyle = defaultStyle;
 
 	String appLang = request.getParameter("lang");
 	if (appLang == null) {
