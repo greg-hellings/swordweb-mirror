@@ -251,7 +251,7 @@
 			%>
 					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 				<h3>
-					<%= new String(heads[0].getBytes("iso8859-1"), "UTF-8") %>
+					<%= heads[0] %>
 				 </h3></div></td></tr>
 			<%
 					}
@@ -275,7 +275,7 @@
 					String lang = activeModule.getConfigEntry("Lang");
 //					<div xml:lang="<%= (lang.equals("")) ? "en" : lang 
 					%>
-					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+					<%= activeModule.getRenderText() %>
 <%
 //					</div>
 %>
@@ -302,7 +302,7 @@
 					%>
 					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 							<div class="lexiconentry"><p>
-							<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+							<%= lex.getRenderText() %>
 							</p></div>
 					</div></td></tr>
 					<%	} %>
@@ -314,7 +314,7 @@
 					%>
 					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 							<div class="lexiconentry"><p>
-							<%= new String(lex.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+							<%= lex.getRenderText() %>
 							</p></div>
 					</div></td></tr>
 					<%	}
@@ -330,7 +330,7 @@
 			%>
 				<div class="verse">
 				<span class="versenum"><%= activeKey %></span>
-					<%= new String(activeModule.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+					<%= activeModule.getRenderText() %>
 				</div>
 			<%
 			}

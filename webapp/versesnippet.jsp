@@ -20,7 +20,7 @@
 				book.setKeyText(key);
 		%>
 				<div>
-					<%= new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+					<%= book.getRenderText() %>
 				</div>
 		<%
 			}

@@ -11,3 +11,12 @@ ORBIIOPUSock=0
 
 This could alternatively be located at /usr/etc/orbitrc, or 
 /usr/local/etc/orbitrc, depending on how ORBit has been configured
+
+
+CORBA UTF-8
+-----------------
+
+You may need to drop the webapp/WEB-INF/lib/corba-utf8.jar
+into $TOMCAT/endorsed and restart tomcat.  This jar contains
+a patch to make corba default to UTF-8 if it can't determine
+encoding.

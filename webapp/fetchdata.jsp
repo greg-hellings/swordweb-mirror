@@ -47,7 +47,7 @@
 										out.print("<dl>");
 										for (int j = 0; j < keys.length; j++) {
 											book.setKeyText(keys[j]);
-											out.print("<dt><a href=\"passagestudy.jsp?key=" + URLEncoder.encode(new String(book.getKeyText().getBytes("iso8859-1"), "UTF-8"))+"#cv\">" + new String(book.getKeyText().getBytes("iso8859-1"), "UTF-8") + "</a></dt><dd>" + new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8")+"</dd>\n");
+											out.print("<dt><a href=\"passagestudy.jsp?key=" + URLEncoder.encode(book.getKeyText())+"#cv\">" + book.getKeyText() + "</a></dt><dd>" + book.getRenderText()+"</dd>\n");
 										}
 										out.print("</dl>");
 									}
@@ -64,7 +64,7 @@
 					}
 					else {
 		%>
-					<%= new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+					<%= book.getRenderText() %>
 		<%
 					}
 				}

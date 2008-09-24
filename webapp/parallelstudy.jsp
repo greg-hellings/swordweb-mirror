@@ -315,7 +315,7 @@
 						for (int h = 0; h < heads.length; h++) {
 %>
 							<h3>
-							<%= new String(heads[h].getBytes("iso8859-1"), "UTF-8") %>
+							<%= heads[h] %>
 							</h3>
 <%
 						}
@@ -329,7 +329,7 @@
 //					<span xml:lang="<%= (lang.equals("")) ? "en" : lang 
 					%>
 
-					<%= new String(mod.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+					<%= mod.getRenderText() %>
 <%
 //					</span>
 %>

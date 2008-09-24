@@ -51,7 +51,7 @@
 "&amp;") + " (" + activeDevo.getName() + ")" %></h3>
 
 		<div class="verse">
-			<%= new String(activeDevo.getRenderText().getBytes("iso-8859-1"), "UTF-8") %>
+			<%= activeDevo.getRenderText() %>
 		</div>
 </div>
 	</tiles:put>

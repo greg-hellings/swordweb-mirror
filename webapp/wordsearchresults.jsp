@@ -21,6 +21,7 @@
 
 	String resetSearchTerm = request.getParameter("searchTerm");
 	if (resetSearchTerm != null) {
+		resetSearchTerm = new String(resetSearchTerm.getBytes("iso8859-1"), "UTF-8") %>
 		mgr.setGlobalOption("Greek Accents", "Off");
 		session.setAttribute("ActiveSearchTerm", mgr.filterText("Greek Accents", resetSearchTerm));
 		mgr.setGlobalOption("Greek Accents", "On");
@@ -48,7 +49,7 @@
 %>
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" type="string">
-		Search results for <%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %>
+		Search results for <%= activeSearchTerm %>
 	</tiles:put>
 	<tiles:put name="pintro" type="string" >
 <div>
@@ -97,7 +98,7 @@ function onPageLoad() {
 
 	<tiles:put name="content" type="string">
 	<div id="searchresults">
-		<h2><t:t>Results for</t:t> <em><%= new String(activeSearchTerm.getBytes("iso8859-1"), "UTF-8") %></em></h2>
+		<h2><t:t>Results for</t:t> <em><%= activeSearchTerm %></em></h2>
 		<%
 			SearchHit[] results = null;
 			if ((activeSearchTerm != null) && (activeSearchTerm.trim().length() > 0)) {
@@ -138,7 +139,7 @@ function onPageLoad() {
 			for (int i = resultStart.intValue(); i < results.length && i < resultStart.intValue() + resultLimit.intValue(); i++)
 			{
 				activeModule.setKeyText(results[i].key);
-				String dispKey = new String(results[i].key.getBytes("iso-8859-1"), "UTF-8");
+				String dispKey = results[i].key;
 		%>
 				<dt>
 					<a href="<%= ("GBS".equals(lastModType))?"bookdisplay.jsp?gbsEntry=":"passagestudy.jsp?key=" %><%= URLEncoder.encode(dispKey)+"#cv" %>" title="<%= dispKey %>"><%= dispKey %></a>
@@ -146,7 +147,7 @@ function onPageLoad() {
 				</dt>
 				<% boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction"))); %>
 				<dd dir="<%= rtol ? "rtl" : "" %>">
-					<%= new String(activeModule.getRenderText().getBytes("iso-8859-1"), "UTF-8") %>
+					<%= activeModule.getRenderText() %>
 				</dd>
 
 		<%

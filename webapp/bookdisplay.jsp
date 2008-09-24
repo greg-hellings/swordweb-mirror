@@ -54,10 +54,10 @@
 	// open our current entry in tree
 	if ((module != null) && (forceOpen)) {
 		module.setKeyText(gbsEntry);
-		String tmp = new String(module.getKeyText().getBytes("iso8859-1"), "UTF-8");
+		String tmp = module.getKeyText();
 		while (tmp.length() > 0) {
 			bookTreeOpen.add(tmp);
-			tmp = new String(module.getKeyParent().getBytes("iso8859-1"), "UTF-8");
+			tmp = module.getKeyParent();
 		}
 	}
 
@@ -133,7 +133,7 @@
 					String heading = null;
 					if (parent != null) {
 						module.setKeyText(parent);
-						heading = new String(module.getRenderText().getBytes("iso8859-1"), "UTF-8");
+						heading = module.getRenderText();
 						String[] children = module.getKeyChildren();
 						// we better have children.  We should have been one of them
 						if ((children != null) && (children.length > 0)) {
@@ -144,13 +144,13 @@
 							for (int i = 0; i < children.length; i++) {
 								String k = parent + "/" + children[i];
 								module.setKeyText(k);
-								k = new String(module.getKeyText().getBytes("iso8859-1"), "UTF-8");
+								k = module.getKeyText();
 								boolean curVerse = (k.equals(new String(gbsEntry.getBytes("iso8859-1"), "UTF-8")));
 								String[] heads = module.getEntryAttribute("Heading", "Preverse", "0", true);
 								if (heads.length > 0) {
 			%>
 					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= curVerse ? "currentverse" : "verse" %>">
-						<h3><span class="verse"><%= new String(heads[0].getBytes("iso8859-1"), "UTF-8") %></span></h3></div></td></tr>
+						<h3><span class="verse"><%= heads[0] %></span></h3></div></td></tr>
 			<%
 								}
 			%>
@@ -161,7 +161,7 @@
 			%>
 					<td valign="top" align="right"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= curVerse ? "currentverse" : "verse" %>">
 					<span class="versenum"><a <%= (k.equals(gbsEntry))?"id=\"cv\"":"" %> href="bookdisplay.jsp?gbsEntry=<%= URLEncoder.encode(k)+"#cv" %>">
-						<%= new String(children[i].getBytes("iso8859-1"), "UTF-8") %></a>
+						<%= children[i] %></a>
 					</span></div></td>
 			<%
 								}
@@ -175,7 +175,7 @@
 				  mgr.setGlobalOption("Strong's Numbers", (strongs)?"On":"Off");
 				  mgr.setGlobalOption("Morphological Tags", (morph)?"On":"Off");
 %>
-					<%= new String(module.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+					<%= module.getRenderText() %>
 <%
 //					</div>
 %>
@@ -185,7 +185,7 @@
 			%>
 					<td valign="top" align="right"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= curVerse ? "currentverse" : "verse" %>">
 					<span class="versenum"><a <%= (k.equals(gbsEntry))?"id=\"cv\"":"" %> href="bookdisplay.jsp?key=<%= URLEncoder.encode(k)+"#cv" %>">
-						<%= new String(children[i].getBytes("iso8859-1"), "UTF-8") %></a>
+						<%= children[i] %></a>
 					</span></div></td>
 			<%
 								}
@@ -206,7 +206,7 @@
 			if (!printed) {
 	%>
 				<div <%= rtol ? "dir=\"rtl\"" : "" %> class="verse">
-				<%= new String(module.getRenderText().getBytes("iso8859-1"), "UTF-8") %>
+				<%= module.getRenderText() %>
 				</div>
 	<%
 			}
@@ -236,7 +236,7 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 
 		int offset = rootTreeKey.lastIndexOf("/");
 		String[] children = module.getKeyChildren();
-		boolean open = bookTreeOpen.contains(new String(rootTreeKey.getBytes("iso8859-1"), "UTF-8"));
+		boolean open = bookTreeOpen.contains(rootTreeKey);
 		boolean dig = (children.length > 0);
 		if (dig) {
 			if ("2".equals(module.getConfigEntry("DisplayLevel"))) {
@@ -252,7 +252,7 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 		}
 
 		if (rootTreeKey.length()>0) {
-			String localName = new String(rootTreeKey.substring(offset+1).getBytes("iso8859-1"), "UTF-8");
+			String localName = rootTreeKey.substring(offset+1);
 			String linkRef = rootTreeKey;
 			if (target.equals(rootTreeKey))
 				out.print("<li id=\"current\">"); //the current entry in the navigation tree
@@ -260,13 +260,13 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 				out.print("<li>");
 
 			if (dig) {
-				out.print("<a " + (rootTreeKey.equals(currentJumpNode)? "id=\"cur\"":"") + " class=\"" + ((open)?"closed":"open") + "\" href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(new String(rootTreeKey.getBytes("iso8859-1"), "UTF-8")) + "#cur\"><img src=\"images/" + ((open)?"minus":"plus") + ".png\" alt=\"action\"/></a>");
+				out.print("<a " + (rootTreeKey.equals(currentJumpNode)? "id=\"cur\"":"") + " class=\"" + ((open)?"closed":"open") + "\" href=\"bookdisplay.jsp?" + ((open)?"close":"open") + "=" + URLEncoder.encode(rootTreeKey) + "#cur\"><img src=\"images/" + ((open)?"minus":"plus") + ".png\" alt=\"action\"/></a>");
 			}
 			else if (children.length > 0) {
 				linkRef = rootTreeKey + "/" + children[0];
 			}
 
-			out.print(" <a href=\"bookdisplay.jsp?gbsEntry=" + URLEncoder.encode(new String(linkRef.getBytes("iso8859-1"), "UTF-8")) + "#cv\">" + localName + "</a>");
+			out.print(" <a href=\"bookdisplay.jsp?gbsEntry=" + URLEncoder.encode(linkRef) + "#cv\">" + localName + "</a>");
 
 			out.print("</li>\n");
 		}
