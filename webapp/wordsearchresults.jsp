@@ -21,7 +21,7 @@
 
 	String resetSearchTerm = request.getParameter("searchTerm");
 	if (resetSearchTerm != null) {
-		resetSearchTerm = new String(resetSearchTerm.getBytes("iso8859-1"), "UTF-8") %>
+		resetSearchTerm = new String(resetSearchTerm.getBytes("iso8859-1"), "UTF-8");
 		mgr.setGlobalOption("Greek Accents", "Off");
 		session.setAttribute("ActiveSearchTerm", mgr.filterText("Greek Accents", resetSearchTerm));
 		mgr.setGlobalOption("Greek Accents", "On");
