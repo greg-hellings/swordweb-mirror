@@ -71,8 +71,8 @@
 	<tiles:put name="content" type="string">
 <div id="powersearch">
 		<h2><t:t>Power Search</t:t></h2>
-		<t:t>Module to search:</t:t>
-		<p class="textname">&raquo; <%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></p>
+		<b><t:t>Module to search:</t:t></b>
+		<p class="textname"><%= activeModule.getDescription().replaceAll("&", "&amp;") %></p>
 		<form action="wordsearchresults.jsp">
 			<fieldset>
 				<b><t:t>Search Term:</t:t></b><br/>
