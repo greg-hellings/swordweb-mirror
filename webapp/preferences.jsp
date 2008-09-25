@@ -124,7 +124,7 @@
 			for (int i = 0; i < prefBibles.size(); i++) {
 				SWModule mod = mgr.getModuleByName((String)prefBibles.get(i));
 		%>
-				<li><a href="preferences.jsp?del=<%= URLEncoder.encode(mod.getName()) %>"><%= mod.getDescription() %> (<%= mod.getName() %>)</a></li>
+				<li><a href="preferences.jsp?del=<%= URLEncoder.encode(mod.getName()) %>"><%= mod.getDescription() %></a></li>
 
 		<%
 			}
@@ -141,7 +141,7 @@
 			for (int i = 0; i < prefCommentaries.size(); i++) {
 				SWModule mod = mgr.getModuleByName((String)prefCommentaries.get(i));
 		%>
-				<li><a href="preferences.jsp?del=<%= URLEncoder.encode(mod.getName()) %>"><%= mod.getDescription() %> (<%= mod.getName() %>)</a></li>
+				<li><a href="preferences.jsp?del=<%= URLEncoder.encode(mod.getName()) %>"><%= mod.getDescription() %> </a></li>
 
 		<%
 			}
