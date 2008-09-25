@@ -271,7 +271,7 @@
 					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
 		%>
 					<th>
-						&quot;<%= mod.getDescription().replaceAll("&", "&amp;") + " (" + mod.getName() + ")" %>&quot;
+						<%= mod.getDescription().replaceAll("&", "&amp;") %>
 					</th>
 		<%
 				}

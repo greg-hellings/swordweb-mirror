@@ -201,7 +201,7 @@
 
 		<div id="passagestudy">
 		<h2><%= activeKey %></h2>
-		<h3><a href="fulllibrary.jsp?show=<%= URLEncoder.encode(activeModule.getName()) %>"><%= activeModule.getDescription().replaceAll("&", "&amp;") + " (" + activeModule.getName() + ")" %></a></h3>
+		<h3><a href="fulllibrary.jsp?show=<%= URLEncoder.encode(activeModule.getName()) %>"><%= activeModule.getDescription().replaceAll("&", "&amp;") %></a></h3>
 
 		<% //insert next and previous chapter links
 			// activeKey contains the current key ATM
