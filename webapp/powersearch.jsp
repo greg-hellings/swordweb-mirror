@@ -43,7 +43,7 @@
 	<tiles:put name="sidebar_right" type="string">
 		<div id="commentaries">
 
-		<h2><t:t>Comentaries:</t:t></h2>
+		<h2><t:t>Commentaries:</t:t></h2>
 		<ul>
 		<%
 			for (int i = 0; i < prefCommentaries.size(); i++) {
@@ -71,7 +71,7 @@
 	<tiles:put name="content" type="string">
 <div id="powersearch">
 		<h2><t:t>Power Search</t:t></h2>
-		<b><t:t>Module to search:</t:t></b>
+		<t:t>Module to search:</t:t>
 		<p class="textname"><%= activeModule.getDescription().replaceAll("&", "&amp;") %></p>
 		<form action="wordsearchresults.jsp">
 			<fieldset>
