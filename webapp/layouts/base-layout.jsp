@@ -56,9 +56,7 @@
 	<form action="<tiles:getAsString name="lookup_url"/>">
           <fieldset>
             <legend><t:t>Bible reference:</t:t></legend>
-		<table>
-		<tr><td width="100%"><input name="key" type="text" size="12" /> <button value="go"><t:t>go</t:t></button></td></tr>
-		</table>
+<input name="key" type="text" size="12" /> <button value="go"><t:t>go</t:t></button>
           </fieldset>
         </form>
       </div>
