@@ -74,7 +74,7 @@
 								SWModule module = mgr.getModuleByName(modInfo[j].name);
 								if (module != null) {
 %>
-									<li><a href="fulllibrary.jsp?show=<%= URLEncoder.encode(modInfo[j].name) %>"><%= modInfo[j].name %></a>  <%= module.getDescription() %></li>
+									<li><a href="fulllibrary.jsp?show=<%= URLEncoder.encode(modInfo[j].name) %>"><%= module.getDescription() %></a></li>
 <%
 								}
 							}

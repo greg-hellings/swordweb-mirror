@@ -5,7 +5,7 @@
 <div id="contentTray2">
   <div id="pageBorderTop"></div>
   <div id="header">
-    <h1>The Bible Tool</h1>
+    <h1><t:t>The Bible Tool</t:t></h1>
   </div>
   <div id="navlist">
     <ul>
