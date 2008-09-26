@@ -121,7 +121,6 @@
 			if (startList) { out.print("</ul>"); startList = true; }
 		%>
 
-		<h3><t:t>Cults / Unorthodox / Questionable Material</t:t></h3><p><t:t>click to add</t:t></p>
 		<%
 			startList = false;
 			for (int i = 0; i < modInfo.length; i++) {
@@ -131,7 +130,13 @@
 						continue;
 					}
 
-					if (!startList) { out.print("<ul>"); startList = true; }
+					if (!startList) {
+						startList = true;
+		%>
+			<h3><t:t>Cults / Unorthodox / Questionable Material</t:t></h3><p><t:t>click to add</t:t></p>
+			<ul>
+		<%
+					}
 		%>
 				<li>
 					<a href="parallelstudy.jsp?add=<%= URLEncoder.encode(modInfo[i].name) %>#cv" title="Add to displayed modules">
