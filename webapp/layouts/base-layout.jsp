@@ -67,7 +67,7 @@
 	<div id="content-sub-2">
 		<div id="printer">
 		<p>
-		<img src="images/printer.gif" width="17" height="16" alt="This is a printer friendly version" />
+		<img onclick="javascript:void(window.print())" src="images/printer.gif" width="17" height="16" alt="This is a printer friendly version" />
 		<a href="about.jsp#faq_11" title="What does &quot;Printer Friendly&quot; mean?"><t:t>This page is printer friendly</t:t></a>.
 		</p>
 		</div>
