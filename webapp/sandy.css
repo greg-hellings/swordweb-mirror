@@ -113,8 +113,18 @@ background-image: url(images/sandyfade.png);
 background-repeat: repeat-x;
 }
 
+#printer {
+width:14em;
+clear:right;
+float:right;
+margin: 0;
+padding: 0px .5em 0px 1em;
+border-left: 1px dashed #DEDACA;
+}
+
 #content-sub-1{
 width:14em;
+clear:right;
 float:right;
 margin: 0;
 padding: 0px .5em 20px 1em;

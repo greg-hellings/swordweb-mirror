@@ -107,6 +107,14 @@ padding: 0px 20px 0px 20px;
 clear:left;
 }
 
+#printer {
+width:14em;
+float:right;
+margin: 0px 0px 0px 0px;
+padding: 0px 0 0px 1em;
+border-left: 2px solid #7F673C;
+}
+
 #content-sub-1{
 width:12em;
 float:left;
@@ -118,6 +126,7 @@ border-right: 2px solid #7F673C;
 #content-sub-2{
 width:14em;
 float:right;
+clear:right;
 margin: 0px 0px 0px 0px;
 padding: 0px 0 20px 1em;
 border-left: 2px solid #7F673C;

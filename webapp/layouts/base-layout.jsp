@@ -43,6 +43,12 @@
 	<tiles:insert attribute="pintro" />
 
 <div id="content-wrap">
+	<div id="printer">
+		<p>
+		<img src="images/printer.gif" width="17" height="16" alt="This is a printer friendly version" />
+		<a href="about.jsp#faq_11" title="What does &quot;Printer Friendly&quot; mean?"><t:t>This page is printer friendly</t:t></a>.
+		</p>
+	</div>
    <div id="content-sub-1">
       <div id="quicksearch">
         <h2><t:t>Search:</t:t></h2>
@@ -65,13 +71,6 @@
    </div>
 
 	<div id="content-sub-2">
-		<div id="printer">
-		<p>
-		<img onclick="javascript:void(window.print())" src="images/printer.gif" width="17" height="16" alt="This is a printer friendly version" />
-		<a href="about.jsp#faq_11" title="What does &quot;Printer Friendly&quot; mean?"><t:t>This page is printer friendly</t:t></a>.
-		</p>
-		</div>
-
 		<%-- include right sidebar --%>
 		<tiles:insert attribute="sidebar_right" />
 	</div>
