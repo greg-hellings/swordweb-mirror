@@ -135,7 +135,7 @@
 
 	<div id="commentaries">
 		<h2><t:t>Commentaries:</t:t></h2>
-		<h3><t:t>Preferred Comentaries:</t:t></h3>
+		<h3><t:t>Preferred Commentaries:</t:t></h3>
 	<% if (prefCommentaries.size() > 0) { %>
 		<ul>
 		<%

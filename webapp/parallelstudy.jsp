@@ -165,7 +165,7 @@
 -->
 
 		<div id="commentaries">
-		<h2><t:t>Comentaries:</t:t></h2>
+		<h2><t:t>Commentaries:</t:t></h2>
 
 		<h3><t:t>Displayed modules</t:t></h3>
 		<p><t:t>click to remove</t:t></p>
