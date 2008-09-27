@@ -78,8 +78,8 @@
 	<tiles:put name="sidebar_right" type="string">
 		<div id="commentaries">
 
-		<h2><t:t>Comentaries:</t:t></h2>
-		<h3><t:t>Preferred Comentaries</t:t></h3>
+		<h2><t:t>Commentaries:</t:t></h2>
+		<h3><t:t>Preferred Commentaries</t:t></h3>
 		<%
 		if (prefCommentaries.size() > 0) {
 			out.println("<ul>");
@@ -96,7 +96,7 @@
 		%>
 
 
-<h3><t:t>All Comentaries</t:t></h3>
+<h3><t:t>All Commentaries</t:t></h3>
 		<ul>
 		<%
 			for (int i = 0; i < modInfo.length; i++) {
