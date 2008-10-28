@@ -59,6 +59,9 @@
 			styleNames.add("Sandy Creek");
 			styleFiles.add("sandy.css");
 
+			styleNames.add("RtoL");
+			styleFiles.add("rtol.css");
+
 			tabNames  = new Vector();
 			tabLinks  = new Vector();
 			tabTitles = new Vector();
