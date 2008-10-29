@@ -1,3 +1,4 @@
+body {background-color: lightgrey;}
 
 #header { position: relative;
 top: 0pt;
@@ -10,36 +11,40 @@ background-color:lightgrey;
 }
 
 #navlist { float: right;
-width: 200px;
-padding:1em;
-background-color:lightyellow;
-unicode-bidi: embed;   
-        direction: rtl;}
+	   width: 200px;
+	   padding:1em;
+	   unicode-bidi: embed;   
+           direction: rtl;}
+
 #printer { float: right;
-width: 200px;
-padding:1em;
-background-color:lightblue;
-clear:both;unicode-bidi: embed;   
-        direction: rtl;}
+	   width: 200px;
+	   padding:1em;
+	   clear:both;
+           unicode-bidi: embed;   
+           direction: rtl;}
+
 #content-sub-1 { float: right;
-width: 200px;
-padding:1em;
-background-color:lightgreen;
-clear:both;unicode-bidi: embed;   
-        direction: rtl;}
+		 width: 200px;
+		 padding:1em;
+		 clear:both;
+		 unicode-bidi: embed;   
+        	 direction: rtl;}
+
 #content-sub-2 { float: right;
-width: 200px;
-padding:1em;
-background-color:lightpink;
-clear:both;unicode-bidi: embed;   
-        direction: rtl;}
+		 width: 200px;
+		 padding:1em;
+		 clear:both;
+		 unicode-bidi: embed;   
+        	 direction: rtl;}
 
 #content-main {position:relative;
 top:0;
 left:0;
 margin-right:240px;
-padding:1em;
-}
+padding:1.5em;
+background-color:white;}
+#introhelp {unicode-bidi: embed;
+	direction: rtl;}
 
 #footer { position: relative;
 top: 0pt;
@@ -70,5 +75,6 @@ span.versenum {vertical-align: sup;
 		padding-right:0.2em}
 a:link {color: blue;text-decoration:none;}
 a:visited {color: darkblue;text-decoration:none;}
-a:hover {text-decoration: none; background-color: grey; } 
+a:hover {text-decoration: none; background-color: white; }
+a.content-main:hover {background-color: lightgrey;} 
 
