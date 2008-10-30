@@ -3,16 +3,9 @@
 <%@ taglib uri="/WEB-INF/lib/crosswire-i18n.tld" prefix="t" %>
 
 <%@ page import="java.util.Vector" %>
-
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-
-<head profile="http://www.w3.org/2000/08/w3c-synd/#">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title><t:t>OSIS Web: </t:t><tiles:getAsString name="title"/></title>
-
 <%
+	String lang = (String)session.getAttribute("lang");
+	if (lang == null) lang = "en-US";
 	String prefStyle = (String)session.getAttribute("PrefStyle");
 	Vector styleNames = (Vector)session.getAttribute("styleNames");
 	Vector styleFiles = (Vector)session.getAttribute("styleFiles");
@@ -25,6 +18,15 @@
 	}
 	else searchTerm = "";
 %>
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= lang %>" lang="<%= lang %>">
+
+<head profile="http://www.w3.org/2000/08/w3c-synd/#">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><t:t>OSIS Web: </t:t><tiles:getAsString name="title"/></title>
+
 
 <link rel="stylesheet" type="text/css" media="all" title="<%= styleName %>" href="<%= styleFile %>"  />
 
