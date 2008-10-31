@@ -309,14 +309,14 @@
 						SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
 						boolean rtol = ("RtoL".equalsIgnoreCase(mod.getConfigEntry("Direction")));
 						String font = mod.getConfigEntry("Font");
-						
+						String style = (!"<SWNULL>".equals(font))?"font:"+font:"";
 
 						if (mod != activeModule) {
 							mod.setKeyText(keyText);
 						}
 
 %>
-							<td style="font:<%= font %>" 
+							<td style="<%= style %>" 
 <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 <%
 						String[] heads = mod.getEntryAttribute("Heading", "Preverse", "0", true);
