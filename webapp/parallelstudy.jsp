@@ -308,13 +308,16 @@
 					for (int i = 0; i < parDispModules.size(); i++) {
 						SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
 						boolean rtol = ("RtoL".equalsIgnoreCase(mod.getConfigEntry("Direction")));
+						String font = mod.getConfigEntry("Font");
+						
 
 						if (mod != activeModule) {
 							mod.setKeyText(keyText);
 						}
 
 %>
-							<td <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+							<td style="font:<%= font %>" 
+<%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 <%
 						String[] heads = mod.getEntryAttribute("Heading", "Preverse", "0", true);
 						for (int h = 0; h < heads.length; h++) {
