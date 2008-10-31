@@ -306,7 +306,11 @@ border-right: .5em solid #ccc;
 background: #E8EBF0;
 text-decoration: none;
 }
-
+body.rtol #externallinks li a{
+padding: 0.25em 0.5em 0.25em 0.75em;
+border-left: .5em solid #ccc;
+border-right: none;
+}
 #externallinks ul {text-indent: 0em;
 padding: 0px;
 margin: 0px}
@@ -360,6 +364,7 @@ background-repeat: no-repeat;
 border-left: 0px solid #fff;
 border-bottom: 1px solid #fff;
 }
+
 
 #library li.open {
 margin: .5em 0px 0px 0px;
@@ -415,6 +420,11 @@ border-top: 1px solid #ccc;
 text-align: left;
 border-bottom: 1px solid #E8EBF0;
 }
+
+body.rtol #translations li{
+tex-align:right;
+}
+
 
 #translations li a{
 display: block;
