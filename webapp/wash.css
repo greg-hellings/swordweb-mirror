@@ -140,6 +140,7 @@ span.sameLemma { /* The other words with the same lemma on the page */
 	height:60px;
 }
 
+
 #header h1 {
 	font-family: georgia, palatino, Times New Roman, Times, Serif;
 	font-weight: normal;
@@ -149,7 +150,10 @@ span.sameLemma { /* The other words with the same lemma on the page */
 	padding: 0px 0px 0px 70px;
 	margin: 0px 0px 0px 0px;
 }
-
+body.rtol #header h1 {
+	text-align: right;
+	padding: 0px 70px 0px 0px;
+}
 
 
 /* Main Navigation */
@@ -901,3 +905,29 @@ text-decoration:underline;
 color:#f00;
 }
 
+/*  RtoL stuff */
+body.rtol #header {background-position: right top;}
+
+body.rtol #navlist   {unicode-bidi: embed;
+	direction: rtl;
+	padding-right: 200px}
+
+body.rtol form {unicode-bidi: embed;
+	direction: rtl;}
+
+body.rtol ul {unicode-bidi: embed;
+	direction: rtl;}
+body.rtol li {unicode-bidi: embed;
+	direction: rtl;}
+body.rtol div#introhelp {unicode-bidi: override;
+	direction: rtl;}
+
+body.rtol #navlist a {float:right;}
+body.rtol #printer   {unicode-bidi: embed;   
+           direction: rtl;}
+body.rtol #content-sub-1 {unicode-bidi: embed;   
+           direction: rtl;}
+body.rtol #content-sub-2 {unicode-bidi: embed;   
+           direction: rtl;}
+
+/* Farsi Stuff */
