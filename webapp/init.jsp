@@ -103,6 +103,8 @@
 
 			rtolLangs = new Vector();
 			rtolLangs.add("fa");
+			rtolLangs.add("az_IR");
+			rtolLangs.add("div");
 		}
 	}
 
