@@ -6,6 +6,8 @@
 <%
 	String lang = (String)session.getAttribute("lang");
 	if (lang == null) lang = "en-US";
+	Vector rtolLangs = (Vector)session.getAttribute("rtolLangs");
+	String dir = rtolLangs.contains(lang) ? "rtol" : "ltor";
 	String prefStyle = (String)session.getAttribute("PrefStyle");
 	Vector styleNames = (Vector)session.getAttribute("styleNames");
 	Vector styleFiles = (Vector)session.getAttribute("styleFiles");
@@ -39,7 +41,7 @@
 	<script type="text/javascript" src="swordweb.js"></script>
 </head>
 
-	<body onload="onPageLoad();">
+	<body onload="onPageLoad();" class="<%= dir %>">
 	<%-- include header --%>
 	<tiles:insert attribute="header" />
 	<tiles:insert attribute="pintro" />

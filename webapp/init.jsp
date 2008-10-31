@@ -23,6 +23,7 @@
 	static Vector tabLinks = null;
 	static Vector tabTitles = null;
 	static Vector tabDefaults = null;
+	static Vector rtolLangs = null;
 	static String defaultBible = null;
 	static String defaultLang = null;
 	static String defaultStyle = null;
@@ -99,6 +100,9 @@
 			tabTitles.add("Frequently Asked Questions");
 			tabLinks.add("about.jsp");
 			tabDefaults.add("true");
+
+			rtolLangs = new Vector();
+			rtolLangs.add("fa");
 		}
 	}
 
@@ -353,6 +357,7 @@
 		session.setAttribute("tabs", tabs);
 		session.setAttribute("styleNames", styleNames);
 		session.setAttribute("styleFiles", styleFiles);
+		session.setAttribute("rtolLangs", rtolLangs);
 	}
 %>
 

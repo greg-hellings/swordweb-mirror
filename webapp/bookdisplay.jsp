@@ -233,6 +233,11 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 		int max = 400;
 		module.setKeyText(rootTreeKey);
 		rootTreeKey = module.getKeyText();
+		String currentKey = target;
+		if ("2".equals(module.getConfigEntry("DisplayLevel"))) {
+			int offset = currentKey.lastIndexOf("/");
+			if (offset > 0) currentKey = currentKey.substring(0, offset);
+		}
 
 		int offset = rootTreeKey.lastIndexOf("/");
 		String[] children = module.getKeyChildren();
@@ -254,7 +259,7 @@ private synchronized static void printTree(Vector bookTreeOpen, JspWriter out, S
 		if (rootTreeKey.length()>0) {
 			String localName = rootTreeKey.substring(offset+1);
 			String linkRef = rootTreeKey;
-			if (target.equals(rootTreeKey))
+			if (currentKey.equals(rootTreeKey))
 				out.print("<li id=\"current\">"); //the current entry in the navigation tree
 			else
 				out.print("<li>");
