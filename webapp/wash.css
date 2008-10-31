@@ -296,7 +296,9 @@ border-top: 1px solid #ccc;
 text-align: left;
 border-bottom: 1px solid #E8EBF0;
 }
-
+body.rtol #externallinks li{
+text-align:right;
+}
 #externallinks li a{
 display: block;
 padding: 0.25em 0.5em 0.25em 0.75em;
