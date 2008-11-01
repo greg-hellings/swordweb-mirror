@@ -147,7 +147,8 @@ body.rtol #content-sub-1 {unicode-bidi: embed;
            direction: rtl;}
 body.rtol #content-sub-2 {unicode-bidi: embed;   
            direction: rtl;}
-
+body.rtol #powersearch{unicode-bidi:embed;
+	direction:rtl}
 /* Farsi Stuff */
 
 

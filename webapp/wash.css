@@ -150,10 +150,6 @@ span.sameLemma { /* The other words with the same lemma on the page */
 	padding: 0px 0px 0px 70px;
 	margin: 0px 0px 0px 0px;
 }
-body.rtol #header h1 {
-	text-align: right;
-	padding: 0px 70px 0px 0px;
-}
 
 
 /* Main Navigation */
@@ -296,20 +292,12 @@ border-top: 1px solid #ccc;
 text-align: left;
 border-bottom: 1px solid #E8EBF0;
 }
-body.rtol #externallinks li{
-text-align:right;
-}
 #externallinks li a{
 display: block;
 padding: 0.25em 0.5em 0.25em 0.75em;
 border-right: .5em solid #ccc;
 background: #E8EBF0;
 text-decoration: none;
-}
-body.rtol #externallinks li a{
-padding: 0.25em 0.5em 0.25em 0.75em;
-border-left: .5em solid #ccc;
-border-right: none;
 }
 #externallinks ul {text-indent: 0em;
 padding: 0px;
@@ -421,9 +409,6 @@ text-align: left;
 border-bottom: 1px solid #E8EBF0;
 }
 
-body.rtol #translations li{
-tex-align:right;
-}
 
 
 #translations li a{
@@ -941,5 +926,20 @@ body.rtol #content-sub-1 {unicode-bidi: embed;
            direction: rtl;}
 body.rtol #content-sub-2 {unicode-bidi: embed;   
            direction: rtl;}
+body.rtol #header h1 {
+	text-align: right;
+	padding: 0px 70px 0px 0px;
+}
+body.rtol #externallinks li{
+text-align:right;
+}
+body.rtol #externallinks li a{
+padding: 0.25em 0.5em 0.25em 0.75em;
+border-left: .5em solid #ccc;
+border-right: none;
+}
+body.rtol #translations li{
+tex-align:right;
+}
 
 /* Farsi Stuff */
