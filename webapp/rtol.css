@@ -133,6 +133,9 @@ body.rtol #navlist   {unicode-bidi: embed;
 body.rtol form {unicode-bidi: embed;
 	direction: rtl;}
 
+body.rtol h2 {unicode-bidi:embed;
+	direction:rtl;
+	text-align:right;}
 body.rtol ul {unicode-bidi: embed;
 	direction: rtl;}
 body.rtol li {unicode-bidi: embed;
