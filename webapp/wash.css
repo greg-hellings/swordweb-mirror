@@ -909,13 +909,6 @@ body.rtol #navlist   {unicode-bidi: embed;
 	direction: rtl;
 	padding-right: 200px}
 
-body.rtol form {unicode-bidi: embed;
-	direction: rtl;}
-
-body.rtol ul {unicode-bidi: embed;
-	direction: rtl;}
-body.rtol li {unicode-bidi: embed;
-	direction: rtl;}
 body.rtol div#introhelp {unicode-bidi: override;
 	direction: rtl;}
 
@@ -925,21 +918,51 @@ body.rtol #printer   {unicode-bidi: embed;
 body.rtol #content-sub-1 {unicode-bidi: embed;   
            direction: rtl;}
 body.rtol #content-sub-2 {unicode-bidi: embed;   
-           direction: rtl;}
-body.rtol #header h1 {
-	text-align: right;
-	padding: 0px 70px 0px 0px;
-}
-body.rtol #externallinks li{
-text-align:right;
-}
+           direction: rtl;
+	text-align:right;}
+
+
 body.rtol #externallinks li a{
 padding: 0.25em 0.5em 0.25em 0.75em;
 border-left: .5em solid #ccc;
 border-right: none;
-}
-body.rtol #translations li{
-tex-align:right;
+
 }
 
+body.rtol #header h1 {
+	text-align: right;
+	padding: 0px 70px 0px 0px;
+}
+body.rtol h2 {
+	unicode-bidi:embed;
+	direction:rtl;
+	text-align:right;
+}
+
+body.rtol h3 (
+	unicode-bidi:embed;
+	direction:rtl;
+	text-align:right;
+}
+
+body.rtol li {
+	unicode-bidi:embed;
+	direction:rtl;
+	text-align:right;
+}
+
+body.rtol ul {
+	unicode-bidi:embed;
+	direction:rtl;
+	text-align:right;
+}
+
+body.rtol form {unicode-bidi: embed;
+	direction: rtl;}
+
+body.rtol a {
+	unicode-bidi:embed;
+	direction:rtl;
+	text-align:right;
+}
 /* Farsi Stuff */
