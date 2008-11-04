@@ -24,10 +24,12 @@
 	static Vector tabTitles = null;
 	static Vector tabDefaults = null;
 	static Vector rtolLangs = null;
+	static Vector offeredLanguages = null;
 	static String defaultBible = null;
 	static String defaultLang = null;
 	static String defaultStyle = null;
 	static Properties swordWebConfig = null;
+	static String languages = null;
 %>
 
 <%
@@ -46,6 +48,14 @@
 			defaultBible = swordWebConfig.getProperty("defaultBible", "NASB");
 			defaultLang  = swordWebConfig.getProperty("defaultLang", "en_US");
 			defaultStyle = swordWebConfig.getProperty("defaultStyle", "Washed Out");
+			
+			offeredLanguages = new Vector();
+			String languages = swordWebConfig.getProperty("offeredLanguages", "en_US");
+			String[] language = languages.split(" ");
+			for (int i = 0; i < language.length; i++) {
+				offeredLanguages.add(language[i]);
+			}			
+
 
 			styleNames = new Vector();
 			styleFiles = new Vector();

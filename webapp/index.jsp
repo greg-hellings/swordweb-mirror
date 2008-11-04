@@ -53,6 +53,14 @@ I commented this section out until it can be made functional.
 <% } %>
 		</ul>
 </div>
+<div id="language">
+<h2><t:t>Languages:</t:t></h2>
+		<ul>
+<% for (int i = 0; i < offeredLanguages.size(); i++) { %>
+			<li><a href="index.jsp?lang=<%= URLEncoder.encode((String)offeredLanguages.get(i)) %>" title="<%= (String) offeredLanguages.get(i) %>"><t:t><%= (String) offeredLanguages.get(i) %></t:t></a></li>
+<% } %>
+		</ul>
+</div>
 
 
    <div id="externallinks">
