@@ -347,7 +347,8 @@ color:#f00;
 
 #library li.closed {
 margin: .5em 0px 0px 0px;
-background-image: url(images/wash_plus.png);
+background-image: url(images/wash_plus.png)
+;
 background-repeat: no-repeat;
 border-left: 0px solid #fff;
 border-bottom: 1px solid #fff;
@@ -909,7 +910,7 @@ body.rtol #navlist   {unicode-bidi: embed;
 	direction: rtl;
 	padding-right: 200px}
 
-body.rtol div#introhelp {unicode-bidi: override;
+body.rtol div#introhelp {unicode-bidi: embed;
 	direction: rtl;}
 
 body.rtol #navlist a {float:right;}
@@ -939,7 +940,7 @@ body.rtol h2 {
 	text-align:right;
 }
 
-body.rtol h3 (
+body.rtol h3 {
 	unicode-bidi:embed;
 	direction:rtl;
 	text-align:right;

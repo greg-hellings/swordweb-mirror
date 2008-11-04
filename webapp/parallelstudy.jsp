@@ -309,7 +309,7 @@
 						SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
 						boolean rtol = ("RtoL".equalsIgnoreCase(mod.getConfigEntry("Direction")));
 						String font = mod.getConfigEntry("Font");
-						String style = (!"<SWNULL>".equals(font))?"font:"+font:"";
+						String style = (!"<SWNULL>".equals(font))?"font-family:"+font:"";
 
 						if (mod != activeModule) {
 							mod.setKeyText(keyText);
