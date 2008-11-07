@@ -72,7 +72,8 @@ color: #A13033;
   padding: 2px 12px 0px 15px;
 }
 
-#navlist a:hover { 
+#navlist
+ a:hover { 
 color: #A13033;
 background : #FFFFCC
 }
@@ -1136,38 +1137,35 @@ span.sameLemma {
      line-height : normal;
 }
 /*  RtoL stuff */  
-body.rtol #header {background-position: right top;}
+body.rtol #content-wrap {clear:right;}
 
 body.rtol #navlist   {unicode-bidi: embed;
-        direction: rtl;
-        padding-right: 200px}
+        direction: rtl;}
 
 body.rtol div#introhelp{
         unicode-bidi: embed;
         direction: rtl;
-        text-align-right;
+        text-align:right;
 }
 body.rtol div#printer{
         unicode-bidi: embed;
         direction: rtl;
-        text-align-right;
+        text-align:right;
 }
 body.rtol div#content-sub-1{
         unicode-bidi: embed;
         direction: rtl;
-        text-align-right;
+        text-align:right;
 }
 body.rtol div#content-sub-2 {
         unicode-bidi: embed; 
         direction: rtl;
-        text-align-right;
+        text-align:right;
 }
- 
-body.rtol #navlist a {float:right;}
 
 body.rtol #externallinks li a{
         padding: 0.25em 0.5em 0.25em 0.75em;
-        border-left: .5em solid #ccc;
+        border-left: .5em solid #222;
         border-right: none;
 }
  
@@ -1175,7 +1173,37 @@ body.rtol #header h1 {
         text-align: right;
         padding: 0px 70px 0px 0px;
 }
-body.rtol h2, body.rtol h3, body.rtol li, body.rtol ul, body.rtol form, body.rtol a {
+body.rtol h2{
+        unicode-bidi:embed;
+        direction:rtl;
+        text-align:right;
+}
+
+body.rtol h3{
+        unicode-bidi:embed;
+        direction:rtl;
+        text-align:right;
+}
+
+body.rtol li{
+        unicode-bidi:embed;
+        direction:rtl;
+        text-align:right;
+}
+
+body.rtol ul{
+        unicode-bidi:embed;
+        direction:rtl;
+        text-align:right;
+}
+
+body.rtol form {
+        unicode-bidi:embed;
+        direction:rtl;
+        text-align:right;
+}
+
+body.rtol a {
         unicode-bidi:embed;
         direction:rtl;
         text-align:right;

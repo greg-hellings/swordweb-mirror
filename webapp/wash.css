@@ -914,22 +914,22 @@ body.rtol #navlist   {unicode-bidi: embed;
 body.rtol div#introhelp{
 	unicode-bidi: embed;
 	direction: rtl;
-	text-align-right;
+	text-align:right;
 }
 body.rtol div#printer{
 	unicode-bidi: embed;
 	direction: rtl;
-	text-align-right;
+	text-align:right;
 }
 body.rtol div#content-sub-1{
 	unicode-bidi: embed;
 	direction: rtl;
-	text-align-right;
+	text-align:right;
 }
 body.rtol div#content-sub-2 {
 	unicode-bidi: embed;
 	direction: rtl;
-	text-align-right;
+	text-align:right;
 }
 
 body.rtol #navlist a {float:right;}
