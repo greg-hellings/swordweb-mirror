@@ -339,6 +339,9 @@ border-bottom: 1px solid #ccc;
 margin: .5em 0px 0px 5px;
 border-bottom: 1px solid #C5D6EA;
 }
+body.rtol #library li{
+margin: .5em 5px 0px 0px;
+}
 
 #library li a:hover {
 text-decoration: underline;
@@ -352,6 +355,9 @@ background-image: url(images/wash_plus.png)
 background-repeat: no-repeat;
 border-left: 0px solid #fff;
 border-bottom: 1px solid #fff;
+}
+body.rtol #library li.closed {
+background-position:right;
 }
 
 
