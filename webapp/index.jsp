@@ -66,8 +66,6 @@ I commented this section out until it can be made functional.
    <div id="externallinks">
 	<h2><t:t>External Links:</t:t></h2>
         <ul>
-	<li><a href="http://www.bibleresourcecenter.org" title="ABS Bible Research Center"><t:t>Bible Research Center</t:t></a></li>
-	<li><a href="http://www.bibleresourcecenter.org/Research/multimedia/maps/" title="Interactive Maps"><t:t>Interactive Maps</t:t></a></li>
 	<li><a href="http://crosswire.org/" title="CrossWire Bible Society"><t:t>CrossWire Bible Society</t:t></a></li>
 	<li><a href="http://www.americanbible.org/" title="American Bible Society"><t:t>American Bible Society</t:t></a></li>
 	<li><a href="http://sbl-site.org/" title="Society of Biblical Literature"><t:t>Society of Biblical Literature</t:t></a></li>
