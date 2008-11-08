@@ -217,7 +217,7 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 		showhide("onlywlayer", "hidden");
 	}
 	else {
-		b.innerHTML="Please wait...";
+		b.innerHTML="<t:t>Please wait...</t:t>";
 		showhide("onlywlayer", "visible");
 		url = "fetchdata.jsp?mod="+mod+"&key="+encodeURIComponent(key);
 		if ((fnnum != null) && (fnnum != ''))
@@ -232,11 +232,11 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 					}
 					if ((fnnum == null) || (fnnum == '')) {
 						resultBody += "<dl>";
-						resultBody += "<dt><a href=\"wordsearchresults.jsp?mod="+srcMod+"&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\">Search for "+key+" in "+srcMod+"</a></dt>";
+						resultBody += "<dt><a href=\"wordsearchresults.jsp?mod="+srcMod+"&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for </t:t>"+key+"<t:t> in </t:t>"+srcMod+"</a></dt>";
 						resultBody += "</dl>";
 						if (skeyPre == 'G') {
 							resultBody += "<dl>";
-							resultBody += "<dt><a href=\"wordsearchresults.jsp?mod=LXX&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\">Search for "+key+" in LXX</a></dt>";
+							resultBody += "<dt><a href=\"wordsearchresults.jsp?mod=LXX&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for </t:t>"+key+"<t:t> in LXX</t:t></a></dt>";
 							resultBody += "</dl>";
 						}
 					}
