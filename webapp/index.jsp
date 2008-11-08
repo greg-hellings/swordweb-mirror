@@ -97,10 +97,6 @@ I commented this section out until it can be made functional.
 	<p><t:t>We offer a number of free Bible software downloads for Windows, Mac, Linux, and PDAs, produced by CrossWire Bible Society. </t:t><a href="index.jsp?section=downloads"><t:t>Learn More...</t:t></a>
 	</p>
 
-	<h2><t:t>UPLOAD TEXTS</t:t></h2>
-	<p><t:t>An <acronym title="Open Scripture Information Standard">OSIS</acronym> editing tool plug-in for Microsoft Word 2003 is under construction. The tool will be completed in the spring, 2004, and will let you encode texts in <acronym title="Open Scripture Information Standard">OSIS</acronym>  for use in the tools available on this site.</t:t>
-	</p>
-
 	<h2><t:t>JUST FOR FUN</t:t></h2>
 	<p><t:t>Are you the sort of person who creates a Klingon translation of the Bible? Would it cross your mind to build a Hyper-Concordance for the New Testament in your spare time? People are using an XML standard called <acronym title="Open Scripture Information Standard">OSIS</acronym> to do a number of interesting things.</t:t> <a href="index.jsp?section=fun"><t:t>Learn More...</t:t></a>
 	</p>
