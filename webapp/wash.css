@@ -70,6 +70,12 @@ a:link {
 	line-height: normal;
 }
 
+body.rtol .word-layer {
+	margin-right: 0;
+	text-align: right;
+}
+
+
 /* Formating options for the grammatical highlighting */
 span.curWord { /* The clicked word */
 	text-decoration: underline;
@@ -105,6 +111,13 @@ span.sameLemma { /* The other words with the same lemma on the page */
 	text-indent: 0;
 	line-height: normal;
 }
+body.rtol .fn {
+	text-align: right;
+	margin-right: 0;
+}
+
+
+
 
 #aboutPromo {
 	margin: 1em 0px .5em 0px;
