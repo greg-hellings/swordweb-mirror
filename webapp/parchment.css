@@ -1234,3 +1234,15 @@ body.rtol #library li{
 
 body.rtol #library li a {
 padding: 0 20px;}
+body.rtol #translations li{
+text-align:right;
+}
+body.rtol #studytools li{
+text-align:right;}
+body.rtol #commentaries li{
+text-align:right}
+
+body.rtol #powersearch {text-align:right;}
+
+body.rtol #content-main p{
+text-align:right;}
