@@ -72,6 +72,11 @@ color: #A13033;
   padding: 2px 12px 0px 15px;
 }
 
+body.rtol #navlist a:link#current, body.rtol #navlist a:visited#current {
+	background-position:right;
+	padding:2px 15px 0px 12px;
+}
+ 
 #navlist
  a:hover { 
 color: #A13033;
@@ -519,6 +524,10 @@ font-style: italic;
 margin: 0px 14em 0px 11.5em;
 padding: 0px .5em 0px .5em;
 }
+/*body.rtol #welcome, body.rtol #about, body.rtol #help, body.rtol #preferences, body.rtol #powersearch, body.rtol #daily body.rtol #genbook {
+margin: 0px 11.5em 0px 14em;
+}*/
+
 
 #genbook h2 {
 margin: 0px 0px 0px 0px;
@@ -534,10 +543,19 @@ padding: 2px 0.0em 2px 0.0em;
   background-position: left center;
   padding: 0px 0px 0px 25px;
 }
+
+body.rtol #welcome h2 {
+	background-position: right;
+	padding: 0px 25px 0px 0px;
+}
 #welcome p a:link { color: #000; }
 #welcome p a:visited { color: #000; }
 #welcome p {
 margin: 5px 0px 0px 25px;
+}
+body.rtol #welcome p {
+	text-align:right;
+	margin: 5px 25px 0px 0px;
 }
 
 /*   Search Results   */
@@ -1142,12 +1160,12 @@ body.rtol #content-wrap {clear:right;}
 body.rtol #navlist   {unicode-bidi: embed;
         direction: rtl;}
 
-body.rtol div#introhelp{
+body.rtol #introhelp{
         unicode-bidi: embed;
         direction: rtl;
         text-align:right;
 }
-body.rtol div#printer{
+body.rtol #printer{
         unicode-bidi: embed;
         direction: rtl;
         text-align:right;
@@ -1209,3 +1227,10 @@ body.rtol a {
         text-align:right;
 }
   
+body.rtol #library li{
+        margin: .5em 5px 0px 0px;
+        background-position:right;
+}
+
+body.rtol #library li a {
+padding: 0 20px;}

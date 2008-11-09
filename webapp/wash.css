@@ -70,10 +70,6 @@ a:link {
 	line-height: normal;
 }
 
-body.rtol .word-layer {
-	margin-right: 0;
-	text-align: right;
-}
 
 
 /* Formating options for the grammatical highlighting */
@@ -111,11 +107,6 @@ span.sameLemma { /* The other words with the same lemma on the page */
 	text-indent: 0;
 	line-height: normal;
 }
-body.rtol .fn {
-	text-align: right;
-	margin-right: 0;
-}
-
 
 
 
@@ -251,10 +242,6 @@ padding: 15px 15px 20px 15px;
 width:auto;
 font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
 }
-body.rtol #content-main p{
-text-align:right
-}
-
 
 #footer{
 clear:both;
@@ -355,9 +342,6 @@ border-bottom: 1px solid #ccc;
 margin: .5em 0px 0px 5px;
 border-bottom: 1px solid #C5D6EA;
 }
-body.rtol #library li{
-margin: .5em 5px 0px 0px;
-}
 
 #library li a:hover {
 text-decoration: underline;
@@ -372,12 +356,6 @@ background-repeat: no-repeat;
 border-left: 0px solid #fff;
 border-bottom: 1px solid #fff;
 }
-body.rtol #library li {
-background-position:right;
-}
-body.rtol #library li a {
-padding: 0 20px;}
-
 #library li.open {
 margin: .5em 0px 0px 0px;
 background-image: url(images/wash_minus.png);
@@ -431,9 +409,6 @@ margin: 0;
 border-top: 1px solid #ccc;
 text-align: left;
 border-bottom: 1px solid #E8EBF0;
-}
-body.rtol #translations li{
-text-align:right;
 }
 
 
@@ -558,8 +533,6 @@ border-top: 1px solid #ccc;
 text-align: left;
 border-bottom: 1px solid #E8EBF0;
 }
-body.rtol #studytools li{
-text-align:right;}
 
 #studytools li a{
 display: block;
@@ -619,9 +592,6 @@ border-top: 1px solid #ccc;
 text-align: left;
 border-bottom: 1px solid #E8EBF0;
 }
-body.rtol #commentaries li{
-text-align:right}
-
 #commentaries li a{
 display: block;
 padding: 0.25em 0.5em 0.25em 0.75em;
@@ -665,8 +635,6 @@ font-style: italic;
 margin: 0px 14em 0px 11.5em;
 padding: 0px .5em 0px .5em;
 }
-body.rtol #powersearch {text-align:right;}
-
 
 /*   Search Results   */
 
@@ -978,3 +946,34 @@ body.rtol h2, body.rtol h3, body.rtol li, body.rtol ul, body.rtol form, body.rto
 	direction:rtl;
 	text-align:right;
 }
+body.rtol .word-layer {
+	margin-right: 0;
+	text-align: right;
+}
+
+body.rtol .fn {
+	text-align: right;
+	margin-right: 0;
+}
+
+body.rtol #content-main p{
+text-align:right
+}
+body.rtol #library li{
+	margin: .5em 5px 0px 0px;
+	background-position:right;
+}
+
+body.rtol #library li a {
+padding: 0 20px;}
+
+body.rtol #translations li{
+text-align:right;
+}
+body.rtol #studytools li{
+text-align:right;}
+body.rtol #commentaries li{
+text-align:right}
+
+body.rtol #powersearch {text-align:right;}
+
