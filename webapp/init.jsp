@@ -61,53 +61,27 @@
 			styleFiles = new Vector();
 			styleDescriptions = new Vector();
 
-			styleNames.add("Washed Out");
-			styleFiles.add("wash.css");
-
-			styleNames.add("Parchment");
-			styleFiles.add("parchment.css");
-
-			styleNames.add("Sandy Creek");
-			styleFiles.add("sandy.css");
-
+			int i = 0;
+			while (swordWebConfig.getProperty("offeredCSS.Name." + i,"") != "") {
+				styleNames.add(swordWebConfig.getProperty("offeredCSS.Name." + i,""));
+				styleFiles.add(swordWebConfig.getProperty("offeredCSS.Link." + i,""));
+				i++;
+			}
+			
 			tabNames  = new Vector();
 			tabLinks  = new Vector();
 			tabTitles = new Vector();
 			tabDefaults = new Vector();
-
-			tabNames.add("Home");
-			tabTitles.add("Home");
-			tabLinks.add("index.jsp");
-			tabDefaults.add("true");
-			tabNames.add("Passage Study");
-			tabTitles.add("Passage Study");
-			tabLinks.add("passagestudy.jsp");
-			tabDefaults.add("true");
-			tabNames.add("Parallel");
-			tabTitles.add("Parallel Display");
-			tabLinks.add("parallelstudy.jsp");
-			tabDefaults.add("true");
-			tabNames.add("Power Search");
-			tabTitles.add("Power Search");
-			tabLinks.add("powersearch.jsp");
-			tabDefaults.add("true");
-			tabNames.add("Devotionals");
-			tabTitles.add("Daily Devotionals");
-			tabLinks.add("dailydevotion.jsp");
-			tabDefaults.add("false");
-			tabNames.add("Library");
-			tabTitles.add("Full Library");
-			tabLinks.add("fulllibrary.jsp");
-			tabDefaults.add("false");
-			tabNames.add("Preferences");
-			tabTitles.add("Preferences");
-			tabLinks.add("preferences.jsp");
-			tabDefaults.add("true");
-			tabNames.add("FAQ");
-			tabTitles.add("Frequently Asked Questions");
-			tabLinks.add("about.jsp");
-			tabDefaults.add("true");
-
+			
+			i = 0;
+			while (swordWebConfig.getProperty("offeredTabName." + i,"") != "") {
+				tabNames.add(swordWebConfig.getProperty("offeredTabName." + i,""));
+				tabTitles.add(swordWebConfig.getProperty("offeredTabTitle." + i,""));
+				tabLinks.add(swordWebConfig.getProperty("offeredTabLink." + i,"index.jsp"));
+				tabDefaults.add(swordWebConfig.getProperty("offeredTabDefault."+i,"true"));
+				i++;
+			}
+							
 			rtolLangs = new Vector();
 			rtolLangs.add("fa");
 			rtolLangs.add("az_IR");
