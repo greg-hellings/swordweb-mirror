@@ -1,0 +1,48 @@
+orbexe=swordorbserver -sysConf /home/refdoc/sword.conf
+defaultBible=KJV
+defaultLang=en
+defaultStyle=Washed Out
+defaultDir=rtol
+offeredLanguages=fa en_US arm
+
+offeredCSS.Name.0=Washed Out
+offeredCSS.Link.0=wash.css
+offeredCSS.Name.1=Parchment
+offeredCSS.Link.1=parchment.css
+offeredCSS.Name.2=Sandy Desert
+offeredCSS.Link.2=sandy.css
+
+offeredTabName.0=Home
+offeredTabTitle.0=Home
+offeredTabLink.0=index.jsp
+offeredTabDefault.0=true
+
+offeredTabName.1=Passage Study
+offeredTabTitle.1=Passage Study
+offeredTabLink.1=passagestudy.jsp
+offeredTabDefault.1=true
+
+offeredTabName.2=Parallel
+offeredTabTitle.2=Parallel Display
+offeredTabLink.2=parallelstudy.jsp
+offeredTabDefault.2=true
+
+offeredTabName.3=Power Search
+offeredTabTitle.3=Power Search
+offeredTabLink.3=powersearch.jsp
+offeredTabDefault.3=true
+
+offeredTabName.4=Daily Devotional
+offeredTabTitle.4=Daily Devotional
+offeredTabLink.4=dailydevotional.jsp
+offeredTabDefault.4=false
+
+offeredTabName.5=Library
+offeredTabTitle.5=Full Library
+offeredTabLink.5=fulllibrary.jsp
+offeredTabDefault.1=false
+
+offeredTabName.6=FAQ
+offeredTabTitle.6=Frequently Asked Questions
+offeredTabLink.6=about.jsp
+offeredTabDefault.6=true
