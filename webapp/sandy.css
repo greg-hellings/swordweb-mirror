@@ -107,11 +107,9 @@ a:visited {color:#808072;}
 
 #content-wrap{
 margin: 0px 0px 0px 0px;
-padding: 0px 0px 0px 0px;
+padding: 0px 3px 0px 0px;
 background-image: url(images/sandyfade.png);
-background-repeat: repeat-x;
-}
-
+background-repeat: repeat-x;}
 #printer {
 width:14em;
 clear:right;
@@ -185,7 +183,8 @@ padding: 3px;
 
 /* External Links */
 
-#externallinks{
+#externallinks
+{
 padding: 0 1px 1px;
 margin-left: 5px;
 }
@@ -388,7 +387,7 @@ font-style: italic;
 
 
 #welcome, #about, #help, #preferences, #powersearch, #daily, #genbook, #passagestudy {
-margin: 0px 14em 0px 10em;
+margin: 0px 16em 0px 10em;
 padding: 0px .5em 0px .5em;
 }
 
@@ -743,11 +742,11 @@ body.rtol div#content-sub-2 {
 }
 
 
-body.rtol #externallinks li a{
+/*body.rtol #externallinks li a{
         padding: 0.25em 0.5em 0.25em 0.75em;
         border-left: .5em solid #ccc;
         border-right: none;
-}
+}*/
  
 
 body.rtol #header h1 {text-transform:none; letter-spacing: 0px;}
