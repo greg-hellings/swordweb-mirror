@@ -83,7 +83,7 @@ function onPageLoad() {
 				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 		%>
-				<li><a href="wordsearchresults.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="view Romans 8:26-39 in <%= module.getDescription() %>"><%= module.getDescription() %></a></li>
+				<li><a href="wordsearchresults.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="<t:t>View search results in</t:t> <%= module.getDescription() %>"><%= module.getDescription() %></a></li>
 		<%
 				}
 			}
@@ -93,7 +93,7 @@ function onPageLoad() {
 	</tiles:put>
 
 	<tiles:put name="sidebar_right" type="string">
-		<h2>Original Language:</h2>
+		<h2><t:t>Original Language:</t:t></h2>
 	</tiles:put>
 
 	<tiles:put name="content" type="string">
@@ -173,7 +173,7 @@ function onPageLoad() {
 		<%
 			if ( navStart > 0 ) {
 		%>
-				<li><a href="wordsearchresults.jsp?start=0" title="First page (<%= results[0].key %>) of search results">1</a>&nbsp;[...]</li>
+				<li><a href="wordsearchresults.jsp?start=0" title="<t:t>First page (</t:t><%= results[0].key %><t:t>) of search results</t:t>">1</a>&nbsp;[...]</li>
 		<%
 			}
 			else {
@@ -198,14 +198,14 @@ function onPageLoad() {
 		<%		}
 				else {
 		%>
-					<li><a href="wordsearchresults.jsp?start=<%= i * resultLimit.intValue() %>&<%= linkOptions %>" title="page <%= i+1 %> (<%= results[i * resultLimit.intValue()].key %>) of search results"><%= i+1 %></a></li>
+					<li><a href="wordsearchresults.jsp?start=<%= i * resultLimit.intValue() %>&<%= linkOptions %>" title="<t:t>page </t:t><%= i+1 %> (<%= results[i * resultLimit.intValue()].key %><t:t>) of search results</t:t>"><%= i+1 %></a></li>
 		<%
 				}
 			}
 			int lastPage = (results.length / resultLimit.intValue()) + ((results.length % resultLimit.intValue()) > 0 ? 1 : 0) -1;
 			if (navEnd < lastPage) {
 		%>
-				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage*resultLimit.intValue() %>&<%= linkOptions %>" title="Last page (<%= results[lastPage].key %>) of search results"><%= lastPage+1 %></a></li>
+				<li>&nbsp;[...] <a href="wordsearchresults.jsp?start=<%= lastPage*resultLimit.intValue() %>&<%= linkOptions %>" title="<t:t>>Last page (</t:t><%= results[lastPage].key %><t:t>) of search results</t:t>"><%= lastPage+1 %></a></li>
 		<%
 			}
 		%>
