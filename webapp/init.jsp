@@ -48,6 +48,7 @@
 			defaultBible = swordWebConfig.getProperty("defaultBible", "NASB");
 			defaultLang  = swordWebConfig.getProperty("defaultLang", "en_US");
 			defaultStyle = swordWebConfig.getProperty("defaultStyle", "Washed Out");
+
  			
 			offeredLanguages = new Vector();
 			String languages = swordWebConfig.getProperty("offeredLanguages", "en_US");
@@ -56,6 +57,7 @@
 				offeredLanguages.add(language[i]);
 			}			
 
+/* read from swordweb.properties as many style sheets as on offer */
 
 			styleNames = new Vector();
 			styleFiles = new Vector();
@@ -69,12 +71,20 @@
 				i++;
 			}
 			
+/* if reading from swordweb.properties fails, at least one style sheet should be available  */
 
-
+			if (i<0) {
+			styleNames.add("Washed Out");
+			styleFiles.add("wash.css");
+			}
+/* read from swordweb.properties as many tabs as on offer */
+			
 			tabNames  = new Vector();
 			tabTitles = new Vector();
 			tabLinks  = new Vector();
 			tabDefaults = new Vector();
+
+
 			
 			i = 0;
 			while (swordWebConfig.getProperty("offeredTabName." + i,"") != "") {
@@ -84,11 +94,51 @@
 				tabDefaults.add(swordWebConfig.getProperty("offeredTabDefault."+ i,"true"));
 				i++;
 			}
-							
+
+/* if reading from swordweb.properties fails some sane defaults */
+
+			if (i<1) {
+				tabNames.add("Home");
+                        	tabTitles.add("Home");
+                        	tabLinks.add("index.jsp");
+                        	tabDefaults.add("true");  
+                        	tabNames.add("Passage Study");
+                        	tabTitles.add("Passage Study");
+                        	tabLinks.add("passagestudy.jsp");
+                        	tabDefaults.add("true");
+                        	tabNames.add("Parallel");
+                        	tabTitles.add("Parallel Display");
+                        	tabLinks.add("parallelstudy.jsp");
+                        	tabDefaults.add("true");
+                        	tabNames.add("Power Search");
+                        	tabTitles.add("Power Search");
+                        	tabLinks.add("powersearch.jsp");
+                        	tabDefaults.add("true");
+                        	tabNames.add("Devotionals");
+                        	tabTitles.add("Daily Devotionals");
+                        	tabLinks.add("dailydevotion.jsp"); 
+                        	tabDefaults.add("false");
+                        	tabNames.add("Library"); 
+                        	tabTitles.add("Full Library");
+                        	tabLinks.add("fulllibrary.jsp");
+                        	tabDefaults.add("false");
+                        	tabNames.add("Preferences");
+                        	tabTitles.add("Preferences");
+                        	tabLinks.add("preferences.jsp");
+                        	tabDefaults.add("true");
+                        	tabNames.add("FAQ");
+                        	tabTitles.add("Frequently Asked Questions");
+                        	tabLinks.add("about.jsp");
+                        	tabDefaults.add("true"); 
+			}
+
+/* create a list of languages which require rtol display. This list is currently hard coded and may well remain for a while longer like this */
+				
 			rtolLangs = new Vector();
 			rtolLangs.add("fa");
 			rtolLangs.add("az_IR");
 			rtolLangs.add("div");
+			rtolLangs.add("ar");
 		}
 	}
 
