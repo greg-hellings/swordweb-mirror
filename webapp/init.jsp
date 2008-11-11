@@ -48,7 +48,7 @@
 			defaultBible = swordWebConfig.getProperty("defaultBible", "NASB");
 			defaultLang  = swordWebConfig.getProperty("defaultLang", "en_US");
 			defaultStyle = swordWebConfig.getProperty("defaultStyle", "Washed Out");
-			
+ 			
 			offeredLanguages = new Vector();
 			String languages = swordWebConfig.getProperty("offeredLanguages", "en_US");
 			String[] language = languages.split(" ");
@@ -61,6 +61,7 @@
 			styleFiles = new Vector();
 			styleDescriptions = new Vector();
 
+
 			int i = 0;
 			while (swordWebConfig.getProperty("offeredCSS.Name." + i,"") != "") {
 				styleNames.add(swordWebConfig.getProperty("offeredCSS.Name." + i,""));
@@ -68,9 +69,11 @@
 				i++;
 			}
 			
+
+
 			tabNames  = new Vector();
-			tabLinks  = new Vector();
 			tabTitles = new Vector();
+			tabLinks  = new Vector();
 			tabDefaults = new Vector();
 			
 			i = 0;
@@ -78,7 +81,7 @@
 				tabNames.add(swordWebConfig.getProperty("offeredTabName." + i,""));
 				tabTitles.add(swordWebConfig.getProperty("offeredTabTitle." + i,""));
 				tabLinks.add(swordWebConfig.getProperty("offeredTabLink." + i,"index.jsp"));
-				tabDefaults.add(swordWebConfig.getProperty("offeredTabDefault."+i,"true"));
+				tabDefaults.add(swordWebConfig.getProperty("offeredTabDefault."+ i,"true"));
 				i++;
 			}
 							
