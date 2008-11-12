@@ -32,7 +32,7 @@
 	static String languages = null;
 	static Vector linkName = null;
 	static Vector linkAddress = null;
-
+	static String metaContent = null;
 
 %>
 
@@ -163,7 +163,7 @@
                                 linkName.add("Society of Biblical Literature");
                                 linkAddress.add("http://sbl-site.org");
 			}      
-
+			metaContent = swordWebConfig.getProperty("metaKeywords","bible, jesus, christ");
 		}
 	}
 
@@ -395,6 +395,8 @@
 	session.setAttribute("Javascript", javascript);
 	session.setAttribute("showTabs", showTabs);
 	session.setAttribute("lang", appLang);
+	session.setAttribute("meta", metaContent);
+
 	mgr.setJavascript(!"Off".equalsIgnoreCase(javascript));
 	mgr.setGlobalOption("Headings", ("Off".equalsIgnoreCase(headings)) ? "Off":"On");
 	mgr.setGlobalOption("Footnotes", ("On".equalsIgnoreCase(footnotes)) ? "On":"Off");
