@@ -61,21 +61,15 @@ I commented this section out until it can be made functional.
 <% } %>
 		</ul>
 </div>
+<div id="externallinks">
+<h2><t:t>External Links:</t:t></h2>
+		<ul>
+<% for (int i = 0; i < linkName.size(); i++) { %>
+			<li><a href="<%= linkAddress.get(i) %>" title="<%= (String) linkName.get(i) %>"><t:t><%= (String) linkName.get(i) %></t:t></a></li>
+<% } %>
+		</ul>
+</div>
 
-
-   <div id="externallinks">
-	<h2><t:t>External Links:</t:t></h2>
-        <ul>
-	<li><a href="http://crosswire.org/" title="CrossWire Bible Society"><t:t>CrossWire Bible Society</t:t></a></li>
-	<li><a href="http://www.americanbible.org/" title="American Bible Society"><t:t>American Bible Society</t:t></a></li>
-	<li><a href="http://sbl-site.org/" title="Society of Biblical Literature"><t:t>Society of Biblical Literature</t:t></a></li>
-	<li><a href="http://crosswire.org/sword/" title="The SWORD Project"><t:t>The SWORD Project</t:t></a></li>
-	<li><a href="http://www.bibletechnologies.net/" title="Open Scripture Information Standard">OSIS</a></li>
-</ul>
-
-
-
-   </div>
 
 
 	</tiles:put>

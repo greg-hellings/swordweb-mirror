@@ -30,6 +30,10 @@
 	static String defaultStyle = null;
 	static Properties swordWebConfig = null;
 	static String languages = null;
+	static Vector linkName = null;
+	static Vector linkAddress = null;
+
+
 %>
 
 <%
@@ -139,6 +143,27 @@
 			rtolLangs.add("az_IR");
 			rtolLangs.add("div");
 			rtolLangs.add("ar");
+
+                        linkName = new Vector();
+                        linkAddress = new Vector();
+
+                        i = 0;
+                        while (swordWebConfig.getProperty("offeredLinkName." + i,"") != "") {
+                                linkName.add(swordWebConfig.getProperty("offeredLinkName." + i,""));
+                                linkAddress.add(swordWebConfig.getProperty("offeredLinkAddress." + i,""));
+                                i++;
+                        }
+                       if (i<1) {
+                                linkName.add("CrossWire Bible Society");
+                                linkAddress.add("http://www.crosswire.org");
+                                
+                                linkName.add("American Bible Society");
+                                linkAddress.add("http://www.americanbible.org");
+                                        
+                                linkName.add("Society of Biblical Literature");
+                                linkAddress.add("http://sbl-site.org");
+			}      
+
 		}
 	}
 
