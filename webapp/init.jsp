@@ -163,7 +163,11 @@
                                 linkName.add("Society of Biblical Literature");
                                 linkAddress.add("http://sbl-site.org");
 			}      
+
+/* load property to create meta keywords to improve search ranking of the site */
+
 			metaContent = swordWebConfig.getProperty("metaKeywords","bible, jesus, christ");
+
 		}
 	}
 
