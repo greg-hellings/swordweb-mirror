@@ -33,7 +33,7 @@
 	static Vector linkName = null;
 	static Vector linkAddress = null;
 	static String metaContent = null;
-
+	static String defaultDevo = null;
 %>
 
 <%
@@ -50,10 +50,11 @@
 			}
 			catch (Exception e) { e.printStackTrace(); }
 			defaultBible = swordWebConfig.getProperty("defaultBible", "NASB");
-			defaultLang  = swordWebConfig.getProperty("defaultLang", "en_US");
+			defaultDevo = swordWebConfig.getProperty("defaultDevo","DBD");
 			defaultStyle = swordWebConfig.getProperty("defaultStyle", "Washed Out");
-
+	
  			
+			defaultLang  = swordWebConfig.getProperty("defaultLang", "en_US");
 			offeredLanguages = new Vector();
 			String languages = swordWebConfig.getProperty("offeredLanguages", "en_US");
 			String[] language = languages.split(" ");
@@ -400,6 +401,7 @@
 	session.setAttribute("showTabs", showTabs);
 	session.setAttribute("lang", appLang);
 	session.setAttribute("meta", metaContent);
+	session.setAttribute("ActiveDevo",defaultDevo);
 
 	mgr.setJavascript(!"Off".equalsIgnoreCase(javascript));
 	mgr.setGlobalOption("Headings", ("Off".equalsIgnoreCase(headings)) ? "Off":"On");
