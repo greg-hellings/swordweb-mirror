@@ -34,6 +34,7 @@
 	static Vector linkAddress = null;
 	static String metaContent = null;
 	static String defaultDevo = null;
+
 %>
 
 <%
