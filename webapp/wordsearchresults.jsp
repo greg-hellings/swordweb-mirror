@@ -83,7 +83,7 @@ function onPageLoad() {
 				if (modInfo[i].category.equals(SwordOrb.BIBLES)) {
 					SWModule module = mgr.getModuleByName(modInfo[i].name);
 		%>
-				<li><a href="wordsearchresults.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="<t:t>View search results in</t:t> <%= module.getDescription() %>"><%= module.getDescription() %></a></li>
+				<li><a href="wordsearchresults.jsp?mod=<%= URLEncoder.encode(modInfo[i].name) %>" title="<t:t>Conduct search with same search term in</t:t> <%= module.getDescription() %>"><%= module.getDescription() %></a></li>
 		<%
 				}
 			}
@@ -129,12 +129,13 @@ function onPageLoad() {
 				results = new SearchHit[0];
 		%>
 
-		<p class="textname">&raquo; <%= results.length %> result<%= (results.length == 1)?"s":""%> in the text of <%= activeModule.getDescription() %></p>
+		<p class="textname">&raquo; <%= results.length %> result<%= (results.length == 1)?"s":""%> <t:t>in the text of </t:t><%= activeModule.getDescription() %></p>
 
 		<dl>
 		<%
 			Integer resultStart = new Integer(request.getParameter("start") != null ? request.getParameter("start") : "0");
 			Integer resultLimit = new Integer(30);
+			boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 
 			for (int i = resultStart.intValue(); i < results.length && i < resultStart.intValue() + resultLimit.intValue(); i++)
 			{
@@ -143,9 +144,9 @@ function onPageLoad() {
 		%>
 				<dt>
 					<a href="<%= ("GBS".equals(lastModType))?"bookdisplay.jsp?gbsEntry=":"passagestudy.jsp?key=" %><%= URLEncoder.encode(dispKey)+"#cv" %>" title="<%= dispKey %>"><%= dispKey %></a>
-					<span><%= (results[i].score > 0)?("score: " + results[i].score) : "" %></span>
+				
 				</dt>
-				<% boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction"))); %>
+				
 				<dd dir="<%= rtol ? "rtl" : "" %>">
 					<%= activeModule.getRenderText() %>
 				</dd>
@@ -168,7 +169,7 @@ function onPageLoad() {
 				}
 			%>
 
-			<li>Result Page:</li>
+			<li><t:t>Result Page:</t:t></li>
 
 		<%
 			if ( navStart > 0 ) {
