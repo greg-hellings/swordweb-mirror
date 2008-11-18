@@ -181,7 +181,7 @@
 					if (modInfo[i].category.equals(SwordOrb.COMMENTARIES)) {
 						SWModule module = mgr.getModuleByName(modInfo[i].name);
 			%>
-					<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name)+"#cv" %>" title="view Romans 8:26-39 in <%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
+					<li><a href="passagestudy.jsp?mod=<%= URLEncoder.encode(modInfo[i].name)+"#cv" %>" title="<t:t>view passage in </t:t><%= module.getDescription().replaceAll("&", "&amp;") %>"><%= module.getDescription().replaceAll("&", "&amp;") %></a></li>
 			<%
 					}
 				}
@@ -228,10 +228,13 @@
 				int activeVerse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
 				int anchorVerse = (activeVerse > 2)?activeVerse - 2: -1;
 				boolean first = true;
+				String lang = activeModule.getConfigEntry("Lang");
+				boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
+				
 				for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
 					if (first) {
 			%>
-				<table>
+				<table class="<%= lang %>">
 			<%
 						first = false;
 					}
@@ -243,7 +246,7 @@
 							((strongs) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
 					mgr.setGlobalOption("Morphological Tags",
 							((morph) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
-					boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
+					
 			%>
 			<%
 					String[] heads = activeModule.getEntryAttribute("Heading", "Preverse", "0", true);
@@ -272,7 +275,7 @@
 					<td><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 
 					<%
-					String lang = activeModule.getConfigEntry("Lang");
+					
 //					<div xml:lang="<%= (lang.equals("")) ? "en" : lang 
 					%>
 					<%= activeModule.getRenderText() %>
