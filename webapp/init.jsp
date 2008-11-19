@@ -428,6 +428,7 @@
 		session.setAttribute("styleNames", styleNames);
 		session.setAttribute("styleFiles", styleFiles);
 		session.setAttribute("rtolLangs", rtolLangs);
+		session.setAttribute("offeredLang", offeredLanguages);
 	}
 %>
 
