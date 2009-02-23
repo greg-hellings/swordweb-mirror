@@ -118,7 +118,7 @@ function onPageLoad() {
 				}
 				mgr.setGlobalOption("Greek Accents", "On");
 
-				//save the search reusult into the session so it can be retrived later on to browse through it
+				//save the search result into the session so it can be retrived later on to browse through it
 				session.setAttribute("SearchResults", results);
 			}
 			else if ( activeSearchTerm == null ) { //no search term given, try to see if we have a valid search result saved
@@ -130,8 +130,7 @@ function onPageLoad() {
 		%>
 
 		<p class="textname">&raquo; <%= results.length %> result<%= (results.length == 1)?"s":""%> <t:t>in the text of </t:t><%= activeModule.getDescription() %></p>
-
-		<dl>
+		<dl class="<%= activeModule.getConfigEntry("Lang")%>">
 		<%
 			Integer resultStart = new Integer(request.getParameter("start") != null ? request.getParameter("start") : "0");
 			Integer resultLimit = new Integer(30);
