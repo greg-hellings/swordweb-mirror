@@ -193,6 +193,7 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
             '<img border="0" src="images/x.png"/>'+
             '</a>'+
             '</div>';
+	var page = '';
 	skeyPre=""
 	/* check for aliases */
 	if (mod == "G") {
@@ -202,6 +203,11 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 	if (mod == "H") {
 		skeyPre="H";
 		mod = "StrongsHebrew";
+	}
+
+	if (fnnum.length > 2 && fnnum.substring(0,2) == 'p:') {
+		page = fnnum.substring(2);
+		fnnum = '';
 	}
 
 	b=document.getElementById("onlywlayer");
@@ -237,6 +243,11 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 						if (skeyPre == 'G') {
 							resultBody += "<dl>";
 							resultBody += "<dt><a href=\"wordsearchresults.jsp?mod=LXX&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for </t:t>"+key+"<t:t> in LXX</t:t></a></dt>";
+							resultBody += "</dl>";
+						}
+						if (page != '') {
+							resultBody += "<dl>";
+							resultBody += "<dt><a href=\"http://community.crosswire.org/modules/papyri/?site=http://crosswire.org/study/pageImages/"+mod+"/&image="+page+".jpg\"><t:t>View Image of Page </t:t>"+page+"<t:t> in </t:t>"+mod+"</a></dt>";
 							resultBody += "</dl>";
 						}
 					}
