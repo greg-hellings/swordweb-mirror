@@ -174,6 +174,10 @@
 	}
 
 	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
+	if (mgr == null) {
+		out.print("Couldn't connect to SWORD backend");
+		return;
+	}
 	// let's cache the modInfo in the session cuz this is alot to grab each time we need it from the orb
 	ModInfo[] modInfo = (ModInfo[])session.getAttribute("ModInfo");
 	if (modInfo == null) {
@@ -404,6 +408,7 @@
 	session.setAttribute("meta", metaContent);
 	session.setAttribute("ActiveDevo",defaultDevo);
 
+	mgr.setDefaultLocale(appLang);
 	mgr.setJavascript(!"Off".equalsIgnoreCase(javascript));
 	mgr.setGlobalOption("Headings", ("Off".equalsIgnoreCase(headings)) ? "Off":"On");
 	mgr.setGlobalOption("Footnotes", ("On".equalsIgnoreCase(footnotes)) ? "On":"Off");
