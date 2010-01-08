@@ -9,6 +9,7 @@
 	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	SWModule book = null;
 	String ks = request.getParameter("key");
+	ks = new String(ks.getBytes("iso8859-1"), "UTF-8");
 	String modName = request.getParameter("mod");
 
 	if ((modName != null) && (ks != null)) {

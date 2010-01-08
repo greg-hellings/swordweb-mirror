@@ -39,6 +39,7 @@
 
 	String resetKey = request.getParameter("key");
 	if (resetKey != null)
+		resetKey = new String(resetKey.getBytes("iso8859-1"), "UTF-8");
 		session.setAttribute("ActiveKey", resetKey);
 
 	String activeKey = (String) session.getAttribute("ActiveKey");
