@@ -125,3 +125,7 @@ span.sameLemmaMorph {
 span.sameLemma {
      font-weight : bold;
 }
+
+.intro {
+	border-bottom: 1px solid #ccc;
+}

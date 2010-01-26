@@ -496,8 +496,12 @@ padding: 0px 0.5em 0px 0.5em;
 	font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
 	background-color: #eee;
 }
-.verse {
+.verse,.intro {
 	font-family:cardo,tahoma,code2000,code2001,arial unicode ms,arial,sans serif,serif;
+}
+
+.intro {
+	border-bottom: 1px solid #ccc;
 }
 
 .clk {

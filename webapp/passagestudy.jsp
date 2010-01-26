@@ -232,14 +232,18 @@
 				String lang = activeModule.getConfigEntry("Lang");
 				boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 				
-				for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
+				for (activeModule.setKeyText("="+chapterPrefix + ":0"); (activeModule.error() == (char)0); activeModule.next()) {
+					String keyText = activeModule.getKeyText();
+					String keyProps[] = activeModule.getKeyChildren();
+					// book and chapter intros
+					// TODO: change 'chapterPrefix' to use keyProps so we can support book intros (e.g. Jn.0.0)
+					boolean intro = (keyProps[2].equals("0") || keyProps[3].equals("0"));
 					if (first) {
 			%>
 				<table class="<%= lang %>">
 			<%
 						first = false;
 					}
-					String keyText = activeModule.getKeyText();
 					int curVerse = Integer.parseInt(keyText.substring(keyText.indexOf(":")+1));
 					if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":"))))
 						break;
@@ -266,14 +270,22 @@
 					if (!rtol) {
 			%>
 					<td valign="top" align="right"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-					<span class="versenum"><a <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
+			<%
+					if (!intro) {
+			%>
+					<span class="versenum">
+					<a <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
 						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
-					</span></div></td>
+					</span>
+			<%
+					}
+			%>
+					</div></td>
 			<%
 					}
 			%>
 
-					<td><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+					<td><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : (intro) ? "intro" : "verse" %>">
 
 					<%
 					
@@ -288,9 +300,16 @@
 					if (rtol) {
 			%>
 					<td valign="top" align="right"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+			<%
+					if (!intro) {
+			%>
 					<span class="versenum"><a <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
 						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
-					</span></div></td>
+					</span>
+			<%
+					}
+			%>
+					</div></td>
 			<%
 					}
 			%>

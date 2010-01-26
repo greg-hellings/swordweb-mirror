@@ -115,6 +115,10 @@ span.versenum {vertical-align: top;
 	padding-left:0.2em;
 	padding-right:0.2em;}
 
+.intro {
+	border-bottom: 1px solid #ccc;
+}
+
 a:link {color: blue;
 	text-decoration:none;}
 
