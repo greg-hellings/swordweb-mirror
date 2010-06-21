@@ -33,9 +33,9 @@ public class PerseusUtils {
             part = bc.convertString(part).toLowerCase();
             // Perseus wants final sigma to be "s"
             if (part.endsWith("j")) part = part.substring(0, part.length()-1) + "s";
-	    start = end + 2;
+            start = end + 2;
             try {
-                url = new URL("http://www.perseus.tufts.edu/hopper/xmlchunk.jsp?doc=Perseus%3Atext%3A1999.04.0058%3Aentry%3D"+URLEncoder.encode(part));
+                url = new URL("http://www.perseus.tufts.edu/hopper/xmlchunk?doc=Perseus%3Atext%3A1999.04.0058%3Aentry%3D"+URLEncoder.encode(part));
                 InputSource inputSource = new InputSource(url.openStream());
                 DTMNodeList nodes = (DTMNodeList)xpath.evaluate(expression, inputSource, XPathConstants.NODESET);
                 if (nodes.getLength() > 0) {
@@ -129,7 +129,7 @@ public class PerseusUtils {
             String txt = node.getNodeValue();
             Node l = node.getParentNode().getAttributes().getNamedItem("lang");
             if ((l != null) && ("greek".equals(l.getNodeValue()))) {
-              txt = (new BetacodeToUnicode().convertString(txt));
+  //            txt = (new BetacodeToUnicode().convertString(txt));	// THIS FAILS.  BUMMER.  NOT NEEDED ANYMORE?
             }
             out.append(normalize(txt));
             break;
