@@ -11,6 +11,7 @@
 	String ks = request.getParameter("key");
 	String modName = request.getParameter("mod");
 	String fn = request.getParameter("fn");
+	String format = request.getParameter("format");
 	mgr.setGlobalOption("Footnotes", "Off");
 	mgr.setGlobalOption("Cross-references", "Off");
 
@@ -63,9 +64,16 @@
 						catch (Exception e) { e.printStackTrace(); }
 					}
 					else {
+						if ("raw".equals(format)) {
 		%>
-					<%= book.getRenderText() %>
+							<%= book.getRawEntry() %>
 		<%
+						}
+						else {
+		%>
+							<%= book.getRenderText() %>
+		<%
+						}
 					}
 				}
 			}

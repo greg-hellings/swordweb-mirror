@@ -254,12 +254,12 @@
 					
 			%>
 			<%
-					String[] heads = activeModule.getEntryAttribute("Heading", "Preverse", "0", true);
-					if (heads.length > 0) {
+					String[] heads = activeModule.getEntryAttribute("Heading", "Preverse", "", true);
+					for (int h = 0; h < heads.length; ++h) {
 			%>
 					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 				<h3>
-					<%= heads[0] %>
+					<%= heads[h] %>
 				 </h3></div></td></tr>
 			<%
 					}

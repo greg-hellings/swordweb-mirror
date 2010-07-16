@@ -220,7 +220,7 @@
 
 		<h2><t:t>Parallel Viewing: </t:t><%= activeKey %></h2>
 		<div id="introhelp">
-		<p><t:t>Presets: [<a href="parallelstudy.jsp?del=all&add=KJV&add=WLC&add=NASB&add=LXX">OT Scholar</a>]</t:t> <t:t>[<a href="parallelstudy.jsp?del=all&add=KJV&add=TR&add=NASB&add=WHAC">NT Scholar</a>]</t:t>
+		<p><t:t>Presets: [<a href="parallelstudy.jsp?del=all&add=KJV&add=WLC&add=NASB&add=LXX">OT Scholar</a>]</t:t> <t:t>[<a href="parallelstudy.jsp?del=all&add=KJV&add=TR&add=Treg&add=NASB">NT Scholar</a>]</t:t>
 		<p><t:t>Parallel viewing allows you to see two or more texts side by side.  For example, you could view two Bible versions of the same verse next to each other, or a verse from a specific translation and what a commentary has to say about that specific verse.</t:t></p>
 		</div>
 
@@ -321,7 +321,7 @@
 							<td style="<%= style %>" class="<%= modLang %>" 
 <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 <%
-						String[] heads = mod.getEntryAttribute("Heading", "Preverse", "0", true);
+						String[] heads = mod.getEntryAttribute("Heading", "Preverse", "", true);
 						for (int h = 0; h < heads.length; h++) {
 %>
 							<h3>

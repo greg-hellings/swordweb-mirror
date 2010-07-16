@@ -247,7 +247,8 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 						}
 						if (page != '') {
 							resultBody += "<dl>";
-							resultBody += "<dt><a href=\"http://community.crosswire.org/modules/papyri/?site=http://crosswire.org/study/pageImages/"+mod+"/&image="+page+".jpg\"><t:t>View Image of Page </t:t>"+page+"<t:t> in </t:t>"+mod+"</a></dt>";
+							viewURL = "http://community.crosswire.org/modules/papyri/?site=http://193.60.91.53/"+srcMod+"/&image="+page+".jpg";
+							resultBody += "<dt><a href=\"#\" onClick=\"window.open('"+viewURL+"','ViewImage','width=800,height=600');return false;\"><t:t>View Image of Page </t:t>"+page+"<t:t> in </t:t>"+srcMod+"</a></dt>";
 							resultBody += "</dl>";
 						}
 					}
