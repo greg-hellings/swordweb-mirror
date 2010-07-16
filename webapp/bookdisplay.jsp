@@ -38,8 +38,9 @@
 		forceOpen = true;
 	}
 	gbsEntry = (String)session.getAttribute("gbsEntry");
-	if (gbsEntry == null)
+	if (gbsEntry == null) {
 		gbsEntry = "/";
+	}
 
 	String action = (String)request.getParameter("action");
 	if ((action != null) && (action.equalsIgnoreCase("closeAll"))) {
@@ -78,8 +79,9 @@
 					}
 				}
 			}
-			if (nodes.length > 0)
+			if (nodes.length > 0) {
 				currentJumpNode = nodes[0];
+			}
 		}
 	}
 

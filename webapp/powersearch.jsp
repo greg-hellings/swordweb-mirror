@@ -2,8 +2,9 @@
 
 <%
 	String resetModule = request.getParameter("mod");
-	if (resetModule != null)
+	if (resetModule != null) {
 		session.setAttribute("ActiveModule", resetModule);
+	}
 	String activeModuleName = (String) session.getAttribute("ActiveModule");
 	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? defaultBible : activeModuleName);
 %>

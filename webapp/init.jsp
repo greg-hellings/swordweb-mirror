@@ -221,8 +221,9 @@
 	Vector parDispModules = (Vector)session.getAttribute("ParDispModules");
 
 	String prefStyle = (String)request.getParameter("setStyle");
-	if (prefStyle == null)
+	if (prefStyle == null) {
 		prefStyle = (String)session.getAttribute("PrefStyle");
+	}
 	else {	// set style cookie
 		Cookie c = new Cookie("PrefStyle", prefStyle);
 		c.setMaxAge(java.lang.Integer.MAX_VALUE);
@@ -231,8 +232,9 @@
 	}
 
 	String footnotes = (String)request.getParameter("Footnotes");
-	if (footnotes == null)
+	if (footnotes == null) {
 		footnotes = (String)session.getAttribute("Footnotes");
+	}
 	else {	// set style cookie
 		Cookie c = new Cookie("Footnotes", footnotes);
 		c.setMaxAge(java.lang.Integer.MAX_VALUE);
@@ -241,8 +243,9 @@
 	}
 
 	String xrefs = (String)request.getParameter("Cross-references");
-	if (xrefs == null)
+	if (xrefs == null) {
 		xrefs = (String)session.getAttribute("Cross-references");
+	}
 	else {	// set style cookie
 		Cookie c = new Cookie("Cross-references", xrefs);
 		c.setMaxAge(java.lang.Integer.MAX_VALUE);
@@ -251,8 +254,9 @@
 	}
 
 	String headings = (String)request.getParameter("Headings");
-	if (headings == null)
+	if (headings == null) {
 		headings = (String)session.getAttribute("Headings");
+	}
 	else {	// set style cookie
 		Cookie c = new Cookie("Headings", headings);
 		c.setMaxAge(java.lang.Integer.MAX_VALUE);
@@ -261,8 +265,9 @@
 	}
 
 	String javascript = (String)request.getParameter("Javascript");
-	if (javascript == null)
+	if (javascript == null) {
 		javascript = (String)session.getAttribute("Javascript");
+	}
 	else {	// set style cookie
 		Cookie c = new Cookie("Javascript", javascript);
 		c.setMaxAge(java.lang.Integer.MAX_VALUE);
@@ -344,8 +349,9 @@
 				while (end > 0) {
 					end = line.indexOf("+",start);
 					field = (end > 0) ? line.substring(start, end) : line.substring(start);
-					if (start > 3) 		// skip the first one cuz it's not a real module
+					if (start > 3) {		// skip the first one cuz it's not a real module
 						prefBibles.add(field);
+					}
 					start = end + 1;
 				}
 			}
@@ -357,8 +363,9 @@
 				while (end > 0) {
 					end = line.indexOf("+",start);
 					field = (end > 0) ? line.substring(start, end) : line.substring(start);
-					if (start > 3)  		// skip the first one cuz it's not a real module
+					if (start > 3) {		// skip the first one cuz it's not a real module
 						prefCommentaries.add(field);
+					}
 					start = end + 1;
 				}
 			}
@@ -370,23 +377,28 @@
 				while (end > 0) {
 					end = line.indexOf("+",start);
 					field = (end > 0) ? line.substring(start, end) : line.substring(start);
-					if (start > 3)  		// skip the first one cuz it's not a real module
+					if (start > 3) {		// skip the first one cuz it's not a real module
 						parDispModules.add(field);
+					}
 					start = end + 1;
 				}
 			}
 		}
 	}
 
-	if (prefBibles == null)
+	if (prefBibles == null) {
 		prefBibles = new Vector();
-	if (prefCommentaries == null)
+	}
+	if (prefCommentaries == null) {
 		prefCommentaries = new Vector();
-	if (parDispModules == null)
+	}
+	if (parDispModules == null) {
 		parDispModules = new Vector();
+	}
 
-	if ((prefStyle == null) || (styleNames.indexOf(prefStyle) < 0))
+	if ((prefStyle == null) || (styleNames.indexOf(prefStyle) < 0)) {
 		prefStyle = defaultStyle;
+	}
 
 	String appLang = request.getParameter("lang");
 	if (appLang == null) {

@@ -38,13 +38,15 @@
 	SWModule activeModule = mgr.getModuleByName((String)parDispModules.get(0));
 
 	String resetKey = request.getParameter("key");
-	if (resetKey != null)
+	if (resetKey != null) {
 		resetKey = new String(resetKey.getBytes("iso8859-1"), "UTF-8");
 		session.setAttribute("ActiveKey", resetKey);
+	}
 
 	String activeKey = (String) session.getAttribute("ActiveKey");
-	if (activeKey == null)
+	if (activeKey == null) {
 		activeKey = "jas 1:19"; // our fallback key
+	}
 
  	// be sure it's formatted nicely
 	if (activeModule != null) {
@@ -293,8 +295,9 @@
 			for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
 
 				String keyText = activeModule.getKeyText();
-				if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":"))))
+				if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":")))) {
 					break;
+				}
 
 				int curVerse = Integer.parseInt(keyText.substring(keyText.indexOf(":")+1));
 				mgr.setGlobalOption("Strong's Numbers",
@@ -359,10 +362,12 @@
 					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
 					String copyLine = mod.getConfigEntry("ShortCopyright");
 					String promoLine = mod.getConfigEntry("ShortPromo");
-					if (copyLine.equalsIgnoreCase("<swnull>"))
+					if (copyLine.equalsIgnoreCase("<swnull>")) {
 						copyLine = "";
-					if (promoLine.equalsIgnoreCase("<swnull>"))
+					}
+					if (promoLine.equalsIgnoreCase("<swnull>")) {
 						promoLine = "";
+					}
 					if (mod.getCategory().equals("Cults / Unorthodox / Questionable Material")) {
 						copyLine = "<t:t>WARNING: This text is considered unorthodox by most of Christendom.</t:t> " + copyLine;
 					}

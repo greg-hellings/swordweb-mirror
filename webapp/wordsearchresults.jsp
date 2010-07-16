@@ -30,22 +30,26 @@
 
 	String range = "";
 	String tmp = request.getParameter("range");
-	if (tmp != null)
+	if (tmp != null) {
 		range = tmp;
+	}
 
 	SearchType stype = (activeModule.hasSearchFramework()) ? SearchType.LUCENE : SearchType.MULTIWORD;
 	tmp = request.getParameter("stype");
 	if (tmp != null) {
-		if (tmp.equalsIgnoreCase("P"))
+		if (tmp.equalsIgnoreCase("P")) {
 			stype = SearchType.PHRASE;
-		if (tmp.equalsIgnoreCase("R"))
+		}
+		if (tmp.equalsIgnoreCase("R")) {
 			stype = SearchType.REGEX;
+		}
 	}
 
 	int soptions = 0;	// default to NOT ignore case
 	tmp = request.getParameter("icase");
-	if ((tmp != null) && (tmp.equals("1")))
+	if ((tmp != null) && (tmp.equals("1"))) {
 		soptions = 2;
+	}
 %>
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" type="string">
@@ -125,8 +129,9 @@ function onPageLoad() {
 				results = (SearchHit[]) session.getAttribute("SearchResults");
 			}
 
-			if ( results == null )
+			if ( results == null ) {
 				results = new SearchHit[0];
+			}
 		%>
 
 		<p class="textname">&raquo; <%= results.length %> result<%= (results.length == 1)?"s":""%> <t:t>in the text of </t:t><%= activeModule.getDescription() %></p>
@@ -159,8 +164,9 @@ function onPageLoad() {
 		<ul class="searchresultsnav">
 			<%
 				int navStart = (resultStart.intValue() / resultLimit.intValue()) - 5;
-				if (navStart < 0)
+				if (navStart < 0) {
 					navStart = 0;
+				}
 
 				int navEnd = navStart + 10;
 				if ( navEnd*resultLimit.intValue() > results.length ) {

@@ -4,21 +4,25 @@
 	session.setAttribute("lastModType", "Bible");
 	Vector toolsTreeOpen = (Vector)session.getAttribute("toolsTreeOpen");
 	String resetModule = request.getParameter("mod");
-	if (resetModule != null)
+	if (resetModule != null) {
 		session.setAttribute("ActiveModule", resetModule);
+	}
 	String activeModuleName = (String) session.getAttribute("ActiveModule");
 	SWModule activeModule = mgr.getModuleByName((activeModuleName == null) ? defaultBible : activeModuleName);
 	String promoLine = activeModule.getConfigEntry("ShortPromo");
-	if (promoLine.equalsIgnoreCase("<swnull>"))
+	if (promoLine.equalsIgnoreCase("<swnull>")) {
 		promoLine = "";
+	}
 
 	String resetKey = request.getParameter("key");
-	if (resetKey != null)
+	if (resetKey != null) {
 		resetKey = new String(resetKey.getBytes("iso8859-1"), "UTF-8");
 		session.setAttribute("ActiveKey", resetKey);
+	}
 	String activeKey = (String) session.getAttribute("ActiveKey");
-	if (activeKey == null)
+	if (activeKey == null) {
 		activeKey = "jas 1:19";
+	}
 
 	if (toolsTreeOpen == null) {
 		toolsTreeOpen = new Vector();
@@ -45,8 +49,9 @@
 			for (int j = 0; j < nodes.length; j++) {
 				String node = nodes[j];
 				if (node != null) {
-					if (i>0)
+					if (i > 0) {
 						toolsTreeOpen.remove(node);
+					}
 					else {
 						if (!toolsTreeOpen.contains(node)) {
 							toolsTreeOpen.add(node);
@@ -245,8 +250,9 @@
 						first = false;
 					}
 					int curVerse = Integer.parseInt(keyText.substring(keyText.indexOf(":")+1));
-					if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":"))))
+					if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":")))) {
 						break;
+					}
 					mgr.setGlobalOption("Strong's Numbers",
 							((strongs) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
 					mgr.setGlobalOption("Morphological Tags",
@@ -358,8 +364,9 @@
 			<%
 			}
 			String copyLine = activeModule.getConfigEntry("ShortCopyright");
-			if (copyLine.equalsIgnoreCase("<swnull>"))
+			if (copyLine.equalsIgnoreCase("<swnull>")) {
 				copyLine = "";
+			}
 			if (activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material")) {
 				copyLine = "<t:t>WARNING: This text is considered unorthodox by most of Christendom.</t:t> " + copyLine;
 			}

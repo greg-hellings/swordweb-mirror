@@ -4,8 +4,9 @@
 <%@ page import="java.util.Date" %>
 <%
 	String resetModule = request.getParameter("mod");
-	if (resetModule != null)
+	if (resetModule != null) {
 		session.setAttribute("ActiveDevo", resetModule);
+	}
 	String activeDevoName = (String) session.getAttribute("ActiveDevo");
 	SWModule activeDevo = mgr.getModuleByName((activeDevoName == null) ? "DBD" : activeDevoName);
 

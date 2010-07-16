@@ -8,8 +8,9 @@
 
 	String action = (String)request.getParameter("action");
 	String show = (String)request.getParameter("show");
-	if (show != null)
+	if (show != null) {
 		session.setAttribute("catShow", show);
+	}
 	show = (String)session.getAttribute("catShow");
 	if ((action != null) && (action.equalsIgnoreCase("closeAll"))) {
 		catTreeOpen = null;
@@ -26,8 +27,9 @@
 			for (int j = 0; j < nodes.length; j++) {
 				String node = nodes[j];
 				if (node != null) {
-					if (i>0)
+					if (i>0) {
 						catTreeOpen.remove(node);
+					}
 					else {
 						if (!catTreeOpen.contains(node)) {
 							catTreeOpen.add(node);
@@ -125,8 +127,9 @@
 				}
 
 				String promoLine = module.getConfigEntry("ShortPromo");
-				if (promoLine.equalsIgnoreCase("<swnull>"))
+				if (promoLine.equalsIgnoreCase("<swnull>")) {
 					promoLine = "";
+				}
 %>
 	<h2><a href="<%= targetURL %>"><%= module.getDescription() %></a></h2>
 	<p><%= about %></p>
