@@ -1,3 +1,7 @@
+omniORB is the preferred CORBA impl these days, but ORBit probably still works fine.
+omniORB communicates that it's sending UTF-8 to Java, whereas ORBit did not.
+
+
 Configuring ORBit
 -----------------
 
