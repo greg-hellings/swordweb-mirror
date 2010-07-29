@@ -27,7 +27,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= lang %>" lang="<%= lang %>">
 
 <head profile="http://www.w3.org/2000/08/w3c-synd/#">
-<meta name="keywords" content="<%= metaContent %>">
+<meta name="keywords" content="<%= metaContent %>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><t:t>OSIS Web: </t:t><tiles:getAsString name="title"/></title>
 
