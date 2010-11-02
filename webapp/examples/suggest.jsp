@@ -20,7 +20,7 @@
                                 book.previous();
                         }
                         for (int i = 0; ((i < 20) && (book.error() == 0)); i++) {
-                                key = new String(book.getKeyText().getBytes("iso8859-1"), "UTF-8");
+                                key = book.getKeyText();
                                 retVal += (currentKey.equals(key)) ? "<li style=\"display: block; background: #C3AB7F;\">" : "<li style=\"display: block;\">";
                                 retVal += "<a href=\"#\" onclick=\"suggest('"+mod+"', encodeURIComponent('"+key+"')); return false;\">"+key+"</a></li>\n";
                                 
@@ -36,8 +36,8 @@
                         if (book != null) {
 System.err.println("setting: ["+key+"]");
 				book.setKeyText(key);
-                                String body    = new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8");
-                                String keyText = new String(book.getKeyText().getBytes("iso8859-1"), "UTF-8");
+                                String body    = book.getRenderText();
+                                String keyText = book.getKeyText();
 System.err.println("getting: ["+keyText+"]");
                                 out.print("<h2>"+keyText+"</h2>"+body);
                         }

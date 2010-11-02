@@ -35,7 +35,7 @@
 		book.setKeyText(results[i].key);
 %>
 
-<tr><td><%= book.getKeyText() %></td><td><%= new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8") %></td></tr>
+<tr><td><%= book.getKeyText() %></td><td><%= book.getRenderText() %></td></tr>
 
 <%
 	}

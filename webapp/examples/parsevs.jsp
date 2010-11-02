@@ -67,11 +67,6 @@ static Hashtable ltoks = new Hashtable();
 int runCommand(String command[], Writer result, boolean html, boolean canonize) {
 	int retVal = -1;
 	try {
-//result.write("running command:");
-//for (int i = 0; i < command.length; i++)
-//	result.write("["+command[i]+"]");
-//result.flush();
-//return 0;
 		java.lang.Process p = Runtime.getRuntime().exec(command);
 
 		InputStream is = p.getInputStream();
@@ -80,7 +75,6 @@ int runCommand(String command[], Writer result, boolean html, boolean canonize) 
 
 		String line;
 		while ((line = input.readLine()) != null) {
-//			line = new String(line.getBytes("UTF-8"), "iso8859-1");
             		if (canonize) {
 				line = org.crosswire.utils.HTTPUtils.canonize(line);
 			}

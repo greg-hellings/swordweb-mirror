@@ -37,7 +37,7 @@
         <description>Devotion of The Day</description>
         <link> http://crosswire.org/study/dailydevotion.jsp?mod=losung_en_99 </link>
         <content:encoded>
-        <![CDATA[<img src="http://crosswire.org/images/crosssquare.png"/> <%= new String(book.getRenderText().getBytes("iso-8859-1"), "UTF-8") %> ]]>
+        <![CDATA[<img src="http://crosswire.org/images/crosssquare.png"/> <%= book.getRenderText() %> ]]>
         </content:encoded>	
         <dc:rights>Powered by CrossWire.org</dc:rights>
         <dc:date> <%= new Date() %> </dc:date>

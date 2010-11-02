@@ -21,7 +21,7 @@
 	book.setKeyText("jn3:16");
 %>
 <p>The <%= book.getDescription() %>'s entry for <%= book.getKeyText() %> is:</p>
-<p><%= new String(book.getRenderText().getBytes("iso8859-1"), "UTF-8") %></p>
+<p><%= book.getRenderText() %></p>
 
 
 </body>
