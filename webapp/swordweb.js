@@ -240,7 +240,7 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 						resultBody += "<dl>";
 						resultBody += "<dt><a href=\"wordsearchresults.jsp?mod="+srcMod+"&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for </t:t>"+key+"<t:t> in </t:t>"+srcMod+"</a></dt>";
 						resultBody += "</dl>";
-						if (skeyPre == 'G') {
+						if (skeyPre == 'G' && srcMod != 'LXX') {
 							resultBody += "<dl>";
 							resultBody += "<dt><a href=\"wordsearchresults.jsp?mod=LXX&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for </t:t>"+key+"<t:t> in LXX</t:t></a></dt>";
 							resultBody += "</dl>";
