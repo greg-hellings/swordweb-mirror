@@ -40,12 +40,13 @@
 	String resetKey = request.getParameter("key");
 	if (resetKey != null) {
 		resetKey = new String(resetKey.getBytes("iso8859-1"), "UTF-8");
-		session.setAttribute("ActiveKey", resetKey);
+		activeModule.setKeyText(resetKey);
+		session.setAttribute("ActiveKey", activeModule.getKeyText());
 	}
-
 	String activeKey = (String) session.getAttribute("ActiveKey");
 	if (activeKey == null) {
-		activeKey = "jas 1:19"; // our fallback key
+		activeKey = "jas 1:19";
+		session.setAttribute("ActiveKey", activeKey);
 	}
 
  	// be sure it's formatted nicely

@@ -5,8 +5,10 @@
 <a href="http://sbl-site.org/" title="Society of Biblical Literature"><img src="./images/logo_fbl.gif" width="86" height="64" alt="Society of Biblical Literature" /></a>
 </p>
 
-<p>Copyright &copy; 2003-2008  <a href="http://www.crosswire.org/">CrossWire Bible Society</a></p>
+<p>Copyright &copy; 2003-2011  <a href="http://www.crosswire.org/">CrossWire Bible Society</a></p>
+<!--
 <p><a href="http://validator.w3.org/check/referer" title="valid xhtml">xhtml</a></p>
+-->
 <div id="pageBorderBottom"><br /></div>
 </div>
 </div>

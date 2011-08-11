@@ -32,6 +32,7 @@
 	<title><t:t>OSIS Web: </t:t><tiles:getAsString name="title"/></title>
 
 
+<link rel="stylesheet" type="text/css" media="all" href="common.css"  />
 <link rel="stylesheet" type="text/css" media="all" title="<%= styleName %>" href="<%= styleFile %>"  />
 
 <% for (int i = 0; i < styleNames.size(); i++) { %>
