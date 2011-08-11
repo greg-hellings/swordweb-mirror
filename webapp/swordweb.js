@@ -132,15 +132,24 @@ function pe(extratext) {
 	}
 }
 
-function pd(extratext) {
+function pd(extratext, mod, dm, srcMod) {
+	if (!dm) dm = 'dm';
+	if (!mod) mod = 'Robinson';
+	if (!srcMod) srcMod = '';
 	b=document.getElementById("onlywlayer");
 	if (b!=null) {
-		c=document.getElementById("dm");
+		c=document.getElementById(dm);
 		if (c!=null) {
-			xmlhttp.open("GET", "fetchdata.jsp?mod=Robinson&key="+encodeURIComponent(extratext),true);
+			xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+encodeURIComponent(extratext)+"&srcMod="+srcMod,true);
 			xmlhttp.onreadystatechange=function() {
 				if (xmlhttp.readyState==4) {
-					c.innerHTML="<div class=\"verse\"><br/>"+extratext+"<br/>"+xmlhttp.responseText+"</div>";
+					var newContent = '<div class="verse">';
+					if (mod!='TC') {
+						newContent += '<br/>'+extratext+'<br/>';
+					}
+					newContent += xmlhttp.responseText;
+					newContent += '</div>'
+					c.innerHTML=newContent;
 				}
 			}
 			xmlhttp.send(null);
@@ -236,6 +245,7 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 					if ((extratext != null) && (extratext.length > 0)) {
 						resultBody += "<a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a>";
 					}
+					resultBody += "</div>";
 					if ((fnnum == null) || (fnnum == '')) {
 						resultBody += "<dl>";
 						resultBody += "<dt><a href=\"wordsearchresults.jsp?mod="+srcMod+"&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for </t:t>"+key+"<t:t> in </t:t>"+srcMod+"</a></dt>";
@@ -247,12 +257,19 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 						}
 						if (page != '') {
 							resultBody += "<dl>";
-							viewURL = "http://community.crosswire.org/modules/papyri/?site=http://193.60.91.53/"+srcMod+"/&image="+page+".jpg";
+							viewURL = "http://community.crosswire.org/modules/papyri/?site=http://193.60.91.53/"+srcMod+"/&image="+page+".jpg";
 							resultBody += "<dt><a href=\"#\" onClick=\"window.open('"+viewURL+"','ViewImage','width=800,height=600');return false;\"><t:t>View Image of Page </t:t>"+page+"<t:t> in </t:t>"+srcMod+"</a></dt>";
 							resultBody += "</dl>";
 						}
+						if (skeyPre == 'G' && srcMod != 'LXX') {
+							resultBody += "<dl>";
+							resultBody += "<div id='tc'>";
+							resultBody += "<dt><a href=\"#\" onclick=\"pd('"+wordnum.substring(0, wordnum.indexOf('_'))+"','TC','tc', '"+srcMod+"');return false;\">Show Textual Evidence</a></dt>";
+							resultBody += "</div>";
+							resultBody += "</dl>";
+						}
 					}
-					resultBody += "</div></div>";
+					resultBody += "</div>";
 					b.innerHTML=windowBar+resultBody;
 					showhide("onlywlayer", "visible");
 				}
