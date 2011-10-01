@@ -64,7 +64,7 @@
 					catch (Exception e) { activeKey = key; } // not an error, just hopefully have entire versekey already
 					String vk[] = book.parseKeyList(activeKey);
 					activeKey=vk[0];
-					StringBuffer vmrResponse = HTTPUtils.postURL("http://vmr-dev.uni-muenster.de/community/vmr/api/metadata/liste/search/", "biblicalcontent="+activeKey+"&detail=page&limit=20");
+					StringBuffer vmrResponse = HTTPUtils.postURL("http://vmr-dev.uni-muenster.de/community/vmr/api/metadata/liste/search/", "biblicalcontent="+activeKey+"&detail=page&limit=40");
 					XMLBlock manuscripts = new XMLBlock(vmrResponse.toString());
 %>
 					<p><b>Some Manuscript Witnesses for <%=vk[0]%></b></p>

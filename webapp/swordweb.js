@@ -196,6 +196,7 @@ function colorLemmas(wordnum, key, morph, augment) {
 
 function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 
+	if (key.substring(0,1) == '@') mod = 'stronghebkey';
 	windowBar=
             '<div align="right">'+
             '<a href="#" onclick="p(\''+mod+'\', \''+key+'\', \''+wordnum+'\', \''+extratext+'\', \''+fnnum+'\', \''+srcMod+'\');return false;">'+
@@ -243,7 +244,12 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 				if (mod != "betacode") {
 					resultBody="<div class=\"verse\">"+xmlhttp.responseText + "<br/>"+"<div id=\"dm\">";
 					if ((extratext != null) && (extratext.length > 0)) {
-						resultBody += "<a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a>";
+						if (mod == 'strongshebkey') {
+							resultBody += "<a href=\"#\" onclick=\"pd('"+extratext+"', 'whmmorph');return false;\">"+extratext+"</a>";
+						}
+						else {
+							resultBody += "<a href=\"#\" onclick=\"pd('"+extratext+"');return false;\">"+extratext+"</a>";
+						}
 					}
 					resultBody += "</div>";
 					if ((fnnum == null) || (fnnum == '')) {
