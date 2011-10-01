@@ -196,7 +196,7 @@ function colorLemmas(wordnum, key, morph, augment) {
 
 function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 
-	if (key.substring(0,1) == '@') mod = 'stronghebkey';
+	if (key.substring(0,1) == '@') mod = 'strongshebkey';
 	windowBar=
             '<div align="right">'+
             '<a href="#" onclick="p(\''+mod+'\', \''+key+'\', \''+wordnum+'\', \''+extratext+'\', \''+fnnum+'\', \''+srcMod+'\');return false;">'+
