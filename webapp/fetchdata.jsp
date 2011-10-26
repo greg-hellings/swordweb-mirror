@@ -64,7 +64,7 @@
 					catch (Exception e) { activeKey = key; } // not an error, just hopefully have entire versekey already
 					String vk[] = book.parseKeyList(activeKey);
 					activeKey=vk[0];
-					StringBuffer vmrResponse = HTTPUtils.postURL("http://vmr-dev.uni-muenster.de/community/vmr/api/metadata/liste/search/", "biblicalcontent="+activeKey+"&detail=page&limit=40");
+					StringBuffer vmrResponse = HTTPUtils.postURL("http://vmr-dev.uni-muenster.de/community/vmr/api/metadata/liste/search/", "biblicalContent="+activeKey+"&detail=page&limit=40");
 					XMLBlock manuscripts = new XMLBlock(vmrResponse.toString());
 %>
 					<p><b>Some Manuscript Witnesses for <%=vk[0]%></b></p>
@@ -173,46 +173,63 @@
 					book = mgr.getModuleByName(modName);
 				}
 				if ((key != null) && (book != null)) {
-					book.setKeyText(key);
-					if (("StrongsGreek".equals(modName)) && ("3588".equals(key))) {
-						out.print("with Greek Article");
-					}
-					else if (fn != null) {
-						try {
-							String[] type = book.getEntryAttribute("Footnote", fn, "type", false);
-							if ((type.length > 0) && type[0].equalsIgnoreCase("crossReference")) {
-								String[] attr = book.getEntryAttribute("Footnote", fn, "refList", false);
-								if (attr.length > 0) {
-									String[] keys = book.parseKeyList(attr[0]);
-									if (keys.length > 0) {
-										out.print("<dl>");
-										for (int j = 0; j < keys.length; j++) {
-											book.setKeyText(keys[j]);
-											out.print("<dt><a href=\"passagestudy.jsp?key=" + URLEncoder.encode(book.getKeyText())+"#cv\">" + book.getKeyText() + "</a></dt><dd>" + book.getRenderText()+"</dd>\n");
+					String keyList[] = SwordOrb.BIBLES.equals(book.getCategory())?book.parseKeyList(key) : new String[] { key };
+					for (String k1 : keyList) {
+						book.setKeyText(k1);
+						if (("StrongsGreek".equals(modName)) && ("3588".equals(k1))) {
+							out.print("with Greek Article");
+						}
+						else if (fn != null) {
+							try {
+								String[] type = book.getEntryAttribute("Footnote", fn, "type", false);
+								if ((type.length > 0) && type[0].equalsIgnoreCase("crossReference")) {
+									String[] attr = book.getEntryAttribute("Footnote", fn, "refList", false);
+									if (attr.length > 0) {
+										String[] keys = book.parseKeyList(attr[0]);
+										if (keys.length > 0) {
+											out.print("<dl>");
+											for (int j = 0; j < keys.length; j++) {
+												book.setKeyText(keys[j]);
+												out.print("<dt><a href=\"passagestudy.jsp?key=" + URLEncoder.encode(book.getKeyText())+"#cv\">" + book.getKeyText() + "</a></dt><dd>" + book.getRenderText()+"</dd>\n");
+											}
+											out.print("</dl>");
 										}
-										out.print("</dl>");
+									}
+								}
+								else {
+									String[] attr = book.getEntryAttribute("Footnote", fn, "body", true);
+									if (attr.length > 0) {
+										out.print(attr[0]);
 									}
 								}
 							}
-							else {
-								String[] attr = book.getEntryAttribute("Footnote", fn, "body", true);
-								if (attr.length > 0) {
-									out.print(attr[0]);
-								}
-							}
-						}
-						catch (Exception e) { e.printStackTrace(); }
-					}
-					else {
-						if ("raw".equals(format)) {
-%>
-							<%= book.getRawEntry() %>
-<%
+							catch (Exception e) { e.printStackTrace(); }
 						}
 						else {
+							if ("raw".equals(format) || "tei".equals(format)) {
 %>
-							<%= book.getRenderText() %>
+<%= book.getRawEntry() %>
 <%
+							}
+							else {
+
+
+								// ----- header for trier tinymce editor ------
+								if ("basetext".equals(format)) {
+									if ("1".equals(book.getKeyChildren()[3])) {
+%>
+<span class="chapter_number"> <%= book.getKeyChildren()[2]%></span>
+<%
+									}
+%>
+<span class="verse_number"> <%= book.getKeyChildren()[3]%></span>
+<%
+								}
+								// --------------------------------------------
+%>
+<%= book.getRenderText() %>
+<%
+							}
 						}
 					}
 				}
