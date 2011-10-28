@@ -174,6 +174,8 @@
 				}
 				if ((key != null) && (book != null)) {
 					String keyList[] = SwordOrb.BIBLES.equals(book.getCategory())?book.parseKeyList(key) : new String[] { key };
+					boolean startBookTag = false;
+					boolean startChapterTag = false;
 					for (String k1 : keyList) {
 						book.setKeyText(k1);
 						if (("StrongsGreek".equals(modName)) && ("3588".equals(k1))) {
@@ -207,9 +209,50 @@
 						}
 						else {
 							if ("raw".equals(format) || "tei".equals(format)) {
+
+								// ----- header for trier tinymce editor ------
+								if ("tei".equals(format)) {
+									if ("1".equals(book.getKeyChildren()[3])) {
+										if ("1".equals(book.getKeyChildren()[2])) {
+%>
+<div type="book" n="<%= book.getKeyChildren()[1] %>" xml:id="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>-base">
+<%
+											startBookTag = true;
+										}
+%>
+<div type="chapter" n="<%= book.getKeyChildren()[2] %>" xml:id="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>-base">
+<%
+											startChapterTag = true;
+									}
+%>
+<ab n="<%= book.getKeyChildren()[3] %>" xml:id="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>V<%= book.getKeyChildren()[3] %>-base">
+<%
+								}
+								// --------------------------------------------
 %>
 <%= book.getRawEntry() %>
 <%
+								// ----- header for trier tinymce editor ------
+								if ("tei".equals(format)) {
+%>
+</ab>
+<%
+									// if last verse of chapter
+									if (book.getKeyChildren()[5].equals(book.getKeyChildren()[3])) {
+%>
+</div>
+<%
+										startChapterTag = false;
+										// if last chapter of book
+										if (book.getKeyChildren()[4].equals(book.getKeyChildren()[2]) && startBookTag) {
+%>
+</div>
+<%
+											startBookTag = false;
+										}
+									}
+								}
+								// --------------------------------------------
 							}
 							else {
 
