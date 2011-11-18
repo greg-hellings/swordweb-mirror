@@ -77,7 +77,7 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 
 	<div id="tabs-1">
 		<div>
-			Quick Lookup: <input name="verseRef" style="width:100%" id="verseRef" onKeyPress="return lookup(this.value);"/><span id="currentVerse" style="float:right;display:inline-block;"></span>
+			Quick Lookup: <input name="verseRef" style="width:100%" id="verseRef" onKeyPress="return keyPress('verseRef', event);"/><span id="currentVerse" style="float:right;display:inline-block;"></span>
 			<div style="clear:both;"></div>
 		</div>
 		<div id="chapterContent">
@@ -86,7 +86,7 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 
 	<div id="tabs-2">
 		<div>
-			Search Text: <input name="searchText" style="width:100%" id="searchText" onKeyPress="return search(this.value);"/><span id="searchResultsCount" style="float:right;display:inline-block;"></span>
+			Search Text: <input name="searchText" style="width:100%" id="searchText" onKeyPress="return keyPress('searchText', event);"/><span id="searchResultsCount" style="float:right;display:inline-block;"></span>
 			<div style="clear:both;"></div>
 		</div>
 		<div id="searchContent">
@@ -98,6 +98,21 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 <script>
 
 var swordModule = "WHNU";
+
+function keyPress(field, event) {
+	var i = document.getElementById(field);
+	var keycode;
+	if (window.event) keycode = window.event.keyCode;
+	else if (event) keycode = event.which;
+	else return true;
+
+	if (keycode == 13) {
+		if (field == 'verseRef') lookup(i.value);
+	   	else search(i.value);
+		return false;
+	}
+	else return true;
+}
 
 function search_callback(o) {
 	var results = o.text.split('%%%');

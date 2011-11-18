@@ -64,7 +64,7 @@
 					catch (Exception e) { activeKey = key; } // not an error, just hopefully have entire versekey already
 					String vk[] = book.parseKeyList(activeKey);
 					activeKey=vk[0];
-					StringBuffer vmrResponse = HTTPUtils.postURL("http://vmr-dev.uni-muenster.de/community/vmr/api/metadata/liste/search/", "biblicalContent="+activeKey+"&detail=page&limit=40");
+					StringBuffer vmrResponse = HTTPUtils.postURL("http://ntvmr.uni-muenster.de/community/vmr/api/metadata/liste/search/", "biblicalContent="+activeKey+"&detail=page&limit=40");
 					XMLBlock manuscripts = new XMLBlock(vmrResponse.toString());
 %>
 					<p><b>Some Manuscript Witnesses for <%=vk[0]%></b></p>
@@ -97,7 +97,7 @@
 									transURL = block.getAttribute("uri");
 								}
 							}
-							String mssURL = "http://intf.uni-muenster.de/vmr/NTVMR/ListeHandschriften.php?ObjID=" + m.getAttribute("docid");
+							String mssURL = "http://ntvmr.uni-muenster.de/manuscript-workspace?docid=" + m.getAttribute("docid"); //+"&pageid="+p.getAttribute("pageid");
 %>
 							<tr>
 								<td><a href="#" onclick="window.open('<%=mssURL%>','ViewManuscript','width=800,height=600,resizable=1,scrollbars=1');return false;">
@@ -121,22 +121,14 @@
 <%
 							}
 %>
-								<td>
+								</td><td>
 <%
 							if (imageURL != null) {
 								String siteURL = imageURL.substring(0,imageURL.lastIndexOf("/")+1);
 								String pageImage = imageURL.substring(imageURL.lastIndexOf("/")+1);
-								imageURL = "http://community.crosswire.org/modules/papyri/?site="+siteURL+"&image="+pageImage;
+								imageURL = "http://ntvmr.uni-muenster.de/community/modules/papyri/?site="+siteURL+"&amp;image="+pageImage;
 %>
-<!--
 									<a href="#" onclick="window.open('<%=imageURL%>','ViewImage','width=800,height=600');return false;">
--->
-									<form name="form<%=formCount%>" target="_blank" action="http://intf.uni-muenster.de/vmr/NTVMR/viewer/viewerWolkenkratzer01.php" method="post">
-										<input name="msNr" value="<%=m.getAttribute("docid")%>" type="hidden"/>
-										<input name="folio" value="<%=m.getAttribute("folio")%>" type="hidden"/>
-										<input name="load_ms" value="go" type="hidden"/>
-										<input name="load_folio" value="go" type="hidden"/>
-										<a href="#" onclick="javascript:document.form<%=formCount%>.submit();">
 <%
 							}
 							if (thumbURL != null) {
@@ -147,10 +139,6 @@
 							if (imageURL != null) {
 %>
 										</a>
-									</form>
-<!--
-									</a>
--->
 <%
 							}
 %>
