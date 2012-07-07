@@ -40,7 +40,7 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	for (int i = 0; i < modInfo.length; i++) {
 		if (SwordOrb.BIBLES.equals(modInfo[i].category)) {
 			SWModule book = mgr.getModuleByName(modInfo[i].name);
-%><EnumValue value="<%= modInfo[i].name %>" display_value="[<%= modInfo[i].name %>]"/>
+%><EnumValue value="<%= modInfo[i].name %>" display_value="<%= modInfo[i].name %>"/>
 <%
 		}
 	}
@@ -135,7 +135,11 @@ function lookup_callback(o) {
 	content.innerHTML = results[1];
 
 	var new_position = $('#cv').offset();
-	window.scrollTo(new_position.left,new_position.top);
+	if (new_position) {
+		window.scrollTo(new_position.left,new_position.top);
+	}
+	if (gadgets.util.hasFeature('pubsub-2')) gadgets.Hub.publish("interedition.biblicalcontent.selected", results[0]);
+
 }
 
 function lookup(verse) {
@@ -192,7 +196,7 @@ function positionFromURLParams() {
 }
 
 function page_select_callback(topic, data, subscriberData) {
-	if (data.bibcont != null) {
+	if (data.bibcont != null && data.bibcont.length > 0) {
 		lookup(data.bibcont);
 	}
 }
@@ -200,13 +204,15 @@ function page_select_callback(topic, data, subscriberData) {
 function loaded() {
 	var prefs = new gadgets.Prefs();
 	swordModule = prefs.getString('swordModule');
-	subId = gadgets.Hub.subscribe("interedition.page.selected", page_select_callback);
 	gadgets.window.adjustHeight(500);
 	positionFromURLParams();
 }
 
 if (gadgets.util.hasFeature('pubsub-2')) {
-	gadgets.HubSettings.onConnect = function(hum, suc, err) { loaded(); };
+	gadgets.HubSettings.onConnect = function(hum, suc, err) {
+		subId = gadgets.Hub.subscribe("interedition.page.selected", page_select_callback);
+		loaded();
+	};
 }
 else gadgets.util.registerOnLoadHandler(loaded);
 
