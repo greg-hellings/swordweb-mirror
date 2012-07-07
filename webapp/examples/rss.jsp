@@ -7,9 +7,10 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%
+	final String modName = "losung_de_2009";
 	response.setContentType("text/xml");
 	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
-	SWModule book = mgr.getModuleByName("losung_en_99");
+	SWModule book = mgr.getModuleByName(modName);
 	SimpleDateFormat formatter = new SimpleDateFormat("MM.dd");
 	SimpleDateFormat formatNice = new SimpleDateFormat("EEEE, MMM dd");
 	book.setKeyText(formatter.format(new Date()));
@@ -22,7 +23,7 @@
 	xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
     <title>CrossWire's Daily Devotion</title>
-    <description> Daily devotional from Losung's Word for the Day. </description>
+    <description> Daily devotional from <%=book.getDescription()%>. </description>
     <link> http://crosswire.org </link>
     <dc:date> <%= new Date() %> </dc:date>
     <dc:language>en-us</dc:language>
@@ -35,9 +36,14 @@
     <item>
         <title>Today's Devotion (<%= formatNice.format(new Date()) %>)</title>
         <description>Devotion of The Day</description>
-        <link> http://crosswire.org/study/dailydevotion.jsp?mod=losung_en_99 </link>
+        <link> http://crosswire.org/study/dailydevotion.jsp?mod=<%=modName%></link>
         <content:encoded>
-        <![CDATA[<img src="http://crosswire.org/images/crosssquare.png"/> <%= book.getRenderText() %> ]]>
+<![CDATA[ 
+
+<img src="http://crosswire.org/images/crosssquare.png"/>
+<%= book.getRenderText() %>
+
+]]>
         </content:encoded>	
         <dc:rights>Powered by CrossWire.org</dc:rights>
         <dc:date> <%= new Date() %> </dc:date>
