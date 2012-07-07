@@ -97,10 +97,10 @@
 									transURL = block.getAttribute("uri");
 								}
 							}
-							String mssURL = "http://ntvmr.uni-muenster.de/manuscript-workspace?docid=" + m.getAttribute("docid"); //+"&pageid="+p.getAttribute("pageid");
+							String mssURL = "http://ntvmr.uni-muenster.de/manuscript-workspace?docid=" + m.getAttribute("docid")+"&pageid="+p.getAttribute("pageid");
 %>
 							<tr>
-								<td><a href="#" onclick="window.open('<%=mssURL%>','ViewManuscript','width=800,height=600,resizable=1,scrollbars=1');return false;">
+								<td><a href="<%=mssURL%>" target="NTVMR">
 									<%=m.getAttribute("ganum")%>
 								</a></td>
 								<td><%=m.getValue("originyeardescription")%></td>
@@ -124,11 +124,8 @@
 								</td><td>
 <%
 							if (imageURL != null) {
-								String siteURL = imageURL.substring(0,imageURL.lastIndexOf("/")+1);
-								String pageImage = imageURL.substring(imageURL.lastIndexOf("/")+1);
-								imageURL = "http://ntvmr.uni-muenster.de/community/modules/papyri/?site="+siteURL+"&amp;image="+pageImage;
 %>
-									<a href="#" onclick="window.open('<%=imageURL%>','ViewImage','width=800,height=600');return false;">
+									<a href="<%=mssURL%>" target="NTVMR">
 <%
 							}
 							if (thumbURL != null) {
