@@ -140,6 +140,7 @@ function pd(extratext, mod, dm, srcMod) {
 	if (b!=null) {
 		c=document.getElementById(dm);
 		if (c!=null) {
+			c.innerHTML = '<center><image src="images/loading.gif"/></center><br/><center><h1>Loading.  Please wait...</h1></center>';
 			xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+encodeURIComponent(extratext)+"&srcMod="+srcMod,true);
 			xmlhttp.onreadystatechange=function() {
 				if (xmlhttp.readyState==4) {

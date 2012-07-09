@@ -75,10 +75,8 @@
 					</thead>
 					<tbody class="scrollContent">
 <%
-					int formCount = 0;
 					for (XMLBlock m : manuscripts.getBlocks("manuscript")) {
 						for (XMLBlock p : m.getBlock("pages").getBlocks("page")) {
-							++formCount;
 							String thumbURL = null;
 							String imageURL = null;
 							String transURL = null;
