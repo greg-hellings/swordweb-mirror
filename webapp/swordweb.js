@@ -255,12 +255,23 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 					resultBody += "</div>";
 					if ((fnnum == null) || (fnnum == '')) {
 						resultBody += "<dl>";
-						resultBody += "<dt><a href=\"wordsearchresults.jsp?mod="+srcMod+"&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for </t:t>"+key+"<t:t> in </t:t>"+srcMod+"</a></dt>";
+						resultBody += "<dt><a href=\"wordsearchresults.jsp?mod="+srcMod+"&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for lemma </t:t>"+skeyPre+key+"<t:t> (any morphology) in </t:t>"+srcMod+"</a></dt>";
 						resultBody += "</dl>";
+						resultBody += "<dl>";
+						if (extratext && extratext.length > 0) {
+							morphkey = key+'@'+extratext.replace(/-/g, '\\-');
+							resultBody += "<dt><a href=\"wordsearchresults.jsp?mod="+srcMod+"&searchTerm=morph:"+skeyPre+encodeURIComponent(morphkey)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for lemma </t:t>"+skeyPre+morphkey+"<t:t> (exact same morphology) in </t:t>"+srcMod+"</a></dt>";
+							resultBody += "</dl>";
+						}
 						if (skeyPre == 'G' && srcMod != 'LXX') {
 							resultBody += "<dl>";
-							resultBody += "<dt><a href=\"wordsearchresults.jsp?mod=LXX&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for </t:t>"+key+"<t:t> in LXX</t:t></a></dt>";
+							resultBody += "<dt><a href=\"wordsearchresults.jsp?mod=LXX&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for lemma </t:t>"+skeyPre+key+"<t:t> (any morphology) in LXX</t:t></a></dt>";
 							resultBody += "</dl>";
+							if (extratext && extratext.length > 0) {
+								morphkey = key+'@'+extratext.replace(/-/g, '\\-');
+								resultBody += "<dt><a href=\"wordsearchresults.jsp?mod=LXX&searchTerm=morph:"+skeyPre+encodeURIComponent(morphkey)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for lemma </t:t>"+skeyPre+morphkey+"<t:t> (exact same morphology) in LXX</t:t></a></dt>";
+								resultBody += "</dl>";
+							}
 						}
 						if (page != '') {
 							resultBody += "<dl>";
