@@ -101,7 +101,7 @@
 								<td><a href="<%=mssURL%>" target="NTVMR">
 									<%=m.getAttribute("ganum")%>
 								</a></td>
-								<td><%=m.getValue("originyeardescription")%></td>
+								<td><%=m.getValue("originYear")%></td>
 								<td><%=p.getAttribute("folio")%></td>
 								<td>
 <%
