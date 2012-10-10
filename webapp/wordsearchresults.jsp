@@ -28,13 +28,17 @@
 	}
 	String activeSearchTerm = (String) session.getAttribute("ActiveSearchTerm");
 
-	String range = "";
 	String tmp = request.getParameter("range");
 	if (tmp != null) {
-		range = tmp;
+		tmp = new String(tmp.getBytes("iso8859-1"), "UTF-8");
+		session.setAttribute("ActiveRange", tmp);
+	}
+	String range = (String) session.getAttribute("ActiveRange");
+	if (range == null) {
+		range = "";
 	}
 
-	SearchType stype = (activeModule.hasSearchFramework()) ? SearchType.LUCENE : SearchType.MULTIWORD;
+	SearchType stype = null;
 	tmp = request.getParameter("stype");
 	if (tmp != null) {
 		if (tmp.equalsIgnoreCase("P")) {
@@ -43,13 +47,25 @@
 		if (tmp.equalsIgnoreCase("R")) {
 			stype = SearchType.REGEX;
 		}
+		session.setAttribute("ActiveSearchType", stype);
 	}
 
-	int soptions = 0;	// default to NOT ignore case
+	stype = (SearchType) session.getAttribute("ActiveSearchType");
+	if (stype == null) {
+		stype = (activeModule.hasSearchFramework()) ? SearchType.LUCENE : SearchType.MULTIWORD;
+	}
+
+	int soptions = 0;
 	tmp = request.getParameter("icase");
 	if ((tmp != null) && (tmp.equals("1"))) {
 		soptions = 2;
+		session.setAttribute("ActiveSearchOptions", soptions);
 	}
+	Integer itmp = (Integer) session.getAttribute("ActiveSearchOptions");
+	if (itmp == null) {
+		itmp = 0;	// default to NOT ignore case
+	}
+	soptions = itmp;
 %>
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" type="string">
