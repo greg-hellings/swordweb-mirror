@@ -128,37 +128,36 @@ I commented this section out until it can be made functional.
 
 <% if ("downloads".equals((String)request.getParameter("section"))) { %>
 	<h2 id="downloads"><t:t>DOWNLOADS</t:t></h2>
-	<p><t:t>Download a number of free Bible software downloads for Windows, Mac, Linux and Palm produced by CrossWire Bible Society.</t:t></p>
+	<p><t:t>Download a number of free Bible software downloads for Windows, Mac, Linux, Android, iOS and others produced by CrossWire Bible Society.</t:t></p>
 
 	<h3><a href="http://crosswire.org/sword/" title="SWORD for Windows"><t:t>SWORD for Windows</t:t></a></h3>
-	<p><t:t>Bible software developed for the Windows operating environment. Features include:</t:t></p>
+	<p><t:t>Bible software developed for the Windows operating environment.</t:t></p>
 
-	<ul>
-		<li><t:t>Parallel Bible display</t:t></li>
-		<li><t:t>Popup footnotes</t:t></li>
-		<li><t:t>Speed optimizations</t:t></li>
-		<li><t:t>Section headings</t:t></li>
-		<li><t:t>Smarter verse parsing</t:t></li>
-		<li><a href="ftp://ftp.crosswire.org/pub/sword/utils/win32/"><t:t>OSIS import and export tools</t:t></a></li>
-		<li><t:t>Image Support</t:t></li>
-		<li><t:t>New language locales</t:t></li>
-		<li><t:t>Unicode 4.0 (including Plane 1) support</t:t></li>
-	</ul>
-
-	<h3><a href="http://www.macsword.com/" title="More about MacSWORD"><t:t>MacSWORD</t:t></a></h3>
+	<h3><a href="http://www.macsword.com/" title="More about Eloquent"><t:t>Eloquent</t:t></a></h3>
 	<p><t:t>Bible software developed specifically for Macintosh computers running Mac OS X.</t:t></p>
 
-	<h3><a href="http://gnomesword.sf.net/" title="More about GnomeSword"><t:t>GnomeSword</t:t></a></h3>
-	<p><t:t>GnomeSword is a Bible Study application based on Gnome / Linux.</t:t></p>
+	<h3><a href="http://xiphos.org/" title="More about Xiphos"><t:t>Xiphos</t:t></a></h3>
+	<p><t:t>Xiphos is a Bible Study application based on Gtk and available for Windows and Linux.</t:t></p>
 
 	<h3><a href="http://www.bibletime.info/" title="More about BibleTime"><t:t>BibleTime</t:t></a></h3>
-	<p><t:t>BibleTime is a Bible study application for Linux. It is based on the K Desktop Environment.</t:t></p>
+	<p><t:t>BibleTime is a Bible study application for Windows and Linux. It is based on the Qt toolset.</t:t></p>
 
+	<p> All our PC/desktop software supports
+	<ul>
+		<li><t:t>Parallel Bible display</t:t></li>
+		<li><t:t>Footnotes and crossreferences</t:t></li>
+		<li><t:t>Speed optimizations for search</t:t></li>
+		<li><t:t>Testament, book and chapter introductions</t:t></li>
+		<li><t:t>Section headings</t:t></li>
+		<li><t:t>Smarter verse parsing</t:t></li>
+		<li><t:t>Support for non-KJV canon and versifications</t:t></li>
+		<li><a href="ftp://ftp.crosswire.org/pub/sword/utils/win32/"><t:t>OSIS import and export tools</t:t></a></li>
+		<li><t:t>Image Support</t:t></li>
+		<li><t:t>Many language locales</t:t></li>
+		<li><t:t>Unicode support</t:t></li>
+	</ul>
 
-	<h3><a href="http://palmbibleplus.sourceforge.net/" title="Bible+ for Palm OS"><t:t>Bible+ for Palm OS</t:t></a></h3>
-	<p><t:t>Bible software developed for Palm.</t:t></p>
-
-	<p><t:t>To view all the software available from CrossWire, go to the </t:t><a href="http://www.crosswire.org/"><t:t>CrossWire Bible Society</t:t></a>.</p>
+	<p><t:t>To view all the software available from CrossWire, go to the </t:t><a href="http://www.crosswire.org/applications.jsp"><t:t>CrossWire Bible Society</t:t></a>.</p>
 
 <% } %>
 
