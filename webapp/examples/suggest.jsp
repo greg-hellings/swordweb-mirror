@@ -22,7 +22,7 @@
                         for (int i = 0; ((i < 20) && (book.error() == 0)); i++) {
                                 key = book.getKeyText();
                                 retVal += (currentKey.equals(key)) ? "<li style=\"display: block; background: #C3AB7F;\">" : "<li style=\"display: block;\">";
-                                retVal += "<a href=\"#\" onclick=\"suggest('"+mod+"', encodeURIComponent('"+key+"')); return false;\">"+key+"</a></li>\n";
+                                retVal += "<a href=\"#\" onclick=\"suggest('"+mod+"', '"+key.replace("'","\\'")+"'); return false;\">"+key+"</a></li>\n";
                                 
                                 book.next();
                         }
