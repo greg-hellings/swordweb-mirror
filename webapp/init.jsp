@@ -124,6 +124,10 @@
                         	tabTitles.add("Daily Devotionals");
                         	tabLinks.add("dailydevotion.jsp"); 
                         	tabDefaults.add("false");
+                        	tabNames.add("Gospel Harmony");
+                        	tabTitles.add("Gospel Harmony");
+                        	tabLinks.add("eusebian.jsp"); 
+                        	tabDefaults.add("true");
                         	tabNames.add("Library"); 
                         	tabTitles.add("Full Library");
                         	tabLinks.add("fulllibrary.jsp");

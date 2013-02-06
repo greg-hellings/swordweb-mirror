@@ -19,9 +19,9 @@
 
 
 	if (ks != null) {
-		String k[] = ks.split("\\|");
-		for (int i = 0; i < k.length; i++) {
-			String key = k[i];
+		String parts[] = ks.split("\\|");
+		for (int i = 0; i < parts.length; i++) {
+			String key = parts[i];
 			if (i > 0) out.print("<br/>__________________<br/><br/>");
 			// hack until LXXM morph is cleaned up -----
 			if ("Packard".equals(modName)) {
@@ -159,7 +159,17 @@
 					String keyList[] = SwordOrb.BIBLES.equals(book.getCategory())?book.parseKeyList(key) : new String[] { key };
 					boolean startBookTag = false;
 					boolean startChapterTag = false;
-					for (String k1 : keyList) {
+					
+					if ("tei".equals(format) && keyList.length > 0) {
+						book.setKeyText(keyList[0]);
+%>
+<TEI>
+<div type="book" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>" part="<%= ("1".equals(book.getKeyChildren()[2]))&&("1".equals(book.getKeyChildren()[3]))?"I":"Y"%>">
+<div type="chapter" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>" part="<%= ("1".equals(book.getKeyChildren()[3]))?"I":"Y"%>" >
+<%
+					}
+					for (int k = 0; k < keyList.length; ++k) {
+						String k1 = keyList[k];
 						book.setKeyText(k1);
 						if (("StrongsGreek".equals(modName)) && ("3588".equals(k1))) {
 							out.print("with Greek Article");
@@ -195,20 +205,20 @@
 
 								// ----- header for trier tinymce editor ------
 								if ("tei".equals(format)) {
-									if ("1".equals(book.getKeyChildren()[3])) {
+									if (k > 0 && "1".equals(book.getKeyChildren()[3])) {
 										if ("1".equals(book.getKeyChildren()[2])) {
 %>
-<div type="book" n="<%= book.getKeyChildren()[1] %>" xml:id="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>-base">
+<div type="book" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>">
 <%
 											startBookTag = true;
 										}
 %>
-<div type="chapter" n="<%= book.getKeyChildren()[2] %>" xml:id="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>-base">
+<div type="chapter" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>">
 <%
 											startChapterTag = true;
 									}
 %>
-<ab n="<%= book.getKeyChildren()[3] %>" xml:id="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>V<%= book.getKeyChildren()[3] %>-base">
+<ab n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>V<%= book.getKeyChildren()[3] %>">
 <%
 								}
 								// --------------------------------------------
@@ -221,13 +231,13 @@
 </ab>
 <%
 									// if last verse of chapter
-									if (book.getKeyChildren()[5].equals(book.getKeyChildren()[3])) {
+									if (k < keyList.length-1 && book.getKeyChildren()[5].equals(book.getKeyChildren()[3])) {
 %>
 </div>
 <%
 										startChapterTag = false;
 										// if last chapter of book
-										if (book.getKeyChildren()[4].equals(book.getKeyChildren()[2]) && startBookTag) {
+										if (k < keyList.length-1 && book.getKeyChildren()[4].equals(book.getKeyChildren()[2]) && startBookTag) {
 %>
 </div>
 <%
@@ -242,11 +252,9 @@
 
 								// ----- header for trier tinymce editor ------
 								if ("basetext".equals(format)) {
-									if ("1".equals(book.getKeyChildren()[3])) {
 %>
-<span class="chapter_number"> <%= book.getKeyChildren()[2]%></span>
+<span class="chapter_number" part="<%=("1".equals(book.getKeyChildren()[3]))?"I":"Y"%>"> <%= book.getKeyChildren()[2]%></span>
 <%
-									}
 %>
 <span class="verse_number"> <%= book.getKeyChildren()[3]%></span>
 <%
@@ -257,6 +265,13 @@
 <%
 							}
 						}
+					}
+					if ("tei".equals(format)) {
+%>
+</div>
+</div>
+</TEI>
+<%
 					}
 				}
 			}

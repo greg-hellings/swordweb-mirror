@@ -724,8 +724,6 @@ padding: 0 0 0px 0;
  span.versenum{
 	font-size: 0.8em;
 	width:3em;
-	
-
 }
 
  span.versenum a {
@@ -743,6 +741,19 @@ div.lexiconentry {
 	background-color: #FFFFEF;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
+}
+
+.eusnum a {
+	text-decoration: none;
+}
+
+.eusnum a:hover {
+	text-decoration: underline;
+	color:#ff0000;
+}
+.eusnum {
+	font-size: .65em;
+	line-height: 0.3em;
 }
 
 .currentverse {
