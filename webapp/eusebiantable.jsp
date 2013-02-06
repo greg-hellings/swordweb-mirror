@@ -109,7 +109,7 @@ for (String n : nums) {
 %>
 
 <span class="<%= (currentKeyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-<span class="verseNum"><bdo dir="ltr"><%= activeModule.getKeyChildren()[3]%></bdo></span><%= v %> 
+<span class="verseNum"><bdo dir="ltr"><a href="passagestudy.jsp?key=<%=activeModule.getKeyText()%>#cv"><%= activeModule.getKeyChildren()[3]%></a></bdo></span><%= v %> 
 <%
 		if (rtol) {
 %>
@@ -155,7 +155,7 @@ for (String n : nums) {
 %>
 
 <span class="<%= (currentKeyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-<span class="verseNum"><bdo dir="ltr"><%= activeModule.getKeyChildren()[3]%></bdo></span><%= v %> 
+<span class="verseNum"><bdo dir="ltr"><a href="passagestudy.jsp?key=<%=activeModule.getKeyText()%>#cv"><%= activeModule.getKeyChildren()[3]%></a></bdo></span><%= v %> 
 <%
 	if (rtol) {
 %>
@@ -204,7 +204,7 @@ for (String n : nums) {
 %>
 
 <span class="<%= (currentKeyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-<span class="verseNum"><bdo dir="ltr"><%= activeModule.getKeyChildren()[3]%></bdo></span><%= v %> 
+<span class="verseNum"><bdo dir="ltr"><a href="passagestudy.jsp?key=<%=activeModule.getKeyText()%>#cv"><%= activeModule.getKeyChildren()[3]%></a></bdo></span><%= v %> 
 <%
 		if (rtol) {
 %>

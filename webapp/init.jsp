@@ -2,6 +2,7 @@
     language="java"
     contentType="text/html;charset=utf-8"
 %>
+<%@ page trimDirectiveWhitespaces="true" %>
 <%@ page import="org.crosswire.util.Base64" %>
 <%@ page import="java.util.Vector" %>
 <%@ page import="java.util.Arrays" %>

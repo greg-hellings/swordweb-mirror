@@ -1,3 +1,4 @@
+<%@ page import="org.crosswire.xml.*" %>
 <%@ include file="init.jsp" %>
 
 <%
@@ -36,6 +37,8 @@
 	}
 
 	SWModule activeModule = mgr.getModuleByName((String)parDispModules.get(0));
+	SWModule eusVs = mgr.getModuleByName("Eusebian_vs");
+	SWModule eusNum = mgr.getModuleByName("Eusebian_num");
 
 	String resetKey = request.getParameter("key");
 	if (resetKey != null) {
@@ -223,7 +226,7 @@
 
 		<h2><t:t>Parallel Viewing: </t:t><%= activeKey %></h2>
 		<div id="introhelp">
-		<p><t:t>Presets: [<a href="parallelstudy.jsp?del=all&add=KJV&add=WLC&add=NASB&add=LXX">OT Scholar</a>]</t:t> <t:t>[<a href="parallelstudy.jsp?del=all&add=KJV&add=TR&add=Treg&add=NASB">NT Scholar</a>]</t:t>
+		<p><t:t>Presets: [<a href="parallelstudy.jsp?del=all&amp;add=KJV&amp;add=WLC&amp;add=NASB&amp;add=LXX">OT Scholar</a>]</t:t> <t:t>[<a href="parallelstudy.jsp?del=all&amp;add=KJV&amp;add=TR&amp;add=Treg&amp;add=NASB">NT Scholar</a>]</t:t></p>
 		<p><t:t>Parallel viewing allows you to see two or more texts side by side.  For example, you could view two Bible versions of the same verse next to each other, or a verse from a specific translation and what a commentary has to say about that specific verse.</t:t></p>
 		</div>
 
@@ -253,6 +256,7 @@
 		</caption>
 
 		<colgroup>
+			<col/>
 		<% //setup col attributes
 				for (int i = 0; i < parDispModules.size(); i++) {
 					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
@@ -274,6 +278,7 @@
 		%>
 
 		<tr>
+		<th></th>
 
 		<% //insert module names at the top
 				for (int i = 0; i < parDispModules.size(); i++) {
@@ -293,6 +298,8 @@
 		<%
 			String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
 			int activeVerse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
+			String lastEusNum = "";
+			String myEusNum = "";
 			for (activeModule.setKeyText(chapterPrefix + ":1"); (activeModule.error() == (char)0); activeModule.next()) {
 
 				String keyText = activeModule.getKeyText();
@@ -300,15 +307,42 @@
 					break;
 				}
 
+				boolean intro = false;	// for possible future support of intro
+
 				int curVerse = Integer.parseInt(keyText.substring(keyText.indexOf(":")+1));
 				mgr.setGlobalOption("Strong's Numbers",
 					((strongs) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
 				mgr.setGlobalOption("Morphological Tags",
 					((morph) && (curVerse >= activeVerse -1) && (curVerse <= activeVerse + 1)) ? "on" : "off");
+				if (eusVs != null) {
+					myEusNum = "";
+					if (!intro) {
+						eusVs.setKeyText(keyText);
+						myEusNum = eusVs.getStripText().trim();
+						if (!lastEusNum.equals(myEusNum)) {
+							lastEusNum = myEusNum;
+							eusNum.setKeyText(myEusNum);
+							XMLTag d = new XMLBlock(eusNum.getRawEntry());
+							myEusNum = myEusNum.substring(myEusNum.indexOf(".")+1) + "<br/>" + d.getAttribute("table");
+						}
+						else myEusNum = "";
+					}
+				}
 			%>
 
 
 				<tr>
+					<td style="padding:0;margin:0" valign="top" align="center"><div>
+<%
+					if (myEusNum.length() > 0) {
+%>
+					<span class="eusnum">
+					<a href="eusebian.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>"><%= myEusNum %></a>
+					</span>
+<%
+					}
+%>
+					</div></td>
 		<%
 					for (int i = 0; i < parDispModules.size(); i++) {
 						SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
@@ -322,8 +356,7 @@
 						}
 
 %>
-							<td style="<%= style %>" class="<%= modLang %>" 
-<%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+							<td style="<%= style %>" <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= modLang %> <%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 <%
 						String[] heads = mod.getEntryAttribute("Heading", "Preverse", "", true);
 						for (int h = 0; h < heads.length; h++) {

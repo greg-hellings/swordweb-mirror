@@ -111,6 +111,10 @@
 	<tiles:put name="content" type="string">
 <style>
 
+.verseNum a:link {
+	text-decoration: none;
+}
+
 .verseNum {
 	color:blue;
 	font-size: .75em;
@@ -191,7 +195,7 @@ for (String n : nums) {
 %>
 
 <span class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
-<span class="verseNum"><bdo dir="ltr"><%= activeModule.getKeyChildren()[3]%></bdo></span><%= v %> 
+<span class="verseNum"><bdo dir="ltr"><a href="passagestudy.jsp?key=<%=activeModule.getKeyText()%>#cv"><%= activeModule.getKeyChildren()[3]%></a></bdo></span><%= v %> 
 <%
 	if (rtol) {
 %>
