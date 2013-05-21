@@ -25,13 +25,14 @@
 
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= lang %>" lang="<%= lang %>">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" xml:lang="<%= lang %>" lang="<%= lang %>">
 
 <head profile="http://www.w3.org/2000/08/w3c-synd/#">
 <meta name="keywords" content="<%= metaContent %>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><t:t>OSIS Web: </t:t><tiles:getAsString name="title"/></title>
 
+	<tiles:getAsString name="extraMeta" />
 
 <link rel="stylesheet" type="text/css" media="all" href="common.css"  />
 <link rel="stylesheet" type="text/css" media="all" title="<%= styleName %>" href="<%= styleFile %>"  />
@@ -51,6 +52,17 @@
 </head>
 
 	<body onload="onPageLoad();" class="<%= dir %>">
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
 	<%-- include header --%>
 	<tiles:insert attribute="header" />
 	<tiles:insert attribute="pintro" />
@@ -67,14 +79,14 @@
         <form action="wordsearchresults.jsp">
           <fieldset>
             <legend><t:t>by keyword or phrase:</t:t></legend>
-<input name="searchTerm" type="text" size="12" value="<%=org.crosswire.utils.HTTPUtils.canonize(searchTerm)%>" /> <button value="go"><t:t>go</t:t></button>
+<input name="searchTerm" type="text" size="10" value="<%=org.crosswire.utils.HTTPUtils.canonize(searchTerm)%>" /> <button value="go"><t:t>go</t:t></button>
           </fieldset>
         </form>
         <h2><t:t>Go to:</t:t></h2>
 	<form action="<tiles:getAsString name="lookup_url"/>">
           <fieldset>
             <legend><t:t>Bible reference:</t:t></legend>
-<input name="key" type="text" size="12" /> <button value="go"><t:t>go</t:t></button>
+<input name="key" type="text" size="10" /> <button value="go"><t:t>go</t:t></button>
           </fieldset>
         </form>
       </div>

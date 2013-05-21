@@ -8,5 +8,6 @@
 	<tiles:put name="sidebar_right" value="" />
 	<tiles:put name="pintro" value="" />
 	<tiles:put name="sidebar_left" value="" />
+	<tiles:put name="extraMeta" value="" />
 	<tiles:put name="content" value="" />
 </tiles:definition>
