@@ -1,4 +1,5 @@
 <%@ page import="org.crosswire.xml.*" %>
+<%@ page import="org.crosswire.utils.HTTPUtils" %>
 <%@ include file="init.jsp" %>
 
 <%
@@ -69,6 +70,8 @@
 %>
 
 <tiles:insert beanName="basic" flush="true" >
+
+
 	<tiles:put name="title" value="Passage Bible study" />
 	<tiles:put name="pintro" type="string" ><div></div></tiles:put>
 	<tiles:put name="sidebar_left" type="string">
@@ -131,6 +134,7 @@
 		</div>
 	</tiles:put>
 	<tiles:put name="sidebar_right" type="string">
+<fb:like href="http://www.crosswire.org/study/passagestudy.jsp?key=<%=activeModule.getKeyChildren()[7]%>#cv" send="true" layout="button_count" width="171" show_faces="true"></fb:like>
 	<div class="promoLine"><%= promoLine %></div>
 	<div id="studytools">
 		<h2><t:t>Study Tools:</t:t></h2>
@@ -204,11 +208,21 @@
 		</div>
 
 	</tiles:put>
+<%
+	activeModule.setKeyText(activeKey);
+	activeKey = activeModule.getKeyText(); 	// be sure it is formatted nicely
+%>
+	<tiles:put name="extraMeta" type="string">
+    <meta property="og:title" content="<%=activeModule.getKeyText()%>"/>
+    <meta property="og:type" content="Bible verse"/>
+    <meta property="og:url" content="http://www.crosswire.org/study/passagestudy.jsp?key=<%=activeModule.getKeyChildren()[7]%>#cv"/>
+    <meta property="og:image" content="http://www.crosswire.org/images/pocketsword.gif"/>
+    <meta property="og:site_name" content="CrossWire Bible Society"/>
+    <meta property="fb:admins" content="scribe777"/>
+    <meta property="og:description"
+          content="<%=HTTPUtils.canonize(activeModule.getStripText().replace("[]", "").replace("  ", " ").replace("  ", " ").trim())%>"/>
+	</tiles:put>
 	<tiles:put name="content" type="string">
-		<%
-			activeModule.setKeyText(activeKey);
-			activeKey = activeModule.getKeyText(); 	// be sure it is formatted nicely
-		%>
 
 		<div id="passagestudy">
 		<h2><%= activeKey %></h2>

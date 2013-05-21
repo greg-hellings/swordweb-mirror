@@ -55,6 +55,7 @@
 				if (srcMod != null) {
 					book = mgr.getModuleByName(srcMod);
 				}
+//System.out.println("book:" + book+ ";key="+key+"activeKey:"+activeKey);
 				if ((key != null) && (book != null) && activeKey != null) {
 					try {
 						Integer.parseInt(key);	// assert we have only an int and need to get our book and chapter from session
@@ -65,6 +66,7 @@
 					String vk[] = book.parseKeyList(activeKey);
 					activeKey=vk[0];
 					StringBuffer vmrResponse = HTTPUtils.postURL("http://ntvmr.uni-muenster.de/community/vmr/api/metadata/liste/search/", "biblicalContent="+activeKey+"&detail=page&limit=40");
+//System.out.println("**** response: " + vmrResponse);
 					XMLBlock manuscripts = new XMLBlock(vmrResponse.toString());
 %>
 					<p><b>Some Manuscript Witnesses for <%=vk[0]%></b></p>

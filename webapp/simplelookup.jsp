@@ -2,6 +2,7 @@
     language="java"
     contentType="text/html;charset=utf-8"
 %>
+<%@ page import="org.crosswire.xml.*" %>
 <%@ page import="org.crosswire.sword.orb.*" %>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.net.URL" %>
@@ -18,6 +19,8 @@
 	String activeModuleName = request.getParameter("mod");
 	if (activeModuleName == null) activeModuleName = "WHNU";
 	SWModule activeModule = mgr.getModuleByName(activeModuleName);
+	SWModule eusVs = mgr.getModuleByName("Eusebian_vs");
+	SWModule eusNum = mgr.getModuleByName("Eusebian_num");
 
 	String promoLine = activeModule.getConfigEntry("ShortPromo");
 	if (promoLine.equalsIgnoreCase("<swnull>")) {
@@ -50,12 +53,28 @@
 				String lang = activeModule.getConfigEntry("Lang");
 				boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 				
+				String lastEusNum = "";
+				String myEusNum = "";
 				for (activeModule.setKeyText("="+chapterPrefix + ":0"); (activeModule.error() == (char)0); activeModule.next()) {
 					String keyText = activeModule.getKeyText();
 					String keyProps[] = activeModule.getKeyChildren();
 					// book and chapter intros
 					// TODO: change 'chapterPrefix' to use keyProps so we can support book intros (e.g. Jn.0.0)
 					boolean intro = (keyProps[2].equals("0") || keyProps[3].equals("0"));
+					if (eusVs != null) {
+						myEusNum = "";
+						if (!intro) {
+							eusVs.setKeyText(keyText);
+							myEusNum = eusVs.getStripText().trim();
+							if (!lastEusNum.equals(myEusNum)) {
+								lastEusNum = myEusNum;
+								eusNum.setKeyText(myEusNum);
+								XMLTag d = new XMLBlock(eusNum.getRawEntry());
+								myEusNum = myEusNum.substring(myEusNum.indexOf(".")+1) + "<br/>" + d.getAttribute("table");
+							}
+							else myEusNum = "";
+						}
+					}
 					if (first) {
 			%>
 				<table class="<%= lang %>">
@@ -76,7 +95,7 @@
 					String[] heads = activeModule.getEntryAttribute("Heading", "Preverse", "", true);
 					for (int h = 0; h < heads.length; ++h) {
 			%>
-					<tr><td colspan="2"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
+					<tr><td colspan="3"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 				<h3>
 					<%= heads[h] %>
 				 </h3></div></td></tr>
@@ -88,13 +107,24 @@
 			<%
 					if (!rtol) {
 			%>
+					<td style="padding:0;margin:0" valign="top" align="center"><div <%= rtol ? "dir=\"rtl\"" : "" %>>
+<%
+					if (myEusNum.length() > 0) {
+%>
+					<span class="eusnum">
+					<a target="_blank" href="<%= baseURL %>/eusebian.jsp?mod=<%=activeModuleName%>&key=<%= URLEncoder.encode(keyText)+"#cv" %>"><%= myEusNum %></a>
+					</span>
+<%
+					}
+%>
+					</div></td>
 					<td valign="top" align="right"><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : "verse" %>">
 			<%
 					if (!intro) {
 			%>
 					<span class="versenum">
 					<a target="_blank" <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="<%= baseURL %>/passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
-						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
+						<%= keyProps[3] %></a>
 					</span>
 			<%
 					}
@@ -122,12 +152,24 @@
 			<%
 					if (!intro) {
 			%>
-					<span class="versenum"><a <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
-						<%= keyText.substring(keyText.indexOf(":")+1) %></a>
+					<span class="versenum">
+						<a target="_blank" <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="<%= baseURL %>/passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
+						<%= keyProps[3] %></a>
 					</span>
 			<%
 					}
 			%>
+					</div></td>
+					<td style="padding:0;margin:0" valign="top" align="center"><div <%= rtol ? "dir=\"rtl\"" : "" %>>
+<%
+					if (myEusNum.length() > 0) {
+%>
+					<span class="eusnum">
+					<a target="_blank" href="<%= baseURL %>/eusebian.jsp?mod=<%=activeModuleName%>&key=<%= URLEncoder.encode(keyText)+"#cv" %>"><%= myEusNum %></a>
+					</span>
+<%
+					}
+%>
 					</div></td>
 			<%
 					}
