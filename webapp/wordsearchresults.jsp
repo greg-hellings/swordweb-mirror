@@ -150,7 +150,7 @@ function onPageLoad() {
 			}
 		%>
 
-		<p class="textname">&raquo; <%= results.length %> result<%= (results.length == 1)?"s":""%> <t:t>in the text of </t:t><%= activeModule.getDescription() %></p>
+		<p class="textname">&raquo; <%= results.length %> result<%= (results.length == 1)?" ":"s "%> <t:t>in the text of </t:t><%= activeModule.getDescription() %></p>
 		<dl class="<%= activeModule.getConfigEntry("Lang")%>">
 		<%
 			Integer resultStart = new Integer(request.getParameter("start") != null ? request.getParameter("start") : "0");
