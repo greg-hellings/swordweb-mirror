@@ -2,6 +2,7 @@
     language="java"
     contentType="text/html;charset=utf-8"
 %>
+<%@ page trimDirectiveWhitespaces="true" %>
 <%@ page import="org.crosswire.sword.orb.*" %>
 <%@ page import="org.crosswire.utils.HTTPUtils" %>
 <%@ page import="org.crosswire.xml.XMLBlock" %>
@@ -261,10 +262,18 @@
 <span class="verse_number"> <%= book.getKeyChildren()[3]%></span>
 <%
 								}
+								if ("strip".equals(format)) {
+
+%>
+<%= book.getStripText() %>
+<%
+								}
+								else {
 								// --------------------------------------------
 %>
 <%= book.getRenderText() %>
 <%
+								}
 							}
 						}
 					}
@@ -278,5 +287,23 @@
 				}
 			}
 		}
+	}
+	else {
+		response.setContentType("text/xml");
+%>
+<?xml version="1.0" encoding="utf-8"?>
+<modules>
+<%
+		ModInfo[] modInfo = mgr.getModInfoList();
+		for (int i = 0; i < modInfo.length; i++) {
+			SWModule b = mgr.getModuleByName(modInfo[i].name);
+%>
+	<module id="<%=modInfo[i].name %>" category="<%= modInfo[i].category %>"><%= HTTPUtils.canonize(b.getDescription()) %></module>
+
+<%
+		}
+%>
+</modules>
+<%
 	}
 %>

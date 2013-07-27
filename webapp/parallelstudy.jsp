@@ -70,6 +70,7 @@
 	session.setAttribute("morph", (morph)?"on":"off");
 
 	boolean startList = false;
+	boolean usedCV = false;
 %>
 
 
@@ -221,8 +222,16 @@
 
 	</tiles:put>
 	<tiles:put name="content" type="string">
-
 		<div id="paralleldisplay">
+
+		<% //insert module - specific styles at the top.  This doesn't make much sense if styles overlap
+			for (int i = 0; i < parDispModules.size(); i++) {
+				SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));
+		%>
+			<style><%= mod.getRenderHeader() %></style>
+		<%
+			}
+		%>
 
 		<h2><t:t>Parallel Viewing: </t:t><%= activeKey %></h2>
 		<div id="introhelp">
@@ -328,12 +337,14 @@
 						else myEusNum = "";
 					}
 				}
+				boolean currentVerse = keyText.equals(activeKey);
 			%>
 
 
-				<tr>
+				<tr<%=!usedCV && currentVerse?" id=\"cv\"" : ""%>>
 					<td style="padding:0;margin:0" valign="top" align="center"><div>
 <%
+					if (currentVerse) usedCV = true;
 					if (myEusNum.length() > 0) {
 %>
 					<span class="eusnum">
@@ -368,7 +379,7 @@
 						}
 %>
 								<span class="versenum">
-									<a <%= (keyText.equals(activeKey)) ? "id=\"cv\"" : "" %> href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>#cv"> <%= keyText.substring(keyText.indexOf(":")+1) %></a>
+									<a href="parallelstudy.jsp?key=<%= URLEncoder.encode(keyText) %>#cv"> <%= keyText.substring(keyText.indexOf(":")+1) %></a>
 								</span>
 
 					<%
@@ -391,6 +402,7 @@
 		%>
 		<tr>
 
+			<td></td>
 		<% //insert module names at the top
 				for (int i = 0; i < parDispModules.size(); i++) {
 					SWModule mod = mgr.getModuleByName((String)parDispModules.get(i));

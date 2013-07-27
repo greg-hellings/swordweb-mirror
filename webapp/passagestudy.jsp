@@ -225,6 +225,9 @@
 	<tiles:put name="content" type="string">
 
 		<div id="passagestudy">
+		<style>
+				<%= activeModule.getRenderHeader() %>
+		</style>
 		<h2><%= activeKey %></h2>
 		<h3><a href="fulllibrary.jsp?show=<%= URLEncoder.encode(activeModule.getName()) %>"><%= activeModule.getDescription().replaceAll("&", "&amp;") %></a></h3>
 
