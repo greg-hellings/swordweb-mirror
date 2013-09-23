@@ -21,7 +21,7 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	description="Bible Viewer"
 	screenshot="http://crosswire.org/images/crosswire.gif"
 	thumbnail="http://crosswire.org/images/crosswire.gif"
-	scrolling="true"
+	scrolling="false"
    >
   <Optional feature="dynamic-height"/>
   <Optional feature="pubsub-2">
@@ -34,6 +34,13 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
   </Param>
 </Optional>
 </ModulePrefs>
+<UserPref name="height" datatype="enum" display_name="Gadget Height" default_value="600">
+     <EnumValue value="200" display_value="Short"/>
+     <EnumValue value="300" display_value="Medium"/>
+     <EnumValue value="400" display_value="Tall"/>
+     <EnumValue value="-1" display_value="Dynamic"/>
+</UserPref>
+
 <UserPref name="swordModule" datatype="enum" display_name="Bible Text" default_value="WHNU">
 <%
 	ModInfo[] modInfo = mgr.getModInfoList();
@@ -49,15 +56,11 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 <Content type="html">
 <![CDATA[
 <head>
-<!--
-        <link rel="stylesheet" type="text/css" href="../../js/jquery-ui/jquery-ui-1.8.16.css">
-        <script type="text/javascript" src="../../js/jquery/jquery-1.6.4.min.js"></script>
-        <script type="text/javascript" src="../../js/jquery-ui/jquery-ui-1.8.16.min.js"></script>
--->
         <link rel="stylesheet" type="text/css" href="<%=baseURL%>/sandy.css">
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	
 
 <script type="text/javascript">
         $(document).ready(function() {
@@ -66,6 +69,20 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 
         });
 </script>
+<style>
+
+.currentWord {
+	color : red;
+	cursor : pointer;
+}
+
+
+.currentSelectedWord {
+	color : blue;
+	cursor : pointer;
+}
+
+</style>
 </head>
 
 <body>
@@ -80,7 +97,7 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 			Quick Lookup: <input name="verseRef" style="width:100%" id="verseRef" onKeyPress="return keyPress('verseRef', event);"/><span id="currentVerse" style="float:right;display:inline-block;"></span>
 			<div style="clear:both;"></div>
 		</div>
-		<div id="chapterContent">
+		<div style="overflow:auto; border: none 0px; width:100%;" class="fillPage" id="chapterContent">
 		</div>
 	</div>
 
@@ -89,7 +106,7 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 			Search Text: <input name="searchText" style="width:100%" id="searchText" onKeyPress="return keyPress('searchText', event);"/><span id="searchResultsCount" style="float:right;display:inline-block;"></span>
 			<div style="clear:both;"></div>
 		</div>
-		<div id="searchContent">
+		<div style="overflow:auto; border: none 0px; width:100%;" class="fillPage" id="searchContent">
 		</div>
 	</div>
 </div>
@@ -98,6 +115,8 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 <script>
 
 var swordModule = "WHNU";
+var MARGIN = 8;
+var preferredHeight = -1;
 
 function keyPress(field, event) {
 	var i = document.getElementById(field);
@@ -114,31 +133,39 @@ function keyPress(field, event) {
 	else return true;
 }
 
+
 function search_callback(o) {
 	var results = o.text.split('%%%');
-	content = document.getElementById('searchResultsCount');
-	content.innerHTML = '';
-	content.innerHTML = results[0];
-	content = document.getElementById('searchContent');
-	content.innerHTML = '';
-	content.innerHTML = results[1];
+	clearExpandFillPageClients();
+	$('#searchResultsCount').html(results[0]);
+	$('#searchContent').html(results[1]);
+	if (gadgets.util.hasFeature('dynamic-height') && preferredHeight == -1) gadgets.window.adjustHeight();
+	setTimeout(function() {
+		if (gadgets.util.hasFeature('dynamic-height') && preferredHeight == -1) gadgets.window.adjustHeight();
+		expandFillPageClients();
+	}, 100);
+
 }
 
 function lookup_callback(o) {
 	var results = o.text.split('%%%');
-	content = document.getElementById('currentVerse');
-	content.innerHTML = '';
-	content.innerHTML = results[0];
+	clearExpandFillPageClients();
+	$('#currentVerse').html(results[0]);
 	$('#verseRef').val(results[0]);
-	content = document.getElementById('chapterContent');
-	content.innerHTML = '';
-	content.innerHTML = results[1];
+	$('#chapterContent').html(results[1]);
 
-	var new_position = $('#cv').offset();
-	if (new_position) {
-		window.scrollTo(new_position.left,new_position.top);
-	}
-	if (gadgets.util.hasFeature('pubsub-2')) gadgets.Hub.publish("interedition.biblicalcontent.selected", results[0]);
+	if (gadgets.util.hasFeature('dynamic-height') && preferredHeight == -1) gadgets.window.adjustHeight();
+	setTimeout(function() {
+		if (gadgets.util.hasFeature('dynamic-height') && preferredHeight == -1) gadgets.window.adjustHeight();
+		expandFillPageClients();
+		var new_position = $('#cv').offset();
+
+		if (new_position) {
+			// for some reason, offset() and position() don't take into account that we have a div above for quick lookup
+			$('#chapterContent').scrollTop(new_position.top-$('#chapterContent').offset().top + $($('#chapterContent').parent().children()[0]).height());
+		}
+		if (gadgets.util.hasFeature('pubsub-2')) gadgets.Hub.publish("interedition.biblicalcontent.selected", results[0]);
+	}, 100);
 
 }
 
@@ -201,20 +228,102 @@ function page_select_callback(topic, data, subscriberData) {
 	}
 }
 
+
+function word_hover_callback(topic, data, subscriberData) {
+	$('.currentverse').find('span').removeClass('currentWord');
+	for (var i = 0; i < data.wordNum.length; ++i) {
+		var spanNum = data.wordNum[i] + 1; // for versenum span
+		if (data.wordNum[i] > -1 && $('.currentverse').find('span').length > spanNum) {
+			$($('.currentverse').find('span')[spanNum]).addClass('currentWord');
+		}
+	};
+}
+
+
+function findWordSpan(wordID) {
+	var found = false;
+	$('span').each(function() {
+		var p = this.getAttribute('onclick');
+		if (p && p.indexOf('p(') == 0) {
+			if (p.indexOf("'"+wordID+"'") > -1) {
+				found = $(this);
+				return false;
+			}
+		}
+	});
+	return found;
+}
+
+
+var lastWordData = {};
+function p(mod, key, word, morph, noop, thisMod) {
+	var data = {
+		strongNum : key,
+		wordID : word,
+		morph : morph,
+		fromMod : swordModule
+	};
+	lastWordData = data;
+	$('.currentverse').find('span').removeClass('currentSelectedWord');
+	$(findWordSpan(word)).addClass('currentSelectedWord');
+	if (gadgets.util.hasFeature('pubsub-2')) gadgets.Hub.publish("interedition.word.selected", data);
+}
+
+
+function word_selected_callback(topic, data, subscriberData) {
+
+	// assert we're not hearing an echo
+	if (data.fromMod && data.fromMod == swordModule && data.wordID == lastWordData.wordID) return;
+
+	for (var i = 0; i < data.wordNum.length; ++i) {
+		var spanNum = data.wordNum[i] + 1; // for versenum span
+		if (data.wordNum[i] > -1 && $('.currentverse').find('span').length > spanNum) {
+			$($('.currentverse').find('span')[spanNum]).trigger('click');
+			break;
+		}
+	};
+}
+
+
 function loaded() {
 	var prefs = new gadgets.Prefs();
 	swordModule = prefs.getString('swordModule');
-	gadgets.window.adjustHeight(500);
+     preferredHeight = parseInt(prefs.getString('height'));
+     if (gadgets.util.hasFeature('dynamic-height')) gadgets.window.adjustHeight(preferredHeight == -1 ? 500 : preferredHeight);
+     $('#searchContent').css('overflow', (gadgets.util.hasFeature('dynamic-height') && preferredHeight == -1) ? 'visible' : 'auto');
+     $('#chapterContent').css('overflow', (gadgets.util.hasFeature('dynamic-height') && preferredHeight == -1) ? 'visible' : 'auto');
+
 	positionFromURLParams();
+	$(window).resize(function() {
+		clearExpandFillPageClients();
+		expandFillPageClients();
+	});
+
+	var tabLabel = (swordModule == 'WHNU') ? 'NA28' : swordModule;
+	var tab = $("#tabs").find(".ui-tabs-nav li:eq(0)").children('a').text(tabLabel);
 }
 
 if (gadgets.util.hasFeature('pubsub-2')) {
 	gadgets.HubSettings.onConnect = function(hum, suc, err) {
 		subId = gadgets.Hub.subscribe("interedition.page.selected", page_select_callback);
+		subId = gadgets.Hub.subscribe("interedition.word.hover", word_hover_callback);
+		subId = gadgets.Hub.subscribe("interedition.word.selected", word_selected_callback);
 		loaded();
 	};
 }
 else gadgets.util.registerOnLoadHandler(loaded);
+
+function clearExpandFillPageClients() {
+     $('.fillPage').each(function () {
+          $(this).css('height', '');
+     });
+}
+function expandFillPageClients() {
+     $('.fillPage').each(function () {
+          $(this).height(gadgets.window.getViewportDimensions().height - $(this).offset().top - MARGIN);
+     });
+}
+
 
 </script>
 

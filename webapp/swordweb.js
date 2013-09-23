@@ -209,7 +209,7 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 	/* check for aliases */
 	if (mod == "G") {
 		skeyPre="G";
-		mod = "StrongsGreek";
+		mod = "StrongsGreek|ls";
 	}
 	if (mod == "H") {
 		skeyPre="H";
@@ -236,7 +236,9 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 	else {
 		b.innerHTML="<t:t>Please wait...</t:t>";
 		showhide("onlywlayer", "visible");
-		url = "fetchdata.jsp?mod="+mod+"&key="+encodeURIComponent(key);
+		var keyData = encodeURIComponent(key);
+		if (mod.indexOf('|') > 0) keyData += '|' + encodeURIComponent(key);
+		url = "fetchdata.jsp?mod="+mod+"&key="+keyData;
 		if ((fnnum != null) && (fnnum != ''))
 			url += "&fn="+encodeURIComponent(fnnum);
 		xmlhttp.open("GET", url, true);
@@ -315,7 +317,7 @@ function f(mod, key, fnnum, extratext) {
 	p(mod, key, 'fn'+key+fnnum, extratext, fnnum);
 }
 
-function showhide (layer, vis, dontReposition) {
+function showhide(layer, vis, dontReposition) {
 
     var l = document.getElementById(layer);
     var shim = document.getElementById('DivShim');
@@ -348,6 +350,7 @@ function showhide (layer, vis, dontReposition) {
         if (mouseClientY < (winH/2))
             cy = cy + 50;
         else cy = cy - (l.clientHeight + 50);
+	   if (cy < 10) cy = 10;
 
         if (dontReposition == true) {
 	}

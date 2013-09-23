@@ -18,21 +18,35 @@
 	mgr.setGlobalOption("Footnotes", "Off");
 	mgr.setGlobalOption("Cross-references", "Off");
 
+	String mods[] = modName.split("\\|");
 
 	if (ks != null) {
 		String parts[] = ks.split("\\|");
 		for (int i = 0; i < parts.length; i++) {
+
+			if (i < mods.length) modName = mods[i];
+
 			String key = parts[i];
+
+			if ("betacode".equals(modName)) {
+				key = new String(key.getBytes("iso8859-1"), "UTF-8");
+			}
+
 			if (i > 0) out.print("<br/>__________________<br/><br/>");
 			// hack until LXXM morph is cleaned up -----
 			if ("Packard".equals(modName)) {
 				while (key.indexOf("  ") > -1) key = key.replaceAll("  ", " ");
 			}
 			// end of LXXM Packard hack ----------------
+			if ("ls".equals(modName)) {
+				SWModule greekLemma = mgr.getModuleByName("GreekStrongToLem");
+				greekLemma.setKeyText(ks);
+				key = greekLemma.getRawEntry();
+				modName = "betacode";
+			}
 
 			// ------ betacode lookup from perseus ------------------------------------------------
 			if ("betacode".equals(modName)) {
-				key = new String(key.getBytes("iso8859-1"), "UTF-8");
 				String ls = org.crosswire.swordweb.PerseusUtils.getLiddellScottDef(key);
 				if (ls.length() > 0) {
 %>
@@ -87,8 +101,8 @@
 							if (block != null) {
 								block = block.getBlock("image");
 								if (block != null) {
-									thumbURL = block.getAttribute("thumburi");
-									imageURL = block.getAttribute("uri");
+									thumbURL = block.getAttribute("thumburl");
+									imageURL = block.getAttribute("webfriendlyurl");
 								}
 							}
 							block = p.getBlock("transcriptions");
@@ -263,9 +277,15 @@
 <%
 								}
 								if ("strip".equals(format)) {
-
 %>
 <%= book.getStripText() %>
+<%
+								}
+								else if ("plain".equals(format)) {
+									String raw = book.getRawEntry();
+// assume our modules are OSIS for now (should change output format of mgr or have a second mgr for this one.
+%>
+<%= mgr.filterText("OSISPlain", raw) %>
 <%
 								}
 								else {

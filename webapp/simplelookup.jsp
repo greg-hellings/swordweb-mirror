@@ -15,6 +15,7 @@
 	URL appBaseURL = new URL(request.getScheme(), request.getServerName(), request.getServerPort(), "/study/");
 
 	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
+	mgr.setJavascript(true);
 
 	String activeModuleName = request.getParameter("mod");
 	if (activeModuleName == null) activeModuleName = "WHNU";
@@ -123,7 +124,7 @@
 					if (!intro) {
 			%>
 					<span class="versenum">
-					<a target="_blank" <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="<%= baseURL %>/passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
+					<a target="_blank" <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="#" onclick="lookup('<%= keyText%>');return false;">
 						<%= keyProps[3] %></a>
 					</span>
 			<%
@@ -153,7 +154,7 @@
 					if (!intro) {
 			%>
 					<span class="versenum">
-						<a target="_blank" <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="<%= baseURL %>/passagestudy.jsp?key=<%= URLEncoder.encode(keyText)+"#cv" %>">
+						<a target="_blank" <%= (curVerse == anchorVerse)?"id=\"cv\"":"" %> href="#" onclick="lookup('<%= keyText%>');return false;">
 						<%= keyProps[3] %></a>
 					</span>
 			<%
