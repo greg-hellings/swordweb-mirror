@@ -38,6 +38,7 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
      <EnumValue value="200" display_value="Short"/>
      <EnumValue value="300" display_value="Medium"/>
      <EnumValue value="400" display_value="Tall"/>
+     <EnumValue value="600" display_value="Very Tall"/>
      <EnumValue value="-1" display_value="Dynamic"/>
 </UserPref>
 
@@ -147,12 +148,28 @@ function search_callback(o) {
 
 }
 
+
+function addSpansIfNecessary() {
+	if ($('.currentverse').find('span').length < 2) {
+		var text = $('.currentverse:last').html();
+		var words = text.split(' ');
+		text = '';
+		for (var i = 0; i < words.length; ++i) {
+			text += '<span>'+words[i]+'</span> ';
+		}
+		$('.currentverse:last').html(text);
+	}
+}
+
+
 function lookup_callback(o) {
 	var results = o.text.split('%%%');
 	clearExpandFillPageClients();
 	$('#currentVerse').html(results[0]);
 	$('#verseRef').val(results[0]);
 	$('#chapterContent').html(results[1]);
+
+	addSpansIfNecessary();
 
 	if (gadgets.util.hasFeature('dynamic-height') && preferredHeight == -1) gadgets.window.adjustHeight();
 	setTimeout(function() {
@@ -164,7 +181,12 @@ function lookup_callback(o) {
 			// for some reason, offset() and position() don't take into account that we have a div above for quick lookup
 			$('#chapterContent').scrollTop(new_position.top-$('#chapterContent').offset().top + $($('#chapterContent').parent().children()[0]).height());
 		}
+		var data = { 
+			module  : swordModule,
+			key     : results[0]
+		};
 		if (gadgets.util.hasFeature('pubsub-2')) gadgets.Hub.publish("interedition.biblicalcontent.selected", results[0]);
+		if (gadgets.util.hasFeature('pubsub-2')) gadgets.Hub.publish("interedition.biblicalcontent.selectedEx", data);
 	}, 100);
 
 }
@@ -264,7 +286,7 @@ function p(mod, key, word, morph, noop, thisMod) {
 		fromMod : swordModule
 	};
 	lastWordData = data;
-	$('.currentverse').find('span').removeClass('currentSelectedWord');
+	$('span').removeClass('currentSelectedWord');
 	$(findWordSpan(word)).addClass('currentSelectedWord');
 	if (gadgets.util.hasFeature('pubsub-2')) gadgets.Hub.publish("interedition.word.selected", data);
 }
