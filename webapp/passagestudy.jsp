@@ -17,6 +17,12 @@
 	if (promoLine.equalsIgnoreCase("<swnull>")) {
 		promoLine = "";
 	}
+	String specialFont = activeModule.getConfigEntry("Font");
+	if (specialFont.equalsIgnoreCase("<swnull>")) {
+		specialFont = null;
+	}
+
+	boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 
 	String resetKey = request.getParameter("key");
 	if (resetKey != null) {
@@ -257,7 +263,6 @@
 				int anchorVerse = (activeVerse > 2)?activeVerse - 2: -1;
 				boolean first = true;
 				String lang = activeModule.getConfigEntry("Lang");
-				boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
 				
 				String lastEusNum = "";
 				String myEusNum = "";
@@ -340,7 +345,7 @@
 					}
 			%>
 
-					<td><div <%= rtol ? "dir=\"rtl\"" : "" %> class="<%= (keyText.equals(activeKey)) ? "currentverse" : (intro) ? "intro" : "verse" %>">
+					<td><div <%= rtol ? "dir=\"rtl\"" : "" %> style="<%= specialFont != null ? "font-family:"+specialFont : "" %>" class="<%= (keyText.equals(activeKey)) ? "currentverse" : (intro) ? "intro" : "verse" %>">
 
 					<%
 					
@@ -418,6 +423,7 @@
 			else {
 			%>
 				<div class="verse">
+				<div <%= rtol ? "dir=\"rtl\"" : "" %> style="<%= specialFont != null ? "font-family:"+specialFont : "" %>" class="verse">
 				<span class="versenum"><%= activeKey %></span>
 					<%= activeModule.getRenderText() %>
 				</div>

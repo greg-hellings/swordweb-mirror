@@ -18,7 +18,10 @@
 	mgr.setGlobalOption("Footnotes", "Off");
 	mgr.setGlobalOption("Cross-references", "Off");
 
-	String mods[] = modName.split("\\|");
+	String mods[] = new String[0];
+	if (modName != null) {
+		mods = modName.split("\\|");
+	}
 
 	if (ks != null) {
 		String parts[] = ks.split("\\|");
@@ -174,8 +177,6 @@
 				}
 				if ((key != null) && (book != null)) {
 					String keyList[] = SwordOrb.BIBLES.equals(book.getCategory())?book.parseKeyList(key) : new String[] { key };
-					boolean startBookTag = false;
-					boolean startChapterTag = false;
 					
 					if ("tei".equals(format) && keyList.length > 0) {
 						book.setKeyText(keyList[0]);
@@ -227,12 +228,10 @@
 %>
 <div type="book" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>">
 <%
-											startBookTag = true;
 										}
 %>
 <div type="chapter" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>">
 <%
-											startChapterTag = true;
 									}
 %>
 <ab n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>V<%= book.getKeyChildren()[3] %>">
@@ -249,16 +248,16 @@
 <%
 									// if last verse of chapter
 									if (k < keyList.length-1 && book.getKeyChildren()[5].equals(book.getKeyChildren()[3])) {
+System.out.println("ending chapter");
 %>
 </div>
 <%
-										startChapterTag = false;
 										// if last chapter of book
-										if (k < keyList.length-1 && book.getKeyChildren()[4].equals(book.getKeyChildren()[2]) && startBookTag) {
+										if (k < keyList.length-1 && book.getKeyChildren()[4].equals(book.getKeyChildren()[2])) {
+System.out.println("ending book");
 %>
 </div>
 <%
-											startBookTag = false;
 										}
 									}
 								}

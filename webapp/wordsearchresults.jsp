@@ -156,6 +156,10 @@ function onPageLoad() {
 			Integer resultStart = new Integer(request.getParameter("start") != null ? request.getParameter("start") : "0");
 			Integer resultLimit = new Integer(30);
 			boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
+			String specialFont = activeModule.getConfigEntry("Font");
+			if (specialFont.equalsIgnoreCase("<swnull>")) {
+				specialFont = null;
+			}
 
 			for (int i = resultStart.intValue(); i < results.length && i < resultStart.intValue() + resultLimit.intValue(); i++)
 			{
@@ -167,7 +171,7 @@ function onPageLoad() {
 				
 				</dt>
 				
-				<dd dir="<%= rtol ? "rtl" : "" %>">
+				<dd dir="<%= rtol ? "rtl" : "" %>" style="<%= specialFont != null ? "font-family:"+specialFont : "" %>">
 					<%= activeModule.getRenderText() %>
 				</dd>
 

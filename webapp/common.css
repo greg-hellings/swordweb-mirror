@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'AntinoouWeb';
+    src: url('fonts/antinoou-webfont.eot');
+    src: url('fonts/antinoou-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/antinoou-webfont.woff') format('woff'),
+         url('fonts/antinoou-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* define height and width of scrollable area. Add 16px to width for scrollbar          */
 div.tableContainer {
 	clear: both;
