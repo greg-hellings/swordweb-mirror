@@ -9,6 +9,9 @@
 <%
 	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 
+	SWModule mod = mgr.getModuleByName("KJV");
+
+	
 String util = "/usr/bin/vs2osisref";
 String util2 = "/usr/bin/parsekey";
 String vs = request.getParameter("vs");
@@ -56,6 +59,15 @@ if (vs != null && vs.length() > 0) {
 <br/><h3>OSIS Reference:</h3><br/>
 <%
 	result = runCommand(new String[] {util, vs, context, locale}, out, true, true);
+%>
+<br/><h3>KJV.parseKeyList:</h3><br/>
+<%
+	String[] keys = mod.parseKeyList(vs);
+	for (String k : keys) {
+%>
+	<%= k %><br/>
+<%
+	}
 }
 %>
 

@@ -54,6 +54,7 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	}
 %>
 </UserPref>
+<UserPref name="autoSelectMod" datatype="bool" display_name="Auto Select Bible from Last Manuscript Language" default_value="false" />
 <Content type="html">
 <![CDATA[
 <head>
@@ -64,6 +65,16 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	
 
 <script type="text/javascript">
+
+var specialModules = {
+     bo  : "SahidicBible",
+     sa  : "SahidicBible",
+     fa  : "SahidicBible",
+     mae : "SahidicBible",
+     ly  : "SahidicBible",
+     cw  : "SahidicBible"
+};
+
         $(document).ready(function() {
 
 		$( "#tabs" ).tabs();
@@ -116,6 +127,8 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 <script>
 
 var swordModule = "WHNU";
+var chosenModule = swordModule;
+var autoSelectMod = false;
 var MARGIN = 8;
 var preferredHeight = -1;
 
@@ -237,6 +250,7 @@ function positionFromURLParams() {
 	var mod = getURLParams()['mod'];
 	if (mod != null) {
 		swordModule = mod;
+		chosenModule = mod;
 	}
 	var key = getURLParams()['key'];
 	if (key != null) {
@@ -245,6 +259,11 @@ function positionFromURLParams() {
 }
 
 function page_select_callback(topic, data, subscriberData) {
+	if (autoSelectMod) {
+		if (data.lang in specialModules)
+			swordModule = specialModules[data.lang];
+		else swordModule = chosenModule;
+	}
 	if (data.bibcont != null && data.bibcont.length > 0) {
 		lookup(data.bibcont);
 	}
@@ -310,6 +329,8 @@ function word_selected_callback(topic, data, subscriberData) {
 function loaded() {
 	var prefs = new gadgets.Prefs();
 	swordModule = prefs.getString('swordModule');
+	autoSelectMod = prefs.getBool('autoSelectMod');
+	chosenModule = swordModule;
      preferredHeight = parseInt(prefs.getString('height'));
      if (gadgets.util.hasFeature('dynamic-height')) gadgets.window.adjustHeight(preferredHeight == -1 ? 500 : preferredHeight);
      $('#searchContent').css('overflow', (gadgets.util.hasFeature('dynamic-height') && preferredHeight == -1) ? 'visible' : 'auto');

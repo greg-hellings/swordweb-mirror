@@ -39,15 +39,17 @@
 	buf = request.getParameter("morph");
 	boolean morph =  "on".equalsIgnoreCase(buf);
 
-	activeModule.setKeyText(activeKey);
+	activeModule.setKeyText("="+activeKey);
 	activeKey = activeModule.getKeyText(); 	// be sure it is formatted nicely
+	String book = activeModule.getKeyChildren()[6];
+	int chapter = Integer.parseInt(activeModule.getKeyChildren()[2]);
+	int verse = Integer.parseInt(activeModule.getKeyChildren()[3]);
 %>
 <%= activeKey %>%%%
 		<div>
 
 		<%
 			if ((activeModule.getCategory().equals("Cults / Unorthodox / Questionable Material")) || (activeModule.getCategory().equals(SwordOrb.BIBLES))) {
-				String chapterPrefix = activeKey.substring(0, activeKey.indexOf(":"));
 				int activeVerse = Integer.parseInt(activeKey.substring(activeKey.indexOf(":")+1));
 				int anchorVerse = (activeVerse > 2)?activeVerse - 2: -1;
 				boolean first = true;
@@ -56,11 +58,11 @@
 				
 				String lastEusNum = "";
 				String myEusNum = "";
-				for (activeModule.setKeyText("="+chapterPrefix + ":0"); (activeModule.error() == (char)0); activeModule.next()) {
+				for (activeModule.setKeyText("="+book+"."+chapter+"."+"0"); (activeModule.error() == (char)0); activeModule.next()) {
+					if (chapter == 0) chapter = 1;
 					String keyText = activeModule.getKeyText();
 					String keyProps[] = activeModule.getKeyChildren();
 					// book and chapter intros
-					// TODO: change 'chapterPrefix' to use keyProps so we can support book intros (e.g. Jn.0.0)
 					boolean intro = (keyProps[2].equals("0") || keyProps[3].equals("0"));
 					if (eusVs != null) {
 						myEusNum = "";
@@ -82,8 +84,9 @@
 			<%
 						first = false;
 					}
-					int curVerse = Integer.parseInt(keyText.substring(keyText.indexOf(":")+1));
-					if (!chapterPrefix.equals(keyText.substring(0, keyText.indexOf(":")))) {
+					int curVerse = Integer.parseInt(keyProps[3]);
+					int curChapter = Integer.parseInt(keyProps[2]);
+					if (!book.equals(keyProps[6]) || curChapter > chapter) {
 						break;
 					}
 					mgr.setGlobalOption("Strong's Numbers",

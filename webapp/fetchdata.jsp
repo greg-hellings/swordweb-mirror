@@ -9,6 +9,15 @@
 <%@ page import="java.net.URLEncoder" %>
 <%
 
+	final int VERSEKEY_TESTAMENT  = 0;
+	final int VERSEKEY_BOOK       = 1;
+	final int VERSEKEY_CHAPTER    = 2;
+	final int VERSEKEY_VERSE      = 3;
+	final int VERSEKEY_CHAPTERMAX = 4;
+	final int VERSEKEY_VERSEMAX   = 5;
+	final int VERSEKEY_BOOKNAME   = 6;
+	final int VERSEKEY_OSISREF    = 7;
+
 	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	SWModule book = null;
 	String ks = request.getParameter("key");
@@ -17,6 +26,11 @@
 	String format = request.getParameter("format");
 	mgr.setGlobalOption("Footnotes", "Off");
 	mgr.setGlobalOption("Cross-references", "Off");
+
+	if ("plain".equals(format)) {
+		mgr.setGlobalOption("Strong's Numbers", "Off");
+		mgr.setGlobalOption("Morphological Tags", "Off");
+	}
 
 	String mods[] = new String[0];
 	if (modName != null) {
@@ -180,14 +194,20 @@
 					
 					if ("tei".equals(format) && keyList.length > 0) {
 						book.setKeyText(keyList[0]);
+						response.setContentType("text/xml");
 %>
 <TEI>
-<div type="book" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>" part="<%= ("1".equals(book.getKeyChildren()[2]))&&("1".equals(book.getKeyChildren()[3]))?"I":"Y"%>">
-<div type="chapter" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>" part="<%= ("1".equals(book.getKeyChildren()[3]))?"I":"Y"%>" >
+<div type="book" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[VERSEKEY_BOOK])) %>" part="<%= ("1".equals(book.getKeyChildren()[VERSEKEY_CHAPTER]))&&("1".equals(book.getKeyChildren()[VERSEKEY_VERSE]))?"I":"Y"%>">
+<div type="chapter" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[VERSEKEY_BOOK])) %>K<%= book.getKeyChildren()[VERSEKEY_CHAPTER] %>" part="<%= ("1".equals(book.getKeyChildren()[VERSEKEY_VERSE]))?"I":"Y"%>" >
 <%
 					}
 					for (int k = 0; k < keyList.length; ++k) {
 						String k1 = keyList[k];
+						// kludge for verse 0 which comes out to e.g., "Rev.2"
+						if (k1.split("\\.").length == 2) {
+							k1 = "=" + k1 + ".0";
+							continue;	// just skip chapter headings
+						}
 						book.setKeyText(k1);
 						if (("StrongsGreek".equals(modName)) && ("3588".equals(k1))) {
 							out.print("with Greek Article");
@@ -220,21 +240,26 @@
 						}
 						else {
 							if ("raw".equals(format) || "tei".equals(format)) {
+/*
+%>
+<milestone k="<%=k%>" key="<%=k1%>" keyText="<%=book.getKeyText()%>"/>
+<%
+*/
 
 								// ----- header for trier tinymce editor ------
 								if ("tei".equals(format)) {
-									if (k > 0 && "1".equals(book.getKeyChildren()[3])) {
-										if ("1".equals(book.getKeyChildren()[2])) {
+									if (k > 0 && "1".equals(book.getKeyChildren()[VERSEKEY_VERSE])) {
+										if ("1".equals(book.getKeyChildren()[VERSEKEY_CHAPTER])) {
 %>
-<div type="book" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>">
+<div type="book" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[VERSEKEY_BOOK])) %>">
 <%
 										}
 %>
-<div type="chapter" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>">
+<div type="chapter" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[VERSEKEY_BOOK])) %>K<%= book.getKeyChildren()[VERSEKEY_CHAPTER] %>">
 <%
 									}
 %>
-<ab n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[1])) %>K<%= book.getKeyChildren()[2] %>V<%= book.getKeyChildren()[3] %>">
+<ab n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[VERSEKEY_BOOK])) %>K<%= book.getKeyChildren()[VERSEKEY_CHAPTER] %>V<%= book.getKeyChildren()[VERSEKEY_VERSE] %>">
 <%
 								}
 								// --------------------------------------------
@@ -247,13 +272,13 @@
 </ab>
 <%
 									// if last verse of chapter
-									if (k < keyList.length-1 && book.getKeyChildren()[5].equals(book.getKeyChildren()[3])) {
+									if (k < keyList.length-1 && book.getKeyChildren()[VERSEKEY_VERSEMAX].equals(book.getKeyChildren()[VERSEKEY_VERSE])) {
 System.out.println("ending chapter");
 %>
 </div>
 <%
 										// if last chapter of book
-										if (k < keyList.length-1 && book.getKeyChildren()[4].equals(book.getKeyChildren()[2])) {
+										if (k < keyList.length-1 && book.getKeyChildren()[VERSEKEY_CHAPTERMAX].equals(book.getKeyChildren()[VERSEKEY_CHAPTER])) {
 System.out.println("ending book");
 %>
 </div>
@@ -269,10 +294,10 @@ System.out.println("ending book");
 								// ----- header for trier tinymce editor ------
 								if ("basetext".equals(format)) {
 %>
-<span class="chapter_number" part="<%=("1".equals(book.getKeyChildren()[3]))?"I":"Y"%>"> <%= book.getKeyChildren()[2]%></span>
+<span class="chapter_number" part="<%=("1".equals(book.getKeyChildren()[VERSEKEY_VERSE]))?"I":"Y"%>"> <%= book.getKeyChildren()[VERSEKEY_CHAPTER]%></span>
 <%
 %>
-<span class="verse_number"> <%= book.getKeyChildren()[3]%></span>
+<span class="verse_number"> <%= book.getKeyChildren()[VERSEKEY_VERSE]%></span>
 <%
 								}
 								if ("strip".equals(format)) {
@@ -283,8 +308,9 @@ System.out.println("ending book");
 								else if ("plain".equals(format)) {
 									String raw = book.getRawEntry();
 // assume our modules are OSIS for now (should change output format of mgr or have a second mgr for this one.
+									raw = mgr.filterText("OSISPlain", raw);
 %>
-<%= mgr.filterText("OSISPlain", raw) %>
+<%= raw %>
 <%
 								}
 								else {
