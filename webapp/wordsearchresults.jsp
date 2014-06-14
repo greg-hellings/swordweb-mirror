@@ -118,7 +118,13 @@ function onPageLoad() {
 
 	<tiles:put name="content" type="string">
 	<div id="searchresults">
-		<h2><t:t>Results for</t:t> <em><%= activeSearchTerm %></em></h2>
+<%
+			String specialFont = activeModule.getConfigEntry("Font");
+			if (specialFont.equalsIgnoreCase("<swnull>")) {
+				specialFont = null;
+			}
+%>
+		<h2><t:t>Results for</t:t> <em style="<%= specialFont != null ? "font-family:"+specialFont : "" %>"><%= activeSearchTerm %></em></h2>
 		<%
 			SearchHit[] results = null;
 			if ((activeSearchTerm != null) && (activeSearchTerm.trim().length() > 0)) {
@@ -156,10 +162,6 @@ function onPageLoad() {
 			Integer resultStart = new Integer(request.getParameter("start") != null ? request.getParameter("start") : "0");
 			Integer resultLimit = new Integer(30);
 			boolean rtol = ("RtoL".equalsIgnoreCase(activeModule.getConfigEntry("Direction")));
-			String specialFont = activeModule.getConfigEntry("Font");
-			if (specialFont.equalsIgnoreCase("<swnull>")) {
-				specialFont = null;
-			}
 
 			for (int i = resultStart.intValue(); i < results.length && i < resultStart.intValue() + resultLimit.intValue(); i++)
 			{
