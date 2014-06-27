@@ -35,7 +35,7 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 </Optional>
 </ModulePrefs>
 <UserPref name="height" datatype="enum" display_name="Gadget Height" default_value="600">
-     <EnumValue value="200" display_value="Short"/>
+     <EnumValue value="220" display_value="Short"/>
      <EnumValue value="300" display_value="Medium"/>
      <EnumValue value="400" display_value="Tall"/>
      <EnumValue value="600" display_value="Very Tall"/>
@@ -94,6 +94,11 @@ var specialModules = {
 	cursor : pointer;
 }
 
+.ui-tabs .ui-tabs-nav li a {
+	padding: .1em .2em !important;
+}
+
+
 </style>
 </head>
 
@@ -104,16 +109,18 @@ var specialModules = {
 		<li><a href="#tabs-2">Search</a></li>
 	</ul>
 
-	<div id="tabs-1">
-		<div>
-			Quick Lookup: <input name="verseRef" style="width:100%" id="verseRef" onKeyPress="return keyPress('verseRef', event);"/><span id="currentVerse" style="float:right;display:inline-block;"></span>
+	<div id="tabs-1" style="padding:.2em .3em;">
+		<div style="width:100%;">
+			<div style="float:left;margin-top:.2em;">Quick Lookup: &nbsp; </div>
+			<div style="overflow:hidden;"><input name="verseRef" style="width:100%;" id="verseRef" placeholder="Type a verse; e.g., jn.3.3" onKeyPress="return keyPress('verseRef', event);"/></div>
+			<span id="currentVerse" style="float:right;display:inline-block;"></span>
 			<div style="clear:both;"></div>
 		</div>
 		<div style="overflow:auto; border: none 0px; width:100%;" class="fillPage" id="chapterContent">
 		</div>
 	</div>
 
-	<div id="tabs-2">
+	<div id="tabs-2" style="padding:.2em .3em;">
 		<div>
 			Search Text: <input name="searchText" style="width:100%" id="searchText" onKeyPress="return keyPress('searchText', event);"/><span id="searchResultsCount" style="float:right;display:inline-block;"></span>
 			<div style="clear:both;"></div>
@@ -207,7 +214,7 @@ function lookup_callback(o) {
 function lookup(verse) {
 	$('#tabs').tabs('select', 0);
 	result = document.getElementById('chapterContent');
-	result.innerHTML = '<center><image src="<%=baseURL%>/images/loading.gif"/></center><br/><center><h1>Loading.  Please wait...</h1></center>';
+	result.innerHTML = '<center><image src="<%=baseURL%>/images/loading.gif"/></center><center><h3>Loading.  Please wait...</h3></center>';
 
 	var params = {};
 	var postData = {};
@@ -222,7 +229,7 @@ function lookup(verse) {
 function search(searchText) {
 	$('#tabs').tabs('select', 1);
 	result = document.getElementById('searchContent');
-	result.innerHTML = '<center><image src="<%=baseURL%>/images/loading.gif"/></center><br/><center><h1>Loading.  Please wait...</h1></center>';
+	result.innerHTML = '<center><image src="<%=baseURL%>/images/loading.gif"/></center><center><h3>Loading.  Please wait...</h3></center>';
 
 	var params = {};
 	var postData = {};
