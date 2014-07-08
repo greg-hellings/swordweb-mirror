@@ -2,7 +2,7 @@
     language="java"
     contentType="text/html;charset=utf-8"
 %>
-<%@ page import="java.util.Vector" %>
+<%@ page import="java.util.Set" %>
 <%@ page import="java.util.Properties" %>
 <%@ page import="java.io.File" %>
 <%@ page import="java.io.FileOutputStream" %>
@@ -12,7 +12,7 @@
 <html>
 <body>
 <%
-	Vector pageTags = (Vector)session.getAttribute("pageTags");
+	Set pageTags = (Set)session.getAttribute("pageTags");
 	if (pageTags != null) {
 
 		
