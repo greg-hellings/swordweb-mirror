@@ -24,6 +24,8 @@
 			lang = (String)session.getAttribute("lang");
 		}
 
+		if (lang == null) lang = "en_US";
+
 		if (request.getParameter("t0") != null) {
 			Properties locale = TranslateTag.getSessionLocale(pageContext);
 			for (int i = 0; i < pageTags.size(); i++) {
@@ -35,8 +37,7 @@
 				}
 			}
 
-			String localeName = (String)session.getAttribute("lang");
-			File propName = new File(pageContext.getServletContext().getRealPath("/WEB-INF/classes/trans_"+localeName+".properties"));
+			File propName = new File(pageContext.getServletContext().getRealPath("/WEB-INF/classes/trans_"+lang+".properties"));
 			FileOutputStream propFile = new FileOutputStream(propName);
 			locale.store(propFile, null);
 			propFile.close();
