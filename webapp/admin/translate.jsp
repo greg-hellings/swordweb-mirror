@@ -28,13 +28,15 @@
 
 		if (request.getParameter("t0") != null) {
 			Properties locale = TranslateTag.getSessionLocale(pageContext);
-			for (int i = 0; i < pageTags.size(); i++) {
-				String key = (String)pageTags.get(i);
+			int i = 0;
+			for (Object k : pageTags) {
+				String key = (String)k;
 				String value = (String)request.getParameter("t"+Integer.toString(i));
 				if ((key != null) && (value != null)) {
 					value = new String(value.getBytes("iso8859-1"), "UTF-8");
 					locale.setProperty(""+key.hashCode(), value);
 				}
+				++i;
 			}
 
 			File propName = new File(pageContext.getServletContext().getRealPath("/WEB-INF/classes/trans_"+lang+".properties"));
@@ -58,8 +60,9 @@
 		<fieldset>
 			<legend>Strings which are marked for translation:</legend>
 <%
-		for (int i = 0; i < pageTags.size(); i++) {
-			String key   = (String)pageTags.get(i);
+		int i = 0;
+		for (Object k : pageTags) {
+			String key   = (String)k;
 			String value = TranslateTag.getTranslation(pageContext, key, false);
 %>
 	<p>
@@ -67,6 +70,7 @@
 			<input type="text" name="t<%=i%>" size="120" value="<%= HTTPUtils.canonize(value)%>"/>
 	</p>
 <%
+			++i;
 		}
 %>
 			<input type="submit" value="save" title="Save translation strings" />
