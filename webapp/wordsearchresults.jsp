@@ -66,6 +66,11 @@
 		itmp = 0;	// default to NOT ignore case
 	}
 	soptions = itmp;
+
+	String specialFont = activeModule.getConfigEntry("Font");
+	if (specialFont.equalsIgnoreCase("<swnull>")) {
+		specialFont = null;
+	}
 %>
 <tiles:insert beanName="basic" flush="true" >
 	<tiles:put name="title" type="string">
@@ -118,12 +123,6 @@ function onPageLoad() {
 
 	<tiles:put name="content" type="string">
 	<div id="searchresults">
-<%
-			String specialFont = activeModule.getConfigEntry("Font");
-			if (specialFont.equalsIgnoreCase("<swnull>")) {
-				specialFont = null;
-			}
-%>
 		<h2><t:t>Results for</t:t> <em style="<%= specialFont != null ? "font-family:"+specialFont : "" %>"><%= activeSearchTerm %></em></h2>
 		<%
 			SearchHit[] results = null;

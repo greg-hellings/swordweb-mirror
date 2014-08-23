@@ -260,6 +260,8 @@ function positionFromURLParams() {
 		chosenModule = mod;
 	}
 	var key = getURLParams()['key'];
+	if (!key) key = getURLParams()['biblicalContent'];
+	if (!key) key = getURLParams()['verse'];
 	if (key != null) {
 		lookup(key);
 	}
@@ -271,8 +273,8 @@ function page_select_callback(topic, data, subscriberData) {
 			swordModule = specialModules[data.lang];
 		else swordModule = chosenModule;
 	}
-	if (data.bibcont != null && data.bibcont.length > 0) {
-		lookup(data.bibcont);
+	if (data.indexContent != null && data.indexContent.length > 0) {
+		lookup(data.indexContent);
 	}
 }
 

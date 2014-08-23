@@ -102,10 +102,10 @@
 					XMLBlock manuscripts = new XMLBlock(vmrResponse.toString());
 %>
 					<p><b>Some Manuscript Witnesses for <%=vk[0]%></b></p>
-					<div id="tableContainer" class="tableContainer">
-					<table border="0" cellpadding="0" cellspacing="0" width="100%" class="scrollTable">
+					<div id="tableContainer" class="tableContainer" style="width:100%;">
+					<table border="0" cellpadding="0" cellspacing="0" style="width:100%;" class="scrollTable">
 					<thead class="fixedHeader">
-						<tr><th>Manuscript</th><th>Century</th><th>Folio</th><th>Content</th><th>Image</th></tr>
+						<tr style="font-size:80%;"><th>Ms</th><th>Century</th><th>Folio</th><th>Content</th><th>&nbsp;</th></tr>
 					</thead>
 					<tbody class="scrollContent">
 <%
@@ -118,8 +118,8 @@
 							if (block != null) {
 								block = block.getBlock("image");
 								if (block != null) {
-									thumbURL = block.getAttribute("thumburl");
-									imageURL = block.getAttribute("webfriendlyurl");
+									thumbURL = block.getAttribute("thumbURL");
+									imageURL = block.getAttribute("webFriendlyURL");
 								}
 							}
 							block = p.getBlock("transcriptions");
@@ -129,11 +129,11 @@
 									transURL = block.getAttribute("uri");
 								}
 							}
-							String mssURL = "http://ntvmr.uni-muenster.de/manuscript-workspace?docid=" + m.getAttribute("docid")+"&pageid="+p.getAttribute("pageid");
+							String mssURL = "http://ntvmr.uni-muenster.de/manuscript-workspace?docID=" + m.getAttribute("docID")+"&pageID="+p.getAttribute("pageID");
 %>
 							<tr>
 								<td><a href="<%=mssURL%>" target="NTVMR">
-									<%=m.getAttribute("ganum")%>
+									<%=m.getAttribute("gaNum")%>
 								</a></td>
 								<td><%=m.getValue("originYear")%></td>
 								<td><%=p.getAttribute("folio")%></td>
@@ -145,7 +145,7 @@
 <%
 							}
 %>
-										<%=p.getAttribute("biblicalcontent")%>
+										<%=p.getAttribute("biblicalContent")%>
 <%
 							if (transURL != null) {
 %>
