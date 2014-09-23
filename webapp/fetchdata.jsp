@@ -21,6 +21,7 @@
 	SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	SWModule book = null;
 	String ks = request.getParameter("key");
+	if (ks != null) ks = new String(ks.getBytes("iso8859-1"), "UTF-8");
 	String modName = request.getParameter("mod");
 	String fn = request.getParameter("fn");
 	String format = request.getParameter("format");

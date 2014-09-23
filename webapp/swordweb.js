@@ -195,15 +195,18 @@ function colorLemmas(wordnum, key, morph, augment) {
 }
 
 
-function p(mod, key, wordnum, extratext, fnnum, srcMod) {
+function p(mod, key, wordnum, extratext, fnnum, srcMod, showKeyHeader) {
 
 	if (key.substring(0,1) == '@') mod = 'strongshebkey';
-	windowBar=
+	var windowBar=
             '<div align="right">'+
             '<a href="#" onclick="p(\''+mod+'\', \''+key+'\', \''+wordnum+'\', \''+extratext+'\', \''+fnnum+'\', \''+srcMod+'\');return false;">'+
             '<img border="0" src="images/x.png"/>'+
             '</a>'+
             '</div>';
+	if (showKeyHeader) {
+		windowBar = '<div style="border-bottom:1px solid #ccc;"><div style="float:left;">'+key+'</div>'+windowBar+'</div>';
+	}
 	var page = '';
 	skeyPre=""
 	/* check for aliases */
@@ -216,7 +219,7 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 		mod = "StrongsHebrew";
 	}
 
-	if (fnnum.length > 2 && fnnum.substring(0,2) == 'p:') {
+	if (fnnum && fnnum.length > 2 && fnnum.substring(0,2) == 'p:') {
 		page = fnnum.substring(2);
 		fnnum = '';
 	}
@@ -244,8 +247,9 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 		xmlhttp.open("GET", url, true);
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4) {
+				var result = xmlhttp.responseText;
 				if (mod != "betacode") {
-					resultBody="<div class=\"verse\">"+xmlhttp.responseText + "<br/>"+"<div id=\"dm\">";
+					resultBody="<div class=\"verse\">"+ result + "<br/>"+"<div id=\"dm\">";
 					if ((extratext != null) && (extratext.length > 0)) {
 						if (mod == 'strongshebkey') {
 							resultBody += "<a href=\"#\" onclick=\"pd('"+extratext+"', 'whmmorph');return false;\">"+extratext+"</a>";
@@ -255,7 +259,7 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 						}
 					}
 					resultBody += "</div>";
-					if ((fnnum == null) || (fnnum == '')) {
+					if ((fnnum == null || fnnum == '') && !showKeyHeader) {
 						resultBody += "<dl>";
 						resultBody += "<dt><a href=\"wordsearchresults.jsp?mod="+srcMod+"&searchTerm=lemma:"+skeyPre+encodeURIComponent(key)+"&colorKey="+encodeURIComponent(key)+"&colorMorph="+encodeURIComponent(extratext)+"\"><t:t>Search for lemma </t:t>"+skeyPre+key+"<t:t> (any morphology) in </t:t>"+srcMod+"</a></dt>";
 						resultBody += "</dl>";
@@ -311,6 +315,13 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod) {
 			colorLemmas(wordnum, key, extratext);
 		}
 	}
+}
+
+//intermodule link
+function im(mod, key) {
+	var k = decodeURIComponent(key);
+	p(mod, k, 'im'+k, null, null, null, true);
+	return false;
 }
 
 function f(mod, key, fnnum, extratext) {
