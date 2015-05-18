@@ -261,6 +261,7 @@ function positionFromURLParams() {
 	}
 	var key = getURLParams()['key'];
 	if (!key) key = getURLParams()['biblicalContent'];
+	if (!key) key = getURLParams()['indexContent'];
 	if (!key) key = getURLParams()['verse'];
 	if (key != null) {
 		lookup(key);
