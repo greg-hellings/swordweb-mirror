@@ -28,6 +28,11 @@
 	mgr.setGlobalOption("Footnotes", "Off");
 	mgr.setGlobalOption("Cross-references", "Off");
 
+	String inTestament = null;
+	String inBook = null;
+	String inChapter = null;
+	String inVerse = null;
+
 	if ("plain".equals(format)) {
 		mgr.setGlobalOption("Strong's Numbers", "Off");
 		mgr.setGlobalOption("Morphological Tags", "Off");
@@ -198,8 +203,6 @@
 						response.setContentType("text/xml");
 %>
 <TEI>
-<div type="book" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[VERSEKEY_BOOK])) %>" part="<%= ("1".equals(book.getKeyChildren()[VERSEKEY_CHAPTER]))&&("1".equals(book.getKeyChildren()[VERSEKEY_VERSE]))?"I":"Y"%>">
-<div type="chapter" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[VERSEKEY_BOOK])) %>K<%= book.getKeyChildren()[VERSEKEY_CHAPTER] %>" part="<%= ("1".equals(book.getKeyChildren()[VERSEKEY_VERSE]))?"I":"Y"%>" >
 <%
 					}
 					for (int k = 0; k < keyList.length; ++k) {
@@ -249,43 +252,48 @@
 
 								// ----- header for trier tinymce editor ------
 								if ("tei".equals(format)) {
-									if (k > 0 && "1".equals(book.getKeyChildren()[VERSEKEY_VERSE])) {
-										if ("1".equals(book.getKeyChildren()[VERSEKEY_CHAPTER])) {
+									if (inChapter != null && (!book.getKeyChildren()[VERSEKEY_CHAPTER].equals(inChapter) || !book.getKeyChildren()[VERSEKEY_BOOK].equals(inBook))) {
+%>
+</div>
+<%
+									}
+									if (inBook != null && !book.getKeyChildren()[VERSEKEY_BOOK].equals(inBook)) {
+%>
+</div>
+<%
+									}
+									if (!book.getKeyChildren()[VERSEKEY_BOOK].equals(inBook)) {
 %>
 <div type="book" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[VERSEKEY_BOOK])) %>">
 <%
-										}
+									}
+									if (!book.getKeyChildren()[VERSEKEY_CHAPTER].equals(inChapter) || !book.getKeyChildren()[VERSEKEY_BOOK].equals(inBook)) {
 %>
 <div type="chapter" n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[VERSEKEY_BOOK])) %>K<%= book.getKeyChildren()[VERSEKEY_CHAPTER] %>">
 <%
 									}
+									inChapter = book.getKeyChildren()[VERSEKEY_CHAPTER];
+									inBook = book.getKeyChildren()[VERSEKEY_BOOK];
 %>
 <ab n="B<%= String.format("%02d", Integer.parseInt(book.getKeyChildren()[VERSEKEY_BOOK])) %>K<%= book.getKeyChildren()[VERSEKEY_CHAPTER] %>V<%= book.getKeyChildren()[VERSEKEY_VERSE] %>">
 <%
 								}
 								// --------------------------------------------
+									if ("WLC".equals(modName) || "LXX".equals(modName)) {
+%>
+<%= book.getStripText() %>
+<%
+									}
+									else {
 %>
 <%= book.getRawEntry() %>
 <%
+									}
 								// ----- header for trier tinymce editor ------
 								if ("tei".equals(format)) {
 %>
 </ab>
 <%
-									// if last verse of chapter
-									if (k < keyList.length-1 && book.getKeyChildren()[VERSEKEY_VERSEMAX].equals(book.getKeyChildren()[VERSEKEY_VERSE])) {
-System.out.println("ending chapter");
-%>
-</div>
-<%
-										// if last chapter of book
-										if (k < keyList.length-1 && book.getKeyChildren()[VERSEKEY_CHAPTERMAX].equals(book.getKeyChildren()[VERSEKEY_CHAPTER])) {
-System.out.println("ending book");
-%>
-</div>
-<%
-										}
-									}
 								}
 								// --------------------------------------------
 							}

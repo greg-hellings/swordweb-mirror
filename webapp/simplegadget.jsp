@@ -83,6 +83,17 @@ var specialModules = {
 </script>
 <style>
 
+@font-face {
+    font-family: 'AntinoouWeb';
+    src: url('fonts/antinoou-webfont.eot');
+    src: url('fonts/antinoou-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/antinoou-webfont.woff') format('woff'),
+         url('fonts/antinoou-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 .currentWord {
 	color : red;
 	cursor : pointer;
