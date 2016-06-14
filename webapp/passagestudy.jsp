@@ -427,6 +427,7 @@
 				<span class="versenum"><%= activeKey %></span>
 					<%= activeModule.getRenderText() %>
 				</div>
+				</div>
 			<%
 			}
 			String copyLine = activeModule.getConfigEntry("ShortCopyright");
