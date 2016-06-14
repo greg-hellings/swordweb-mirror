@@ -24,6 +24,11 @@
 	if (activeModuleName == null) activeModuleName = "WHNU";
 	SWModule activeModule = mgr.getModuleByName(activeModuleName);
 
+	String specialFont = activeModule.getConfigEntry("Font");
+	if (specialFont.equalsIgnoreCase("<swnull>")) {
+		specialFont = null;
+	}
+
 	String activeSearchTerm = request.getParameter("searchTerm");
 	// assert we have a search term
 	if (activeSearchTerm == null) return;
@@ -126,7 +131,8 @@ function onPageLoad() {
 				
 				</dt>
 				
-				<dd dir="<%= rtol ? "rtl" : "" %>">
+				<dd dir="<%= rtol ? "rtl" : "" %>" style="<%= specialFont != null ? "font-family:"+specialFont : "" %>">
+					 
 					<%= activeModule.getRenderText() %>
 				</dd>
 
