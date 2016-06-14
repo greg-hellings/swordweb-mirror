@@ -37,6 +37,9 @@
 		mgr.setGlobalOption("Strong's Numbers", "Off");
 		mgr.setGlobalOption("Morphological Tags", "Off");
 	}
+	if ("tei".equals(format) && "LXXCATSS".equals(modName)) {
+		mgr.setGlobalOption("Greek Accents", "Off");
+	}
 
 	String mods[] = new String[0];
 	if (modName != null) {
@@ -279,10 +282,19 @@
 <%
 								}
 								// --------------------------------------------
-									if ("WLC".equals(modName) || "LXX".equals(modName)) {
+									if ("WLC".equals(modName) || "LXX".equals(modName) || "Vulgate".equals(modName)) {
 %>
 <%= book.getStripText() %>
 <%
+									}
+									else if ("LXXCATSS".equals(modName) || "Aleppo".equals(modName)) {
+										String raw = book.getStripText();
+										raw = mgr.filterText("OSISPlain", raw);
+//										raw = mgr.filterText("UTF8GreekAccents", raw);
+										while (raw.indexOf("\n") > -1) raw = raw.replaceAll("\n", " ");
+										while (raw.indexOf("\r") > -1) raw = raw.replaceAll("\r", " ");
+										while (raw.indexOf("  ") > -1) raw = raw.replaceAll("  ", " ");
+										out.print(raw);
 									}
 									else {
 %>
