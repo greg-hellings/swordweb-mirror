@@ -65,7 +65,7 @@ SWMgr mgr = SwordOrb.getSWMgrInstance(request);
 	
 
 <script type="text/javascript">
-
+var tabLabel = '';
 var specialModules = {
      bo  : "SahidicBible",
      sa  : "SahidicBible",
@@ -189,6 +189,7 @@ function addSpansIfNecessary() {
 			text += '<span>'+words[i]+'</span> ';
 		}
 		$('.currentverse:last').html(text);
+		$('.currentverse > span').css('font-family','AntinoouWeb');
 	}
 }
 
@@ -199,6 +200,9 @@ function lookup_callback(o) {
 	$('#currentVerse').html(results[0]);
 	$('#verseRef').val(results[0]);
 	$('#chapterContent').html(results[1]);
+	if (tabLabel == 'SahidicBible') {
+		$('#chapterContent').css('font-family','AntinoouWeb');
+	}
 
 	addSpansIfNecessary();
 
@@ -363,8 +367,11 @@ function loaded() {
 		expandFillPageClients();
 	});
 
-	var tabLabel = (swordModule == 'WHNU') ? 'NA28' : swordModule;
+	tabLabel = (swordModule == 'WHNU') ? 'NA28' : swordModule;
 	var tab = $("#tabs").find(".ui-tabs-nav li:eq(0)").children('a').text(tabLabel);
+	if (tabLabel == 'SahidicBible') {
+		$('#searchText').css('font-family','AntinoouWeb');
+	}
 }
 
 if (gadgets.util.hasFeature('pubsub-2')) {
