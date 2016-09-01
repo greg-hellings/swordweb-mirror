@@ -49,14 +49,14 @@
 	
 %>
 <p><a href="<%=requestURL%>">Return to website</a></p>
-	<form action="translate.jsp">
+	<form action="#">
 		<fieldset>
 			<legend>Language (use proper country codes (es, en, fr, etc.): </legend>
 			<input type="text" name="lang" size="10" value="<%=lang%>"/>
 			<input type="submit" value="switch" title="switch language" />
 		</fieldset>
 	</form>
-	<form action="translate.jsp" method="POST">
+	<form action="#" method="POST">
 		<fieldset>
 			<legend>Strings which are marked for translation:</legend>
 <%

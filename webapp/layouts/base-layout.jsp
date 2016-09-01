@@ -111,7 +111,7 @@
 	String translator = (String)session.getAttribute("translator");
 	if (translator != null) {
 %>
-	<center><i><a href="admin/translate.jsp">Translate this page</a></i></center>
+	<center><i><a href="admin/translate/">Translate this page</a></i></center>
 <%
 	}
 %>
