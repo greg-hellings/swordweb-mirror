@@ -12,7 +12,7 @@
 <%@ page import="java.io.FileInputStream" %>
 <%@ page import="org.crosswire.sword.orb.*" %>
 <%@ page import="java.net.URLEncoder" %>
-<%@ taglib uri="/WEB-INF/lib/crosswire-i18n.tld" prefix="t" %>
+<%@ taglib uri="/WEB-INF/crosswire-i18n.tld" prefix="t" %>
 
 <t:pagestart />
 

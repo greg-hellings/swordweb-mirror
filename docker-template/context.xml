@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/" allowLinking="true">
+    <Resource name="storeDB"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="org.mariadb.jdbc.Driver"
+              url="jdbc:mariadb://$DBSERVER/metrics?useOldAliasMetadataBehavior=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull"
+              username="$DBUSER"
+              password="$DBPASSWD"
+              maxActive="100"
+              maxIdle="30"
+              maxWait="-1"
+    />
+    <Valve className="org.apache.catalina.valves.rewrite.RewriteValve" />
+
+</Context>

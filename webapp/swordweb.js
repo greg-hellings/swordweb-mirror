@@ -141,7 +141,7 @@ function pd(extratext, mod, dm, srcMod) {
 		c=document.getElementById(dm);
 		if (c!=null) {
 			c.innerHTML = '<center><image src="images/loading.gif"/></center><br/><center><h1>Loading.  Please wait...</h1></center>';
-			xmlhttp.open("GET", "fetchdata.jsp?mod="+mod+"&key="+encodeURIComponent(extratext)+"&srcMod="+srcMod,true);
+			xmlhttp.open("GET", "fetchdata.jsp?mod="+encodeURIComponent(mod)+"&key="+encodeURIComponent(extratext)+"&srcMod="+srcMod,true);
 			xmlhttp.onreadystatechange=function() {
 				if (xmlhttp.readyState==4) {
 					var newContent = '<div class="verse">';
@@ -240,8 +240,8 @@ function p(mod, key, wordnum, extratext, fnnum, srcMod, showKeyHeader) {
 		b.innerHTML="<t:t>Please wait...</t:t>";
 		showhide("onlywlayer", "visible");
 		var keyData = encodeURIComponent(key);
-		if (mod.indexOf('|') > 0) keyData += '|' + encodeURIComponent(key);
-		url = "fetchdata.jsp?mod="+mod+"&key="+keyData;
+		if (mod.indexOf('|') > 0) keyData += '|'+key;
+		url = "fetchdata.jsp?mod="+encodeURIComponent(mod)+"&key="+encodeURIComponent(keyData);
 		if ((fnnum != null) && (fnnum != ''))
 			url += "&fn="+encodeURIComponent(fnnum);
 		xmlhttp.open("GET", url, true);

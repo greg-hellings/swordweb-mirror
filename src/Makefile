@@ -1,4 +1,4 @@
-TOMCAT_HOME=/opt/tomcat
+TOMCAT_HOME=~/opt/tomcat
 instdir=../webapp
 
 all: ${instdir}/WEB-INF/classes/org/crosswire/swordweb/PerseusUtils.class

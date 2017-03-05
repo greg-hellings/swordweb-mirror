@@ -1,4 +1,4 @@
-<%@ taglib uri="/WEB-INF/lib/crosswire-i18n.tld" prefix="t" %>
+<%@ taglib uri="/WEB-INF/crosswire-i18n.tld" prefix="t" %>
 <%@ page import="java.util.Vector" %>
 <div id="contentTray0">
 <div id="contentTray1">

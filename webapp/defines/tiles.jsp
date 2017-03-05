@@ -1,4 +1,4 @@
-<%@ taglib uri="/WEB-INF/lib/struts-tiles.tld" prefix="tiles" %>
+<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles" %>
 
 <tiles:definition id="basic" page="layouts/base-layout.jsp">
 	<tiles:put name="lookup_url" value="passagestudy.jsp" />
